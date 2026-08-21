@@ -1,0 +1,13 @@
+// --------------------------------------------------
+//	Tools: Functions: tms-encodecolor()
+// --------------------------------------------------
+// Does not work with colors containing alpha
+
+
+@function tms-encodecolor( $color ) {
+	@if type-of( $color ) == 'color' {
+		$hex   : str-slice( ie-hex-str( $color ), 4 );
+		$color : unquote( "#{$hex}" );
+	}
+	@return '%23' + $color;
+}

@@ -1,0 +1,28 @@
+// --------------------------------------------------
+//	Admin: Fields: Featured video
+// --------------------------------------------------
+
+
+.tcres-featured-video {
+	max-width: 320px;
+
+
+	&-preview {
+		margin: 0 0 10px;
+	}
+
+
+	&-actions {
+		margin: 0 0 8px;
+	}
+
+
+	&-remove {
+		margin: 0;
+	}
+}
+
+
+.postbox.tcres-featured-video-field .tcres-featured-video {
+	max-width: 100%;
+}

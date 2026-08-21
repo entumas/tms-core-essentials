@@ -1,0 +1,17 @@
+// --------------------------------------------------
+//	Frontend: SVG icon
+// --------------------------------------------------
+
+
+.tcres-svg-icon {
+	display: flex;
+	align-items: center;
+	width: 1em;
+	height: 1em;
+	background-color: transparent;
+	fill: currentColor;
+
+	&.tcres-svg-icon-inline {
+		display: inline-flex;
+	}
+}

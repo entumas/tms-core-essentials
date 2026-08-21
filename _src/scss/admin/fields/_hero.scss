@@ -1,0 +1,121 @@
+// --------------------------------------------------
+//	Admin: Fields: Hero
+// --------------------------------------------------
+
+
+.tcres-hero-buttons-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+
+.tcres-hero-button {
+
+
+	&-row {
+		padding: 12px;
+		border: 1px solid tms-color-var('gray-300');
+		background-color: tms-color-var('white');
+
+
+		&-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			margin: 0 0 10px;
+			max-width: initial;
+		}
+
+
+		&-title {
+			font-weight: 600;
+		}
+	}
+
+
+	&-fields {
+		display: flex;
+		align-items: flex-end;
+		gap: 10px;
+		flex-wrap: nowrap;
+		max-width: 100%;
+	}
+
+
+	&-title,
+	&-url-wrap {
+		flex: 1 1 0;
+
+
+		.tcres-metabox-field-label {
+			margin-bottom: 4px;
+		}
+	}
+
+
+	&-select {
+		flex: 0 0 auto;
+		min-width: 110px;
+	}
+
+
+	&-target {
+		flex: 0 0 220px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin: 0 0 0 10px;
+		padding-bottom: 6px;
+		width: 220px;
+
+
+		input[type="checkbox"] {
+			margin: 0;
+		}
+	}
+}
+
+
+// Term ========================================
+
+.form-field.tcres-hero-field {
+
+
+	.tcres-hero-fields {
+		max-width: 100%;
+	}
+
+
+	.tcres-hero-button {
+
+
+		&-row-head {
+			margin-bottom: 12px;
+		}
+
+
+		&-fields {
+			flex-wrap: wrap;
+
+
+			input[type="text"] {
+				width: 100% !important;
+			}
+		}
+
+
+		&-title,
+		&-url-wrap {
+			flex: 1 1 100%;
+			width: 100%;
+		}
+
+
+		&-select,
+		&-target {
+			margin-top: 4px;
+		}
+	}
+}

@@ -1,0 +1,33 @@
+// --------------------------------------------------
+//	Admin: Settings page: Layout: Form table
+// --------------------------------------------------
+
+
+.tcres-settings-panel table.form-table {
+
+
+	// Layout ========================================
+
+	td {
+		padding-block: 16px;
+	}
+
+
+	// Elements ========================================
+
+	h2 {
+		margin-block: 0;
+	}
+
+
+	h3 {
+		font-size: 14px;
+	}
+
+
+	h4 {
+		margin-bottom: 8px;
+		font-size: 13px;
+		color: tms-color-var('gray-900');
+	}
+}

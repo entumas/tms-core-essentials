@@ -1,0 +1,19 @@
+// --------------------------------------------------
+//	Settings: Media queries
+// --------------------------------------------------
+
+
+// Breakpoints ========================================
+
+$bp-mobile	: 480;
+$bp-tablet	: 782;
+
+
+// Queries ========================================
+
+$mq-mobile-only		: "only screen and ( max-width : #{$bp-mobile}px )";
+$mq-tablet-and-down	: "only screen and ( max-width : #{$bp-tablet}px )";
+$mq-tablet-only		: "only screen and ( min-width : #{$bp-mobile}px ) and ( max-width : #{$bp-tablet}px )";
+$mq-desktop-only	: "only screen and ( min-width : #{$bp-tablet}px )";
+$mq-mobile-and-up	: "only screen and ( min-width : #{$bp-mobile}px )";
+$mq-tablet-and-up	: "only screen and ( min-width : #{$bp-tablet}px )";

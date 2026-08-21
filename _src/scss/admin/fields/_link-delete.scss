@@ -1,0 +1,15 @@
+// --------------------------------------------------
+//	Admin: Fields: Link delete
+// --------------------------------------------------
+
+
+a.tcres-link-delete {
+	color: tms-color-var('error');
+	text-decoration: underline;
+
+	&:hover,
+	&:active,
+	&:focus {
+		color: tms-color-var('error');
+	}
+}

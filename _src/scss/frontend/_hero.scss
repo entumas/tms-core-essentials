@@ -1,0 +1,70 @@
+// --------------------------------------------------
+//	Frontend: Hero
+// --------------------------------------------------
+
+
+.tcres-hero {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	text-align: center;
+
+
+	// Background ========================================
+
+	&-background {
+		position: absolute;
+		z-index: 0;
+		overflow: hidden;
+		inset: 0;
+		pointer-events: none;
+
+
+		&-image,
+		&-video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+
+		&-overlay {
+			display: block;
+			position: absolute;
+			z-index: 1;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+
+	// Content ========================================
+
+	&-inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+
+
+		> * {
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+
+	&-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+}

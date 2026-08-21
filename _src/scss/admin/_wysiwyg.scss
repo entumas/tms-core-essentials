@@ -1,0 +1,25 @@
+// --------------------------------------------------
+//	Admin: WYSIWYG
+// --------------------------------------------------
+
+
+.tcres-wysiwyg-compact {
+
+
+	.mce-edit-area iframe,
+	.wp-editor-area {
+		height: 72px !important;
+		min-height: 72px !important;
+	}
+}
+
+
+.form-field {
+
+
+	.wp-editor-wrap,
+	.tcres-wysiwyg {
+		box-sizing: border-box;
+		width: 100%;
+	}
+}

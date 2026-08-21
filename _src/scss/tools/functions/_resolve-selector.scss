@@ -1,0 +1,16 @@
+// --------------------------------------------------
+//	Tools: Functions: Resolve selector
+// --------------------------------------------------
+
+
+@function tms-resolve-selector( $context, $selector: null ) {
+	@if $context == null or $context == '' {
+		@return $selector--root;
+	} @else {
+		@if $selector == null or $selector == '' {
+			@return $selector--editor--interface;
+		} @else {
+			@return $selector;
+		}
+	}
+}

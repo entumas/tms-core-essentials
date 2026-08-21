@@ -1,0 +1,50 @@
+// --------------------------------------------------
+//	Frontend: Collapse
+// --------------------------------------------------
+
+
+.tcres-collapse {
+
+
+	&-title {
+		position: relative;
+		padding-right: 24px;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			right: 0;
+			width: 12px;
+			height: 2px;
+			border-radius: 2px;
+			background-color: currentColor;
+			transform: translateY(-50%);
+			transition: transform .2s ease;
+			pointer-events: none;
+		}
+
+		&::after {
+			transform: translateY(-50%) rotate(90deg);
+		}
+
+		&.is-open::after {
+			transform: translateY(-50%) rotate(90deg) scaleY(0);
+		}
+	}
+
+
+	&-content {
+		overflow: hidden !important;
+		max-height: 0;
+		padding: 0;
+		transition: padding .3s ease, max-height .3s ease;
+
+		&.is-open {
+			padding-top: 10px;
+			max-height: 600px;
+			transition: padding .6s ease-out, max-height .6s ease-out;
+		}
+	}
+}

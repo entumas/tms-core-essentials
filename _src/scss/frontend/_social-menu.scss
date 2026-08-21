@@ -1,0 +1,28 @@
+// --------------------------------------------------
+//	Frontend: Social menu
+// --------------------------------------------------
+
+
+.tcres-social-navigation {
+
+
+	ul {
+		margin-block: 0;
+		padding-left: 0;
+		list-style: none;
+	}
+
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		gap: .5em;
+		text-decoration: none;
+	}
+
+
+	.tcres-svg-icon {
+		flex-shrink: 0;
+		font-size: 24px;
+	}
+}

@@ -1,0 +1,39 @@
+// --------------------------------------------------
+//	Frontend: Tabs
+// --------------------------------------------------
+
+
+.tcres-tab-panel {
+	position: absolute;
+	overflow: hidden;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 0;
+	opacity: 0;
+	transition: opacity .28s ease;
+	pointer-events: none;
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+
+	&[hidden] {
+		display: none;
+	}
+
+	&.is-entering {
+		opacity: 0;
+		transition: none;
+	}
+
+	&.is-active {
+		position: relative;
+		overflow: visible;
+		z-index: 1;
+		height: auto;
+		opacity: 1;
+		pointer-events: auto;
+	}
+}

@@ -1,0 +1,58 @@
+// --------------------------------------------------
+//	Admin: Settings page: Layout: With sidebar
+// --------------------------------------------------
+
+
+.tcres-settings-panel.with-sidebar {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 280px;
+	gap: 32px;
+	align-items: start;
+
+	@media #{$mq-tablet-and-down} {
+		grid-template-columns: 1fr;
+	}
+
+
+	> main {
+		min-width: 0;
+
+		> section {
+			scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 32px) + 16px);
+		}
+
+		hr {
+			margin-block: 32px;
+		}
+
+		li {
+			margin-bottom: 0;
+		}
+
+		h2 {
+			margin-top: 32px;
+		}
+
+		h3 {
+			margin-top: 24px;
+		}
+
+		h4 {
+			margin-top: 16px;
+			margin-bottom: 8px;
+		}
+	}
+
+
+	> aside {
+		position: sticky;
+		top: calc(var(--wp-admin--admin-bar--height, 32px) + 16px);
+		align-self: start;
+
+		@media #{$mq-tablet-and-down} {
+			position: static;
+			order: -1;
+			max-width: 100%;
+		}
+	}
+}

@@ -1,0 +1,50 @@
+// --------------------------------------------------
+//	Admin: Settings page: Components: Editor
+// --------------------------------------------------
+
+
+.tcres-settings-editor {
+	position: relative;
+	max-width: 100%;
+
+
+	&.has-placeholder {
+
+		.tcres-settings-editor-placeholder {
+			display: none;
+			position: absolute;
+			z-index: 3;
+			left: 16px;
+			right: 16px;
+			margin: 0;
+			color: tms-color-var('gray-700');
+			font-size: 13px;
+			font-style: italic;
+			line-height: 1.5;
+			pointer-events: none;
+		}
+
+		&.is-empty .tcres-settings-editor-placeholder {
+			display: block;
+		}
+	}
+
+
+	.wp-editor {
+
+
+		&-wrap {
+			max-width: 100%;
+		}
+
+
+		&-container {
+			border: 1px solid tms-color-var('gray-300');
+		}
+
+
+		&-editor {
+			margin-top: 0;
+		}
+	}
+}

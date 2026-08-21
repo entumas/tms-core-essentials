@@ -1,0 +1,36 @@
+// --------------------------------------------------
+//	Admin-settings.css
+// --------------------------------------------------
+
+
+// Init ========================================
+
+@import "tools/functions";
+@import "settings/colors";
+@import "settings/constants";
+@import "settings/variables";
+@import "settings/media-queries";
+@import "tools/mixins";
+
+
+// Variables CSS ========================================
+
+@import 'admin/variables-css';
+
+
+// Settings page ========================================
+
+@import 'settings-page/elements/root';
+@import 'settings-page/elements/helpers';
+
+@import 'settings-page/components/panel';
+@import 'settings-page/components/switch';
+@import 'settings-page/components/suboptions';
+@import 'settings-page/components/usage';
+@import 'settings-page/components/card';
+@import 'settings-page/components/editor';
+@import 'settings-page/components/toc';
+
+@import 'settings-page/layouts/form-table';
+@import 'settings-page/layouts/grid';
+@import 'settings-page/layouts/with-sidebar';

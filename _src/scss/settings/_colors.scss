@@ -1,0 +1,85 @@
+// --------------------------------------------------
+//	Settings: Colors
+// --------------------------------------------------
+
+
+// Variables ========================================
+
+$color--black				: #000;
+$color--white				: #fff;
+$color--accent				: #3858e9;
+$color--accent-darker-10	: #2145e6;
+$color--accent-darker-20	: #183ad6;
+$color--foreground			: #1e1e1e;
+$color--gray-100			: #f0f0f0;
+$color--gray-200			: #e0e0e0;
+$color--gray-300			: #ddd;
+$color--gray-400			: #ccc;
+$color--gray-600			: #949494;
+$color--gray-700			: #757575;
+$color--gray-800			: #2f2f2f;
+$color--gray-900			: #1e1e1e;
+$color--wp-classic-accent	: #2271b1;
+$color--border-muted		: $color--gray-600;
+$color--disabled-muted		: $color--gray-400;
+$color--accent-inverted		: $color--white;
+$color--background			: $color--white;
+$color--foreground-inverted	: $color--white;
+$color--border				: $color--gray-600;
+$color--disabled			: $color--gray-600;
+$color--border-light		: $color--gray-200;
+$color--text-tertiary		: #5d5d5d;
+$color--info				: #3858e9;
+$color--synced				: #7a00df;
+$color--success				: #4ab866;
+$color--success-bg			: #eff9f1;
+$color--error				: #cc1818;
+$color--error-bg			: #fcf0f0;
+$color--warning				: #f0b849;
+$color--warning-bg			: #fef8ee;
+
+$color-facebook  			: #3b5998;
+$color-twitter         		: #000000;
+$color-linkedin  			: #0077b5;
+$color-pinterest 			: #cc2127;
+$color-whatsapp  			: #25d366;
+$color-telegram  			: #0088cc;
+$color-messenger			: #0098ff;
+
+
+// Map ========================================
+
+$colors: (
+	'black'					: $color--black,
+	'white'					: $color--white,
+	'accent'				: $color--accent,
+	'accent-darker-10'		: $color--accent-darker-10,
+	'accent-darker-20'		: $color--accent-darker-20,
+	'foreground'			: $color--foreground,
+	'gray-100'				: $color--gray-100,
+	'gray-200'				: $color--gray-200,
+	'gray-300'				: $color--gray-300,
+	'gray-400'				: $color--gray-400,
+	'gray-600'				: $color--gray-600,
+	'gray-700'				: $color--gray-700,
+	'gray-800'				: $color--gray-800,
+	'gray-900'				: $color--gray-900,
+	'wp-classic-accent'		: $color--wp-classic-accent,
+	'border-muted'			: $color--border-muted,
+	'disabled-muted'		: $color--disabled-muted,
+	'accent-inverted'		: $color--accent-inverted,
+	'background'			: $color--background,
+	'foreground-inverted'	: $color--foreground-inverted,
+	'border'				: $color--border,
+	'disabled'				: $color--disabled,
+	'border-light'			: $color--border-light,
+	'text-tertiary'			: $color--text-tertiary,
+	'info'					: $color--info,
+	'synced'				: $color--synced,
+	'success'				: $color--success,
+	'success-bg'			: $color--success-bg,
+	'error'					: $color--error,
+	'error-bg'				: $color--error-bg,
+	'warning'				: $color--warning,
+	'warning-bg'			: $color--warning-bg,
+);

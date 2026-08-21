@@ -1,0 +1,112 @@
+// --------------------------------------------------
+//	Admin: Settings page: Components: Card
+// --------------------------------------------------
+
+
+.tcres-settings-card {
+	box-sizing: border-box;
+	margin-top: 0;
+	padding: 8px 16px 12px;
+	min-width: 0;
+	max-width: none;
+	border: 1px solid tms-color-var('gray-300');
+	border-radius: 8px;
+	box-shadow: 0 1px 1px tms-color-hex8('black', .04);
+	background-color: tms-color-var('background');
+
+
+	// Main elements ========================================
+
+	> header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 12px;
+		margin-top: 4px;
+		margin-bottom: 8px;
+
+
+		.title {
+			margin-block: 0;
+			font-size: 14px;
+		}
+	}
+
+
+	> section {
+		margin: 12px 0 4px;
+
+		> fieldset {
+			margin: 0 !important;
+			padding: 8px !important;
+			border: 1px solid tms-color-var('gray-200') !important;
+			border-radius: 4px;
+			background-color: tms-color-var('gray-100');
+
+			+ fieldset {
+				margin-top: 8px !important;
+			}
+
+			+ .subtitle {
+				margin-top: 16px;
+			}
+		}
+	}
+
+
+	// Other elemenents ========================================
+
+	.subtitle {
+		margin-bottom: 8px;
+		padding-left: 0;
+		font-size: 13px;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+
+
+	.tcres-settings-usage[open] {
+		background-color: tms-color-var('gray-100');
+	}
+
+
+	.tcres-settings-suboptions {
+		border-left-color: tms-color-var('gray-300');
+		background-color: tms-color-var('gray-100');
+
+		.tcres-settings-suboptions {
+			border-left-color: tms-color-var('gray-200');
+			background-color: tms-color-var('white');
+		}
+	}
+
+
+	// Interactivity ========================================
+
+	&.is-filterable {
+		transition:
+			opacity .3s ease,
+			transform .3s ease;
+		opacity: 1;
+		transform: translateY(0);
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none !important;
+		}
+
+		&.is-enter-prep {
+			opacity: 0;
+			transform: translateY(-4px);
+		}
+
+		&.is-leaving {
+			opacity: 0;
+			transform: translateY(8px);
+			pointer-events: none;
+		}
+
+		&.is-gone {
+			display: none !important;
+		}
+	}
+}

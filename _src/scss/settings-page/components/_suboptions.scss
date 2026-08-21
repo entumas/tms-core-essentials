@@ -1,0 +1,33 @@
+// --------------------------------------------------
+//	Admin: Settings page: Components: Suboptions
+// --------------------------------------------------
+
+
+.tcres-settings-suboptions {
+	margin: 8px 0 4px;
+	padding: 8px 12px 8px 16px;
+	border-left: 3px solid tms-color-var('gray-400');
+	border-radius: 0 4px 4px 0;
+	background-color: tms-color-var('gray-200');
+
+	.tcres-settings-suboptions {
+		margin-top: 8px;
+		background-color: tms-color-var('gray-100');
+	}
+
+
+	// Elements ========================================
+
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+
+	hr {
+		background-color: tms-color-var('gray-400') !important;
+	}
+}

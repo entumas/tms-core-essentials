@@ -1,0 +1,53 @@
+// --------------------------------------------------
+//	Frontend: Scroll to top
+// --------------------------------------------------
+
+
+.tcres-scroll-to-top {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	z-index: 999;
+	padding: .25em;
+	width: 1em;
+	height: 1em;
+	font-size: 48px;
+	line-height: 1;
+	border: 0;
+	border-radius: 50%;
+	color: $color--white;
+	background-color: $color--gray-800;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+	opacity: 0;
+	transform: translateY(100%);
+	transition:
+		opacity .3s ease-out,
+		transform .3s ease-out;
+	cursor: pointer;
+
+	&[hidden] {
+		display: none;
+	}
+
+	&.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+
+		&:hover,
+		&:focus {
+			transform:
+				translateY(0)
+				scale(1.1);
+		}
+	}
+}
+
+
+// Sit above the chat FAB when both print as adjacent siblings in wp_footer.
+.tcres-chat + .tcres-scroll-to-top {
+	bottom: calc(48px + 2rem);
+}

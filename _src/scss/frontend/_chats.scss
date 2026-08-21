@@ -1,0 +1,107 @@
+// --------------------------------------------------
+//	Frontend: Chats
+// --------------------------------------------------
+
+
+.tcres-chat {
+	position: fixed;
+	z-index: 1000;
+	bottom: 1rem;
+	right: 1rem;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+	align-items: center;
+
+
+	&-trigger {
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 1;
+		margin: 0;
+		padding: .25em;
+		width: 1em;
+		height: 1em;
+		font-size: 48px;
+		border: 0;
+		border-radius: 50%;
+		color: $color--white;
+		background-color: $color--gray-800;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+		cursor: pointer;
+	}
+
+
+	&-buttons {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		align-items: center;
+		gap: .5rem;
+		z-index: 0;
+		margin-bottom: .5rem;
+	}
+
+
+	&-button {
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+		padding: .25em;
+		width: 1em;
+		height: 1em;
+		font-size: 48px;
+		text-decoration: none;
+		line-height: 1;
+		border-radius: 50%;
+		color: $color--white;
+		opacity: 1;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+		transition:
+			opacity .3s ease-out,
+			transform .3s ease-out;
+		cursor: pointer;
+
+		&.tcres-chat-button-whatsapp {
+			background-color: $color-whatsapp;
+		}
+
+		&.tcres-chat-button-telegram {
+			background-color: $color-telegram;
+		}
+
+		&.tcres-chat-button-messenger {
+			background-color: $color-messenger;
+		}
+	}
+
+
+	// Interactivity ========================================
+
+	&:not(.is-open) {
+
+		.tcres-chat-button {
+			opacity: 0;
+			pointer-events: none;
+			transform:
+				translateY(calc(48px + .3em))
+				rotate(.5turn);
+
+			&:nth-child(2) {
+				transform:
+					translateY(calc(48px + 48px + .45em))
+					rotate(0.75turn);
+			}
+
+			&:nth-child(3) {
+				transform:
+				translateY(calc(48px + 48px + 48px + .55em))
+					rotate(1turn);
+			}
+		}
+	}
+}

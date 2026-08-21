@@ -1,0 +1,20 @@
+// --------------------------------------------------
+//	Admin: Settings page: Layout: Grid
+// --------------------------------------------------
+
+
+.tcres-settings-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+	margin: 16px 0 0;
+	max-width: 100%;
+
+	@media screen and (min-width: 1400px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media #{$mq-tablet-and-down} {
+		grid-template-columns: 1fr;
+	}
+}

@@ -1,0 +1,26 @@
+// --------------------------------------------------
+//	Tools: Functions: tms-color-hex8()
+// --------------------------------------------------
+
+
+@function _tms-color-byte-to-hex2($n) {
+	$chars:'0123456789abcdef';
+	$n:round(max(0,min(255,$n)));
+	$lo:$n % 16;
+	$hi:round(($n - $lo) * 0.0625);
+
+	@return str-slice($chars,$hi + 1,$hi + 1) + str-slice($chars,$lo + 1,$lo + 1);
+}
+
+
+@function tms-color-hex8($color-key,$alpha) {
+	$c:tms-color-hex($color-key);
+	$a:round(max(0,min(1,$alpha)) * 255);
+
+	@return unquote(
+		'#' + _tms-color-byte-to-hex2(red($c))
+			+ _tms-color-byte-to-hex2(green($c))
+			+ _tms-color-byte-to-hex2(blue($c))
+			+ _tms-color-byte-to-hex2($a)
+	);
+}

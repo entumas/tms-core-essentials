@@ -1,0 +1,118 @@
+// --------------------------------------------------
+//	Admin: Settings page: Components: Switch
+// --------------------------------------------------
+
+
+.tcres-settings-switch {
+	display: inline-grid;
+	grid-template-columns: 32px auto;
+	align-items: center;
+	column-gap: 8px;
+
+
+	// Layout ========================================
+
+	> * {
+		grid-row: 1;
+	}
+
+
+	input[type="checkbox"] {
+		grid-column: 1;
+	}
+
+
+	.label {
+		grid-column: 2;
+	}
+
+
+	&.is-text-first {
+		grid-template-columns: auto 32px;
+
+
+		input[type="checkbox"] {
+			grid-column: 2;
+		}
+
+
+		.label {
+			grid-column: 1;
+		}
+	}
+
+
+	&.is-title {
+		align-items: flex-end;
+		margin-block: 1em;
+	}
+
+
+	// Elements ========================================
+
+	> input[type="hidden"] {
+		display: none;
+	}
+
+
+	input[type="checkbox"] {
+		position: relative;
+		margin-right: 0;
+		width: 32px;
+		height: 18px;
+		border: none !important;
+		border-radius: 9px;
+		background-color: tms-color-var('disabled') !important;
+		transition: background-color .15s ease;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 3px;
+			left: 3px;
+			margin: 0;
+			width: 1em;
+			height: 1em;
+			aspect-ratio: 1 / 1;
+			font-size: 12px;
+			border-radius: 50%;
+			background-color: tms-color-var('background');
+			transition: transform .15s ease;
+		}
+
+		&:checked {
+			background-color: tms-color-var('accent') !important;
+
+			&::before {
+				transform: translateX(14px);
+			}
+		}
+
+		&:focus {
+			outline: 2px solid transparent;
+			box-shadow: 0 0 0 2px tms-color-var('white'), 0 0 0 4px tms-color-var('accent') !important;
+
+			&:not(:focus-visible) {
+				box-shadow: none !important;
+			}
+		}
+	}
+
+
+	.label {
+		margin-block: 0;
+		height: 100%;
+		line-height: 1;
+		cursor: pointer;
+
+
+		label {
+			cursor: inherit;
+		}
+	}
+
+
+	h2 {
+		font-size: 1.3em;
+	}
+}

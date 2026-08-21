@@ -1,0 +1,15 @@
+// --------------------------------------------------
+//	Tools: Functions: tms-color-hex()
+// --------------------------------------------------
+
+
+@function tms-color-hex($color-key) {
+	$k:#{$color-key};
+	$c:map-get($colors,$k);
+
+	@if $c==null {
+		@error 'Unknown color key «#{$k}» in $colors map.';
+	}
+
+	@return $c;
+}

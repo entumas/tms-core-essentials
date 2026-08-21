@@ -1,0 +1,27 @@
+// --------------------------------------------------
+//	Admin: Settings page: Components: Usage
+// --------------------------------------------------
+
+
+.tcres-settings-usage {
+	margin-top: 16px;
+	padding: 8px 12px;
+	border-radius: 4px;
+
+	&[open] {
+		border: 1px solid tms-color-var('gray-300');
+		background-color: tms-color-var('background');
+	}
+
+
+	summary {
+		font-weight: 600;
+		cursor: pointer;
+		user-select: none;
+	}
+
+
+	li {
+		margin-bottom: 8px;
+	}
+}

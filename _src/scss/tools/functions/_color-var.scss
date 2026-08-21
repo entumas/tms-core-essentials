@@ -1,0 +1,11 @@
+// --------------------------------------------------
+//	Tools: Functions: tms-color-var()
+// --------------------------------------------------
+
+
+@function tms-color-var($color-key) {
+	$k:#{$color-key};
+	$hex:tms-color-hex($color-key);
+
+	@return var(--wp-components-color-#{$k},var(--wp-admin-theme-color-#{$k},#{$hex}));
+}

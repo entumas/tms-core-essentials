@@ -1,0 +1,34 @@
+// --------------------------------------------------
+//	Frontend: Privacy consent
+// --------------------------------------------------
+
+
+.tcres-privacy-consent {
+
+
+	input[type='checkbox'] {
+		vertical-align: top;
+	}
+
+
+	label {
+		cursor: pointer;
+	}
+
+
+	.tcres-privacy-consent-error {
+		display: block;
+		color: $color--error;
+	}
+}
+
+
+// Login ========================================
+
+.login .tcres-privacy-consent {
+
+
+	input[type='checkbox'] {
+		vertical-align: middle;
+	}
+}

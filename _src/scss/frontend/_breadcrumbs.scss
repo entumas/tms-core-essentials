@@ -1,0 +1,33 @@
+// --------------------------------------------------
+//	Frontend: Breadcrumbs
+// --------------------------------------------------
+
+.tcres-breadcrumbs {
+
+
+	ol {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-block: 0;
+		padding-left: 0;
+		list-style: none;
+	}
+
+
+	li {
+		display: inline-flex;
+		align-items: center;
+	}
+
+
+	.tcres-breadcrumbs-separator {
+		user-select: none;
+	}
+
+
+	.tcres-breadcrumbs-home {
+		display: flex;
+		align-items: center;
+	}
+}

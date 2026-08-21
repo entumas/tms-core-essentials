@@ -1,0 +1,81 @@
+// --------------------------------------------------
+//	Admin: Settings page: Elements: Helpers
+// --------------------------------------------------
+
+
+.tcres-settings {
+
+
+	// Checks ========================================
+
+	.has-checkbox {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		margin-block: 0 !important;
+	}
+
+
+	.checks {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-left: 0;
+		padding: 0;
+		list-style: none;
+
+
+		.has-checkbox {
+			margin: 0;
+		}
+
+
+		&.is-horizontal {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+			gap: 8px 12px;
+			align-items: start;
+
+			.has-checkbox {
+				display: flex;
+				min-width: 0;
+				width: 100%;
+			}
+		}
+	}
+
+
+	// Inline ========================================
+
+	.inline {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 8px 12px;
+
+
+		> label:first-of-type {
+			min-width: 169px;
+			font-weight: 600;
+		}
+
+
+		> .has-checkbox {
+			margin: 0;
+			font-weight: 400;
+		}
+
+
+		> .description {
+			flex: 1 1 100%;
+			margin: 0;
+		}
+	}
+
+
+	// Submit ========================================
+
+	.submit {
+		width: fit-content;
+	}
+}
