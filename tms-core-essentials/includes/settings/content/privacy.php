@@ -50,7 +50,9 @@ function tcres_settings_privacy_get_wpforms_forms(): array {
 		)
 	);
 
-	return is_array( $forms ) ? $forms : array();
+	return is_array( $forms )
+		? $forms
+		: array();
 }
 
 
@@ -84,14 +86,14 @@ function tcres_settings_privacy_render_wpforms_checkboxes(
 			?>
 			<li>
 				<label class="has-checkbox" for="<?php echo esc_attr( $input_id ); ?>">
-				<input
-					type="checkbox"
-					id="<?php echo esc_attr( $input_id ); ?>"
-					name="<?php echo esc_attr( $name ); ?>[]"
-					value="<?php echo esc_attr( (string) $form_id ); ?>"
-					<?php checked( in_array( $form_id, $selected_ids, true ) ); ?> />
-				<?php echo esc_html( $label ); ?>
-			</label>
+					<input
+						type="checkbox"
+						id="<?php echo esc_attr( $input_id ); ?>"
+						name="<?php echo esc_attr( $name ); ?>[]"
+						value="<?php echo esc_attr( (string) $form_id ); ?>"
+						<?php checked( in_array( $form_id, $selected_ids, true ) ); ?> />
+					<?php echo esc_html( $label ); ?>
+				</label>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -126,29 +128,29 @@ function tcres_settings_privacy_render_privacy_notice_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Print a privacy notice on the frontend. Settings from this panel are the defaults; function args override them:', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>notice</code>
-					&mdash; <?php esc_html_e( 'Notice key: contact, subscribe, comments, register, or checkout.', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
-				<code>[tcres-privacy-notice notice="contact"]</code>
-			</p>
+		<p><?php esc_html_e( 'Print a privacy notice on the frontend. Settings from this panel are the defaults; function args override them:', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>notice</code>
+				&mdash; <?php esc_html_e( 'Notice key: contact, subscribe, comments, register, or checkout.', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
+			<code>[tcres-privacy-notice notice="contact"]</code>
+		</p>
 	</details>
 	<?php
 }
 
 
 function tcres_settings_privacy_render_privacy_notice_panel(): void {
-	$settings = tcres_settings_get();
-	$group    = isset( $settings['privacy_notice'] ) && is_array( $settings['privacy_notice'] )
+	$settings              = tcres_settings_get();
+	$group                 = isset( $settings['privacy_notice'] ) && is_array( $settings['privacy_notice'] )
 		? $settings['privacy_notice']
 		: array();
-	$option   = TCRES_OPTION_NAME;
+	$option                = TCRES_OPTION_NAME;
 
 	$wpforms_forms         = tcres_settings_privacy_get_wpforms_forms();
 	$wpforms_contact_ids   = isset( $group['wpforms_contact_ids'] ) && is_array( $group['wpforms_contact_ids'] )
@@ -165,7 +167,6 @@ function tcres_settings_privacy_render_privacy_notice_panel(): void {
 		? tcres_privacy_notice_default_trigger()
 		: __( 'Before submitting the form, take a look at the basic information on data protection here.', 'tms-core-essentials' );
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<th scope="row"><h2><?php esc_html_e( 'Privacy notice', 'tms-core-essentials' ); ?></h2></th>
@@ -321,17 +322,18 @@ function tcres_settings_privacy_render_privacy_notice_panel(): void {
  * Privacy consent checkbox panel.
  */
 function tcres_settings_privacy_render_privacy_consent_panel(): void {
-	$settings = tcres_settings_get();
-	$group    = isset( $settings['privacy_consent'] ) && is_array( $settings['privacy_consent'] )
+	$settings    = tcres_settings_get();
+	$group       = isset( $settings['privacy_consent'] ) && is_array( $settings['privacy_consent'] )
 		? $settings['privacy_consent']
 		: array();
-	$option   = TCRES_OPTION_NAME;
-	$label    = isset( $group['label'] ) ? (string) $group['label'] : '';
+	$option      = TCRES_OPTION_NAME;
+	$label       = isset( $group['label'] )
+		? (string) $group['label']
+		: '';
 	$placeholder = function_exists( 'tcres_privacy_consent_default_label_placeholder' )
 		? tcres_privacy_consent_default_label_placeholder()
 		: __( 'I accept the [privacy_policy].', 'tms-core-essentials' );
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<th scope="row"><h2><?php esc_html_e( 'Privacy consent', 'tms-core-essentials' ); ?></h2></th>
@@ -355,37 +357,37 @@ function tcres_settings_privacy_render_privacy_consent_panel(): void {
 							<h3 id="tcres-privacy-consent-show-on"><?php esc_html_e( 'Show on', 'tms-core-essentials' ); ?></h3>
 							<fieldset aria-labelledby="tcres-privacy-consent-show-on">
 								<ul class="checks">
-								<li>
-									<label class="has-checkbox">
-										<input
-											type="checkbox"
-											name="<?php echo esc_attr( $option . '[privacy_consent][comments]' ); ?>"
-											value="1"
-											<?php checked( ! empty( $group['comments'] ) ); ?> />
-										<?php esc_html_e( 'Comments', 'tms-core-essentials' ); ?>
-									</label>
-								</li>
-								<li>
-									<label class="has-checkbox">
-										<input
-											type="checkbox"
-											name="<?php echo esc_attr( $option . '[privacy_consent][register]' ); ?>"
-											value="1"
-											<?php checked( ! empty( $group['register'] ) ); ?> />
-										<?php esc_html_e( 'Register (WordPress and WooCommerce)', 'tms-core-essentials' ); ?>
-									</label>
-								</li>
-								<li>
-									<label class="has-checkbox">
-										<input
-											type="checkbox"
-											name="<?php echo esc_attr( $option . '[privacy_consent][checkout]' ); ?>"
-											value="1"
-											<?php checked( ! empty( $group['checkout'] ) ); ?> />
-										<?php esc_html_e( 'Checkout (WooCommerce)', 'tms-core-essentials' ); ?>
-									</label>
-								</li>
-							</ul>
+									<li>
+										<label class="has-checkbox">
+											<input
+												type="checkbox"
+												name="<?php echo esc_attr( $option . '[privacy_consent][comments]' ); ?>"
+												value="1"
+												<?php checked( ! empty( $group['comments'] ) ); ?> />
+											<?php esc_html_e( 'Comments', 'tms-core-essentials' ); ?>
+										</label>
+									</li>
+									<li>
+										<label class="has-checkbox">
+											<input
+												type="checkbox"
+												name="<?php echo esc_attr( $option . '[privacy_consent][register]' ); ?>"
+												value="1"
+												<?php checked( ! empty( $group['register'] ) ); ?> />
+											<?php esc_html_e( 'Register (WordPress and WooCommerce)', 'tms-core-essentials' ); ?>
+										</label>
+									</li>
+									<li>
+										<label class="has-checkbox">
+											<input
+												type="checkbox"
+												name="<?php echo esc_attr( $option . '[privacy_consent][checkout]' ); ?>"
+												value="1"
+												<?php checked( ! empty( $group['checkout'] ) ); ?> />
+											<?php esc_html_e( 'Checkout (WooCommerce)', 'tms-core-essentials' ); ?>
+										</label>
+									</li>
+								</ul>
 							</fieldset>
 						</div>
 

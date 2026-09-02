@@ -11,11 +11,15 @@ function tcres_settings_content_render_extend_search_config( array $group, strin
 		? $group['post_types']
 		: array();
 	$post_types = array_keys( tcres_settings_extend_search_post_type_defaults() );
-	$meta_mode  = isset( $group['meta_mode'] ) ? (string) $group['meta_mode'] : 'public';
+	$meta_mode  = isset( $group['meta_mode'] )
+		? (string) $group['meta_mode']
+		: 'public';
 	if ( ! in_array( $meta_mode, array( 'public', 'keys', 'none' ), true ) ) :
 		$meta_mode = 'public';
 	endif;
-	$meta_keys = isset( $group['meta_keys'] ) ? (string) $group['meta_keys'] : '';
+	$meta_keys = isset( $group['meta_keys'] )
+		? (string) $group['meta_keys']
+		: '';
 
 	$meta_mode_choices = array(
 		'public' => __( 'All public custom fields (exclude keys starting with _)', 'tms-core-essentials' ),
@@ -135,7 +139,6 @@ function tcres_settings_content_render_extend_search_panel(): void {
 		: array();
 	$option   = TCRES_OPTION_NAME;
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<th scope="row"><h2><?php esc_html_e( 'Extend search', 'tms-core-essentials' ); ?></h2></th>
@@ -271,74 +274,74 @@ function tcres_settings_content_render_related_content_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Print related content for the current post (or a specific ID). Manual picks from the metabox come first; remaining slots are filled by taxonomy affinity, then random posts. The shortcode has no attributes and always uses the panel settings:', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>class</code>
-					&mdash; <?php esc_html_e( 'Extra CSS class(es). The wrapper always includes tcres-related-content.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>posts_per_page</code>
-					&mdash; <?php esc_html_e( 'Number of items (default from settings, max 12).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>taxonomy</code>
-					&mdash; <?php esc_html_e( 'Primary taxonomy for auto picks (default: category).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>fallback_taxonomy</code>
-					&mdash; <?php esc_html_e( 'Fallback taxonomy (default: post_tag).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>image_size</code>
-					&mdash; <?php esc_html_e( 'Thumbnail size name, or none to hide images.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>title_tag</code>
-					&mdash; <?php esc_html_e( 'Title tag: h2–h6, p or span.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>show_taxonomies</code>
-					&mdash; <?php esc_html_e( 'Show term links on each related item when true.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>taxonomies</code>
-					&mdash; <?php esc_html_e( 'Taxonomy slugs to display (defaults to the selected taxonomies in settings).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>taxonomies_display</code>
-					&mdash; <?php esc_html_e( 'grouped (one list per taxonomy) or mixed (single flat list).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>show_taxonomy_labels</code>
-					&mdash; <?php esc_html_e( 'Show the taxonomy name before each term list when display is grouped.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>show_excerpt</code>
-					&mdash; <?php esc_html_e( 'Show excerpts when true.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>show_button</code>
-					&mdash; <?php esc_html_e( 'Show the read-more button when true.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>button_label</code>
-					&mdash; <?php esc_html_e( 'Read-more label.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>post_id</code>
-					&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current singular post).', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
-				<code>tcres_related_content_posts</code>
-			</p>
-			<p class="description">
-				<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
-				<code>[tcres-related-content]</code>
-			</p>
+		<p><?php esc_html_e( 'Print related content for the current post (or a specific ID). Manual picks from the metabox come first; remaining slots are filled by taxonomy affinity, then random posts. The shortcode has no attributes and always uses the panel settings:', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>class</code>
+				&mdash; <?php esc_html_e( 'Extra CSS class(es). The wrapper always includes tcres-related-content.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>posts_per_page</code>
+				&mdash; <?php esc_html_e( 'Number of items (default from settings, max 12).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>taxonomy</code>
+				&mdash; <?php esc_html_e( 'Primary taxonomy for auto picks (default: category).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>fallback_taxonomy</code>
+				&mdash; <?php esc_html_e( 'Fallback taxonomy (default: post_tag).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>image_size</code>
+				&mdash; <?php esc_html_e( 'Thumbnail size name, or none to hide images.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>title_tag</code>
+				&mdash; <?php esc_html_e( 'Title tag: h2–h6, p or span.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>show_taxonomies</code>
+				&mdash; <?php esc_html_e( 'Show term links on each related item when true.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>taxonomies</code>
+				&mdash; <?php esc_html_e( 'Taxonomy slugs to display (defaults to the selected taxonomies in settings).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>taxonomies_display</code>
+				&mdash; <?php esc_html_e( 'grouped (one list per taxonomy) or mixed (single flat list).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>show_taxonomy_labels</code>
+				&mdash; <?php esc_html_e( 'Show the taxonomy name before each term list when display is grouped.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>show_excerpt</code>
+				&mdash; <?php esc_html_e( 'Show excerpts when true.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>show_button</code>
+				&mdash; <?php esc_html_e( 'Show the read-more button when true.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>button_label</code>
+				&mdash; <?php esc_html_e( 'Read-more label.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>post_id</code>
+				&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current singular post).', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
+			<code>tcres_related_content_posts</code>
+		</p>
+		<p class="description">
+			<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
+			<code>[tcres-related-content]</code>
+		</p>
 	</details>
 	<?php
 }
@@ -450,8 +453,12 @@ function tcres_settings_content_render_related_content_panel(): void {
 									<?php foreach ( $image_sizes as $size ) : ?>
 										<?php
 										if ( ! is_array( $size ) ) continue;
-										$value = isset( $size['value'] ) ? (string) $size['value'] : '';
-										$label = isset( $size['label'] ) ? (string) $size['label'] : $value;
+										$value = isset( $size['value'] )
+											? (string) $size['value']
+											: '';
+										$label = isset( $size['label'] )
+											? (string) $size['label']
+											: $value;
 										if ( $value === '' ) continue;
 										?>
 										<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $image_size, $value ); ?>><?php echo esc_html( $label ); ?></option>
@@ -468,17 +475,17 @@ function tcres_settings_content_render_related_content_panel(): void {
 							</p>
 							<div>
 								<label class="has-checkbox">
-										<input
-											type="checkbox"
-											id="tcres-related-content-show-taxonomies"
-											name="<?php echo esc_attr( $option . '[related_content][show_taxonomies]' ); ?>"
-											value="1"
-											data-tcres-toggle-target="tcres-related-content-taxonomies-options"
-											aria-controls="tcres-related-content-taxonomies-options"
-											aria-expanded="<?php echo ! empty( $group['show_taxonomies'] ) ? 'true' : 'false'; ?>"
-											<?php checked( ! empty( $group['show_taxonomies'] ) ); ?> />
-										<?php esc_html_e( 'Show taxonomies', 'tms-core-essentials' ); ?>
-									</label>
+									<input
+										type="checkbox"
+										id="tcres-related-content-show-taxonomies"
+										name="<?php echo esc_attr( $option . '[related_content][show_taxonomies]' ); ?>"
+										value="1"
+										data-tcres-toggle-target="tcres-related-content-taxonomies-options"
+										aria-controls="tcres-related-content-taxonomies-options"
+										aria-expanded="<?php echo ! empty( $group['show_taxonomies'] ) ? 'true' : 'false'; ?>"
+										<?php checked( ! empty( $group['show_taxonomies'] ) ); ?> />
+									<?php esc_html_e( 'Show taxonomies', 'tms-core-essentials' ); ?>
+								</label>
 								<div
 									id="tcres-related-content-taxonomies-options"
 									class="tcres-settings-suboptions"
@@ -519,15 +526,15 @@ function tcres_settings_content_render_related_content_panel(): void {
 										class="tcres-settings-suboptions"
 										<?php echo $tax_display === 'grouped' ? '' : ' hidden'; ?>>
 										<label class="has-checkbox">
-												<input type="hidden" name="<?php echo esc_attr( $option . '[related_content][show_taxonomy_labels]' ); ?>" value="0" />
-												<input
-													type="checkbox"
-													id="tcres-related-content-show-taxonomy-labels"
-													name="<?php echo esc_attr( $option . '[related_content][show_taxonomy_labels]' ); ?>"
-													value="1"
-													<?php checked( ! empty( $group['show_taxonomy_labels'] ) ); ?> />
-												<?php esc_html_e( 'Show taxonomy names', 'tms-core-essentials' ); ?>
-											</label>
+											<input type="hidden" name="<?php echo esc_attr( $option . '[related_content][show_taxonomy_labels]' ); ?>" value="0" />
+											<input
+												type="checkbox"
+												id="tcres-related-content-show-taxonomy-labels"
+												name="<?php echo esc_attr( $option . '[related_content][show_taxonomy_labels]' ); ?>"
+												value="1"
+												<?php checked( ! empty( $group['show_taxonomy_labels'] ) ); ?> />
+											<?php esc_html_e( 'Show taxonomy names', 'tms-core-essentials' ); ?>
+										</label>
 									</div>
 								</div>
 							</div>
@@ -541,17 +548,17 @@ function tcres_settings_content_render_related_content_panel(): void {
 								</label>
 							<div>
 								<label class="has-checkbox">
-										<input
-											type="checkbox"
-											id="tcres-related-content-show-button"
-											name="<?php echo esc_attr( $option . '[related_content][show_button]' ); ?>"
-											value="1"
-											data-tcres-toggle-target="tcres-related-content-button-options"
-											aria-controls="tcres-related-content-button-options"
-											aria-expanded="<?php echo ! empty( $group['show_button'] ) ? 'true' : 'false'; ?>"
-											<?php checked( ! empty( $group['show_button'] ) ); ?> />
-										<?php esc_html_e( 'Show button', 'tms-core-essentials' ); ?>
-									</label>
+									<input
+										type="checkbox"
+										id="tcres-related-content-show-button"
+										name="<?php echo esc_attr( $option . '[related_content][show_button]' ); ?>"
+										value="1"
+										data-tcres-toggle-target="tcres-related-content-button-options"
+										aria-controls="tcres-related-content-button-options"
+										aria-expanded="<?php echo ! empty( $group['show_button'] ) ? 'true' : 'false'; ?>"
+										<?php checked( ! empty( $group['show_button'] ) ); ?> />
+									<?php esc_html_e( 'Show button', 'tms-core-essentials' ); ?>
+								</label>
 								<div
 									id="tcres-related-content-button-options"
 									class="tcres-settings-suboptions"
@@ -599,34 +606,34 @@ function tcres_settings_content_render_breadcrumbs_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Print breadcrumbs on the frontend. Settings from this panel are the defaults; function args override them. The shortcode has no attributes and always uses the panel settings:', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>separator</code>
-					&mdash; <?php esc_html_e( 'Text between crumbs (default from settings).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>show_home</code>, <code>home_label</code>, <code>home_display</code>
-					&mdash; <?php esc_html_e( 'Home crumb: icon_label (default), label, or icon.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>blog_page</code>, <code>blog_taxonomy</code>
-					&mdash; <?php esc_html_e( 'Blog / posts trail (0 = automatic Posts page, -1 = none; empty taxonomy = none).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>cpt</code>
-					&mdash; <?php esc_html_e( 'Per post type: page, taxonomy (None omits that crumb).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>class</code>
-					&mdash; <?php esc_html_e( 'Extra CSS class(es). The nav always includes tcres-breadcrumbs.', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
-				<code>[tcres-breadcrumb]</code>
-			</p>
+		<p><?php esc_html_e( 'Print breadcrumbs on the frontend. Settings from this panel are the defaults; function args override them. The shortcode has no attributes and always uses the panel settings:', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>separator</code>
+				&mdash; <?php esc_html_e( 'Text between crumbs (default from settings).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>show_home</code>, <code>home_label</code>, <code>home_display</code>
+				&mdash; <?php esc_html_e( 'Home crumb: icon_label (default), label, or icon.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>blog_page</code>, <code>blog_taxonomy</code>
+				&mdash; <?php esc_html_e( 'Blog / posts trail (0 = automatic Posts page, -1 = none; empty taxonomy = none).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>cpt</code>
+				&mdash; <?php esc_html_e( 'Per post type: page, taxonomy (None omits that crumb).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>class</code>
+				&mdash; <?php esc_html_e( 'Extra CSS class(es). The nav always includes tcres-breadcrumbs.', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
+			<code>[tcres-breadcrumb]</code>
+		</p>
 	</details>
 	<?php
 }
@@ -721,11 +728,21 @@ function tcres_settings_content_render_breadcrumbs_panel(): void {
 		? $group['cpt']
 		: array();
 
-	$separator     = isset( $group['separator'] ) ? (string) $group['separator'] : '/';
-	$home_label    = isset( $group['home_label'] ) ? (string) $group['home_label'] : '';
-	$home_display  = isset( $group['home_display'] ) ? (string) $group['home_display'] : 'icon_label';
-	$blog_page     = isset( $group['blog_page'] ) ? (int) $group['blog_page'] : 0;
-	$blog_taxonomy = isset( $group['blog_taxonomy'] ) ? (string) $group['blog_taxonomy'] : 'category';
+	$separator     = isset( $group['separator'] )
+		? (string) $group['separator']
+		: '/';
+	$home_label    = isset( $group['home_label'] )
+		? (string) $group['home_label']
+		: '';
+	$home_display  = isset( $group['home_display'] )
+		? (string) $group['home_display']
+		: 'icon_label';
+	$blog_page     = isset( $group['blog_page'] )
+		? (int) $group['blog_page']
+		: 0;
+	$blog_taxonomy = isset( $group['blog_taxonomy'] )
+		? (string) $group['blog_taxonomy']
+		: 'category';
 	$show_home     = ! empty( $group['show_home'] );
 	if ( ! in_array( $home_display, array( 'icon_label', 'label', 'icon' ), true ) ) :
 		$home_display = 'icon_label';
@@ -737,9 +754,7 @@ function tcres_settings_content_render_breadcrumbs_panel(): void {
 		if ( ! $object || empty( $object->show_ui ) ) continue;
 		$post_taxonomies[] = $taxonomy;
 	endforeach;
-	if ( empty( $post_taxonomies ) ) :
-		$post_taxonomies = array( 'category' );
-	endif;
+	if ( empty( $post_taxonomies ) ) $post_taxonomies = array( 'category' );
 	?>
 
 		<table class="form-table" role="presentation">
@@ -774,17 +789,17 @@ function tcres_settings_content_render_breadcrumbs_panel(): void {
 							</p>
 							<div>
 								<label class="has-checkbox">
-										<input
-											type="checkbox"
-											id="tcres-breadcrumbs-show-home"
-											name="<?php echo esc_attr( $option . '[breadcrumbs][show_home]' ); ?>"
-											value="1"
-											data-tcres-toggle-target="tcres-breadcrumbs-home-options"
-											aria-controls="tcres-breadcrumbs-home-options"
-											aria-expanded="<?php echo $show_home ? 'true' : 'false'; ?>"
-											<?php checked( $show_home ); ?> />
-										<?php esc_html_e( 'Show home', 'tms-core-essentials' ); ?>
-									</label>
+									<input
+										type="checkbox"
+										id="tcres-breadcrumbs-show-home"
+										name="<?php echo esc_attr( $option . '[breadcrumbs][show_home]' ); ?>"
+										value="1"
+										data-tcres-toggle-target="tcres-breadcrumbs-home-options"
+										aria-controls="tcres-breadcrumbs-home-options"
+										aria-expanded="<?php echo $show_home ? 'true' : 'false'; ?>"
+										<?php checked( $show_home ); ?> />
+									<?php esc_html_e( 'Show home', 'tms-core-essentials' ); ?>
+								</label>
 								<div
 									id="tcres-breadcrumbs-home-options"
 									class="tcres-settings-suboptions"
@@ -891,8 +906,12 @@ function tcres_settings_content_render_breadcrumbs_panel(): void {
 									$row    = isset( $cpt_rows[ $post_type ] ) && is_array( $cpt_rows[ $post_type ] )
 										? $cpt_rows[ $post_type ]
 										: array();
-									$cpt_page = isset( $row['page'] ) ? (int) $row['page'] : 0;
-									$cpt_tax  = isset( $row['taxonomy'] ) ? (string) $row['taxonomy'] : '';
+									$cpt_page = isset( $row['page'] )
+										? (int) $row['page']
+										: 0;
+									$cpt_tax  = isset( $row['taxonomy'] )
+										? (string) $row['taxonomy']
+										: '';
 									$cpt_class = sanitize_html_class( $post_type );
 									$heading_id = 'tcres-breadcrumbs-post-type-' . $cpt_class;
 
@@ -1005,30 +1024,30 @@ function tcres_settings_content_render_sitemap_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Print an HTML sitemap on the frontend. Settings from this panel are the defaults; function args override them. The shortcode has no attributes and always uses the panel settings:', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>hide_empty</code>, <code>show_list_bullets</code>, <code>max_depth</code>, <code>page_sort</code>
-					&mdash; <?php esc_html_e( 'General list behaviour (page tree).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>blog</code>, <code>blog_parent_page_id</code>, <code>blog_taxonomy</code>, <code>blog_show_taxonomy</code>, <code>blog_show_posts</code>, <code>blog_max_depth</code>
-					&mdash; <?php esc_html_e( 'Blog section under an anchor page (0 = Posts page from Reading settings).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>cpt</code>
-					&mdash; <?php esc_html_e( 'Per post type: enable, parent_page_id, taxonomy, show_taxonomy, show_posts, max_depth.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>class</code>
-					&mdash; <?php esc_html_e( 'Extra CSS class(es). The wrapper always includes tcres-sitemap.', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
-				<code>[tcres-sitemap]</code>
-			</p>
+		<p><?php esc_html_e( 'Print an HTML sitemap on the frontend. Settings from this panel are the defaults; function args override them. The shortcode has no attributes and always uses the panel settings:', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>hide_empty</code>, <code>show_list_bullets</code>, <code>max_depth</code>, <code>page_sort</code>
+				&mdash; <?php esc_html_e( 'General list behaviour (page tree).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>blog</code>, <code>blog_parent_page_id</code>, <code>blog_taxonomy</code>, <code>blog_show_taxonomy</code>, <code>blog_show_posts</code>, <code>blog_max_depth</code>
+				&mdash; <?php esc_html_e( 'Blog section under an anchor page (0 = Posts page from Reading settings).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>cpt</code>
+				&mdash; <?php esc_html_e( 'Per post type: enable, parent_page_id, taxonomy, show_taxonomy, show_posts, max_depth.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>class</code>
+				&mdash; <?php esc_html_e( 'Extra CSS class(es). The wrapper always includes tcres-sitemap.', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Shortcode:', 'tms-core-essentials' ); ?>
+			<code>[tcres-sitemap]</code>
+		</p>
 	</details>
 	<?php
 }
@@ -1046,21 +1065,31 @@ function tcres_settings_content_render_sitemap_panel(): void {
 
 	$hide_empty        = ! empty( $group['hide_empty'] );
 	$show_list_bullets = ! empty( $group['show_list_bullets'] );
-	$max_depth         = isset( $group['max_depth'] ) ? absint( $group['max_depth'] ) : 3;
+	$max_depth         = isset( $group['max_depth'] )
+		? absint( $group['max_depth'] )
+		: 3;
 	if ( $max_depth < 1 ) :
 		$max_depth = 3;
 	endif;
-	$page_sort = isset( $group['page_sort'] ) ? (string) $group['page_sort'] : 'menu_order';
+	$page_sort = isset( $group['page_sort'] )
+		? (string) $group['page_sort']
+		: 'menu_order';
 	if ( ! in_array( $page_sort, array( 'menu_order', 'alphabetical' ), true ) ) :
 		$page_sort = 'menu_order';
 	endif;
 
 	$blog                = ! empty( $group['blog'] );
-	$blog_parent_page_id = isset( $group['blog_parent_page_id'] ) ? absint( $group['blog_parent_page_id'] ) : 0;
-	$blog_taxonomy       = isset( $group['blog_taxonomy'] ) ? (string) $group['blog_taxonomy'] : 'category';
+	$blog_parent_page_id = isset( $group['blog_parent_page_id'] )
+		? absint( $group['blog_parent_page_id'] )
+		: 0;
+	$blog_taxonomy       = isset( $group['blog_taxonomy'] )
+		? (string) $group['blog_taxonomy']
+		: 'category';
 	$blog_show_taxonomy  = ! empty( $group['blog_show_taxonomy'] );
 	$blog_show_posts     = ! empty( $group['blog_show_posts'] );
-	$blog_max_depth      = isset( $group['blog_max_depth'] ) ? (string) $group['blog_max_depth'] : '';
+	$blog_max_depth      = isset( $group['blog_max_depth'] )
+		? (string) $group['blog_max_depth']
+		: '';
 
 	$post_taxonomies = array();
 	foreach ( get_object_taxonomies( 'post', 'names' ) as $taxonomy ) :
@@ -1069,7 +1098,6 @@ function tcres_settings_content_render_sitemap_panel(): void {
 		$post_taxonomies[] = $taxonomy;
 	endforeach;
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<th scope="row"><h2><?php esc_html_e( 'Sitemap', 'tms-core-essentials' ); ?></h2></th>
@@ -1140,7 +1168,6 @@ function tcres_settings_content_render_sitemap_panel(): void {
 
 						<div>
 							<h3><?php esc_html_e( 'Post types', 'tms-core-essentials' ); ?></h3>
-
 							<div>
 								<h4 id="tcres-sitemap-post-type-post">
 									<?php esc_html_e( 'Blog / posts', 'tms-core-essentials' ); ?>
@@ -1248,11 +1275,17 @@ function tcres_settings_content_render_sitemap_panel(): void {
 										? $cpt_rows[ $post_type ]
 										: array();
 									$cpt_enable         = ! empty( $row['enable'] );
-									$cpt_parent_page_id = isset( $row['parent_page_id'] ) ? absint( $row['parent_page_id'] ) : 0;
-									$cpt_tax            = isset( $row['taxonomy'] ) ? (string) $row['taxonomy'] : '';
+									$cpt_parent_page_id = isset( $row['parent_page_id'] )
+										? absint( $row['parent_page_id'] )
+										: 0;
+									$cpt_tax            = isset( $row['taxonomy'] )
+										? (string) $row['taxonomy']
+										: '';
 									$cpt_show_taxonomy  = ! empty( $row['show_taxonomy'] );
 									$cpt_show_posts     = ! empty( $row['show_posts'] );
-									$cpt_max_depth      = isset( $row['max_depth'] ) ? (string) $row['max_depth'] : '';
+									$cpt_max_depth      = isset( $row['max_depth'] )
+										? (string) $row['max_depth']
+										: '';
 									$cpt_class          = sanitize_html_class( $post_type );
 									$cpt_options_id     = 'tcres-sitemap-cpt-' . $cpt_class . '-options';
 									$heading_id         = 'tcres-sitemap-post-type-' . $cpt_class;
@@ -1271,17 +1304,17 @@ function tcres_settings_content_render_sitemap_panel(): void {
 										</h4>
 										<fieldset aria-labelledby="<?php echo esc_attr( $heading_id ); ?>">
 											<label class="has-checkbox">
-													<input
-														type="checkbox"
-														id="tcres-sitemap-cpt-<?php echo esc_attr( $cpt_class ); ?>-enable"
-														name="<?php echo esc_attr( $option . '[sitemap][cpt][' . $post_type . '][enable]' ); ?>"
-														value="1"
-														data-tcres-toggle-target="<?php echo esc_attr( $cpt_options_id ); ?>"
-														aria-controls="<?php echo esc_attr( $cpt_options_id ); ?>"
-														aria-expanded="<?php echo $cpt_enable ? 'true' : 'false'; ?>"
-														<?php checked( $cpt_enable ); ?> />
-													<?php esc_html_e( 'Include section in sitemap', 'tms-core-essentials' ); ?>
-												</label>
+												<input
+													type="checkbox"
+													id="tcres-sitemap-cpt-<?php echo esc_attr( $cpt_class ); ?>-enable"
+													name="<?php echo esc_attr( $option . '[sitemap][cpt][' . $post_type . '][enable]' ); ?>"
+													value="1"
+													data-tcres-toggle-target="<?php echo esc_attr( $cpt_options_id ); ?>"
+													aria-controls="<?php echo esc_attr( $cpt_options_id ); ?>"
+													aria-expanded="<?php echo $cpt_enable ? 'true' : 'false'; ?>"
+													<?php checked( $cpt_enable ); ?> />
+												<?php esc_html_e( 'Include section in sitemap', 'tms-core-essentials' ); ?>
+											</label>
 											<div
 												id="<?php echo esc_attr( $cpt_options_id ); ?>"
 												class="tcres-settings-suboptions"
@@ -1377,12 +1410,14 @@ function tcres_settings_content_render_scroll_to_top_panel(): void {
 	$threshold = isset( $group['threshold_viewports'] )
 		? (float) $group['threshold_viewports']
 		: 1.0;
-	if ( $threshold <= 0 ) :
-		$threshold = 1.0;
-	endif;
+	if ( $threshold <= 0 ) $threshold = 1.0;
 
-	$footer_selector = isset( $group['footer_selector'] ) ? (string) $group['footer_selector'] : '';
-	$footer_gap      = isset( $group['footer_gap'] ) ? (int) $group['footer_gap'] : 16;
+	$footer_selector = isset( $group['footer_selector'] )
+		? (string) $group['footer_selector']
+		: '';
+	$footer_gap      = isset( $group['footer_gap'] )
+		? (int) $group['footer_gap']
+		: 16;
 	$avoid_footer    = ! empty( $group['avoid_footer'] );
 	?>
 

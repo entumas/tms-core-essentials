@@ -48,10 +48,10 @@ function tcres_chats_default_suggested_message(): string {
  * @param array<string, mixed> $group
  */
 function tcres_chats_get_title_text( array $group ): string {
-	$title = isset( $group['general_title'] ) ? trim( (string) $group['general_title'] ) : '';
-	if ( $title === '' ) :
-		$title = tcres_chats_default_general_title();
-	endif;
+	$title = isset( $group['general_title'] )
+		? trim( (string) $group['general_title'] )
+		: '';
+	if ( $title === '' ) $title = tcres_chats_default_general_title();
 
 	return $title;
 }
@@ -66,10 +66,16 @@ function tcres_chats_get_active_buttons( array $group ): array {
 	$default_message = tcres_chats_default_suggested_message();
 
 	if ( ! empty( $group['whatsapp_enable'] ) ) :
-		$number = isset( $group['whatsapp_number'] ) ? preg_replace( '/\D+/', '', (string) $group['whatsapp_number'] ) : '';
-		$number = is_string( $number ) ? $number : '';
+		$number = isset( $group['whatsapp_number'] )
+			? preg_replace( '/\D+/', '', (string) $group['whatsapp_number'] )
+			: '';
+		$number = is_string( $number )
+			? $number
+			: '';
 		if ( $number !== '' ) :
-			$message = isset( $group['whatsapp_message'] ) ? trim( (string) $group['whatsapp_message'] ) : '';
+			$message = isset( $group['whatsapp_message'] )
+				? trim( (string) $group['whatsapp_message'] )
+				: '';
 			if ( $message === '' ) :
 				$message = $default_message;
 			endif;
@@ -86,11 +92,17 @@ function tcres_chats_get_active_buttons( array $group ): array {
 	endif;
 
 	if ( ! empty( $group['telegram_enable'] ) ) :
-		$username = isset( $group['telegram_username'] ) ? ltrim( trim( (string) $group['telegram_username'] ), '@' ) : '';
+		$username = isset( $group['telegram_username'] )
+			? ltrim( trim( (string) $group['telegram_username'] ), '@' )
+			: '';
 		$username = preg_replace( '/[^A-Za-z0-9_]/', '', $username );
-		$username = is_string( $username ) ? $username : '';
+		$username = is_string( $username )
+			? $username
+			: '';
 		if ( $username !== '' ) :
-			$message = isset( $group['telegram_message'] ) ? trim( (string) $group['telegram_message'] ) : '';
+			$message = isset( $group['telegram_message'] )
+				? trim( (string) $group['telegram_message'] )
+				: '';
 			if ( $message === '' ) :
 				$message = $default_message;
 			endif;
@@ -107,9 +119,13 @@ function tcres_chats_get_active_buttons( array $group ): array {
 	endif;
 
 	if ( ! empty( $group['messenger_enable'] ) ) :
-		$page_id = isset( $group['messenger_fbpageid'] ) ? trim( (string) $group['messenger_fbpageid'] ) : '';
+		$page_id = isset( $group['messenger_fbpageid'] )
+			? trim( (string) $group['messenger_fbpageid'] )
+			: '';
 		$page_id = preg_replace( '/[^A-Za-z0-9._-]/', '', $page_id );
-		$page_id = is_string( $page_id ) ? $page_id : '';
+		$page_id = is_string( $page_id )
+			? $page_id
+			: '';
 		if ( $page_id !== '' ) :
 			$buttons[] = array(
 				'id'    => 'messenger',
@@ -134,7 +150,9 @@ function tcres_chats_get_button_html( string $id, string $href, string $label, s
 		)
 	);
 
-	$title_attr = $title !== '' ? ' title="' . esc_attr( $title ) . '"' : '';
+	$title_attr = $title !== ''
+		? ' title="' . esc_attr( $title ) . '"'
+		: '';
 
 	return '<a class="' . esc_attr( $classes ) . '" href="' . esc_url( $href ) . '"' . $title_attr
 		. ' target="_blank" rel="noopener noreferrer"'
@@ -168,7 +186,9 @@ function tcres_chats_get(): string {
 
 	$title       = tcres_chats_get_title_text( $group );
 	$is_multiple = count( $buttons ) > 1;
-	$extra_class = $is_multiple ? '' : 'tcres-chat';
+	$extra_class = $is_multiple
+		? ''
+		: 'tcres-chat';
 	$buttons_html = '';
 
 	foreach ( $buttons as $button ) :
@@ -180,17 +200,16 @@ function tcres_chats_get(): string {
 			$title
 		);
 	endforeach;
-
-	if ( ! $is_multiple ) :
-		return $buttons_html;
-	endif;
+	if ( ! $is_multiple ) return $buttons_html;
 
 	$trigger_icon = tcres_svg_icon_get(
 		array(
 			'icon' => 'comments',
 		)
 	);
-	$title_attr = $title !== '' ? ' title="' . esc_attr( $title ) . '"' : '';
+	$title_attr = $title !== ''
+		? ' title="' . esc_attr( $title ) . '"'
+		: '';
 
 	$output  = '<div id="tcres-chat" class="tcres-chat">';
 	$output .= '<button type="button" class="tcres-chat-trigger"' . $title_attr

@@ -13,7 +13,6 @@ function tcres_settings_extras_render_assets_panel(): void {
 		: array();
 	$option   = TCRES_OPTION_NAME;
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<td colspan="2">
@@ -49,7 +48,6 @@ function tcres_settings_extras_render_assets_panel(): void {
 				</td>
 			</tr>
 		</table>
-
 	<?php
 }
 
@@ -81,12 +79,11 @@ function tcres_settings_extras_render_external_scripts_panel(): void {
 		),
 	);
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<td colspan="2">
 					<h2><?php esc_html_e( 'External scripts', 'tms-core-essentials' ); ?></h2>
-					<p class="description"><?php esc_html_e( 'Optional third-party libraries from CDN. Enable only what your theme needs; the plugin does not initialize them.', 'tms-core-essentials' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Optional bundled third-party libraries. Enable only what your theme needs; the plugin does not initialize them.', 'tms-core-essentials' ); ?></p>
 				</td>
 			</tr>
 			<tr>
@@ -111,7 +108,6 @@ function tcres_settings_extras_render_external_scripts_panel(): void {
 				</td>
 			</tr>
 		</table>
-
 	<?php
 }
 
@@ -123,17 +119,18 @@ function tcres_settings_extras_render_smooth_scroll_panel(): void {
 		: array();
 	$option   = TCRES_OPTION_NAME;
 
-	$lerp = isset( $group['lerp'] ) ? (float) $group['lerp'] : 0.05;
-	if ( $lerp <= 0 ) :
-		$lerp = 0.05;
-	endif;
+	$lerp = isset( $group['lerp'] )
+		? (float) $group['lerp']
+		: 0.05;
+	if ( $lerp <= 0 ) $lerp = 0.05;
 
-	$exclude = isset( $group['exclude_selectors'] ) ? (string) $group['exclude_selectors'] : '';
+	$exclude = isset( $group['exclude_selectors'] )
+		? (string) $group['exclude_selectors']
+		: '';
 	if ( function_exists( 'tcres_smooth_scroll_normalize_exclude_selectors' ) ) :
 		$exclude = tcres_smooth_scroll_normalize_exclude_selectors( $exclude );
 	endif;
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<td colspan="2">
@@ -159,7 +156,6 @@ function tcres_settings_extras_render_smooth_scroll_panel(): void {
 					<div
 						id="tcres-smooth-scroll-options"
 						<?php echo ! empty( $group['enable'] ) ? '' : ' hidden'; ?>>
-
 						<div>
 							<h4><?php esc_html_e( 'Motion', 'tms-core-essentials' ); ?></h4>
 							<p class="inline">
@@ -227,22 +223,24 @@ function tcres_settings_extras_render_smooth_scroll_panel(): void {
 				</td>
 			</tr>
 		</table>
-
 	<?php
 }
 
 
 function tcres_settings_extras_render_svg_icons_panel(): void {
-	$settings = tcres_settings_get();
-	$group    = isset( $settings['svg_icons'] ) && is_array( $settings['svg_icons'] )
+	$settings      = tcres_settings_get();
+	$group         = isset( $settings['svg_icons'] ) && is_array( $settings['svg_icons'] )
 		? $settings['svg_icons']
 		: array();
-	$option   = TCRES_OPTION_NAME;
+	$option        = TCRES_OPTION_NAME;
 
-	$frontend_file = isset( $group['frontend_file'] ) ? (string) $group['frontend_file'] : '';
-	$admin_file    = isset( $group['admin_file'] ) ? (string) $group['admin_file'] : '';
+	$frontend_file = isset( $group['frontend_file'] )
+		? (string) $group['frontend_file']
+		: '';
+	$admin_file    = isset( $group['admin_file'] )
+		? (string) $group['admin_file']
+		: '';
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<td colspan="2">
@@ -281,7 +279,6 @@ function tcres_settings_extras_render_svg_icons_panel(): void {
 				</td>
 			</tr>
 		</table>
-
 	<?php
 }
 
@@ -308,8 +305,8 @@ function tcres_settings_shortcodes_get_groups(): array {
 				),
 				array(
 					'tag'         => 'tcres-option',
-					'example'     => '[tcres-option name="option_name" value="key"]',
-					'description' => __( 'Print a WordPress option value.', 'tms-core-essentials' ),
+					'example'     => '[tcres-option name="breadcrumbs" value="home_label"]',
+					'description' => __( 'Print a plugin settings value. Optional format: esc_html (default), html, wpautop.', 'tms-core-essentials' ),
 				),
 			),
 		),
@@ -360,7 +357,6 @@ function tcres_settings_extras_render_shortcodes_panel(): void {
 	$option   = TCRES_OPTION_NAME;
 	$enabled  = ! empty( $group['enable'] );
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<td colspan="2">

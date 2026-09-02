@@ -45,7 +45,9 @@ function tcres_settings_switch_render_field(
 	$is_title         = ! empty( $args['is_title'] );
 
 	if ( $aria_label === '' ) :
-		$aria_label = $label !== '' ? $label : ( $description !== '' ? $description : __( 'Toggle', 'tms-core-essentials' ) );
+		$aria_label = $label !== ''
+			? $label
+			: ( $description !== '' ? $description : __( 'Toggle', 'tms-core-essentials' ) );
 	endif;
 
 	$heading_tag = strtolower( $heading_tag );

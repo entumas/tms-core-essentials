@@ -7,15 +7,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
- * Engine CDN version and URLs (implementation detail; may change later)
+ * Bundled Lenis engine version and asset URLs
  *
  * @return array{version: string, js: string, css: string}
  */
-function tcres_smooth_scroll_get_cdn(): array {
+function tcres_smooth_scroll_get_vendor_assets(): array {
+	$vendor = TCRES_PLUGIN_URL . 'assets/vendor/lenis/';
+
 	return array(
 		'version' => '1.3.26',
-		'js'      => 'https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js',
-		'css'     => 'https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css',
+		'js'      => $vendor . 'lenis.min.js',
+		'css'     => $vendor . 'lenis.css',
 	);
 }
 
@@ -45,16 +47,12 @@ function tcres_smooth_scroll_get_group(): array {
 function tcres_smooth_scroll_normalize_exclude_selectors( string $raw ): string {
 	$raw   = str_replace( array( "\r\n", "\r" ), "\n", $raw );
 	$parts = preg_split( '/[\n,]+/', $raw );
-	if ( ! is_array( $parts ) ) :
-		return '';
-	endif;
+	if ( ! is_array( $parts ) ) return '';
 
 	$lines = array();
 	foreach ( $parts as $part ) :
 		$part = trim( (string) $part );
-		if ( $part !== '' ) :
-			$lines[] = $part;
-		endif;
+		if ( $part !== '' ) $lines[] = $part;
 	endforeach;
 
 	return implode( "\n", $lines );
@@ -75,13 +73,11 @@ function tcres_smooth_scroll_normalize_exclude_selectors( string $raw ): string 
 function tcres_smooth_scroll_get_frontend_config(): array {
 	$group = tcres_smooth_scroll_get_group();
 
-	$lerp = isset( $group['lerp'] ) ? (float) $group['lerp'] : 0.05;
-	if ( $lerp < 0.01 ) :
-		$lerp = 0.01;
-	endif;
-	if ( $lerp > 1 ) :
-		$lerp = 1.0;
-	endif;
+	$lerp = isset( $group['lerp'] )
+		? (float) $group['lerp']
+		: 0.05;
+	if ( $lerp < 0.01 ) $lerp = 0.01;
+	if ( $lerp > 1 ) $lerp = 1.0;
 
 	$config = array(
 		'lerp'             => $lerp,
@@ -100,12 +96,14 @@ function tcres_smooth_scroll_get_frontend_config(): array {
 	 * @param array<string, mixed> $group
 	 */
 	$filtered = apply_filters( 'tcres_smooth_scroll_config', $config, $group );
-	return is_array( $filtered ) ? $filtered : $config;
+	return is_array( $filtered )
+		? $filtered
+		: $config;
 }
 
 
 /**
- * Inline init script (runs after the engine CDN file)
+ * Inline init script (runs after the bundled Lenis file)
  */
 function tcres_smooth_scroll_get_init_script(): string {
 	return <<<'JS'
@@ -139,29 +137,27 @@ JS;
 }
 
 
-function tcres_smooth_scroll_enqueue(): void {
+add_action( 'wp_enqueue_scripts', function(): void {
 	if ( is_admin() || ! tcres_smooth_scroll_is_enabled() ) return;
 
-	$cdn = tcres_smooth_scroll_get_cdn();
+	$assets = tcres_smooth_scroll_get_vendor_assets();
 
 	wp_enqueue_style(
 		'tcres-smooth-scroll',
-		$cdn['css'],
+		$assets['css'],
 		array(),
-		$cdn['version'],
+		$assets['version'],
 		'all'
 	);
 
 	wp_enqueue_script(
 		'tcres-smooth-scroll',
-		$cdn['js'],
+		$assets['js'],
 		array(),
-		null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Version is pinned in the CDN URL.
+		$assets['version'],
 		true
 	);
 
 	wp_localize_script( 'tcres-smooth-scroll', 'tcresSmoothScroll', tcres_smooth_scroll_get_frontend_config() );
 	wp_add_inline_script( 'tcres-smooth-scroll', tcres_smooth_scroll_get_init_script(), 'after' );
-}
-
-add_action( 'wp_enqueue_scripts', 'tcres_smooth_scroll_enqueue', 6 );
+}, 6 );

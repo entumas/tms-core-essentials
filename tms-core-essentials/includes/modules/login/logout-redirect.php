@@ -58,13 +58,13 @@ function tcres_logout_redirect_get_url(): string {
  * @param string           $requested_redirect_to Requested redirect from the logout URL.
  * @param WP_User|WP_Error $user                  Logged-out user.
  */
-function tcres_logout_redirect_filter( $redirect_to, $requested_redirect_to, $user ) {
+add_filter( 'logout_redirect', function( $redirect_to, $requested_redirect_to, $user ) {
 	unset( $requested_redirect_to, $user );
 
 	if ( ! tcres_logout_redirect_is_enabled() ) return $redirect_to;
 
 	return tcres_logout_redirect_get_url();
-}
+}, 10, 3 );
 
 
 /**
@@ -73,7 +73,7 @@ function tcres_logout_redirect_filter( $redirect_to, $requested_redirect_to, $us
  * @param array<int, string> $hosts
  * @return array<int, string>
  */
-function tcres_logout_redirect_allowed_hosts( array $hosts ): array {
+add_filter( 'allowed_redirect_hosts', function( array $hosts ): array {
 	if ( ! tcres_logout_redirect_is_enabled() ) return $hosts;
 
 	$destination = (string) tcres_option_get( 'logout_redirect', 'destination' );
@@ -87,8 +87,4 @@ function tcres_logout_redirect_allowed_hosts( array $hosts ): array {
 
 	$hosts[] = $host;
 	return array_values( array_unique( $hosts ) );
-}
-
-
-add_filter( 'logout_redirect', 'tcres_logout_redirect_filter', 10, 3 );
-add_filter( 'allowed_redirect_hosts', 'tcres_logout_redirect_allowed_hosts' );
+} );

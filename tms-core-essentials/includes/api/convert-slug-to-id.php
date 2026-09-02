@@ -32,7 +32,9 @@ function tcres_slug_convert_to_id( string|array $value, string $type = 'post', s
 
 		if ( $type === 'term' && $taxonomy !== '' ) :
 			$term          = get_term_by( 'slug', $single_value, $taxonomy );
-			$ids[ $index ] = $term ? (int) $term->term_id : null;
+			$ids[ $index ] = $term
+				? (int) $term->term_id
+				: null;
 			continue;
 		endif;
 
@@ -76,8 +78,9 @@ function tcres_slug_convert_post_to_ids( array $slugs ): array {
 	$map = array();
 	foreach ( $query->posts as $post ) :
 		if ( ! $post instanceof WP_Post ) continue;
-		if ( ! isset( $map[ $post->post_name ] ) )
+		if ( ! isset( $map[ $post->post_name ] ) ) :
 			$map[ $post->post_name ] = (int) $post->ID;
+		endif;
 	endforeach;
 
 	return $map;

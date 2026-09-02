@@ -396,12 +396,16 @@ function tcres_settings_sanitize( $value ): array {
 			$row = isset( $sitemap_cpt_submitted[ $post_type ] ) && is_array( $sitemap_cpt_submitted[ $post_type ] )
 				? $sitemap_cpt_submitted[ $post_type ]
 				: array();
-			$cpt_max_raw = isset( $row['max_depth'] ) ? trim( (string) $row['max_depth'] ) : '';
+			$cpt_max_raw = isset( $row['max_depth'] )
+				? trim( (string) $row['max_depth'] )
+				: '';
 			if ( $cpt_max_raw === '' ) :
 				$cpt_max_depth = '';
 			else :
 				$cpt_max_int = absint( $cpt_max_raw );
-				$cpt_max_depth = $cpt_max_int >= 1 ? (string) $cpt_max_int : '';
+				$cpt_max_depth = $cpt_max_int >= 1
+					? (string) $cpt_max_int
+					: '';
 			endif;
 			$out['sitemap']['cpt'][ $post_type ] = array(
 				'enable'         => ! empty( $row['enable'] ),
@@ -958,13 +962,11 @@ function tcres_settings_sanitize( $value ): array {
 		$out['smooth_scroll']['sync_touch']   = ! empty( $smooth['sync_touch'] );
 		$out['smooth_scroll']['anchors']      = ! empty( $smooth['anchors'] );
 
-		$lerp = isset( $smooth['lerp'] ) ? (float) $smooth['lerp'] : 0.05;
-		if ( $lerp < 0.01 ) :
-			$lerp = 0.01;
-		endif;
-		if ( $lerp > 1 ) :
-			$lerp = 1.0;
-		endif;
+		$lerp = isset( $smooth['lerp'] )
+			? (float) $smooth['lerp']
+			: 0.05;
+		if ( $lerp < 0.01 ) $lerp = 0.01;
+		if ( $lerp > 1 ) $lerp = 1.0;
 		$out['smooth_scroll']['lerp'] = $lerp;
 
 		$exclude_raw = isset( $smooth['exclude_selectors'] )

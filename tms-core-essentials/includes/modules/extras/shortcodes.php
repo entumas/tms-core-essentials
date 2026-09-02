@@ -19,7 +19,9 @@ function tcres_shortcodes_string_atts( array $atts, array $defaults ): array {
 	$merged = shortcode_atts( $defaults, $atts );
 	$out    = array();
 	foreach ( $merged as $key => $value ) :
-		$out[ $key ] = is_scalar( $value ) ? trim( (string) $value ) : '';
+		$out[ $key ] = is_scalar( $value )
+			? trim( (string) $value )
+			: '';
 	endforeach;
 	return $out;
 }
@@ -90,10 +92,19 @@ function tcres_shortcode_option( $atts ): string {
 			'format' => '',
 		)
 	);
-
 	if ( $atts['name'] === '' || $atts['value'] === '' ) return '';
 
-	$result = tcres_option_get( $atts['name'], $atts['value'], $atts['format'] );
+	$name = sanitize_key( $atts['name'] );
+	if ( ! tcres_option_is_plugin_group( $name ) ) return '';
+
+	$format = $atts['format'] !== ''
+		? sanitize_key( $atts['format'] )
+		: 'esc_html';
+	if ( ! in_array( $format, array( 'esc_html', 'html', 'wpautop' ), true ) ) :
+		$format = 'esc_html';
+	endif;
+
+	$result = tcres_option_get( $name, $atts['value'], $format );
 	if ( null === $result || false === $result ) return '';
 	if ( is_scalar( $result ) ) return (string) $result;
 
@@ -114,13 +125,14 @@ function tcres_shortcode_button( $atts ): string {
 			'blank' => '',
 		)
 	);
-
 	if ( $atts['label'] === '' || $atts['link'] === '' ) return '';
 
 	$classes = trim( 'tcres-button ' . $atts['class'] );
 
 	if ( $atts['title'] !== '' ) :
-		$title = $atts['title'] !== 'none' ? $atts['title'] : '';
+		$title = $atts['title'] !== 'none'
+			? $atts['title']
+			: '';
 	elseif ( stripos( $atts['link'], 'tel:' ) !== false ) :
 		$title = __( 'Call to', 'tms-core-essentials' ) . ' ' . str_replace( 'tel:', '', $atts['link'] );
 	elseif ( stripos( $atts['link'], 'mailto:' ) !== false ) :
@@ -129,8 +141,12 @@ function tcres_shortcode_button( $atts ): string {
 		$title = '';
 	endif;
 
-	$title_attr = $title !== '' ? ' title="' . esc_attr( $title ) . '"' : '';
-	$blank_attr = $atts['blank'] === 'yes' ? ' target="_blank" rel="noopener noreferrer"' : '';
+	$title_attr = $title !== ''
+		? ' title="' . esc_attr( $title ) . '"'
+		: '';
+	$blank_attr = $atts['blank'] === 'yes'
+		? ' target="_blank" rel="noopener noreferrer"'
+		: '';
 
 	return '<a class="' . esc_attr( $classes ) . '" href="' . esc_url( $atts['link'] ) . '"' . $title_attr . $blank_attr . ' role="button">'
 		. esc_html( $atts['label'] )
@@ -143,7 +159,9 @@ function tcres_shortcode_button( $atts ): string {
  * @param string|null                 $content
  */
 function tcres_shortcode_highlighted( $atts = array(), $content = null ): string {
-	$content = null !== $content ? trim( (string) $content ) : '';
+	$content = null !== $content
+		? trim( (string) $content )
+		: '';
 	if ( $content === '' ) return '';
 
 	return '<span class="tcres-highlighted">' . wp_kses_post( $content ) . '</span>';
@@ -159,7 +177,6 @@ function tcres_shortcode_svgicon( $atts ): string {
 			'class' => '',
 		)
 	);
-
 	if ( $atts['icon'] === '' ) return '';
 
 	$args = array(
@@ -217,7 +234,7 @@ function tcres_shortcode_vimeo( $atts ): string {
 }
 
 
-function tcres_shortcodes_register(): void {
+add_action( 'init', function(): void {
 	if ( ! tcres_shortcodes_is_enabled() ) return;
 
 	add_shortcode( 'tcres-field', 'tcres_shortcode_field' );
@@ -228,6 +245,4 @@ function tcres_shortcodes_register(): void {
 	add_shortcode( 'tcres-svgicon', 'tcres_shortcode_svgicon' );
 	add_shortcode( 'tcres-youtube', 'tcres_shortcode_youtube' );
 	add_shortcode( 'tcres-vimeo', 'tcres_shortcode_vimeo' );
-}
-
-add_action( 'init', 'tcres_shortcodes_register' );
+} );

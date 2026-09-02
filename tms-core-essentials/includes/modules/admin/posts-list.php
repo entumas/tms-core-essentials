@@ -111,13 +111,13 @@ function tcres_posts_list_drag_order_pre_get_posts( WP_Query $query ): void {
 
 	$post_type = $query->get( 'post_type' );
 	if ( is_array( $post_type ) ) :
-		$post_type = isset( $post_type[0] ) ? (string) $post_type[0] : '';
+		$post_type = isset( $post_type[0] )
+			? (string) $post_type[0]
+			: '';
 	else :
 		$post_type = (string) $post_type;
 	endif;
-	if ( $post_type === '' ) :
-		$post_type = 'post';
-	endif;
+	if ( $post_type === '' ) $post_type = 'post';
 
 	if ( ! tcres_posts_list_drag_order_is_enabled_for_post_type( $post_type ) ) return;
 
@@ -136,7 +136,7 @@ function tcres_posts_list_drag_order_pre_get_posts( WP_Query $query ): void {
 }
 
 
-function tcres_posts_list_drag_order_ajax_update(): void {
+add_action( 'wp_ajax_tcres_admin_update_post_menu_order', function(): void {
 	check_ajax_referer( 'tcres_drag_order', 'nonce' );
 
 	$post_type = isset( $_POST['post_type'] )
@@ -174,7 +174,7 @@ function tcres_posts_list_drag_order_ajax_update(): void {
 	endforeach;
 
 	wp_send_json_success();
-}
+} );
 
 
 /**
@@ -312,10 +312,14 @@ function tcres_posts_list_get_query_orderby( WP_Query $query ): string {
 	if ( is_array( $orderby ) ) :
 		$keys = array_keys( $orderby );
 		$first = reset( $keys );
-		return is_string( $first ) ? $first : ( is_string( reset( $orderby ) ) ? (string) reset( $orderby ) : '' );
+		return is_string( $first )
+			? $first
+			: ( is_string( reset( $orderby ) ) ? (string) reset( $orderby ) : '' );
 	endif;
 
-	return is_string( $orderby ) ? $orderby : '';
+	return is_string( $orderby )
+		? $orderby
+		: '';
 }
 
 
@@ -382,7 +386,9 @@ function tcres_posts_list_taxonomy_order_clauses_filter( array $clauses, WP_Quer
 	);
 	$clauses['groupby'] = "{$wpdb->posts}.ID";
 
-	$order = strtoupper( (string) $query->get( 'order' ) ) === 'ASC' ? 'ASC' : 'DESC';
+	$order = strtoupper( (string) $query->get( 'order' ) ) === 'ASC'
+		? 'ASC'
+		: 'DESC';
 	$clauses['orderby'] = "GROUP_CONCAT({$alias_t}.name ORDER BY {$alias_t}.name ASC) {$order}";
 	// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
@@ -390,7 +396,7 @@ function tcres_posts_list_taxonomy_order_clauses_filter( array $clauses, WP_Quer
 }
 
 
-function tcres_posts_list_admin_init_register(): void {
+add_action( 'admin_init', function(): void {
 	if ( tcres_posts_list_setting_is_enabled( 'add_thumbnail_column' ) ) :
 		foreach ( tcres_posts_list_get_thumbnail_post_types() as $post_type ) :
 			if ( ! tcres_posts_list_thumbnail_is_enabled_for_post_type( $post_type ) ) continue;
@@ -409,7 +415,6 @@ function tcres_posts_list_admin_init_register(): void {
 					break;
 				endif;
 			endforeach;
-
 			if ( ! $has_enabled ) continue;
 
 			add_filter( "manage_edit-{$post_type}_sortable_columns", 'tcres_posts_list_sortable_columns_filter' );
@@ -429,8 +434,4 @@ function tcres_posts_list_admin_init_register(): void {
 
 		add_action( 'pre_get_posts', 'tcres_posts_list_drag_order_pre_get_posts' );
 	endif;
-}
-
-
-add_action( 'admin_init', 'tcres_posts_list_admin_init_register' );
-add_action( 'wp_ajax_tcres_admin_update_post_menu_order', 'tcres_posts_list_drag_order_ajax_update' );
+} );

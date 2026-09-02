@@ -81,9 +81,7 @@ function tcres_settings_editor_register_id( string $editor_id, string $toolbar =
  * @return array<int, string>
  */
 function tcres_settings_editor_buttons_for_toolbar( string $toolbar ): array {
-	if ( 'basic' === $toolbar ) :
-		return tcres_settings_editor_basic_buttons();
-	endif;
+	if ( 'basic' === $toolbar ) return tcres_settings_editor_basic_buttons();
 
 	return tcres_settings_editor_minimal_buttons();
 }
@@ -93,9 +91,7 @@ function tcres_settings_editor_buttons_for_toolbar( string $toolbar ): array {
  * Quicktags button string for a toolbar preset.
  */
 function tcres_settings_editor_quicktags_for_toolbar( string $toolbar ): string {
-	if ( 'basic' === $toolbar ) :
-		return 'strong,em,del,ul,ol,li,block,link,close';
-	endif;
+	if ( 'basic' === $toolbar ) return 'strong,em,del,ul,ol,li,block,link,close';
 
 	return 'strong,em,del,link,close';
 }
@@ -147,19 +143,18 @@ function tcres_settings_editor_enqueue_assets(): array {
  * @param array<int, string> $buttons
  * @return array<int, string>
  */
-function tcres_settings_editor_teeny_buttons( array $buttons, string $editor_id ): array {
+add_filter( 'teeny_mce_buttons', function( array $buttons, string $editor_id ): array {
 	$map = tcres_settings_editor_registry();
 	if ( ! isset( $map[ $editor_id ] ) ) return $buttons;
 
 	return tcres_settings_editor_buttons_for_toolbar( $map[ $editor_id ] );
-}
-add_filter( 'teeny_mce_buttons', 'tcres_settings_editor_teeny_buttons', 10, 2 );
+}, 10, 2 );
 
 
 /**
  * Add placeholder attribute to the settings-editor textarea (Text tab).
  */
-function tcres_settings_editor_the_editor( string $output ): string {
+add_filter( 'the_editor', function( string $output ): string {
 	$placeholders = tcres_settings_editor_placeholders();
 	if ( empty( $placeholders ) ) return $output;
 
@@ -175,9 +170,10 @@ function tcres_settings_editor_the_editor( string $output ): string {
 		);
 	endforeach;
 
-	return is_string( $output ) ? $output : '';
-}
-add_filter( 'the_editor', 'tcres_settings_editor_the_editor' );
+	return is_string( $output )
+		? $output
+		: '';
+} );
 
 
 /**
@@ -221,17 +217,23 @@ function tcres_settings_editor_render( string $editor_id, string $name, string $
 	$editor_id = sanitize_key( $editor_id );
 	if ( $editor_id === '' ) return;
 
-	$toolbar = isset( $args['toolbar'] ) ? sanitize_key( (string) $args['toolbar'] ) : 'minimal';
+	$toolbar = isset( $args['toolbar'] )
+		? sanitize_key( (string) $args['toolbar'] )
+		: 'minimal';
 	if ( ! in_array( $toolbar, array( 'minimal', 'basic' ), true ) ) :
 		$toolbar = 'minimal';
 	endif;
 
-	$placeholder = isset( $args['placeholder'] ) ? (string) $args['placeholder'] : '';
+	$placeholder = isset( $args['placeholder'] )
+		? (string) $args['placeholder']
+		: '';
 
 	tcres_settings_editor_register_id( $editor_id, $toolbar );
 	tcres_settings_editor_placeholders( $editor_id, $placeholder );
 
-	$rows     = isset( $args['textarea_rows'] ) ? absint( $args['textarea_rows'] ) : 8;
+	$rows     = isset( $args['textarea_rows'] )
+		? absint( $args['textarea_rows'] )
+		: 8;
 	$wpautop  = ! isset( $args['wpautop'] ) || ! empty( $args['wpautop'] );
 	$buttons  = tcres_settings_editor_buttons_for_toolbar( $toolbar );
 	$toolbar1 = implode( ',', $buttons );
@@ -253,9 +255,7 @@ function tcres_settings_editor_render( string $editor_id, string $name, string $
 		'toolbar1' => $toolbar1,
 		'toolbar2' => '',
 	);
-	if ( $placeholder !== '' ) :
-		$tinymce['placeholder'] = $placeholder;
-	endif;
+	if ( $placeholder !== '' ) $tinymce['placeholder'] = $placeholder;
 
 	$is_empty = trim( wp_strip_all_tags( $content ) ) === '';
 	$classes  = 'tcres-settings-editor';

@@ -105,9 +105,7 @@ function tcres_settings_fields_render_module_panel(
 				<?php
 			endif;
 
-			if ( is_callable( $after_content ) ) :
-				$after_content();
-			endif;
+			if ( is_callable( $after_content ) ) $after_content();
 		}
 	);
 }
@@ -123,9 +121,7 @@ function tcres_settings_fields_render_modules_cards(): void {
 		$group = isset( $settings[ $key ] ) && is_array( $settings[ $key ] )
 			? $settings[ $key ]
 			: array();
-		if ( ! empty( $group['enable'] ) ) :
-			$active++;
-		endif;
+		if ( ! empty( $group['enable'] ) ) $active++;
 	endforeach;
 
 	$inactive_count = $total - $active;
@@ -161,30 +157,30 @@ function tcres_settings_fields_render_subtitle_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Get the subtitle HTML on the frontend (auto-detects singular posts and taxonomy archives):', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>tag</code>
-					&mdash; <?php esc_html_e( 'Optional wrapper tag: p, div, span, h2–h6. Omit for content only (no wrapper, no class).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>class</code>
-					&mdash; <?php esc_html_e( 'Custom CSS classes for the wrapper (only used when tag is set).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>post_id</code>
-					&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current post).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>term_id</code>
-					&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
-				<code>tcres_subtitle</code>
-			</p>
+		<p><?php esc_html_e( 'Get the subtitle HTML on the frontend (auto-detects singular posts and taxonomy archives):', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>tag</code>
+				&mdash; <?php esc_html_e( 'Optional wrapper tag: p, div, span, h2–h6. Omit for content only (no wrapper, no class).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>class</code>
+				&mdash; <?php esc_html_e( 'Custom CSS classes for the wrapper (only used when tag is set).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>post_id</code>
+				&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current post).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>term_id</code>
+				&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
+			<code>tcres_subtitle</code>
+		</p>
 	</details>
 	<?php
 }
@@ -195,46 +191,46 @@ function tcres_settings_fields_render_hero_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Print the hero on the frontend (auto-detects singular posts and taxonomy archives). Includes the title. Background uses Featured video when set (with featured/term image as poster when available), otherwise the featured image (posts) or term featured image:', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>tag</code>
-					&mdash; <?php esc_html_e( 'Wrapper tag: header (default), section or div.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>subtitle_tag</code>
-					&mdash; <?php esc_html_e( 'Subtitle tag: p (default), div, span, or h2–h6.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>class</code>
-					&mdash; <?php esc_html_e( 'Extra CSS class(es). The wrapper always includes tcres-hero.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>image_size</code>
-					&mdash; <?php esc_html_e( 'Featured image size name (default: full), or [width, height].', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>post_id</code>
-					&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current singular post).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>term_id</code>
-					&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Meta keys:', 'tms-core-essentials' ); ?>
-				<code>tcres_hero_subtitle</code>
-				<code>tcres_hero_description</code>
-				<code>tcres_hero_buttons</code>
-			</p>
-			<p class="description">
-				<?php esc_html_e( 'On taxonomy archives, the image comes from Featured image for terms when that module is enabled for the taxonomy.', 'tms-core-essentials' ); ?>
-			</p>
-			<p class="description">
-				<?php esc_html_e( 'When Hero is enabled for the same post type or taxonomy as Subtitle, the standalone Subtitle field is hidden.', 'tms-core-essentials' ); ?>
-			</p>
+		<p><?php esc_html_e( 'Print the hero on the frontend (auto-detects singular posts and taxonomy archives). Includes the title. Background uses Featured video when set (with featured/term image as poster when available), otherwise the featured image (posts) or term featured image:', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>tag</code>
+				&mdash; <?php esc_html_e( 'Wrapper tag: header (default), section or div.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>subtitle_tag</code>
+				&mdash; <?php esc_html_e( 'Subtitle tag: p (default), div, span, or h2–h6.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>class</code>
+				&mdash; <?php esc_html_e( 'Extra CSS class(es). The wrapper always includes tcres-hero.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>image_size</code>
+				&mdash; <?php esc_html_e( 'Featured image size name (default: full), or [width, height].', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>post_id</code>
+				&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current singular post).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>term_id</code>
+				&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Meta keys:', 'tms-core-essentials' ); ?>
+			<code>tcres_hero_subtitle</code>
+			<code>tcres_hero_description</code>
+			<code>tcres_hero_buttons</code>
+		</p>
+		<p class="description">
+			<?php esc_html_e( 'On taxonomy archives, the image comes from Featured image for terms when that module is enabled for the taxonomy.', 'tms-core-essentials' ); ?>
+		</p>
+		<p class="description">
+			<?php esc_html_e( 'When Hero is enabled for the same post type or taxonomy as Subtitle, the standalone Subtitle field is hidden.', 'tms-core-essentials' ); ?>
+		</p>
 	</details>
 	<?php
 }
@@ -245,26 +241,26 @@ function tcres_settings_fields_render_termimage_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Print the featured image for the current taxonomy archive term (or a specific term ID):', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>image_size</code>
-					&mdash; <?php esc_html_e( 'Image size name (default: full), or [width, height].', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>class</code>
-					&mdash; <?php esc_html_e( 'Optional CSS class for the img element.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>term_id</code>
-					&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
-				<code>tcres_term_image</code>
-			</p>
+		<p><?php esc_html_e( 'Print the featured image for the current taxonomy archive term (or a specific term ID):', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>image_size</code>
+				&mdash; <?php esc_html_e( 'Image size name (default: full), or [width, height].', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>class</code>
+				&mdash; <?php esc_html_e( 'Optional CSS class for the img element.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>term_id</code>
+				&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
+			<code>tcres_term_image</code>
+		</p>
 	</details>
 	<?php
 }
@@ -325,55 +321,55 @@ function tcres_settings_fields_render_featured_video_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'Print the featured video for the current post/term (or a specific ID):', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
-			<ul>
-				<li>
-					<code>class</code>
-					&mdash; <?php esc_html_e( 'Optional CSS class for the video element.', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>attrs</code>
-					&mdash; <?php esc_html_e( 'Optional video attributes:', 'tms-core-essentials' ); ?>
-					<ul>
-						<li>
-							<code>controls</code>
-							&mdash; <?php esc_html_e( 'Show native controls. Default: true when autoplay is off, false when autoplay is on.', 'tms-core-essentials' ); ?>
-						</li>
-						<li>
-							<code>autoplay</code>
-							&mdash; <?php esc_html_e( 'Start playback automatically. Default: false.', 'tms-core-essentials' ); ?>
-						</li>
-						<li>
-							<code>muted</code>
-							&mdash; <?php esc_html_e( 'Mute audio. Default: true when autoplay is on (required by browsers), otherwise false.', 'tms-core-essentials' ); ?>
-						</li>
-						<li>
-							<code>loop</code>
-							&mdash; <?php esc_html_e( 'Loop playback. Default: false.', 'tms-core-essentials' ); ?>
-						</li>
-						<li>
-							<code>playsinline</code>
-							&mdash; <?php esc_html_e( 'Play inline on mobile. Default: true.', 'tms-core-essentials' ); ?>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<code>post_id</code>
-					&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current singular post).', 'tms-core-essentials' ); ?>
-				</li>
-				<li>
-					<code>term_id</code>
-					&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
-				</li>
-			</ul>
-			<p class="description">
-				<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
-				<code>tcres_featured_video</code>
-			</p>
-			<p class="description">
-				<?php esc_html_e( 'When a featured video is set, Hero uses it as the background. If a featured/term image is also set, it is used as the video poster.', 'tms-core-essentials' ); ?>
-			</p>
+		<p><?php esc_html_e( 'Print the featured video for the current post/term (or a specific ID):', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<ul>
+			<li>
+				<code>class</code>
+				&mdash; <?php esc_html_e( 'Optional CSS class for the video element.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>attrs</code>
+				&mdash; <?php esc_html_e( 'Optional video attributes:', 'tms-core-essentials' ); ?>
+				<ul>
+					<li>
+						<code>controls</code>
+						&mdash; <?php esc_html_e( 'Show native controls. Default: true when autoplay is off, false when autoplay is on.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>autoplay</code>
+						&mdash; <?php esc_html_e( 'Start playback automatically. Default: false.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>muted</code>
+						&mdash; <?php esc_html_e( 'Mute audio. Default: true when autoplay is on (required by browsers), otherwise false.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>loop</code>
+						&mdash; <?php esc_html_e( 'Loop playback. Default: false.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>playsinline</code>
+						&mdash; <?php esc_html_e( 'Play inline on mobile. Default: true.', 'tms-core-essentials' ); ?>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<code>post_id</code>
+				&mdash; <?php esc_html_e( 'Optional post ID (defaults to the current singular post).', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>term_id</code>
+				&mdash; <?php esc_html_e( 'Optional term ID (defaults to the current taxonomy archive term).', 'tms-core-essentials' ); ?>
+			</li>
+		</ul>
+		<p class="description">
+			<?php esc_html_e( 'Meta key:', 'tms-core-essentials' ); ?>
+			<code>tcres_featured_video</code>
+		</p>
+		<p class="description">
+			<?php esc_html_e( 'When a featured video is set, Hero uses it as the background. If a featured/term image is also set, it is used as the video poster.', 'tms-core-essentials' ); ?>
+		</p>
 	</details>
 	<?php
 }

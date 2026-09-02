@@ -160,7 +160,9 @@ function tcres_output_location_register( string $group_key, callable $callback )
 				static function ( $content ) use ( $callback, $can_inject_content ) {
 					if ( ! is_string( $content ) || ! $can_inject_content() ) return $content;
 					$html = tcres_output_location_capture( $callback );
-					return $html === '' ? $content : $html . $content;
+					return $html === ''
+						? $content
+						: $html . $content;
 				},
 				12
 			);
@@ -172,7 +174,9 @@ function tcres_output_location_register( string $group_key, callable $callback )
 				static function ( $content ) use ( $callback, $can_inject_content ) {
 					if ( ! is_string( $content ) || ! $can_inject_content() ) return $content;
 					$html = tcres_output_location_capture( $callback );
-					return $html === '' ? $content : $content . $html;
+					return $html === ''
+						? $content
+						: $content . $html;
 				},
 				20
 			);
@@ -201,7 +205,7 @@ function tcres_output_location_register( string $group_key, callable $callback )
 }
 
 
-function tcres_output_location_boot(): void {
+add_action( 'wp', function(): void {
 	if ( is_admin() && ! wp_doing_ajax() ) return;
 
 	tcres_output_location_register(
@@ -215,6 +219,4 @@ function tcres_output_location_boot(): void {
 	);
 	tcres_output_location_register( 'share_content', 'tcres_share_content_get' );
 	tcres_output_location_register( 'breadcrumbs', 'tcres_breadcrumb_get' );
-}
-
-add_action( 'wp', 'tcres_output_location_boot', 20 );
+}, 20 );

@@ -18,27 +18,29 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * }>
  */
 function tcres_external_scripts_get_libraries(): array {
+	$vendor = TCRES_PLUGIN_URL . 'assets/vendor/';
+
 	return array(
 		'swiper' => array(
 			'version'    => '11.2.10',
 			'handle_js'  => 'tcres-swiper',
 			'handle_css' => 'tcres-swiper',
-			'js'         => 'https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js',
-			'css'        => 'https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css',
+			'js'         => $vendor . 'swiper/swiper-bundle.min.js',
+			'css'        => $vendor . 'swiper/swiper-bundle.min.css',
 		),
 		'glightbox' => array(
 			'version'    => '3.3.1',
 			'handle_js'  => 'tcres-glightbox',
 			'handle_css' => 'tcres-glightbox',
-			'js'         => 'https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js',
-			'css'        => 'https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css',
+			'js'         => $vendor . 'glightbox/glightbox.min.js',
+			'css'        => $vendor . 'glightbox/glightbox.min.css',
 		),
 		'choices' => array(
 			'version'    => '11.1.0',
 			'handle_js'  => 'tcres-choices',
 			'handle_css' => 'tcres-choices',
-			'js'         => 'https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/scripts/choices.min.js',
-			'css'        => 'https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/styles/choices.min.css',
+			'js'         => $vendor . 'choices/choices.min.js',
+			'css'        => $vendor . 'choices/choices.min.css',
 		),
 	);
 }
@@ -53,9 +55,9 @@ function tcres_external_scripts_is_enabled( string $key ): bool {
 
 
 /**
- * Enqueue enabled vendor assets on the frontend (CDN, pinned versions)
+ * Enqueue enabled bundled vendor assets on the frontend
  */
-function tcres_external_scripts_enqueue(): void {
+add_action( 'wp_enqueue_scripts', function(): void {
 	if ( is_admin() ) return;
 
 	foreach ( tcres_external_scripts_get_libraries() as $key => $lib ) :
@@ -73,10 +75,8 @@ function tcres_external_scripts_enqueue(): void {
 			$lib['handle_js'],
 			$lib['js'],
 			array(),
-			null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Version is pinned in the CDN URL.
+			$lib['version'],
 			true
 		);
 	endforeach;
-}
-
-add_action( 'wp_enqueue_scripts', 'tcres_external_scripts_enqueue', 5 );
+}, 5 );

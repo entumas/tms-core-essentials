@@ -43,7 +43,7 @@ function tcres_settings_login_render_logout_redirect_config( array $group, strin
 		? (string) $group['destination']
 		: 'home';
 	if ( ! isset( $choices[ $destination ] ) ) $destination = 'home';
-	$custom_url = isset( $group['custom_url'] )
+	$custom_url  = isset( $group['custom_url'] )
 		? (string) $group['custom_url']
 		: '';
 	?>
@@ -87,7 +87,6 @@ function tcres_settings_login_render_customization_panel(): void {
 		? $settings['login_customization']
 		: array();
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<th scope="row"><h2><?php esc_html_e( 'Custom login page', 'tms-core-essentials' ); ?></h2></th>
@@ -116,7 +115,6 @@ function tcres_settings_login_render_logout_redirect_panel(): void {
 		? $settings['logout_redirect']
 		: array();
 	?>
-
 		<table class="form-table" role="presentation">
 			<tr>
 				<th scope="row"><h2><?php esc_html_e( 'Logout redirect', 'tms-core-essentials' ); ?></h2></th>

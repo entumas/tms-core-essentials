@@ -23,7 +23,7 @@ function tcres_login_customization_get_site_icon_url(): string {
 }
 
 
-function tcres_login_customization_enqueue_inline_css(): void {
+add_action( 'login_enqueue_scripts', function(): void {
 	if ( ! tcres_login_customization_is_enabled() ) return;
 
 	$icon_url = tcres_login_customization_get_site_icon_url();
@@ -37,23 +37,18 @@ function tcres_login_customization_enqueue_inline_css(): void {
 	wp_register_style( 'tcres-login-customization-inline', false, array(), TCRES_PLUGIN_VERSION );
 	wp_enqueue_style( 'tcres-login-customization-inline' );
 	wp_add_inline_style( 'tcres-login-customization-inline', $css );
-}
+}, 20 );
 
 
-function tcres_login_customization_logo_url( string $url ): string {
+add_filter( 'login_headerurl', function( string $url ): string {
 	if ( ! tcres_login_customization_is_enabled() ) return $url;
 
 	return home_url( '/' );
-}
+} );
 
 
-function tcres_login_customization_logo_title( string $title ): string {
+add_filter( 'login_headertext', function( string $title ): string {
 	if ( ! tcres_login_customization_is_enabled() ) return $title;
 
 	return get_bloginfo( 'name' );
-}
-
-
-add_action( 'login_enqueue_scripts', 'tcres_login_customization_enqueue_inline_css', 20 );
-add_filter( 'login_headerurl', 'tcres_login_customization_logo_url' );
-add_filter( 'login_headertext', 'tcres_login_customization_logo_title' );
+} );

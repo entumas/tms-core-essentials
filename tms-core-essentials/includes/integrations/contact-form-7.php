@@ -45,12 +45,8 @@ function tcres_cf7_do_tcres_shortcodes( string $content ): string {
  * @param string $form
  * @return string
  */
-function tcres_cf7_expand_form_elements( $form ) {
-	if ( ! is_string( $form ) || $form === '' ) :
-		return $form;
-	endif;
+add_filter( 'wpcf7_form_elements', function( $form ) {
+	if ( ! is_string( $form ) || $form === '' ) return $form;
 
 	return tcres_cf7_do_tcres_shortcodes( $form );
-}
-
-add_filter( 'wpcf7_form_elements', 'tcres_cf7_expand_form_elements' );
+} );

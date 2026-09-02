@@ -7,9 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 function tcres_term_image_is_enabled(): bool {
-	if ( ! (bool) tcres_option_get( 'term_image', 'enable' ) ) :
-		return false;
-	endif;
+	if ( ! (bool) tcres_option_get( 'term_image', 'enable' ) ) return false;
 
 	return ! empty( tcres_term_image_get_taxonomies() );
 }
@@ -19,9 +17,7 @@ function tcres_term_image_is_enabled(): bool {
  * @return array<int, string>
  */
 function tcres_term_image_get_taxonomies(): array {
-	if ( ! (bool) tcres_option_get( 'term_image', 'enable' ) ) :
-		return array();
-	endif;
+	if ( ! (bool) tcres_option_get( 'term_image', 'enable' ) ) return array();
 
 	$taxonomies = tcres_option_get_for_taxonomies( 'term_image', '' );
 	if ( ! is_array( $taxonomies ) ) return array();

@@ -17,7 +17,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 
 			<h2 id="tcres-dev-data"><?php esc_html_e( 'Data', 'tms-core-essentials' ); ?></h2>
 			<p class="description">
-				<?php esc_html_e( 'Read post meta, term meta, and plugin or WordPress options.', 'tms-core-essentials' ); ?>
+				<?php esc_html_e( 'Read post meta, term meta, and plugin settings.', 'tms-core-essentials' ); ?>
 			</p>
 
 			<section id="tcres-dev-field-get">
@@ -114,14 +114,14 @@ function tcres_settings_developers_render_tab_fields(): void {
 			<section id="tcres-dev-option-get">
 				<h3>⇒ <?php esc_html_e( 'Get options', 'tms-core-essentials' ); ?></h3>
 				<p><code><?php echo esc_html( 'tcres_option_get( string $name, string $key = \'\', string $format = \'\' ): mixed' ); ?></code></p>
-				<p><?php esc_html_e( 'Reads tcres_settings first. If $name is a settings group, returns that group/key (or null if the key is missing). Otherwise falls back to a standalone WordPress option. With WPML/Polylang, merges translations over that option.', 'tms-core-essentials' ); ?></p>
+				<p><?php esc_html_e( 'Reads a plugin settings group from tcres_settings. Returns null when $name is not a known settings group or the key is missing.', 'tms-core-essentials' ); ?></p>
 				<p class="description"><?php esc_html_e( 'Full group: tcres_option_get( \'security\' ). Keys with null values in settings count as existing.', 'tms-core-essentials' ); ?></p>
 				<h4><?php esc_html_e( 'Parameters', 'tms-core-essentials' ); ?></h4>
 				<ul>
 					<li>
 						<code><?php echo esc_html( '$name' ); ?></code>
 						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', required', 'tms-core-essentials' ); ?>)
-						&mdash; <?php esc_html_e( 'Settings group or WordPress option name.', 'tms-core-essentials' ); ?>
+						&mdash; <?php esc_html_e( 'Plugin settings group name.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
 						<code><?php echo esc_html( '$key' ); ?></code>
@@ -131,7 +131,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<li>
 						<code><?php echo esc_html( '$format' ); ?></code>
 						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
-						&mdash; <?php esc_html_e( 'Output format: empty (no formatting), esc_html, or wpautop.', 'tms-core-essentials' ); ?>
+						&mdash; <?php esc_html_e( 'Output format: empty (no formatting), esc_html, html (wp_kses_post), or wpautop.', 'tms-core-essentials' ); ?>
 					</li>
 				</ul>
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>

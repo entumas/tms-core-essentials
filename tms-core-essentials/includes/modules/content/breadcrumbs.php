@@ -33,7 +33,9 @@ function tcres_breadcrumb_get_config( array $args = array() ): array {
 	);
 
 	$config = array_replace_recursive( $defaults, $args );
-	$display = isset( $config['home_display'] ) ? (string) $config['home_display'] : 'icon_label';
+	$display = isset( $config['home_display'] )
+		? (string) $config['home_display']
+		: 'icon_label';
 	if ( ! in_array( $display, array( 'icon_label', 'label', 'icon' ), true ) ) :
 		$display = 'icon_label';
 	endif;
@@ -50,14 +52,18 @@ function tcres_breadcrumb_get_config( array $args = array() ): array {
  * @param array<string, mixed> $config
  */
 function tcres_breadcrumb_resolve_blog_page_id( array $config ): int {
-	$page_id = isset( $config['blog_page'] ) ? (int) $config['blog_page'] : 0;
+	$page_id = isset( $config['blog_page'] )
+		? (int) $config['blog_page']
+		: 0;
 	if ( $page_id === -1 ) return 0;
 
 	if ( $page_id <= 0 ) :
 		$page_id = (int) get_option( 'page_for_posts' );
 	endif;
 
-	return $page_id > 0 ? tcres_multilingual_translate_post_id( $page_id ) : 0;
+	return $page_id > 0
+		? tcres_multilingual_translate_post_id( $page_id )
+		: 0;
 }
 
 
@@ -66,8 +72,12 @@ function tcres_breadcrumb_resolve_blog_page_id( array $config ): int {
  * @return array{page: int, taxonomy: string}
  */
 function tcres_breadcrumb_get_cpt_config( array $config, string $post_type ): array {
-	$rows = isset( $config['cpt'] ) && is_array( $config['cpt'] ) ? $config['cpt'] : array();
-	$row  = isset( $rows[ $post_type ] ) && is_array( $rows[ $post_type ] ) ? $rows[ $post_type ] : array();
+	$rows = isset( $config['cpt'] ) && is_array( $config['cpt'] )
+		? $config['cpt']
+		: array();
+	$row  = isset( $rows[ $post_type ] ) && is_array( $rows[ $post_type ] )
+		? $rows[ $post_type ]
+		: array();
 
 	return array(
 		'page'     => isset( $row['page'] ) ? (int) $row['page'] : 0,
@@ -90,15 +100,9 @@ function tcres_breadcrumb_make_item(
 		'label' => $label,
 		'url'   => $url,
 	);
-	if ( $icon !== '' ) :
-		$item['icon'] = $icon;
-	endif;
-	if ( $class !== '' ) :
-		$item['class'] = $class;
-	endif;
-	if ( $label_sr_only ) :
-		$item['label_sr_only'] = true;
-	endif;
+	if ( $icon !== '' ) $item['icon'] = $icon;
+	if ( $class !== '' ) $item['class'] = $class;
+	if ( $label_sr_only ) $item['label_sr_only'] = true;
 
 	return $item;
 }
@@ -111,7 +115,9 @@ function tcres_breadcrumb_make_item(
 function tcres_breadcrumb_home_item( array $config, bool $is_current ): ?array {
 	if ( empty( $config['show_home'] ) ) return null;
 
-	$label = isset( $config['home_label'] ) ? trim( (string) $config['home_label'] ) : '';
+	$label = isset( $config['home_label'] )
+		? trim( (string) $config['home_label'] )
+		: '';
 	if ( $label === '' ) :
 		$front_id = (int) get_option( 'page_on_front' );
 		if ( $front_id > 0 ) :
@@ -119,12 +125,14 @@ function tcres_breadcrumb_home_item( array $config, bool $is_current ): ?array {
 			$label    = get_the_title( $front_id );
 		endif;
 	endif;
-	if ( $label === '' ) :
-		$label = get_bloginfo( 'name' );
-	endif;
+	if ( $label === '' ) $label = get_bloginfo( 'name' );
 
-	$display = isset( $config['home_display'] ) ? (string) $config['home_display'] : 'icon_label';
-	$icon    = ( $display === 'icon_label' || $display === 'icon' ) ? 'home' : '';
+	$display = isset( $config['home_display'] )
+		? (string) $config['home_display']
+		: 'icon_label';
+	$icon    = ( $display === 'icon_label' || $display === 'icon' )
+		? 'home'
+		: '';
 	$sr_only = ( $display === 'icon' );
 
 	return tcres_breadcrumb_make_item(
@@ -181,7 +189,9 @@ function tcres_breadcrumb_append_term_trail( array &$items, WP_Term $term, bool 
 	$link = '';
 	if ( ! $as_current ) :
 		$term_link = get_term_link( $term );
-		$link      = is_wp_error( $term_link ) ? '' : (string) $term_link;
+		$link      = is_wp_error( $term_link )
+			? ''
+			: (string) $term_link;
 	endif;
 
 	$items[] = tcres_breadcrumb_make_item( $term->name, $link );
@@ -214,7 +224,9 @@ function tcres_breadcrumb_get_primary_term( int $post_id, string $taxonomy ): ?W
 	endif;
 
 	$first = reset( $terms );
-	return $first instanceof WP_Term ? $first : null;
+	return $first instanceof WP_Term
+		? $first
+		: null;
 }
 
 
@@ -227,7 +239,9 @@ function tcres_breadcrumb_get_primary_term( int $post_id, string $taxonomy ): ?W
 function tcres_breadcrumb_find_cpt_by_taxonomy( array $config, string $taxonomy ): ?array {
 	if ( $taxonomy === '' ) return null;
 
-	$rows = isset( $config['cpt'] ) && is_array( $config['cpt'] ) ? $config['cpt'] : array();
+	$rows = isset( $config['cpt'] ) && is_array( $config['cpt'] )
+		? $config['cpt']
+		: array();
 	foreach ( $rows as $post_type => $row ) :
 		if ( ! is_array( $row ) ) continue;
 		if ( (string) ( $row['taxonomy'] ?? '' ) !== $taxonomy ) continue;
@@ -258,7 +272,9 @@ function tcres_breadcrumb_get_items( array $config ): array {
 	// Blog posts index
 	if ( is_home() ) :
 		$blog_id = tcres_breadcrumb_resolve_blog_page_id( $config );
-		$label   = $blog_id > 0 ? get_the_title( $blog_id ) : __( 'Blog', 'tms-core-essentials' );
+		$label   = $blog_id > 0
+			? get_the_title( $blog_id )
+			: __( 'Blog', 'tms-core-essentials' );
 		$items[] = tcres_breadcrumb_make_item( $label !== '' ? $label : __( 'Blog', 'tms-core-essentials' ), '' );
 		return $items;
 	endif;
@@ -288,7 +304,9 @@ function tcres_breadcrumb_get_items( array $config ): array {
 				);
 			endif;
 
-			$taxonomy = isset( $config['blog_taxonomy'] ) ? (string) $config['blog_taxonomy'] : '';
+			$taxonomy = isset( $config['blog_taxonomy'] )
+				? (string) $config['blog_taxonomy']
+				: '';
 			if ( $taxonomy !== '' ) :
 				$term = tcres_breadcrumb_get_primary_term( $post_id, $taxonomy );
 				if ( $term instanceof WP_Term ) :
@@ -327,7 +345,9 @@ function tcres_breadcrumb_get_items( array $config ): array {
 		if ( $term instanceof WP_Term && ! is_wp_error( $term ) ) :
 			$taxonomy = $term->taxonomy;
 
-			$blog_tax = isset( $config['blog_taxonomy'] ) ? (string) $config['blog_taxonomy'] : '';
+			$blog_tax = isset( $config['blog_taxonomy'] )
+				? (string) $config['blog_taxonomy']
+				: '';
 			if ( $blog_tax !== '' && $taxonomy === $blog_tax ) :
 				$blog_id = tcres_breadcrumb_resolve_blog_page_id( $config );
 				if ( $blog_id > 0 ) :
@@ -360,15 +380,21 @@ function tcres_breadcrumb_get_items( array $config ): array {
 		if ( is_array( $post_type ) ) :
 			$post_type = reset( $post_type );
 		endif;
-		$post_type = is_string( $post_type ) ? $post_type : '';
+		$post_type = is_string( $post_type )
+			? $post_type
+			: '';
 		$cpt       = $post_type !== ''
 			? tcres_breadcrumb_get_cpt_config( $config, $post_type )
 			: array( 'page' => 0, 'taxonomy' => '' );
 
 		if ( $cpt['page'] > 0 ) :
 			$page_id = tcres_multilingual_translate_post_id( $cpt['page'] );
-			$label   = $page_id > 0 ? get_the_title( $page_id ) : post_type_archive_title( '', false );
-			$items[] = tcres_breadcrumb_make_item( $label !== '' ? $label : (string) $post_type, '' );
+			$label   = $page_id > 0
+				? get_the_title( $page_id )
+				: post_type_archive_title( '', false );
+			$items[] = tcres_breadcrumb_make_item( $label !== ''
+				? $label
+				: (string) $post_type, '' );
 		else :
 			$title = post_type_archive_title( '', false );
 			if ( $title !== '' ) :
@@ -408,24 +434,34 @@ function tcres_breadcrumb_get_items( array $config ): array {
 function tcres_breadcrumb_render_html( array $items, array $config ): string {
 	if ( empty( $items ) ) return '';
 
-	$separator = isset( $config['separator'] ) ? (string) $config['separator'] : '/';
+	$separator = isset( $config['separator'] )
+		? (string) $config['separator']
+		: '/';
 	if ( $separator === '' ) $separator = '/';
 
 	$class = 'tcres-breadcrumbs';
-	$extra = isset( $config['class'] ) ? trim( (string) $config['class'] ) : '';
-	if ( $extra !== '' ) :
-		$class .= ' ' . $extra;
-	endif;
+	$extra = isset( $config['class'] )
+		? trim( (string) $config['class'] )
+		: '';
+	if ( $extra !== '' ) $class .= ' ' . $extra;
 
 	$last_index = count( $items ) - 1;
 	$list_html  = '';
 	$position   = 0;
 
 	foreach ( $items as $i => $item ) :
-		$label = isset( $item['label'] ) ? (string) $item['label'] : '';
-		$url   = isset( $item['url'] ) ? (string) $item['url'] : '';
-		$icon  = isset( $item['icon'] ) ? (string) $item['icon'] : '';
-		$item_class = isset( $item['class'] ) ? trim( (string) $item['class'] ) : '';
+		$label = isset( $item['label'] )
+			? (string) $item['label']
+			: '';
+		$url   = isset( $item['url'] )
+			? (string) $item['url']
+			: '';
+		$icon  = isset( $item['icon'] )
+			? (string) $item['icon']
+			: '';
+		$item_class = isset( $item['class'] )
+			? trim( (string) $item['class'] )
+			: '';
 		$label_sr_only = ! empty( $item['label_sr_only'] );
 		$is_last = ( $i === $last_index );
 		$position++;
@@ -439,9 +475,13 @@ function tcres_breadcrumb_render_html( array $items, array $config ): string {
 			);
 		endif;
 
-		$label_class = $label_sr_only ? ' class="screen-reader-text"' : '';
+		$label_class = $label_sr_only
+			? ' class="screen-reader-text"'
+			: '';
 		$name_html   = $icon_html . '<span' . $label_class . ' itemprop="name">' . esc_html( $label ) . '</span>';
-		$class_attr = $item_class !== '' ? ' class="' . esc_attr( $item_class ) . '"' : '';
+		$class_attr = $item_class !== ''
+			? ' class="' . esc_attr( $item_class ) . '"'
+			: '';
 		if ( $url !== '' && ! $is_last ) :
 			$inner = '<a href="' . esc_url( $url ) . '"' . $class_attr . ' itemprop="item">' . $name_html . '</a>';
 		else :
@@ -499,8 +539,6 @@ function tcres_breadcrumb_shortcode(): string {
 }
 
 
-function tcres_breadcrumb_register_shortcode(): void {
+add_action( 'init', function(): void {
 	add_shortcode( 'tcres-breadcrumb', 'tcres_breadcrumb_shortcode' );
-}
-
-add_action( 'init', 'tcres_breadcrumb_register_shortcode' );
+} );

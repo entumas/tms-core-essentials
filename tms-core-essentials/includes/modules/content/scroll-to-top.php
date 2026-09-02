@@ -40,16 +40,16 @@ function tcres_scroll_to_top_get(): string {
 	$threshold = isset( $group['threshold_viewports'] )
 		? (float) $group['threshold_viewports']
 		: 1.0;
-	if ( $threshold < 0.1 ) :
-		$threshold = 0.1;
-	endif;
+	if ( $threshold < 0.1 ) $threshold = 0.1;
 
-	$avoid_footer   = ! empty( $group['avoid_footer'] );
-	$footer_selector = isset( $group['footer_selector'] ) ? trim( (string) $group['footer_selector'] ) : '';
-	$footer_gap     = isset( $group['footer_gap'] ) ? (int) $group['footer_gap'] : 16;
-	if ( $footer_gap < 0 ) :
-		$footer_gap = 0;
-	endif;
+	$avoid_footer    = ! empty( $group['avoid_footer'] );
+	$footer_selector = isset( $group['footer_selector'] )
+		? trim( (string) $group['footer_selector'] )
+		: '';
+	$footer_gap      = isset( $group['footer_gap'] )
+		? (int) $group['footer_gap']
+		: 16;
+	if ( $footer_gap < 0 ) $footer_gap = 0;
 
 	if ( ! $avoid_footer || $footer_selector === '' ) :
 		$avoid_footer    = false;
@@ -99,9 +99,7 @@ function tcres_scroll_to_top_render(): void {
  * Print chat + scroll-to-top back-to-back in the footer so
  * `.tcres-chat + .tcres-scroll-to-top` can offset the button when both exist.
  */
-function tcres_floating_footer_controls_render(): void {
+add_action( 'wp_footer', function(): void {
 	if ( function_exists( 'tcres_chats_render' ) ) tcres_chats_render();
 	tcres_scroll_to_top_render();
-}
-
-add_action( 'wp_footer', 'tcres_floating_footer_controls_render', 20 );
+}, 20 );

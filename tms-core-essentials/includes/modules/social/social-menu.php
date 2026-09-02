@@ -91,16 +91,14 @@ function tcres_social_menu_get(): string {
 }
 
 
-function tcres_social_menu_register_location(): void {
+add_action( 'after_setup_theme', function(): void {
 	if ( ! tcres_social_menu_is_enabled() ) return;
 
 	register_nav_menu(
 		tcres_social_menu_get_location(),
 		__( 'Social menu', 'tms-core-essentials' )
 	);
-}
-
-add_action( 'after_setup_theme', 'tcres_social_menu_register_location', 20 );
+}, 20 );
 
 
 function tcres_social_menu_shortcode(): string {
@@ -108,8 +106,6 @@ function tcres_social_menu_shortcode(): string {
 }
 
 
-function tcres_social_menu_register_shortcode(): void {
+add_action( 'init', function(): void {
 	add_shortcode( 'tcres-social-menu', 'tcres_social_menu_shortcode' );
-}
-
-add_action( 'init', 'tcres_social_menu_register_shortcode' );
+} );

@@ -46,18 +46,11 @@ function tcres_duplicate_posts_get_excluded_meta_keys(): array {
  * @return array<string, string>
  */
 function tcres_duplicate_posts_row_actions( array $actions, WP_Post $post ): array {
-	if ( ! tcres_duplicate_posts_is_enabled_for_post_type( $post->post_type ) ) :
-		return $actions;
-	endif;
-
-	if ( ! current_user_can( 'edit_post', $post->ID ) ) :
-		return $actions;
-	endif;
+	if ( ! tcres_duplicate_posts_is_enabled_for_post_type( $post->post_type ) ) return $actions;
+	if ( ! current_user_can( 'edit_post', $post->ID ) ) return $actions;
 
 	$post_type_object = get_post_type_object( $post->post_type );
-	if ( ! $post_type_object || ! current_user_can( $post_type_object->cap->create_posts ) ) :
-		return $actions;
-	endif;
+	if ( ! $post_type_object || ! current_user_can( $post_type_object->cap->create_posts ) ) return $actions;
 
 	$url = wp_nonce_url(
 		add_query_arg(
@@ -85,6 +78,8 @@ function tcres_duplicate_posts_row_actions( array $actions, WP_Post $post ): arr
 
 	return $actions;
 }
+add_filter( 'post_row_actions', 'tcres_duplicate_posts_row_actions', 10, 2 );
+add_filter( 'page_row_actions', 'tcres_duplicate_posts_row_actions', 10, 2 );
 
 
 /**
@@ -195,8 +190,10 @@ function tcres_duplicate_posts_duplicate( int $post_id ) {
 }
 
 
-function tcres_duplicate_posts_handle_admin_action(): void {
-	$post_id = isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+add_action( 'admin_action_tcres_duplicate_post', function(): void {
+	$post_id = isset( $_GET['post'] )
+		? absint( $_GET['post'] )
+		: 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	if ( $post_id <= 0 ) :
 		wp_die( esc_html__( 'Invalid post.', 'tms-core-essentials' ) );
 	endif;
@@ -215,9 +212,4 @@ function tcres_duplicate_posts_handle_admin_action(): void {
 
 	wp_safe_redirect( $edit_url );
 	exit;
-}
-
-
-add_filter( 'post_row_actions', 'tcres_duplicate_posts_row_actions', 10, 2 );
-add_filter( 'page_row_actions', 'tcres_duplicate_posts_row_actions', 10, 2 );
-add_action( 'admin_action_tcres_duplicate_post', 'tcres_duplicate_posts_handle_admin_action' );
+} );

@@ -7,9 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 function tcres_body_classes_is_enabled(): bool {
-	if ( ! (bool) tcres_option_get( 'bodyclass', 'enable' ) ) :
-		return false;
-	endif;
+	if ( ! (bool) tcres_option_get( 'bodyclass', 'enable' ) ) return false;
 
 	return ! empty( tcres_body_classes_get_post_types() )
 		|| ! empty( tcres_body_classes_get_taxonomies() );
@@ -20,9 +18,7 @@ function tcres_body_classes_is_enabled(): bool {
  * @return array<int, string>
  */
 function tcres_body_classes_get_post_types(): array {
-	if ( ! (bool) tcres_option_get( 'bodyclass', 'enable' ) ) :
-		return array();
-	endif;
+	if ( ! (bool) tcres_option_get( 'bodyclass', 'enable' ) ) return array();
 
 	$post_types = tcres_option_get_for_post_types( 'bodyclass', '' );
 	if ( ! is_array( $post_types ) ) return array();
@@ -35,9 +31,7 @@ function tcres_body_classes_get_post_types(): array {
  * @return array<int, string>
  */
 function tcres_body_classes_get_taxonomies(): array {
-	if ( ! (bool) tcres_option_get( 'bodyclass', 'enable' ) ) :
-		return array();
-	endif;
+	if ( ! (bool) tcres_option_get( 'bodyclass', 'enable' ) ) return array();
 
 	$taxonomies = tcres_option_get_for_taxonomies( 'bodyclass', 'tax_' );
 	if ( ! is_array( $taxonomies ) ) return array();

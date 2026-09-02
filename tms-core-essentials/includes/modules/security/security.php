@@ -18,7 +18,7 @@ function tcres_security_setting_is_enabled( string $key ): bool {
 }
 
 
-function tcres_security_login_errors_filter( mixed $error ): string {
+add_filter( 'login_errors', function( mixed $error ): string {
 	if ( ! tcres_security_setting_is_enabled( 'hide_login_errors' ) ) :
 		return is_string( $error )
 			? $error
@@ -26,7 +26,7 @@ function tcres_security_login_errors_filter( mixed $error ): string {
 	endif;
 
 	return __( 'Login failed. Check your credentials and try again.', 'tms-core-essentials' );
-}
+} );
 
 
 function tcres_security_proxy_visit_detect_is_proxy(): bool {
@@ -50,7 +50,7 @@ function tcres_security_proxy_visit_detect_is_proxy(): bool {
 }
 
 
-function tcres_security_proxy_visit_block(): void {
+add_action( 'after_setup_theme', function(): void {
 	if ( ! tcres_security_setting_is_enabled( 'block_proxy_visits' ) ) return;
 	if ( is_user_logged_in() ) return;
 	if ( ! tcres_security_proxy_visit_detect_is_proxy() ) return;
@@ -60,10 +60,10 @@ function tcres_security_proxy_visit_block(): void {
 		esc_html__( 'Forbidden', 'tms-core-essentials' ),
 		array( 'response' => 403 )
 	);
-}
+} );
 
 
-function tcres_security_user_enumeration_block_request(): void {
+add_action( 'template_redirect', function(): void {
 	if ( ! tcres_security_setting_is_enabled( 'block_user_enumeration' ) ) return;
 	if ( is_admin() || is_user_logged_in() ) return;
 
@@ -73,58 +73,49 @@ function tcres_security_user_enumeration_block_request(): void {
 		exit;
 	endif;
 
-	$query_string = isset( $_SERVER['QUERY_STRING'] ) ? sanitize_text_field( wp_unslash( $_SERVER['QUERY_STRING'] ) ) : '';
+	$query_string = isset( $_SERVER['QUERY_STRING'] )
+		? sanitize_text_field( wp_unslash( $_SERVER['QUERY_STRING'] ) )
+		: '';
 	if ( $query_string !== '' && preg_match( '/(?:^|&)author=\d+/i', $query_string ) ) :
 		wp_safe_redirect( home_url( '/' ), 301 );
 		exit;
 	endif;
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended
-}
+}, 1 );
 
 
-function tcres_security_user_enumeration_filter_canonical( $redirect, $request ) {
+add_filter( 'redirect_canonical', function( $redirect, $request ) {
 	if ( ! tcres_security_setting_is_enabled( 'block_user_enumeration' ) ) return $redirect;
 	if ( is_admin() || is_user_logged_in() ) return $redirect;
 
-	if ( is_string( $request ) && preg_match( '/\?author=\d+/i', $request ) ) :
-		return home_url( '/' );
-	endif;
+	if ( is_string( $request ) && preg_match( '/\?author=\d+/i', $request ) ) return home_url( '/' );
 
 	return $redirect;
-}
+}, 10, 2 );
 
 
-function tcres_security_user_enumeration_filter_rest_endpoints( array $endpoints ): array {
+add_filter( 'rest_endpoints', function( array $endpoints ): array {
 	if ( ! tcres_security_setting_is_enabled( 'block_user_enumeration' ) ) return $endpoints;
 	if ( is_user_logged_in() ) return $endpoints;
 
 	unset( $endpoints['/wp/v2/users'], $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
 
 	return $endpoints;
-}
+} );
 
 
-function tcres_security_author_archive_block_request(): void {
+add_action( 'template_redirect', function(): void {
 	if ( ! tcres_security_setting_is_enabled( 'block_author_archives' ) ) return;
 	if ( is_admin() || is_user_logged_in() ) return;
 	if ( ! is_author() ) return;
 
 	wp_safe_redirect( home_url( '/' ), 301 );
 	exit;
-}
+}, 1 );
 
 
-function tcres_security_xmlrpc_filter_is_enabled( $enabled ) {
+add_filter( 'xmlrpc_enabled', function( $enabled ) {
 	if ( ! tcres_security_setting_is_enabled( 'disable_xmlrpc' ) ) return $enabled;
 
 	return false;
-}
-
-
-add_filter( 'login_errors', 'tcres_security_login_errors_filter' );
-add_action( 'after_setup_theme', 'tcres_security_proxy_visit_block' );
-add_action( 'template_redirect', 'tcres_security_user_enumeration_block_request', 1 );
-add_action( 'template_redirect', 'tcres_security_author_archive_block_request', 1 );
-add_filter( 'redirect_canonical', 'tcres_security_user_enumeration_filter_canonical', 10, 2 );
-add_filter( 'rest_endpoints', 'tcres_security_user_enumeration_filter_rest_endpoints' );
-add_filter( 'xmlrpc_enabled', 'tcres_security_xmlrpc_filter_is_enabled' );
+} );

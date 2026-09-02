@@ -36,7 +36,9 @@ function tcres_related_content_get_post_type_list(): string {
 	$value = (string) tcres_option_get( 'related_content', 'post_type_list' );
 	$allowed = array( 'all', 'current', 'others' );
 
-	return in_array( $value, $allowed, true ) ? $value : 'current';
+	return in_array( $value, $allowed, true )
+		? $value
+		: 'current';
 }
 
 
@@ -52,15 +54,15 @@ function tcres_related_content_get_title_tag(): string {
 	$tag = strtolower( sanitize_key( (string) tcres_option_get( 'related_content', 'title_tag' ) ) );
 	$allowed = array( 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span' );
 
-	return in_array( $tag, $allowed, true ) ? $tag : 'h3';
+	return in_array( $tag, $allowed, true )
+		? $tag
+		: 'h3';
 }
 
 
 function tcres_related_content_get_button_label(): string {
 	$label = trim( (string) tcres_option_get( 'related_content', 'button_label' ) );
-	if ( $label === '' ) :
-		return __( 'Read more', 'tms-core-essentials' );
-	endif;
+	if ( $label === '' ) return __( 'Read more', 'tms-core-essentials' );
 
 	return $label;
 }
@@ -74,7 +76,9 @@ function tcres_related_content_show_taxonomies(): bool {
 function tcres_related_content_get_taxonomies_display(): string {
 	$value = sanitize_key( (string) tcres_option_get( 'related_content', 'taxonomies_display' ) );
 
-	return in_array( $value, array( 'grouped', 'mixed' ), true ) ? $value : 'grouped';
+	return in_array( $value, array( 'grouped', 'mixed' ), true )
+		? $value
+		: 'grouped';
 }
 
 
@@ -135,7 +139,9 @@ function tcres_related_content_get_item_taxonomies_html(
 ): string {
 	if ( $post_id <= 0 || empty( $taxonomies ) ) return '';
 
-	$display = in_array( $display, array( 'grouped', 'mixed' ), true ) ? $display : 'grouped';
+	$display = in_array( $display, array( 'grouped', 'mixed' ), true )
+		? $display
+		: 'grouped';
 	$groups  = array();
 
 	foreach ( $taxonomies as $taxonomy ) :
@@ -154,7 +160,6 @@ function tcres_related_content_get_item_taxonomies_html(
 				. esc_html( $term->name )
 				. '</a>';
 		endforeach;
-
 		if ( empty( $term_links ) ) continue;
 
 		$tax_obj = get_taxonomy( $taxonomy );
@@ -212,14 +217,10 @@ function tcres_related_content_get_primary_term_id( int $post_id, string $taxono
 	endif;
 
 	$yoast = get_post_meta( $post_id, '_yoast_wpseo_primary_' . $taxonomy, true );
-	if ( is_numeric( $yoast ) && (int) $yoast > 0 ) :
-		return (int) $yoast;
-	endif;
+	if ( is_numeric( $yoast ) && (int) $yoast > 0 ) return (int) $yoast;
 
 	$rankmath = get_post_meta( $post_id, 'rank_math_primary_' . $taxonomy, true );
-	if ( is_numeric( $rankmath ) && (int) $rankmath > 0 ) :
-		return (int) $rankmath;
-	endif;
+	if ( is_numeric( $rankmath ) && (int) $rankmath > 0 ) return (int) $rankmath;
 
 	return 0;
 }
@@ -251,6 +252,7 @@ function tcres_related_content_fetch_step( array &$final_ids, array &$exclude_id
 	foreach ( $query->posts as $id ) :
 		$id = (int) $id;
 		if ( $id <= 0 || in_array( $id, $exclude_ids, true ) ) continue;
+
 		$final_ids[]   = $id;
 		$exclude_ids[] = $id;
 	endforeach;
@@ -463,7 +465,9 @@ function tcres_related_content_collect_ids( int $post_id, int $limit, string $ta
 function tcres_related_content_get( array $args = array() ): string {
 	if ( ! tcres_related_content_is_enabled() ) return '';
 
-	$post_id = isset( $args['post_id'] ) ? (int) $args['post_id'] : 0;
+	$post_id = isset( $args['post_id'] )
+		? (int) $args['post_id']
+		: 0;
 	if ( $post_id <= 0 ) :
 		$post_id = (int) get_the_ID();
 	endif;
@@ -654,11 +658,9 @@ function tcres_related_content_shortcode(): string {
 }
 
 
-function tcres_related_content_register_shortcode(): void {
+add_action( 'init', function(): void {
 	add_shortcode( 'tcres-related-content', 'tcres_related_content_shortcode' );
-}
-
-add_action( 'init', 'tcres_related_content_register_shortcode' );
+} );
 
 
 /**
@@ -666,10 +668,7 @@ add_action( 'init', 'tcres_related_content_register_shortcode' );
  */
 function tcres_related_content_get_metabox_query_post_types( string $current_post_type ) {
 	$list = tcres_related_content_get_post_type_list();
-
-	if ( $list === 'current' ) :
-		return $current_post_type;
-	endif;
+	if ( $list === 'current' ) return $current_post_type;
 
 	$public = get_post_types( array( 'public' => true ), 'names' );
 	if ( ! is_array( $public ) ) $public = array();
@@ -796,7 +795,9 @@ function tcres_related_content_save_post( int $post_id ): void {
 
 	$ids = array();
 	for ( $i = 0; $i < $limit; $i++ ) :
-		$id = isset( $raw[ $i ] ) ? $raw[ $i ] : 0;
+		$id = isset( $raw[ $i ] )
+			? $raw[ $i ]
+			: 0;
 		if ( $id > 0 && $id !== $post_id && get_post_status( $id ) === 'publish' ) :
 			$ids[] = $id;
 		else :

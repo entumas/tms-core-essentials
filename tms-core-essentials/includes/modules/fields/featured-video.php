@@ -7,9 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 function tcres_featured_video_is_enabled(): bool {
-	if ( ! (bool) tcres_option_get( 'featured_video', 'enable' ) ) :
-		return false;
-	endif;
+	if ( ! (bool) tcres_option_get( 'featured_video', 'enable' ) ) return false;
 
 	return ! empty( tcres_featured_video_get_post_types() )
 		|| ! empty( tcres_featured_video_get_taxonomies() );
@@ -20,9 +18,7 @@ function tcres_featured_video_is_enabled(): bool {
  * @return array<int, string>
  */
 function tcres_featured_video_get_post_types(): array {
-	if ( ! (bool) tcres_option_get( 'featured_video', 'enable' ) ) :
-		return array();
-	endif;
+	if ( ! (bool) tcres_option_get( 'featured_video', 'enable' ) ) return array();
 
 	$post_types = tcres_option_get_for_post_types( 'featured_video', '' );
 	if ( ! is_array( $post_types ) ) return array();
@@ -35,9 +31,7 @@ function tcres_featured_video_get_post_types(): array {
  * @return array<int, string>
  */
 function tcres_featured_video_get_taxonomies(): array {
-	if ( ! (bool) tcres_option_get( 'featured_video', 'enable' ) ) :
-		return array();
-	endif;
+	if ( ! (bool) tcres_option_get( 'featured_video', 'enable' ) ) return array();
 
 	$taxonomies = tcres_option_get_for_taxonomies( 'featured_video', 'tax_' );
 	if ( ! is_array( $taxonomies ) ) return array();
@@ -113,8 +107,12 @@ function tcres_featured_video_attachment_is_valid( int $attachment_id ): bool {
  * } $args
  */
 function tcres_featured_video_get( array $args = array() ): string {
-	$post_id = isset( $args['post_id'] ) ? (int) $args['post_id'] : 0;
-	$term_id = isset( $args['term_id'] ) ? (int) $args['term_id'] : 0;
+	$post_id = isset( $args['post_id'] )
+		? (int) $args['post_id']
+		: 0;
+	$term_id = isset( $args['term_id'] )
+		? (int) $args['term_id']
+		: 0;
 	$id      = tcres_featured_video_id_get( $post_id, $term_id );
 	if ( $id <= 0 ) return '';
 
@@ -122,7 +120,9 @@ function tcres_featured_video_get( array $args = array() ): string {
 	if ( ! is_string( $url ) || $url === '' ) return '';
 
 	$mime = get_post_mime_type( $id );
-	$mime = is_string( $mime ) ? $mime : '';
+	$mime = is_string( $mime )
+		? $mime
+		: '';
 
 	$class = 'tcres-featured-video';
 	if ( isset( $args['class'] ) ) :
@@ -198,7 +198,9 @@ function tcres_featured_video_get_preview_html( int $attachment_id ): string {
 	if ( ! is_string( $url ) || $url === '' ) return '';
 
 	$mime = get_post_mime_type( $attachment_id );
-	$mime = is_string( $mime ) ? $mime : '';
+	$mime = is_string( $mime )
+		? $mime
+		: '';
 
 	$html  = '<video class="tcres-featured-video-preview-player" muted preload="metadata" playsinline>';
 	$html .= '<source src="' . esc_url( $url ) . '"' . ( $mime !== '' ? ' type="' . esc_attr( $mime ) . '"' : '' ) . ' />';
@@ -284,7 +286,9 @@ function tcres_featured_video_save_post( int $post_id ): void {
 		return;
 	endif;
 
-	$raw = isset( $_POST['tcres_featured_video'] ) ? absint( wp_unslash( $_POST['tcres_featured_video'] ) ) : 0;
+	$raw = isset( $_POST['tcres_featured_video'] )
+		? absint( wp_unslash( $_POST['tcres_featured_video'] ) )
+		: 0;
 	if ( tcres_featured_video_attachment_is_valid( $raw ) ) :
 		update_post_meta( $post_id, 'tcres_featured_video', $raw );
 		return;

@@ -19,13 +19,10 @@ function tcres_disable_gutenberg_post_type_is_disabled( string $post_type ): boo
 }
 
 
-function tcres_disable_gutenberg_filter_block_editor( $is_enabled, $post_type ): bool {
+add_filter( 'use_block_editor_for_post_type', function( $is_enabled, $post_type ): bool {
 	if ( ! is_string( $post_type ) || ! tcres_disable_gutenberg_post_type_is_disabled( $post_type ) ) :
 		return (bool) $is_enabled;
 	endif;
 
 	return false;
-}
-
-
-add_filter( 'use_block_editor_for_post_type', 'tcres_disable_gutenberg_filter_block_editor', 10, 2 );
+}, 10, 2 );

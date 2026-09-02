@@ -47,7 +47,6 @@ function tcres_settings_admin_render_disable_gutenberg_panel(): void {
 	$inactive_count    = $total - $active_count;
 	$card_filter       = tcres_settings_get_current_card_filter( 'disable_gutenberg' );
 	?>
-
 		<h2><?php esc_html_e( 'Disable Gutenberg', 'tms-core-essentials' ); ?></h2>
 		<?php if ( $total > 0 ) : ?>
 			<?php
@@ -263,7 +262,6 @@ function tcres_settings_admin_render_disable_features_panel(): void {
 	$inactive_count = $total - $active_count;
 	$card_filter    = tcres_settings_get_current_card_filter( 'disable_features' );
 	?>
-
 		<h2><?php esc_html_e( 'Disable features', 'tms-core-essentials' ); ?></h2>
 		<?php
 		tcres_settings_cards_panel_render_start( 'disable_features' );
@@ -321,7 +319,7 @@ function tcres_settings_admin_render_disable_features_panel(): void {
 
 
 function tcres_settings_admin_render_posts_list_thumbnail_config( array $posts_list, string $option_name ): void {
-	$selected = isset( $posts_list['thumbnail_post_types'] ) && is_array( $posts_list['thumbnail_post_types'] )
+	$selected   = isset( $posts_list['thumbnail_post_types'] ) && is_array( $posts_list['thumbnail_post_types'] )
 		? $posts_list['thumbnail_post_types']
 		: array();
 	$post_types = tcres_posts_list_get_thumbnail_post_types();
@@ -395,7 +393,9 @@ function tcres_settings_admin_render_posts_list_sortable_config( array $posts_li
 							<?php
 							$field = $option_name . '[posts_list][sortable_columns_config][' . $post_type . '][' . $column_key . ']';
 							$id    = 'tcres-posts-list-sortable-' . sanitize_html_class( $post_type . '-' . $column_key );
-							$col_label = isset( $def['label'] ) ? (string) $def['label'] : $column_key;
+							$col_label = isset( $def['label'] )
+								? (string) $def['label']
+								: $column_key;
 							?>
 							<li>
 								<label class="has-checkbox" for="<?php echo esc_attr( $id ); ?>">
@@ -568,10 +568,10 @@ function tcres_settings_admin_render_terms_list_drag_order_usage(): void {
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
-			<p><?php esc_html_e( 'When enabled, the terms list gains a drag handle and the term edit screen gets a numeric Order field. Order is stored in term meta:', 'tms-core-essentials' ); ?></p>
-			<p><code><?php echo esc_html( $meta_key ); ?></code></p>
-			<p><?php esc_html_e( 'On the frontend, query terms with that meta key:', 'tms-core-essentials' ); ?></p>
-			<pre><code><?php echo esc_html( $example ); ?></code></pre>
+		<p><?php esc_html_e( 'When enabled, the terms list gains a drag handle and the term edit screen gets a numeric Order field. Order is stored in term meta:', 'tms-core-essentials' ); ?></p>
+		<p><code><?php echo esc_html( $meta_key ); ?></code></p>
+		<p><?php esc_html_e( 'On the frontend, query terms with that meta key:', 'tms-core-essentials' ); ?></p>
+		<pre><code><?php echo esc_html( $example ); ?></code></pre>
 	</details>
 	<?php
 }
@@ -590,7 +590,6 @@ function tcres_settings_admin_render_terms_list_panel(): void {
 	$inactive_count = $total - $active_count;
 	$card_filter    = tcres_settings_get_current_card_filter( 'terms_list' );
 	?>
-
 		<h2><?php esc_html_e( 'Terms list', 'tms-core-essentials' ); ?></h2>
 		<?php
 		tcres_settings_cards_panel_render_start( 'terms_list' );
@@ -804,7 +803,6 @@ function tcres_settings_admin_render_utilities_panel(): void {
 	$inactive_count = $total - $active_count;
 	$card_filter    = tcres_settings_get_current_card_filter( 'utilities' );
 	?>
-
 		<h2><?php esc_html_e( 'Utilities', 'tms-core-essentials' ); ?></h2>
 		<?php
 		tcres_settings_cards_panel_render_start( 'utilities' );

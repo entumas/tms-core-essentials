@@ -22,13 +22,10 @@ function tcres_extend_search_get_post_types(): array {
 
 	$out = array();
 	foreach ( $types as $post_type => $enabled ) :
-		if ( empty( $enabled ) ) :
-			continue;
-		endif;
+		if ( empty( $enabled ) ) continue;
 		$post_type = sanitize_key( (string) $post_type );
-		if ( $post_type === '' ) :
-			continue;
-		endif;
+
+		if ( $post_type === '' ) continue;
 		$out[] = $post_type;
 	endforeach;
 
@@ -61,7 +58,9 @@ function tcres_extend_search_get_meta_keys(): array {
 
 function tcres_extend_search_get_meta_mode(): string {
 	$mode = sanitize_key( (string) tcres_option_get( 'extend_search', 'meta_mode' ) );
-	return in_array( $mode, array( 'public', 'keys', 'none' ), true ) ? $mode : 'public';
+	return in_array( $mode, array( 'public', 'keys', 'none' ), true )
+		? $mode
+		: 'public';
 }
 
 
@@ -99,7 +98,7 @@ function tcres_extend_search_query_should_apply( WP_Query $query ): bool {
 }
 
 
-function tcres_extend_search_posts_join_filter( string $join, WP_Query $query ): string {
+add_filter( 'posts_join', function( string $join, WP_Query $query ): string {
 	if ( ! tcres_extend_search_query_should_apply( $query ) ) return $join;
 
 	global $wpdb;
@@ -114,7 +113,7 @@ function tcres_extend_search_posts_join_filter( string $join, WP_Query $query ):
 	endif;
 
 	return $join;
-}
+}, 10, 2 );
 
 
 /**
@@ -132,7 +131,7 @@ function tcres_extend_search_sql_post_type_in( array $post_types ): string {
 }
 
 
-function tcres_extend_search_posts_where_filter( string $where, WP_Query $query ): string {
+add_filter( 'posts_where', function( string $where, WP_Query $query ): string {
 	if ( ! tcres_extend_search_query_should_apply( $query ) ) return $where;
 
 	global $wpdb;
@@ -182,17 +181,17 @@ function tcres_extend_search_posts_where_filter( string $where, WP_Query $query 
 	$where  .= " OR ({$wpdb->posts}.post_type IN ({$type_in}) AND (" . implode( ' OR ', $parts ) . '))';
 
 	return $where;
-}
+}, 10, 2 );
 
 
-function tcres_extend_search_posts_distinct_filter( string $distinct, WP_Query $query ): string {
+add_filter( 'posts_distinct', function( string $distinct, WP_Query $query ): string {
 	if ( ! tcres_extend_search_query_should_apply( $query ) ) return $distinct;
 
 	return 'DISTINCT';
-}
+}, 10, 2 );
 
 
-function tcres_extend_search_prevent_empty( WP_Query $query ): void {
+add_action( 'pre_get_posts', function( WP_Query $query ): void {
 	if ( ! tcres_extend_search_is_enabled() ) return;
 	if ( ! (bool) tcres_option_get( 'extend_search', 'prevent_empty_search' ) ) return;
 	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) return;
@@ -201,10 +200,4 @@ function tcres_extend_search_prevent_empty( WP_Query $query ): void {
 	if ( ! is_string( $search ) || trim( $search ) !== '' ) return;
 
 	$query->set( 'post__in', array( 0 ) );
-}
-
-
-add_action( 'pre_get_posts', 'tcres_extend_search_prevent_empty' );
-add_filter( 'posts_join', 'tcres_extend_search_posts_join_filter', 10, 2 );
-add_filter( 'posts_where', 'tcres_extend_search_posts_where_filter', 10, 2 );
-add_filter( 'posts_distinct', 'tcres_extend_search_posts_distinct_filter', 10, 2 );
+} );

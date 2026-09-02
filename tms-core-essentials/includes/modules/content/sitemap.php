@@ -16,7 +16,9 @@ function tcres_sitemap_is_enabled(): bool {
  */
 function tcres_sitemap_get_query_lang(): string {
 	$lang = tcres_multilingual_get_current_language();
-	return is_string( $lang ) ? $lang : '';
+	return is_string( $lang )
+		? $lang
+		: '';
 }
 
 
@@ -41,8 +43,12 @@ function tcres_sitemap_taxonomy_is_valid_for_post_type( string $taxonomy, string
 function tcres_sitemap_parse_section_max_depth( $value ): ?int {
 	if ( $value === null ) return null;
 	if ( is_string( $value ) && trim( $value ) === '' ) return null;
+
 	$n = absint( $value );
-	return $n >= 1 ? $n : null;
+
+	return $n >= 1
+		? $n
+		: null;
 }
 
 
@@ -68,7 +74,9 @@ function tcres_sitemap_normalize_post_type_cfg( string $post_type, array $cfg ):
 	);
 
 	if ( ! tcres_sitemap_taxonomy_is_valid_for_post_type( $out['taxonomy'], $post_type ) ) :
-		$out['taxonomy'] = $post_type === 'post' ? 'category' : '';
+		$out['taxonomy'] = $post_type === 'post'
+			? 'category'
+			: '';
 		if ( $out['taxonomy'] === '' || ! tcres_sitemap_taxonomy_is_valid_for_post_type( $out['taxonomy'], $post_type ) ) :
 			$out['show_taxonomy'] = false;
 		endif;
@@ -100,7 +108,9 @@ function tcres_sitemap_build_post_types_config( array $config ): array {
 		);
 	endif;
 
-	$cpt_rows = isset( $config['cpt'] ) && is_array( $config['cpt'] ) ? $config['cpt'] : array();
+	$cpt_rows = isset( $config['cpt'] ) && is_array( $config['cpt'] )
+		? $config['cpt']
+		: array();
 	foreach ( $cpt_rows as $post_type => $row ) :
 		if ( ! is_string( $post_type ) || ! post_type_exists( $post_type ) ) continue;
 		if ( $post_type === 'post' || $post_type === 'page' ) continue;
@@ -125,9 +135,7 @@ function tcres_sitemap_get_config( array $args = array() ): array {
 
 	$defaults = array(
 		'hide_empty'          => ! empty( $group['hide_empty'] ),
-		'show_list_bullets'   => array_key_exists( 'show_list_bullets', $group )
-			? ! empty( $group['show_list_bullets'] )
-			: true,
+		'show_list_bullets'   => array_key_exists( 'show_list_bullets', $group ) ? ! empty( $group['show_list_bullets'] ) : true,
 		'max_depth'           => isset( $group['max_depth'] ) ? max( 1, absint( $group['max_depth'] ) ) : 3,
 		'page_sort'           => isset( $group['page_sort'] ) ? (string) $group['page_sort'] : 'menu_order',
 		'blog'                => ! empty( $group['blog'] ),
@@ -142,8 +150,12 @@ function tcres_sitemap_get_config( array $args = array() ): array {
 
 	$config = array_replace_recursive( $defaults, $args );
 
-	$page_sort = isset( $config['page_sort'] ) ? (string) $config['page_sort'] : 'menu_order';
-	$config['page_sort'] = $page_sort === 'alphabetical' ? 'alphabetical' : 'menu_order';
+	$page_sort = isset( $config['page_sort'] )
+		? (string) $config['page_sort']
+		: 'menu_order';
+	$config['page_sort'] = $page_sort === 'alphabetical'
+		? 'alphabetical'
+		: 'menu_order';
 	$config['max_depth'] = max( 1, absint( $config['max_depth'] ?? 3 ) );
 	$config['hide_empty'] = ! empty( $config['hide_empty'] );
 	$config['show_list_bullets'] = ! empty( $config['show_list_bullets'] );
@@ -198,7 +210,9 @@ function tcres_sitemap_get_pages_by_parent( int $parent_id, string $lang, string
 	endif;
 
 	$pages = get_pages( $query );
-	return is_array( $pages ) ? $pages : array();
+	return is_array( $pages )
+		? $pages
+		: array();
 }
 
 
@@ -214,11 +228,15 @@ function tcres_sitemap_resolve_parent_page_id( string $post_type, array $cfg ): 
 			return tcres_multilingual_translate_post_id( $raw );
 		endif;
 		$blog = (int) get_option( 'page_for_posts' );
-		return $blog > 0 ? tcres_multilingual_translate_post_id( $blog ) : 0;
+		return $blog > 0
+			? tcres_multilingual_translate_post_id( $blog )
+			: 0;
 	endif;
 
 	$parent = (int) ( $cfg['parent_page_id'] ?? 0 );
-	return $parent > 0 ? tcres_multilingual_translate_post_id( $parent ) : 0;
+	return $parent > 0
+		? tcres_multilingual_translate_post_id( $parent )
+		: 0;
 }
 
 
@@ -232,9 +250,7 @@ function tcres_sitemap_get_terms_for_taxonomy( string $taxonomy, bool $hide_empt
 		'orderby'    => 'name',
 		'order'      => 'ASC',
 	);
-	if ( $lang !== '' ) :
-		$args['lang'] = $lang;
-	endif;
+	if ( $lang !== '' ) $args['lang'] = $lang;
 
 	$terms = get_terms( $args );
 	if ( is_wp_error( $terms ) || ! is_array( $terms ) ) return array();
@@ -272,18 +288,16 @@ function tcres_sitemap_get_posts_for_term( string $post_type, string $taxonomy, 
 			),
 		),
 	);
-	if ( $lang !== '' ) :
-		$q['lang'] = $lang;
-	endif;
+	if ( $lang !== '' ) $q['lang'] = $lang;
 
 	$post_ids = get_posts( $q );
-	$post_ids = is_array( $post_ids ) ? $post_ids : array();
+	$post_ids = is_array( $post_ids )
+		? $post_ids
+		: array();
 	$posts    = array();
 	foreach ( $post_ids as $post_id ) :
 		$post = get_post( (int) $post_id );
-		if ( $post instanceof WP_Post ) :
-			$posts[] = $post;
-		endif;
+		if ( $post instanceof WP_Post ) $posts[] = $post;
 	endforeach;
 
 	set_transient( $cache_key, $posts, HOUR_IN_SECONDS );
@@ -306,12 +320,12 @@ function tcres_sitemap_get_posts_for_post_type( string $post_type, string $lang 
 		'update_post_meta_cache' => false,
 		'update_post_term_cache' => false,
 	);
-	if ( $lang !== '' ) :
-		$q['lang'] = $lang;
-	endif;
+	if ( $lang !== '' ) $q['lang'] = $lang;
 
 	$posts = get_posts( $q );
-	return is_array( $posts ) ? $posts : array();
+	return is_array( $posts )
+		? $posts
+		: array();
 }
 
 
@@ -359,9 +373,7 @@ function tcres_sitemap_render_post_type_section( string $post_type, array $cfg, 
 		&& tcres_sitemap_taxonomy_is_valid_for_post_type( $taxonomy, $post_type );
 	$show_pts = ! empty( $cfg['show_posts'] );
 
-	if ( $show_tax && $show_pts && $section_max < 3 ) :
-		$show_pts = false;
-	endif;
+	if ( $show_tax && $show_pts && $section_max < 3 ) $show_pts = false;
 
 	$inner = '';
 
@@ -403,7 +415,9 @@ function tcres_sitemap_build_page_list_item( WP_Post $page, int $depth, array $a
 	$html  = '<li><a href="' . esc_url( get_permalink( $page ) ) . '">' . esc_html( $page->post_title ) . '</a>';
 	$extra = '';
 
-	$post_types = isset( $args['post_types'] ) && is_array( $args['post_types'] ) ? $args['post_types'] : array();
+	$post_types = isset( $args['post_types'] ) && is_array( $args['post_types'] )
+		? $args['post_types']
+		: array();
 	foreach ( $post_types as $pt => $cfg ) :
 		if ( ! is_array( $cfg ) ) continue;
 		$parent_id = tcres_sitemap_resolve_parent_page_id( (string) $pt, $cfg );
@@ -460,13 +474,12 @@ function tcres_sitemap_get( array $args = array() ): string {
 	$inner = '<ul class="tcres-sitemap-root">' . $list . '</ul>';
 
 	$class = 'tcres-sitemap';
-	if ( empty( $config['show_list_bullets'] ) ) :
-		$class .= ' is-no-bullets';
-	endif;
-	$extra = isset( $config['class'] ) ? trim( (string) $config['class'] ) : '';
-	if ( $extra !== '' ) :
-		$class .= ' ' . $extra;
-	endif;
+	if ( empty( $config['show_list_bullets'] ) ) $class .= ' is-no-bullets';
+
+	$extra = isset( $config['class'] )
+		? trim( (string) $config['class'] )
+		: '';
+	if ( $extra !== '' ) $class .= ' ' . $extra;
 
 	$html = '<div class="' . esc_attr( $class ) . '">' . $inner . '</div>';
 
@@ -477,7 +490,9 @@ function tcres_sitemap_get( array $args = array() ): string {
 	 * @param array<string, mixed> $config
 	 */
 	$html = apply_filters( 'tcres_sitemap_html', $html, $config );
-	return is_string( $html ) ? $html : '';
+	return is_string( $html )
+		? $html
+		: '';
 }
 
 
@@ -486,8 +501,6 @@ function tcres_sitemap_shortcode(): string {
 }
 
 
-function tcres_sitemap_register_shortcode(): void {
+add_action( 'init', function(): void {
 	add_shortcode( 'tcres-sitemap', 'tcres_sitemap_shortcode' );
-}
-
-add_action( 'init', 'tcres_sitemap_register_shortcode' );
+} );

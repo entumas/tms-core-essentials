@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TMS Core Essentials\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-11 16:28+0000\n"
-"PO-Revision-Date: 2026-08-21 12:27+0000\n"
+"PO-Revision-Date: 2026-09-02 15:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -13,16 +13,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: tms-core-essentials\n"
-"X-Loco-Version: 2.8.8; wp-7.0.2; php-8.3.31"
+"X-Loco-Version: 2.8.8; wp-7.0.2; php-8.3.33"
 
 #. 1: template name, 2: template file
-#: includes/settings/content/social.php:379
+#: includes/settings/content/social.php:384
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
 #. 1: plugin name, 2: required WP version, 3: current WP version, 4: required PHP version, 5: current PHP version
-#: includes/utilities.php:68
+#: includes/utilities.php:72
 #, php-format
 msgid ""
 "%1$s requires WordPress %2$s or higher (you are running %3$s) and PHP %4$s "
@@ -34,13 +34,13 @@ msgstr ""
 "contatta il tuo hosting."
 
 #. %s: Original post title.
-#: includes/modules/admin/duplicate-posts.php:122
+#: includes/modules/admin/duplicate-posts.php:117
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (Copia)"
 
 #. %s: field label "Parent page"
-#: includes/settings/content/content.php:835
+#: includes/settings/content/content.php:850
 #, php-format
 msgid ""
 "%s is the optional page that appears in the trail before items of this type."
@@ -49,7 +49,7 @@ msgstr ""
 "questo tipo."
 
 #. %s: field label "Taxonomy"
-#: includes/settings/content/content.php:842
+#: includes/settings/content/content.php:857
 #, php-format
 msgid "%s is the optional term trail between that page and the item."
 msgstr "%s è il percorso di termini opzionale tra quella pagina e l’elemento."
@@ -66,7 +66,7 @@ msgstr "Tipi di contenuto %s"
 msgid "%s taxonomies"
 msgstr "Tassonomie %s"
 
-#: includes/modules/admin/duplicate-posts.php:125
+#: includes/modules/admin/duplicate-posts.php:120
 msgid "(Copy)"
 msgstr "(Copia)"
 
@@ -124,7 +124,7 @@ msgstr ", facoltativo, predefinito text"
 msgid ", required"
 msgstr ", obbligatorio"
 
-#: includes/settings/components/output-location.php:86
+#: includes/settings/components/output-location.php:96
 msgid "Action hook name from your theme or plugin."
 msgstr "Nome dell’action hook del tema o del plugin."
 
@@ -132,11 +132,11 @@ msgstr "Nome dell’action hook del tema o del plugin."
 msgid "Active"
 msgstr "Attivo"
 
-#: includes/modules/fields/hero.php:285
+#: includes/modules/fields/hero.php:279
 msgid "Add button"
 msgstr "Aggiungi pulsante"
 
-#: includes/modules/fields/bodyclass.php:103
+#: includes/modules/fields/bodyclass.php:97
 msgid "Add classes to <body>"
 msgstr "Aggiungi classi a <body>"
 
@@ -148,7 +148,7 @@ msgstr ""
 "Aggiunge una maniglia di trascinamento nell’elenco di amministrazione per "
 "riordinare gli elementi con menu_order per i tipi di contenuto selezionati."
 
-#: includes/settings/content/admin.php:611
+#: includes/settings/content/admin.php:610
 msgid ""
 "Adds a drag handle on the terms list and an Order field on the term edit "
 "screen for the selected taxonomies."
@@ -156,13 +156,13 @@ msgstr ""
 "Aggiunge una maniglia di trascinamento nell’elenco dei termini e un campo "
 "Ordine nella schermata di modifica del termine per le tassonomie selezionate."
 
-#: includes/settings/content/admin.php:825
+#: includes/settings/content/admin.php:823
 msgid "Adds a Duplicate action on the admin list for the selected post types."
 msgstr ""
 "Aggiunge un’azione Duplica nell’elenco di amministrazione per i tipi di "
 "contenuto selezionati."
 
-#: includes/settings/content/fields.php:313
+#: includes/settings/content/fields.php:309
 msgid ""
 "Adds a featured image field on term screens. Useful for taxonomy archives "
 "and modules such as Hero."
@@ -170,7 +170,7 @@ msgstr ""
 "Aggiunge un campo immagine in evidenza nelle schermate dei termini. Utile "
 "per gli archivi di tassonomia e moduli come Hero."
 
-#: includes/settings/content/fields.php:398
+#: includes/settings/content/fields.php:394
 msgid ""
 "Adds a featured video field on post and term screens. When set, Hero uses "
 "this video as the background (featured/term image becomes the poster when "
@@ -180,7 +180,7 @@ msgstr ""
 "impostato, Hero lo usa come sfondo (l’immagine in evidenza/del termine "
 "diventa il poster se disponibile)."
 
-#: includes/settings/content/fields.php:289
+#: includes/settings/content/fields.php:285
 msgid ""
 "Adds a field to enter extra CSS classes. Classes are applied to the frontend "
 "body tag on singular posts and taxonomy archives."
@@ -188,12 +188,12 @@ msgstr ""
 "Aggiunge un campo per inserire classi CSS extra. Le classi vengono applicate "
 "al tag body del frontend su singoli post e archivi di tassonomia."
 
-#: includes/settings/content/content.php:1399
+#: includes/settings/content/content.php:1434
 msgid ""
 "Adds a floating button in the footer that scrolls the page back to the top."
 msgstr "Aggiunge un pulsante mobile nel footer che riporta la pagina in alto."
 
-#: includes/settings/content/content.php:755
+#: includes/settings/content/content.php:770
 msgid ""
 "Adds a frontend breadcrumbs helper configurable from this panel. Choose an "
 "automatic output location or print with tcres_breadcrumb_get() / [tcres-"
@@ -203,7 +203,7 @@ msgstr ""
 "pannello. Scegli una posizione di output automatica oppure stampalo con "
 "tcres_breadcrumb_get() / [tcres-breadcrumb]."
 
-#: includes/settings/content/content.php:1083
+#: includes/settings/content/content.php:1111
 msgid ""
 "Adds a frontend HTML sitemap helper configurable from this panel. Print with "
 "tcres_sitemap_get() or the shortcode [tcres-sitemap]."
@@ -212,7 +212,7 @@ msgstr ""
 "questo pannello. Stampalo con tcres_sitemap_get() o lo shortcode [tcres-"
 "sitemap]."
 
-#: includes/settings/content/fields.php:450
+#: includes/settings/content/fields.php:446
 msgid ""
 "Adds a Hero with title, featured image or featured video (posts), subtitle, "
 "description (WYSIWYG) and repeatable link buttons for posts and terms."
@@ -221,7 +221,7 @@ msgstr ""
 " sottotitolo, descrizione (WYSIWYG) e pulsanti link ripetibili per post e "
 "termini."
 
-#: includes/settings/content/content.php:386
+#: includes/settings/content/content.php:389
 msgid ""
 "Adds a Related content metabox on enabled post types. Choose an automatic "
 "output location or print with tcres_related_content_get() / [tcres-related-"
@@ -231,13 +231,13 @@ msgstr ""
 "Scegli una posizione di output automatica oppure stampalo con "
 "tcres_related_content_get() / [tcres-related-content]."
 
-#: includes/settings/content/privacy.php:345
+#: includes/settings/content/privacy.php:347
 msgid "Adds a required privacy policy checkbox on selected forms."
 msgstr ""
 "Aggiunge una casella obbligatoria dell’informativa sulla privacy nei moduli "
 "selezionati."
 
-#: includes/settings/content/fields.php:424
+#: includes/settings/content/fields.php:420
 msgid ""
 "Adds a subtitle WYSIWYG in the main editor area for posts, and on term "
 "screens (no media button; primary toolbar only)."
@@ -253,13 +253,13 @@ msgstr ""
 "Aggiunge una colonna immagine alle tabelle elenco dei tipi di contenuto "
 "selezionati in amministrazione."
 
-#: includes/settings/content/privacy.php:179
+#: includes/settings/content/privacy.php:180
 msgid "Adds collapsible privacy notices for forms, registration, and checkout."
 msgstr ""
 "Aggiunge avvisi sulla privacy comprimibili per moduli, registrazione e "
 "checkout."
 
-#: includes/settings/content/social.php:585
+#: includes/settings/content/social.php:601
 msgid ""
 "Adds floating WhatsApp, Telegram and/or Messenger buttons in the site footer."
 msgstr ""
@@ -273,7 +273,7 @@ msgstr ""
 "Aggiunge slug di tipi di contenuto all’elenco di esclusione prima di "
 "calcolare i tipi inclusi."
 
-#: includes/settings/content/social.php:191
+#: includes/settings/content/social.php:192
 msgid ""
 "Adds social share buttons for the current page or post. Choose an automatic "
 "output location or print with tcres_share_content() / "
@@ -283,7 +283,7 @@ msgstr ""
 "Scegli una posizione di output automatica oppure stampali con "
 "tcres_share_content() / tcres_share_content_get() / [tcres-share-content]."
 
-#: includes/settings/content/extras.php:257
+#: includes/settings/content/extras.php:255
 msgid "Admin"
 msgstr "Amministrazione"
 
@@ -291,7 +291,7 @@ msgstr "Amministrazione"
 msgid "Administration"
 msgstr "Amministrazione"
 
-#: includes/settings/content/login.php:130
+#: includes/settings/content/login.php:128
 msgid ""
 "After logout (admin or frontend), always redirect to a configured "
 "destination."
@@ -307,31 +307,31 @@ msgstr "Dopo il contenuto del post"
 msgid "All"
 msgstr "Tutti"
 
-#: includes/settings/content/content.php:419
+#: includes/settings/content/content.php:422
 msgid "All post types"
 msgstr "Tutti i tipi di contenuto"
 
-#: includes/settings/content/content.php:21
+#: includes/settings/content/content.php:25
 msgid "All public custom fields (exclude keys starting with _)"
 msgstr ""
 "Tutti i campi personalizzati pubblici (esclude le chiavi che iniziano con _)"
 
-#: includes/settings/content/admin.php:835
+#: includes/settings/content/admin.php:833
 msgid ""
 "Allow SVG files in the Media Library. Uploaded SVGs are always sanitized."
 msgstr ""
 "Consenti file SVG nella Libreria media. Gli SVG caricati vengono sempre "
 "sanitizzati."
 
-#: includes/settings/content/admin.php:834
+#: includes/settings/content/admin.php:832
 msgid "Allow SVG uploads"
 msgstr "Consenti caricamenti SVG"
 
-#: includes/settings/content/content.php:1123
+#: includes/settings/content/content.php:1151
 msgid "Alphabetical (title)"
 msgstr "Alfabetico (titolo)"
 
-#: includes/settings/content/content.php:105
+#: includes/settings/content/content.php:109
 msgid "Also search term names and descriptions"
 msgstr "Cerca anche nomi e descrizioni dei termini"
 
@@ -340,12 +340,12 @@ msgid "Alters the final list returned by tcres_post_types_get_included()."
 msgstr ""
 "Modifica l’elenco finale restituito da tcres_post_types_get_included()."
 
-#: includes/settings/content/content.php:1167
-#: includes/settings/content/content.php:1290
+#: includes/settings/content/content.php:1194
+#: includes/settings/content/content.php:1323
 msgid "Anchor page in sitemap"
 msgstr "Pagina ancora nella mappa del sito"
 
-#: includes/settings/content/social.php:394
+#: includes/settings/content/social.php:399
 msgid "Archives"
 msgstr "Archivi"
 
@@ -353,20 +353,20 @@ msgstr "Archivi"
 msgid "Author"
 msgstr "Autore"
 
-#: includes/settings/content/social.php:404
+#: includes/settings/content/social.php:409
 msgid "Author (is_author)"
 msgstr "Autore (is_author)"
 
-#: includes/settings/content/content.php:666
+#: includes/settings/content/content.php:673
 msgid "Automatic (Posts page)"
 msgstr "Automatico (pagina dei post)"
 
-#: includes/settings/content/privacy.php:273
+#: includes/settings/content/privacy.php:274
 msgid "Automatic output on the comments form when this notice has content."
 msgstr ""
 "Output automatico sul modulo dei commenti quando questo avviso ha contenuto."
 
-#: includes/settings/content/privacy.php:307
+#: includes/settings/content/privacy.php:308
 msgid ""
 "Automatic output on the WooCommerce checkout (classic shortcode and Checkout "
 "block) when this notice has content."
@@ -374,7 +374,7 @@ msgstr ""
 "Output automatico sul checkout di WooCommerce (shortcode classico e blocco "
 "Checkout) quando questo avviso ha contenuto."
 
-#: includes/settings/content/privacy.php:290
+#: includes/settings/content/privacy.php:291
 msgid ""
 "Automatic output on the WordPress registration form and the WooCommerce "
 "registration form when this notice has content."
@@ -382,7 +382,7 @@ msgstr ""
 "Output automatico sul modulo di registrazione di WordPress e su quello di "
 "WooCommerce quando questo avviso ha contenuto."
 
-#: includes/settings/content/content.php:862
+#: includes/settings/content/content.php:877
 msgid ""
 "Automatic uses the Reading settings Posts page; None omits the parent page."
 msgstr ""
@@ -393,7 +393,7 @@ msgstr ""
 msgid "Before post content"
 msgstr "Prima del contenuto del post"
 
-#: includes/settings/content/privacy.php:166
+#: includes/settings/content/privacy.php:168
 #: includes/modules/privacy/privacy-notice.php:23
 msgid ""
 "Before submitting the form, take a look at the basic information on data "
@@ -427,17 +427,17 @@ msgid "Blocks anonymous visitors when common proxy headers are present."
 msgstr ""
 "Blocca i visitatori anonimi quando sono presenti intestazioni proxy comuni."
 
-#: includes/modules/content/breadcrumbs.php:261
-#: includes/modules/content/breadcrumbs.php:262
+#: includes/modules/content/breadcrumbs.php:277
+#: includes/modules/content/breadcrumbs.php:278
 msgid "Blog"
 msgstr "Blog"
 
-#: includes/settings/content/content.php:849
-#: includes/settings/content/content.php:1146
+#: includes/settings/content/content.php:864
+#: includes/settings/content/content.php:1173
 msgid "Blog / posts"
 msgstr "Blog / post"
 
-#: includes/settings/content/content.php:615
+#: includes/settings/content/content.php:622
 msgid ""
 "Blog / posts trail (0 = automatic Posts page, -1 = none; empty taxonomy = "
 "none)."
@@ -445,25 +445,25 @@ msgstr ""
 "Percorso blog / post (0 = pagina dei post automatica, -1 = nessuno; "
 "tassonomia vuota = nessuno)."
 
-#: includes/settings/content/content.php:1017
+#: includes/settings/content/content.php:1036
 msgid ""
 "Blog section under an anchor page (0 = Posts page from Reading settings)."
 msgstr ""
 "Sezione blog sotto una pagina ancora (0 = pagina dei post dalle impostazioni "
 "Lettura)."
 
-#: includes/settings/content/fields.php:288
-#: includes/modules/fields/bodyclass.php:75
-#: includes/modules/fields/bodyclass.php:134
-#: includes/modules/fields/bodyclass.php:157
+#: includes/settings/content/fields.php:284
+#: includes/modules/fields/bodyclass.php:69
+#: includes/modules/fields/bodyclass.php:128
+#: includes/modules/fields/bodyclass.php:151
 msgid "Body classes"
 msgstr "Classi del body"
 
-#: includes/modules/content/breadcrumbs.php:467
+#: includes/modules/content/breadcrumbs.php:507
 msgid "Breadcrumb"
 msgstr "Breadcrumb"
 
-#: includes/settings/content/content.php:747
+#: includes/settings/content/content.php:762
 msgid "Breadcrumbs"
 msgstr "Breadcrumb"
 
@@ -473,7 +473,7 @@ msgstr ""
 "Indietro e avanti del browser sincronizzano le tab tramite popstate e "
 "hashchange."
 
-#: includes/modules/fields/hero.php:318
+#: includes/modules/fields/hero.php:316
 msgid "Button"
 msgstr "Pulsante"
 
@@ -481,15 +481,15 @@ msgstr "Pulsante"
 msgid "Button configuration"
 msgstr "Configurazione del pulsante"
 
-#: includes/settings/content/content.php:560
+#: includes/settings/content/content.php:567
 msgid "Button label"
 msgstr "Etichetta del pulsante"
 
-#: includes/modules/fields/hero.php:265
+#: includes/modules/fields/hero.php:259
 msgid "Buttons"
 msgstr "Pulsanti"
 
-#: includes/modules/extras/shortcodes.php:125
+#: includes/modules/extras/shortcodes.php:137
 #: includes/modules/fields/hero.php:554
 msgid "Call to"
 msgstr "Chiama"
@@ -498,19 +498,19 @@ msgstr "Chiama"
 msgid "Cart (WooCommerce)"
 msgstr "Carrello (WooCommerce)"
 
-#: includes/settings/content/social.php:577
+#: includes/settings/content/social.php:593
 msgid "Chats"
 msgstr "Chat"
 
-#: includes/settings/content/privacy.php:395
+#: includes/settings/content/privacy.php:397
 msgid "Checkbox label"
 msgstr "Etichetta della casella"
 
-#: includes/settings/content/privacy.php:385
+#: includes/settings/content/privacy.php:387
 msgid "Checkout (WooCommerce)"
 msgstr "Checkout (WooCommerce)"
 
-#: includes/settings/content/privacy.php:296
+#: includes/settings/content/privacy.php:297
 msgid "Checkout notice"
 msgstr "Avviso di checkout"
 
@@ -530,7 +530,7 @@ msgstr ""
 "Classi: tcres-svg-icon + tcres-svg-icon-{icon-id}. L’inline facoltativo "
 "aggiunge tcres-svg-icon-inline."
 
-#: includes/settings/content/admin.php:310
+#: includes/settings/content/admin.php:308
 msgid "Clean admin bar"
 msgstr "Pulisci barra di amministrazione"
 
@@ -547,19 +547,19 @@ msgstr "Facendo clic su una tab si aggiorna l’hash URL con history.pushState."
 msgid "Collapse"
 msgstr "Comprimi"
 
-#: includes/settings/content/admin.php:371
+#: includes/settings/content/admin.php:369
 msgid "Columns by post type"
 msgstr "Colonne per tipo di contenuto"
 
-#: includes/modules/privacy/privacy-consent.php:203
+#: includes/modules/privacy/privacy-consent.php:211
 msgid "Comment Submission Failure"
 msgstr "Invio del commento non riuscito"
 
-#: includes/settings/option.php:133 includes/settings/content/privacy.php:365
+#: includes/settings/option.php:133 includes/settings/content/privacy.php:367
 msgid "Comments"
 msgstr "Commenti"
 
-#: includes/settings/content/privacy.php:262
+#: includes/settings/content/privacy.php:263
 msgid "Comments notice"
 msgstr "Avviso dei commenti"
 
@@ -573,7 +573,7 @@ msgstr "Prefisso comune per chiavi e nonce (ad es. my_)."
 msgid "Compare post types across options"
 msgstr "Confronta i tipi di contenuto tra le opzioni"
 
-#: includes/settings/content/privacy.php:439
+#: includes/settings/content/privacy.php:441
 msgid ""
 "Compatible only with the GDPR Cookie Compliance plugin. Sets all Google "
 "consent signals to denied by default and updates them when the user accepts "
@@ -583,11 +583,11 @@ msgstr ""
 "impostazione predefinita tutti i segnali di consenso Google su denied e li "
 "aggiorna quando l'utente accetta i cookie statistici o di marketing."
 
-#: includes/settings/content/privacy.php:108
+#: includes/settings/content/privacy.php:110
 msgid "Contact Form 7 shortcode:"
 msgstr "Shortcode di Contact Form 7:"
 
-#: includes/settings/content/privacy.php:208
+#: includes/settings/content/privacy.php:209
 msgid "Contact notice"
 msgstr "Avviso di contatto"
 
@@ -612,16 +612,16 @@ msgstr ""
 "Converte uno o più slug in ID di post o termini. Accetta anche valori "
 "numerici. Per i post, cerca solo tra i tipi di contenuto inclusi."
 
-#: includes/modules/social/share-content.php:424
+#: includes/modules/social/share-content.php:442
 msgid "Copied"
 msgstr "Copiato"
 
-#: includes/settings/content/social.php:94
-#: includes/modules/social/share-content.php:420
+#: includes/settings/content/social.php:93
+#: includes/modules/social/share-content.php:438
 msgid "Copy link"
 msgstr "Copia collegamento"
 
-#: includes/settings/content/admin.php:749
+#: includes/settings/content/admin.php:748
 msgid "Copy options"
 msgstr "Opzioni di copia"
 
@@ -631,7 +631,7 @@ msgstr ""
 "Utilità principali ed elementi essenziali condivisi per i progetti WordPress "
 "di TMS."
 
-#: includes/settings/content/social.php:643
+#: includes/settings/content/social.php:658
 msgid "Country code + number, digits only (no spaces or +)."
 msgstr "Prefisso internazionale + numero, solo cifre (senza spazi né +)."
 
@@ -644,7 +644,7 @@ msgstr ""
 "attivazione/disattivazione utilizza .is-open. Mantieni l'etichetta del "
 "titolo come testo semplice/in linea (senza tag di blocco a capo)."
 
-#: includes/settings/content/content.php:1454
+#: includes/settings/content/content.php:1489
 msgid ""
 "CSS selector for the footer element (e.g. #site-footer, .site-footer, footer."
 "wp-block-template-part). Required for this behavior."
@@ -652,7 +652,7 @@ msgstr ""
 "Selettore CSS dell'elemento footer (es. #site-footer, .site-footer, footer."
 "wp-block-template-part). Obbligatorio per questo comportamento."
 
-#: includes/settings/content/content.php:420
+#: includes/settings/content/content.php:423
 msgid "Current post type"
 msgstr "Tipo di contenuto attuale"
 
@@ -660,30 +660,30 @@ msgstr "Tipo di contenuto attuale"
 msgid "Custom"
 msgstr "Personalizzato"
 
-#: includes/modules/fields/bodyclass.php:96
+#: includes/modules/fields/bodyclass.php:90
 msgid "Custom classes"
 msgstr "Classi personalizzate"
 
-#: includes/settings/content/fields.php:173
+#: includes/settings/content/fields.php:169
 msgid "Custom CSS classes for the wrapper (only used when tag is set)."
 msgstr ""
 "Classi CSS personalizzate per il wrapper (usate solo quando è impostato il "
 "tag)."
 
-#: includes/settings/content/content.php:62
+#: includes/settings/content/content.php:66
 msgid "Custom fields"
 msgstr "Campi personalizzati"
 
-#: includes/settings/content/login.php:93
+#: includes/settings/content/login.php:92
 msgid "Custom login page"
 msgstr "Pagina di accesso personalizzata"
 
-#: includes/settings/content/admin.php:235
+#: includes/settings/content/admin.php:234
 msgid "Custom node IDs"
 msgstr "ID nodi personalizzati"
 
-#: includes/modules/admin/terms-list.php:206
-#: includes/modules/admin/terms-list.php:223
+#: includes/modules/admin/terms-list.php:196
+#: includes/modules/admin/terms-list.php:213
 msgid "Custom sort order for this term. Lower numbers appear first."
 msgstr ""
 "Ordine di classificazione personalizzato per questo termine. I numeri più "
@@ -703,11 +703,11 @@ msgstr "Personalizza"
 msgid "Data"
 msgstr "Dati"
 
-#: includes/settings/content/extras.php:297
+#: includes/settings/content/extras.php:294
 msgid "Data / API"
 msgstr "Dati / API"
 
-#: includes/settings/content/social.php:414
+#: includes/settings/content/social.php:419
 msgid "Date (is_date)"
 msgstr "Data (is_date)"
 
@@ -715,11 +715,11 @@ msgstr "Data (is_date)"
 msgid "Date as text (2024-06-15, 15/06/2024, d-m-Y, etc.)."
 msgstr "Data come testo (2024-06-15, 15/06/2024, d-m-Y, ecc.)."
 
-#: includes/settings/content/content.php:1173
+#: includes/settings/content/content.php:1200
 msgid "Default (Settings → Reading)"
 msgstr "Predefinito (Impostazioni → Lettura)"
 
-#: includes/settings/content/extras.php:250
+#: includes/settings/content/extras.php:248
 msgid ""
 "Default sprite URL used by tcres_svg_icon_get() when no file argument is "
 "passed. Leave empty to use the plugin sprite (assets/images/icons.svg)."
@@ -746,39 +746,39 @@ msgstr "Sviluppatori"
 msgid "Disable block editor for %s"
 msgstr "Disattiva l'editor a blocchi per %s"
 
-#: includes/settings/content/admin.php:303
+#: includes/settings/content/admin.php:301
 msgid "Disable comments"
 msgstr "Disabilita commenti"
 
-#: includes/settings/content/admin.php:267
+#: includes/settings/content/admin.php:265
 msgid "Disable features"
 msgstr "Disabilita funzionalità"
 
-#: includes/settings/content/admin.php:278
+#: includes/settings/content/admin.php:276
 msgid "Disable features options"
 msgstr "Opzioni di disabilitazione"
 
-#: includes/settings/content/extras.php:32
+#: includes/settings/content/extras.php:31
 msgid "Disable frontend CSS"
 msgstr "Disattiva CSS del frontend"
 
-#: includes/settings/content/extras.php:44
+#: includes/settings/content/extras.php:43
 msgid "Disable frontend JS"
 msgstr "Disattiva JS del frontend"
 
-#: includes/settings/content/admin.php:51
+#: includes/settings/content/admin.php:50
 msgid "Disable Gutenberg"
 msgstr "Disattiva Gutenberg"
 
-#: includes/settings/content/admin.php:63
+#: includes/settings/content/admin.php:62
 msgid "Disable Gutenberg options"
 msgstr "Opzioni per disattivare Gutenberg"
 
-#: includes/settings/content/admin.php:283
+#: includes/settings/content/admin.php:281
 msgid "Disable post types"
 msgstr "Disabilita tipi di contenuto"
 
-#: includes/settings/content/admin.php:293
+#: includes/settings/content/admin.php:291
 msgid "Disable taxonomies"
 msgstr "Disabilita tassonomie"
 
@@ -798,7 +798,7 @@ msgstr ""
 "Disattiva gli script e gli stili emoji nel frontend, nell'amministrazione, "
 "nell'editor a blocchi, nel RSS, nelle e-mail e nell'editor classico."
 
-#: includes/settings/content/admin.php:284
+#: includes/settings/content/admin.php:282
 msgid ""
 "Disables selected post type admin screens and redirects their frontend URLs "
 "to the homepage."
@@ -806,7 +806,7 @@ msgstr ""
 "Disabilita le schermate di amministrazione dei tipi di contenuto selezionati "
 "e reindirizza i loro URL frontend alla homepage."
 
-#: includes/settings/content/admin.php:294
+#: includes/settings/content/admin.php:292
 msgid ""
 "Disables selected taxonomy admin screens and redirects their frontend "
 "archives to the homepage."
@@ -822,15 +822,15 @@ msgstr ""
 "Disattiva l'API XML-RPC se il tuo sito non dipende dalla pubblicazione "
 "remota o da integrazioni."
 
-#: includes/settings/content/extras.php:45
+#: includes/settings/content/extras.php:44
 msgid "Do not load plugin scripts on the frontend."
 msgstr "Non caricare gli script del plugin nel frontend."
 
-#: includes/settings/content/extras.php:33
+#: includes/settings/content/extras.php:32
 msgid "Do not load plugin styles on the frontend."
 msgstr "Non caricare gli stili del plugin nel frontend."
 
-#: includes/settings/content/content.php:23
+#: includes/settings/content/content.php:27
 msgid "Do not search custom fields"
 msgstr "Non cercare nei campi personalizzati"
 
@@ -838,36 +838,36 @@ msgstr "Non cercare nei campi personalizzati"
 msgid "Do you need help?"
 msgstr "Hai bisogno di aiuto?"
 
-#: includes/settings/content/admin.php:697
+#: includes/settings/content/admin.php:696
 msgid "Draft"
 msgstr "Bozza"
 
 #: includes/settings/content/admin.php:511
-#: includes/settings/content/admin.php:610
-#: includes/modules/admin/terms-list.php:90
+#: includes/settings/content/admin.php:609
+#: includes/modules/admin/terms-list.php:88
 #: includes/modules/admin/posts-list.php:93
 msgid "Drag to reorder"
 msgstr "Trascina per riordinare"
 
-#: includes/modules/admin/duplicate-posts.php:83
+#: includes/modules/admin/duplicate-posts.php:76
 msgid "Duplicate"
 msgstr "Duplica"
 
-#: includes/settings/content/admin.php:824
+#: includes/settings/content/admin.php:822
 msgid "Duplicate posts"
 msgstr "Duplica articoli"
 
 #. %s: Post title.
-#: includes/modules/admin/duplicate-posts.php:79
+#: includes/modules/admin/duplicate-posts.php:72
 #, php-format
 msgid "Duplicate “%s”"
 msgstr "Duplica “%s”"
 
-#: includes/settings/content/admin.php:737
+#: includes/settings/content/admin.php:736
 msgid "Duplicated post"
 msgstr "Articolo duplicato"
 
-#: includes/modules/admin/duplicate-posts.php:102
+#: includes/modules/admin/duplicate-posts.php:97
 msgid "Duplication is not enabled for this post type."
 msgstr "La duplicazione non è abilitata per questo tipo di contenuto."
 
@@ -880,19 +880,19 @@ msgstr ""
 "icona nello sprite (es. facebook, x, bluesky). Le opzioni di markup si "
 "configurano solo in questo pannello."
 
-#: includes/settings/content/extras.php:347
+#: includes/settings/content/extras.php:344
 msgid "Embed a Vimeo video by ID."
 msgstr "Incorpora un video Vimeo tramite ID."
 
-#: includes/settings/content/extras.php:342
+#: includes/settings/content/extras.php:339
 msgid "Embed a YouTube video by ID."
 msgstr "Incorpora un video YouTube tramite ID."
 
-#: includes/settings/content/extras.php:337
+#: includes/settings/content/extras.php:334
 msgid "Embeds"
 msgstr "Incorporamenti"
 
-#: includes/settings/content/content.php:114
+#: includes/settings/content/content.php:118
 msgid "Empty searches"
 msgstr "Ricerche vuote"
 
@@ -902,23 +902,23 @@ msgstr "Ricerche vuote"
 msgid "Enable %s"
 msgstr "Abilita %s"
 
-#: includes/settings/content/social.php:728
+#: includes/settings/content/social.php:743
 msgid "Enable Messenger"
 msgstr "Abilita Messenger"
 
-#: includes/settings/content/extras.php:380
+#: includes/settings/content/extras.php:376
 msgid "Enable shortcodes"
 msgstr "Abilita shortcode"
 
-#: includes/settings/content/social.php:678
+#: includes/settings/content/social.php:693
 msgid "Enable Telegram"
 msgstr "Abilita Telegram"
 
-#: includes/settings/content/social.php:627
+#: includes/settings/content/social.php:642
 msgid "Enable WhatsApp"
 msgstr "Abilita WhatsApp"
 
-#: includes/settings/content/extras.php:141
+#: includes/settings/content/extras.php:138
 msgid "Enables smooth scrolling on the frontend."
 msgstr "Abilita lo scorrimento fluido nel frontend."
 
@@ -955,19 +955,19 @@ msgstr "Esempio"
 msgid "Exclude post types from the included list"
 msgstr "Escludi tipi di contenuto dall'elenco incluso"
 
-#: includes/settings/content/extras.php:216
+#: includes/settings/content/extras.php:212
 msgid "Exclude selectors"
 msgstr "Selettori da escludere"
 
-#: includes/settings/content/extras.php:214
+#: includes/settings/content/extras.php:210
 msgid "Exclusions"
 msgstr "Esclusioni"
 
-#: includes/settings/content/content.php:141
+#: includes/settings/content/content.php:144
 msgid "Extend search"
 msgstr "Estendi ricerca"
 
-#: includes/settings/content/content.php:149
+#: includes/settings/content/content.php:152
 msgid ""
 "Extends frontend search beyond title and content for the selected post types."
 msgstr ""
@@ -986,24 +986,24 @@ msgstr ""
 msgid "Extensible via the Filters section below."
 msgstr "Estendibile tramite la sezione Filtri qui sotto."
 
-#: includes/settings/content/extras.php:88
+#: includes/settings/content/extras.php:85
 msgid "External scripts"
 msgstr "Script esterni"
 
-#: includes/settings/content/content.php:623
+#: includes/settings/content/content.php:630
 msgid "Extra CSS class(es). The nav always includes tcres-breadcrumbs."
 msgstr "Classe/i CSS aggiuntive. Il nav include sempre tcres-breadcrumbs."
 
-#: includes/settings/content/fields.php:211
+#: includes/settings/content/fields.php:207
 msgid "Extra CSS class(es). The wrapper always includes tcres-hero."
 msgstr "Classe/i CSS aggiuntive. Il wrapper include sempre tcres-hero."
 
-#: includes/settings/content/content.php:279
+#: includes/settings/content/content.php:282
 msgid "Extra CSS class(es). The wrapper always includes tcres-related-content."
 msgstr ""
 "Classe/i CSS aggiuntive. Il wrapper include sempre tcres-related-content."
 
-#: includes/settings/content/content.php:1025
+#: includes/settings/content/content.php:1044
 msgid "Extra CSS class(es). The wrapper always includes tcres-sitemap."
 msgstr "Classe/i CSS aggiuntive. Il wrapper include sempre tcres-sitemap."
 
@@ -1011,17 +1011,17 @@ msgstr "Classe/i CSS aggiuntive. Il wrapper include sempre tcres-sitemap."
 msgid "Extras"
 msgstr "Extra"
 
-#: includes/settings/content/social.php:735
+#: includes/settings/content/social.php:750
 msgid "Facebook page ID"
 msgstr "ID pagina Facebook"
 
-#: includes/settings/content/content.php:291
+#: includes/settings/content/content.php:294
 msgid "Fallback taxonomy (default: post_tag)."
 msgstr "Tassonomia di riserva (predefinita: post_tag)."
 
-#: includes/settings/content/admin.php:782
-#: includes/modules/fields/term-image.php:154
-#: includes/modules/fields/term-image.php:174
+#: includes/settings/content/admin.php:781
+#: includes/modules/fields/term-image.php:150
+#: includes/modules/fields/term-image.php:170
 msgid "Featured image"
 msgstr "Immagine in evidenza"
 
@@ -1029,28 +1029,28 @@ msgstr "Immagine in evidenza"
 msgid "Featured image column"
 msgstr "Colonna immagine in evidenza"
 
-#: includes/settings/content/fields.php:312
+#: includes/settings/content/fields.php:308
 msgid "Featured image for terms"
 msgstr "Immagine in evidenza per i termini"
 
-#: includes/settings/content/fields.php:215
+#: includes/settings/content/fields.php:211
 msgid "Featured image size name (default: full), or [width, height]."
 msgstr ""
 "Nome della dimensione dell'immagine in evidenza (predefinito: full), oppure "
 "[width, height]."
 
-#: includes/settings/content/fields.php:397
-#: includes/modules/fields/featured-video.php:250
-#: includes/modules/fields/featured-video.php:301
-#: includes/modules/fields/featured-video.php:321
+#: includes/settings/content/fields.php:393
+#: includes/modules/fields/featured-video.php:252
+#: includes/modules/fields/featured-video.php:305
+#: includes/modules/fields/featured-video.php:325
 msgid "Featured video"
 msgstr "Video in evidenza"
 
-#: includes/settings/content/fields.php:146
+#: includes/settings/content/fields.php:142
 msgid "Field modules"
 msgstr "Moduli dei campi"
 
-#: includes/settings/navigation.php:32 includes/settings/content/fields.php:135
+#: includes/settings/navigation.php:32 includes/settings/content/fields.php:131
 msgid "Fields"
 msgstr "Campi"
 
@@ -1073,11 +1073,11 @@ msgstr ""
 "Filtra il valore del campo meta sanificato prima del salvataggio con "
 "tcres_post_meta_update() o tcres_term_meta_update() quando sanitize è text."
 
-#: includes/settings/content/content.php:1427
+#: includes/settings/content/content.php:1462
 msgid "Footer"
 msgstr "Footer"
 
-#: includes/settings/content/content.php:1446
+#: includes/settings/content/content.php:1481
 msgid "Footer selector"
 msgstr "Selettore del footer"
 
@@ -1090,15 +1090,15 @@ msgstr "Vietato"
 msgid "Format dates"
 msgstr "Formatta le date"
 
-#: includes/settings/content/social.php:326
+#: includes/settings/content/social.php:325
 msgid "Front page (is_front_page)"
 msgstr "Pagina iniziale (is_front_page)"
 
-#: includes/settings/content/extras.php:271
+#: includes/settings/content/extras.php:269
 msgid "Frontend"
 msgstr "Frontend"
 
-#: includes/settings/content/extras.php:20
+#: includes/settings/content/extras.php:19
 msgid "Frontend assets"
 msgstr "Asset del frontend"
 
@@ -1118,11 +1118,11 @@ msgstr ""
 "Gruppo completo: tcres_option_get( 'security' ). Le chiavi con valori null "
 "nelle impostazioni contano come esistenti."
 
-#: includes/settings/content/extras.php:265
+#: includes/settings/content/extras.php:263
 msgid "Full URL to the .svg sprite used in the admin."
 msgstr "URL completo dello sprite .svg usato nell'amministrazione."
 
-#: includes/settings/content/extras.php:279
+#: includes/settings/content/extras.php:277
 msgid "Full URL to the .svg sprite used on the frontend."
 msgstr "URL completo dello sprite .svg usato nel frontend."
 
@@ -1134,18 +1134,18 @@ msgstr ""
 "URL completo dello sprite .svg. Se vuoto usa Extra → Icone SVG "
 "(frontend/admin), poi il valore predefinito del plugin."
 
-#: includes/settings/content/content.php:1457
+#: includes/settings/content/content.php:1492
 msgid "Gap above footer"
 msgstr "Spazio sopra il footer"
 
-#: includes/settings/content/content.php:764
-#: includes/settings/content/content.php:1092
-#: includes/settings/content/social.php:316
-#: includes/settings/content/social.php:595
+#: includes/settings/content/content.php:779
+#: includes/settings/content/content.php:1120
+#: includes/settings/content/social.php:315
+#: includes/settings/content/social.php:610
 msgid "General"
 msgstr "Generale"
 
-#: includes/settings/content/content.php:1013
+#: includes/settings/content/content.php:1032
 msgid "General list behaviour (page tree)."
 msgstr "Comportamento generale dell'elenco (albero delle pagine)."
 
@@ -1211,7 +1211,7 @@ msgstr "Ottieni informazioni sul template"
 msgid "Get term fields"
 msgstr "Ottieni i campi del termine"
 
-#: includes/settings/content/fields.php:164
+#: includes/settings/content/fields.php:160
 msgid ""
 "Get the subtitle HTML on the frontend (auto-detects singular posts and "
 "taxonomy archives):"
@@ -1223,20 +1223,20 @@ msgstr ""
 msgid "get_template_part"
 msgstr "get_template_part"
 
-#: includes/settings/content/privacy.php:431
+#: includes/settings/content/privacy.php:433
 msgid "Google Consent Mode v2"
 msgstr "Google Consent Mode v2"
 
-#: includes/settings/content/content.php:513
+#: includes/settings/content/content.php:520
 msgid "Grouped (one list per taxonomy)"
 msgstr "Raggruppato (un elenco per tassonomia)"
 
-#: includes/settings/content/content.php:311
+#: includes/settings/content/content.php:314
 msgid "grouped (one list per taxonomy) or mixed (single flat list)."
 msgstr "grouped (un elenco per tassonomia) o mixed (un unico elenco piatto)."
 
-#: includes/settings/content/content.php:1178
-#: includes/settings/content/content.php:1302
+#: includes/settings/content/content.php:1205
+#: includes/settings/content/content.php:1335
 msgid "Grouping taxonomy"
 msgstr "Tassonomia di raggruppamento"
 
@@ -1244,7 +1244,7 @@ msgstr "Tassonomia di raggruppamento"
 msgid "Height rule with the same structure as $width."
 msgstr "Regola dell'altezza con la stessa struttura di $width."
 
-#: includes/settings/content/social.php:553
+#: includes/settings/content/social.php:558
 #: includes/modules/social/chats.php:41
 msgid "Hello, I need more information about your products/services."
 msgstr "Ciao, ho bisogno di maggiori informazioni sui vostri prodotti/servizi."
@@ -1254,13 +1254,13 @@ msgstr "Ciao, ho bisogno di maggiori informazioni sui vostri prodotti/servizi."
 msgid "Helpers"
 msgstr "Helper"
 
-#: includes/settings/content/fields.php:449
+#: includes/settings/content/fields.php:445
 #: includes/modules/fields/hero.php:415 includes/modules/fields/hero.php:445
 #: includes/modules/fields/hero.php:476
 msgid "Hero"
 msgstr "Hero"
 
-#: includes/settings/content/content.php:1102
+#: includes/settings/content/content.php:1130
 msgid "Hide empty taxonomy terms"
 msgstr "Nascondi i termini di tassonomia vuoti"
 
@@ -1268,7 +1268,7 @@ msgstr "Nascondi i termini di tassonomia vuoti"
 msgid "Hide login error messages"
 msgstr "Nascondi i messaggi di errore di accesso"
 
-#: includes/settings/content/admin.php:311
+#: includes/settings/content/admin.php:309
 msgid ""
 "Hides selected admin bar nodes per user role, including custom node IDs."
 msgstr ""
@@ -1279,19 +1279,19 @@ msgstr ""
 msgid "Home"
 msgstr "Home"
 
-#: includes/settings/content/social.php:336
+#: includes/settings/content/social.php:335
 msgid "Home (is_home)"
 msgstr "Home (is_home)"
 
-#: includes/settings/content/content.php:611
+#: includes/settings/content/content.php:618
 msgid "Home crumb: icon_label (default), label, or icon."
 msgstr "Briciola Home: icon_label (predefinito), label o icon."
 
-#: includes/settings/content/content.php:793
+#: includes/settings/content/content.php:808
 msgid "Home display"
 msgstr "Visualizzazione Home"
 
-#: includes/settings/content/content.php:811
+#: includes/settings/content/content.php:826
 msgid "Home label"
 msgstr "Etichetta Home"
 
@@ -1314,19 +1314,19 @@ msgstr "https://tumasmuntane.com/"
 msgid "I accept the %s."
 msgstr "Accetto la %s."
 
-#: includes/settings/content/privacy.php:332
+#: includes/settings/content/privacy.php:335
 msgid "I accept the [privacy_policy]."
 msgstr "Accetto la [privacy_policy]."
 
-#: includes/modules/privacy/privacy-consent.php:344
+#: includes/modules/privacy/privacy-consent.php:352
 msgid "I accept the privacy policy."
 msgstr "Accetto l'informativa sulla privacy."
 
-#: includes/settings/content/content.php:801
+#: includes/settings/content/content.php:816
 msgid "Icon and label"
 msgstr "Icona e etichetta"
 
-#: includes/settings/content/content.php:803
+#: includes/settings/content/content.php:818
 msgid "Icon only"
 msgstr "Solo icona"
 
@@ -1342,11 +1342,11 @@ msgstr "Immagine"
 msgid "Image attachment ID."
 msgstr "ID dell'allegato immagine."
 
-#: includes/settings/content/content.php:447
+#: includes/settings/content/content.php:450
 msgid "Image size"
 msgstr "Dimensione immagine"
 
-#: includes/settings/content/fields.php:253
+#: includes/settings/content/fields.php:249
 msgid "Image size name (default: full), or [width, height]."
 msgstr ""
 "Nome della dimensione immagine (predefinito: full), oppure [width, height]."
@@ -1356,7 +1356,7 @@ msgid "Image sizes, dimension checks, and SVG sprite icons."
 msgstr ""
 "Dimensioni immagine, controlli delle dimensioni e icone dello sprite SVG."
 
-#: includes/modules/social/share-content.php:373
+#: includes/modules/social/share-content.php:389
 msgid "in"
 msgstr "in"
 
@@ -1364,12 +1364,12 @@ msgstr "in"
 msgid "Inactive"
 msgstr "Inattivo"
 
-#: includes/settings/content/content.php:1160
-#: includes/settings/content/content.php:1283
+#: includes/settings/content/content.php:1187
+#: includes/settings/content/content.php:1316
 msgid "Include section in sitemap"
 msgstr "Includi la sezione nella mappa del sito"
 
-#: includes/modules/admin/duplicate-posts.php:201
+#: includes/modules/admin/duplicate-posts.php:198
 msgid "Invalid post."
 msgstr "Articolo non valido."
 
@@ -1423,7 +1423,7 @@ msgid "Key within the group. If empty, returns the full group."
 msgstr ""
 "Chiave all'interno del gruppo. Se vuota, restituisce il gruppo completo."
 
-#: includes/settings/content/content.php:802
+#: includes/settings/content/content.php:817
 msgid "Label only"
 msgstr "Solo etichetta"
 
@@ -1435,7 +1435,7 @@ msgstr "Lascia una recensione"
 msgid "Leave empty to use the default title."
 msgstr "Lascia vuoto per usare il titolo predefinito."
 
-#: includes/settings/content/privacy.php:409
+#: includes/settings/content/privacy.php:411
 msgid ""
 "Leave empty to use the default. Use the token [privacy_policy] to insert a "
 "link to the WordPress privacy policy page."
@@ -1443,19 +1443,19 @@ msgstr ""
 "Lascia vuoto per usare il valore predefinito. Usa il token [privacy_policy] "
 "per inserire un link alla pagina dell'informativa sulla privacy di WordPress."
 
-#: includes/settings/content/content.php:818
+#: includes/settings/content/content.php:833
 msgid "Leave empty to use the front page title."
 msgstr "Lascia vuoto per usare il titolo della pagina iniziale."
 
-#: includes/settings/content/extras.php:166
+#: includes/settings/content/extras.php:162
 msgid "Lerp"
 msgstr "Lerp"
 
-#: includes/settings/content/social.php:597
+#: includes/settings/content/social.php:612
 msgid "Link attribute title"
 msgstr "Attributo title del link"
 
-#: includes/modules/fields/hero.php:325
+#: includes/modules/fields/hero.php:323
 msgid "Link text"
 msgstr "Testo del link"
 
@@ -1467,14 +1467,14 @@ msgstr "Caricare /page#specs apre la tab corrispondente."
 msgid "Loading without a hash opens the default tab without changing the URL."
 msgstr "Caricare senza hash apre la tab predefinita senza modificare l’URL."
 
-#: includes/settings/content/extras.php:80
+#: includes/settings/content/extras.php:78
 msgid ""
 "Loads Choices.js (CSS + JS) on the frontend. Use window.Choices from your "
 "theme."
 msgstr ""
 "Carica Choices.js (CSS + JS) nel frontend. Usa window.Choices dal tuo tema."
 
-#: includes/settings/content/extras.php:74
+#: includes/settings/content/extras.php:72
 msgid ""
 "Loads GLightbox.js (CSS + JS) on the frontend. Use window.GLightbox from "
 "your theme."
@@ -1482,7 +1482,7 @@ msgstr ""
 "Carica GLightbox.js (CSS + JS) nel frontend. Usa window.GLightbox dal tuo "
 "tema."
 
-#: includes/settings/content/extras.php:154
+#: includes/settings/content/extras.php:151
 msgid ""
 "Loads Lenis.js (CSS + JS) on the frontend. Initializes smooth scrolling "
 "automatically."
@@ -1490,7 +1490,7 @@ msgstr ""
 "Carica Lenis.js (CSS + JS) nel frontend. Inizializza automaticamente lo "
 "scorrimento fluido."
 
-#: includes/settings/content/extras.php:68
+#: includes/settings/content/extras.php:66
 msgid ""
 "Loads Swiper.js (CSS + JS) on the frontend. Use window.Swiper from your "
 "theme."
@@ -1509,11 +1509,11 @@ msgstr "Accesso non riuscito. Controlla le credenziali e riprova."
 msgid "Login page"
 msgstr "Pagina di accesso"
 
-#: includes/settings/content/login.php:122
+#: includes/settings/content/login.php:120
 msgid "Logout redirect"
 msgstr "Reindirizzamento alla disconnessione"
 
-#: includes/settings/content/fields.php:353
+#: includes/settings/content/fields.php:349
 msgid "Loop playback. Default: false."
 msgstr "Riproduzione in loop. Predefinito: false."
 
@@ -1521,12 +1521,12 @@ msgstr "Riproduzione in loop. Predefinito: false."
 msgid "loop_end"
 msgstr "loop_end"
 
-#: includes/settings/content/extras.php:175
+#: includes/settings/content/extras.php:171
 msgid "Lower = smoother / heavier (default 0.05)."
 msgstr "Più basso = più fluido / più pesante (predefinito 0.05)."
 
-#: includes/settings/content/social.php:93
-#: includes/modules/social/share-content.php:410
+#: includes/settings/content/social.php:92
+#: includes/modules/social/share-content.php:428
 msgid "Mail"
 msgstr "Posta"
 
@@ -1547,11 +1547,11 @@ msgstr "Manuale"
 msgid "Markup"
 msgstr "Markup"
 
-#: includes/settings/content/extras.php:317
+#: includes/settings/content/extras.php:314
 msgid "Markup / UI"
 msgstr "Markup / UI"
 
-#: includes/settings/content/content.php:1127
+#: includes/settings/content/content.php:1155
 msgid "Max depth (page hierarchy)"
 msgstr "Profondità massima (gerarchia delle pagine)"
 
@@ -1560,15 +1560,15 @@ msgstr "Profondità massima (gerarchia delle pagine)"
 msgid "Media"
 msgstr "Media"
 
-#: includes/settings/content/content.php:1122
+#: includes/settings/content/content.php:1150
 msgid "Menu order"
 msgstr "Ordine del menu"
 
-#: includes/settings/content/social.php:716
+#: includes/settings/content/social.php:731
 msgid "Messenger"
 msgstr "Messenger"
 
-#: includes/settings/content/admin.php:771
+#: includes/settings/content/admin.php:770
 msgid "Meta"
 msgstr "Meta"
 
@@ -1576,14 +1576,14 @@ msgstr "Meta"
 msgid "Meta key that stores a field group."
 msgstr "Chiave meta che memorizza un gruppo di campi."
 
-#: includes/settings/content/content.php:335
-#: includes/settings/content/fields.php:185
-#: includes/settings/content/fields.php:265
-#: includes/settings/content/fields.php:371
+#: includes/settings/content/content.php:338
+#: includes/settings/content/fields.php:181
+#: includes/settings/content/fields.php:261
+#: includes/settings/content/fields.php:367
 msgid "Meta key:"
 msgstr "Chiave meta:"
 
-#: includes/settings/content/content.php:80
+#: includes/settings/content/content.php:84
 msgid "Meta keys"
 msgstr "Chiavi meta"
 
@@ -1592,7 +1592,7 @@ msgstr "Chiavi meta"
 msgid "Meta keys to read from $_POST. Nonce is derived from the first element."
 msgstr "Chiavi meta da leggere da $_POST. Il nonce deriva dal primo elemento."
 
-#: includes/settings/content/fields.php:227
+#: includes/settings/content/fields.php:223
 msgid "Meta keys:"
 msgstr "Chiavi meta:"
 
@@ -1611,7 +1611,7 @@ msgstr ""
 msgid "Meta write"
 msgstr "Scrittura meta"
 
-#: includes/settings/content/content.php:514
+#: includes/settings/content/content.php:521
 msgid "Mixed (single flat list)"
 msgstr "Misto (un unico elenco piatto)"
 
@@ -1620,15 +1620,15 @@ msgstr "Misto (un unico elenco piatto)"
 msgid "Modify included post types"
 msgstr "Modifica i tipi di contenuto inclusi"
 
-#: includes/settings/content/extras.php:164
+#: includes/settings/content/extras.php:160
 msgid "Motion"
 msgstr "Movimento"
 
-#: includes/settings/content/content.php:1439
+#: includes/settings/content/content.php:1474
 msgid "Move up when the footer is visible"
 msgstr "Sposta in alto quando il footer è visibile"
 
-#: includes/settings/content/fields.php:349
+#: includes/settings/content/fields.php:345
 msgid ""
 "Mute audio. Default: true when autoplay is on (required by browsers), "
 "otherwise false."
@@ -1648,27 +1648,27 @@ msgstr "Reti"
 msgid "New content"
 msgstr "Nuovo contenuto"
 
-#: includes/settings/content/content.php:883
+#: includes/settings/content/content.php:898
 msgid "No custom post types with a UI were found."
 msgstr "Nessun tipo di contenuto personalizzato con interfaccia trovato."
 
-#: includes/settings/content/admin.php:201
+#: includes/settings/content/admin.php:200
 msgid "No editable roles were found."
 msgstr "Nessun ruolo modificabile trovato."
 
-#: includes/settings/content/content.php:406
-#: includes/settings/content/admin.php:77
-#: includes/settings/content/admin.php:92
-#: includes/settings/content/admin.php:332
-#: includes/settings/content/admin.php:373
+#: includes/settings/content/content.php:409
+#: includes/settings/content/admin.php:76
+#: includes/settings/content/admin.php:91
+#: includes/settings/content/admin.php:330
+#: includes/settings/content/admin.php:371
 #: includes/settings/content/admin.php:430
-#: includes/settings/content/admin.php:707
+#: includes/settings/content/admin.php:706
 #: includes/settings/content/fields.php:74
 msgid "No eligible post types were found."
 msgstr "Nessun tipo di contenuto idoneo trovato."
 
-#: includes/settings/content/content.php:496
-#: includes/settings/content/admin.php:134
+#: includes/settings/content/content.php:503
+#: includes/settings/content/admin.php:133
 #: includes/settings/content/admin.php:533
 #: includes/settings/content/fields.php:100
 msgid "No eligible taxonomies were found."
@@ -1681,31 +1681,31 @@ msgstr "Nessuna tassonomia idonea trovata."
 msgid "No parameters."
 msgstr "Nessun parametro."
 
-#: includes/settings/content/content.php:1239
+#: includes/settings/content/content.php:1266
 msgid "No public custom post types are registered."
 msgstr "Nessun tipo di contenuto personalizzato pubblico è registrato."
 
-#: includes/settings/content/admin.php:654
+#: includes/settings/content/admin.php:653
 msgid "No roles with upload permission were found."
 msgstr "Nessun ruolo con permesso di caricamento trovato."
 
-#: includes/settings/content/content.php:29
+#: includes/settings/content/content.php:33
 msgid "No searchable post types were found."
 msgstr "Nessun tipo di contenuto ricercabile trovato."
 
-#: includes/settings/content/admin.php:391
+#: includes/settings/content/admin.php:389
 msgid "No sortable columns available for this post type."
 msgstr "Nessuna colonna ordinabile disponibile per questo tipo di contenuto."
 
-#: includes/settings/content/content.php:1182
+#: includes/settings/content/content.php:1209
 msgid "No taxonomies available for posts."
 msgstr "Nessuna tassonomia disponibile per gli articoli."
 
-#: includes/settings/content/content.php:931
+#: includes/settings/content/content.php:950
 msgid "No taxonomies available for this post type."
 msgstr "Nessuna tassonomia disponibile per questo tipo di contenuto."
 
-#: includes/settings/content/privacy.php:69
+#: includes/settings/content/privacy.php:71
 msgid "No WPForms forms were found."
 msgstr "Nessun modulo WPForms trovato."
 
@@ -1726,15 +1726,15 @@ msgstr ""
 "seguono altri). Non viene eseguito durante il salvataggio automatico o senza "
 "edit_post."
 
-#: includes/settings/content/content.php:449
-#: includes/settings/content/content.php:642
-#: includes/settings/content/content.php:667
-#: includes/settings/content/content.php:696
-#: includes/settings/content/content.php:920
+#: includes/settings/content/content.php:452
+#: includes/settings/content/content.php:649
+#: includes/settings/content/content.php:674
+#: includes/settings/content/content.php:703
+#: includes/settings/content/content.php:939
 msgid "None"
 msgstr "Nessuno"
 
-#: includes/settings/content/social.php:139
+#: includes/settings/content/social.php:138
 msgid ""
 "Nothing is output when the module is disabled or all networks are off. "
 "Automatic output also respects “Show on”."
@@ -1742,15 +1742,15 @@ msgstr ""
 "Non viene mostrato nulla quando il modulo è disattivato o tutte le reti sono "
 "disattivate. L’output automatico rispetta anche “Mostra su”."
 
-#: includes/settings/content/privacy.php:134
+#: includes/settings/content/privacy.php:136
 msgid "Notice key: contact, subscribe, comments, register, or checkout."
 msgstr "Chiave dell’avviso: contact, subscribe, comments, register o checkout."
 
-#: includes/settings/content/content.php:283
+#: includes/settings/content/content.php:286
 msgid "Number of items (default from settings, max 12)."
 msgstr "Numero di elementi (predefinito dalle impostazioni, max 12)."
 
-#: includes/settings/content/fields.php:233
+#: includes/settings/content/fields.php:229
 msgid ""
 "On taxonomy archives, the image comes from Featured image for terms when "
 "that module is enabled for the taxonomy."
@@ -1762,12 +1762,12 @@ msgstr ""
 msgid "On the frontend, query terms with that meta key:"
 msgstr "Nel frontend, interroga i termini con quella meta key:"
 
-#: includes/settings/content/admin.php:243
+#: includes/settings/content/admin.php:242
 msgid "One admin bar node ID per line, or separated by commas."
 msgstr ""
 "Un ID nodo della barra di amministrazione per riga, o separato da virgole."
 
-#: includes/settings/content/extras.php:224
+#: includes/settings/content/extras.php:220
 msgid ""
 "One CSS selector per line. Matching elements get data-lenis-prevent. Themes "
 "can also add that attribute in markup."
@@ -1775,11 +1775,11 @@ msgstr ""
 "Un selettore CSS per riga. Gli elementi corrispondenti ricevono data-lenis-"
 "prevent. I temi possono anche aggiungere quell’attributo nel markup."
 
-#: includes/settings/content/content.php:88
+#: includes/settings/content/content.php:92
 msgid "One key per line, or separated by commas."
 msgstr "Una chiave per riga, oppure separate da virgole."
 
-#: includes/settings/content/admin.php:680
+#: includes/settings/content/admin.php:679
 msgid ""
 "Only roles that can already upload media are listed. SVG sanitization is "
 "always enabled and cannot be turned off."
@@ -1787,23 +1787,34 @@ msgstr ""
 "Sono elencati solo i ruoli che possono già caricare media. La sanitizzazione "
 "SVG è sempre attiva e non può essere disattivata."
 
-#: includes/settings/content/content.php:22
+#: includes/settings/content/content.php:26
 msgid "Only specific meta keys"
 msgstr "Solo meta key specifiche"
 
-#: includes/modules/social/chats.php:198
+#: includes/modules/social/chats.php:217
 msgid "Open chat options"
 msgstr "Apri opzioni chat"
 
-#: includes/modules/fields/hero.php:350
+#: includes/modules/fields/hero.php:348
 msgid "Open in new tab"
 msgstr "Apri in una nuova scheda"
 
-#: includes/settings/content/fields.php:257
+#: includes/settings/content/extras.php:86
+#| msgid ""
+#| "Optional third-party libraries from CDN. Enable only what your theme "
+#| "needs; the plugin does not initialize them."
+msgid ""
+"Optional bundled third-party libraries. Enable only what your theme needs; "
+"the plugin does not initialize them."
+msgstr ""
+"Librerie di terze parti opzionali da CDN. Abilita solo ciò di cui il tema ha "
+"bisogno; il plugin non le inizializza."
+
+#: includes/settings/content/fields.php:253
 msgid "Optional CSS class for the img element."
 msgstr "Classe CSS opzionale per l’elemento img."
 
-#: includes/settings/content/fields.php:333
+#: includes/settings/content/fields.php:329
 msgid "Optional CSS class for the video element."
 msgstr "Classe CSS opzionale per l’elemento video."
 
@@ -1818,38 +1829,30 @@ msgid "Optional on the trigger: do not preventDefault (useful for real links)."
 msgstr ""
 "Opzionale sul trigger: non usare preventDefault (utile per link reali)."
 
-#: includes/settings/content/fields.php:177
+#: includes/settings/content/fields.php:173
 msgid "Optional post ID (defaults to the current post)."
 msgstr "ID articolo opzionale (predefinito: l’articolo corrente)."
 
-#: includes/settings/content/content.php:331
-#: includes/settings/content/fields.php:219
-#: includes/settings/content/fields.php:363
+#: includes/settings/content/content.php:334
+#: includes/settings/content/fields.php:215
+#: includes/settings/content/fields.php:359
 msgid "Optional post ID (defaults to the current singular post)."
 msgstr "ID articolo opzionale (predefinito: l’articolo singolo corrente)."
 
-#: includes/settings/content/fields.php:181
-#: includes/settings/content/fields.php:223
-#: includes/settings/content/fields.php:261
-#: includes/settings/content/fields.php:367
+#: includes/settings/content/fields.php:177
+#: includes/settings/content/fields.php:219
+#: includes/settings/content/fields.php:257
+#: includes/settings/content/fields.php:363
 msgid "Optional term ID (defaults to the current taxonomy archive term)."
 msgstr ""
 "ID termine opzionale (predefinito: il termine dell’archivio di tassonomia "
 "corrente)."
 
-#: includes/settings/content/extras.php:89
-msgid ""
-"Optional third-party libraries from CDN. Enable only what your theme needs; "
-"the plugin does not initialize them."
-msgstr ""
-"Librerie di terze parti opzionali da CDN. Abilita solo ciò di cui il tema ha "
-"bisogno; il plugin non le inizializza."
-
-#: includes/settings/content/fields.php:337
+#: includes/settings/content/fields.php:333
 msgid "Optional video attributes:"
 msgstr "Attributi video opzionali:"
 
-#: includes/settings/content/fields.php:169
+#: includes/settings/content/fields.php:165
 msgid ""
 "Optional wrapper tag: p, div, span, h2–h6. Omit for content only (no wrapper,"
 " no class)."
@@ -1876,30 +1879,34 @@ msgstr ""
 msgid "Options / discovery"
 msgstr "Opzioni / discovery"
 
-#: includes/modules/admin/terms-list.php:73
-#: includes/modules/admin/terms-list.php:204
-#: includes/modules/admin/terms-list.php:219
+#: includes/modules/admin/terms-list.php:71
+#: includes/modules/admin/terms-list.php:194
+#: includes/modules/admin/terms-list.php:209
 #: includes/modules/admin/posts-list.php:82
 msgid "Order"
 msgstr "Ordine"
 
-#: includes/modules/admin/duplicate-posts.php:98
+#: includes/modules/admin/duplicate-posts.php:93
 msgid "Original post not found."
 msgstr "Articolo originale non trovato."
 
-#: includes/settings/content/content.php:421
+#: includes/settings/content/content.php:424
 msgid "Other post types"
 msgstr "Altri tipi di contenuto"
 
 #: includes/settings/content/developers.php:134
-msgid "Output format: empty (no formatting), esc_html, or wpautop."
-msgstr "Formato di output: vuoto (nessuna formattazione), esc_html o wpautop."
+msgid ""
+"Output format: empty (no formatting), esc_html, html (wp_kses_post), or "
+"wpautop."
+msgstr ""
+"Formato di output: vuoto (nessuna formattazione), esc_html, html "
+"(wp_kses_post) o wpautop."
 
 #: includes/settings/content/developers.php:78
 msgid "Output format: wpautop or esc_html."
 msgstr "Formato di output: wpautop o esc_html."
 
-#: includes/settings/components/output-location.php:53
+#: includes/settings/components/output-location.php:63
 msgid "Output location"
 msgstr "Posizione di output"
 
@@ -1910,19 +1917,19 @@ msgstr ""
 "Genera il markup di un’icona SVG usando uno sprite (<use href=\"file."
 "svg#icon-id\">)."
 
-#: includes/modules/content/breadcrumbs.php:396
+#: includes/modules/content/breadcrumbs.php:422
 msgid "Page not found"
 msgstr "Pagina non trovata"
 
-#: includes/settings/content/content.php:1118
+#: includes/settings/content/content.php:1146
 msgid "Page sort"
 msgstr "Ordinamento pagine"
 
-#: includes/settings/content/social.php:355
+#: includes/settings/content/social.php:354
 msgid "Page templates"
 msgstr "Template di pagina"
 
-#: includes/settings/content/social.php:743
+#: includes/settings/content/social.php:758
 msgid "Page username or ID for m.me links."
 msgstr "Nome utente o ID pagina per i link m.me."
 
@@ -1957,9 +1964,9 @@ msgstr ""
 msgid "Parameters"
 msgstr "Parametri"
 
-#: includes/settings/content/content.php:836
-#: includes/settings/content/content.php:854
-#: includes/settings/content/content.php:913
+#: includes/settings/content/content.php:851
+#: includes/settings/content/content.php:869
+#: includes/settings/content/content.php:932
 msgid "Parent page"
 msgstr "Pagina genitore"
 
@@ -1970,11 +1977,11 @@ msgstr ""
 "Analizza una stringa di data e la formatta con la locale di WordPress "
 "(wp_date)."
 
-#: includes/settings/content/admin.php:698
+#: includes/settings/content/admin.php:697
 msgid "Pending review"
 msgstr "In attesa di revisione"
 
-#: includes/settings/content/content.php:1021
+#: includes/settings/content/content.php:1040
 msgid ""
 "Per post type: enable, parent_page_id, taxonomy, show_taxonomy, show_posts, "
 "max_depth."
@@ -1982,7 +1989,7 @@ msgstr ""
 "Per tipo di contenuto: enable, parent_page_id, taxonomy, show_taxonomy, "
 "show_posts, max_depth."
 
-#: includes/settings/content/content.php:619
+#: includes/settings/content/content.php:626
 msgid "Per post type: page, taxonomy (None omits that crumb)."
 msgstr ""
 "Per tipo di contenuto: page, taxonomy (Nessuno omette quella briciola)."
@@ -1995,7 +2002,7 @@ msgstr "Prestazioni"
 msgid "Performance options"
 msgstr "Opzioni prestazioni"
 
-#: includes/settings/content/social.php:634
+#: includes/settings/content/social.php:649
 msgid "Phone number"
 msgstr "Numero di telefono"
 
@@ -2013,15 +2020,15 @@ msgstr ""
 msgid "PHP output format. If empty, uses Settings → General."
 msgstr "Formato di output PHP. Se vuoto, usa Impostazioni → Generali."
 
-#: includes/settings/content/content.php:1466
+#: includes/settings/content/content.php:1501
 msgid "Pixels between the button and the footer when lifting."
 msgstr "Pixel tra il pulsante e il footer quando viene sollevato."
 
-#: includes/settings/content/fields.php:357
+#: includes/settings/content/fields.php:353
 msgid "Play inline on mobile. Default: true."
 msgstr "Riproduzione inline su mobile. Predefinito: true."
 
-#: includes/modules/privacy/privacy-consent.php:112
+#: includes/modules/privacy/privacy-consent.php:116
 msgid "Please accept the privacy policy."
 msgstr "Accetta l’informativa sulla privacy."
 
@@ -2035,6 +2042,10 @@ msgstr ""
 "Classi CSS del plugin per il posizionamento dei pannelli e l’animazione in "
 "dissolvenza."
 
+#: includes/settings/content/developers.php:124
+msgid "Plugin settings group name."
+msgstr "Nome del gruppo di impostazioni del plugin."
+
 #: includes/settings/content/developers.php:419
 msgid "Post ID to update."
 msgstr "ID dell’articolo da aggiornare."
@@ -2043,7 +2054,7 @@ msgstr "ID dell’articolo da aggiornare."
 msgid "Post ID. Defaults to the current post."
 msgstr "ID articolo. Predefinito: l’articolo corrente."
 
-#: includes/settings/content/content.php:445
+#: includes/settings/content/content.php:448
 msgid "Post item"
 msgstr "Elemento articolo"
 
@@ -2051,11 +2062,11 @@ msgstr "Elemento articolo"
 msgid "Post meta key."
 msgstr "Meta key dell’articolo."
 
-#: includes/settings/content/social.php:423
+#: includes/settings/content/social.php:428
 msgid "Post type archives"
 msgstr "Archivi del tipo di contenuto"
 
-#: includes/settings/content/content.php:417
+#: includes/settings/content/content.php:420
 msgid "Post type list"
 msgstr "Elenco tipi di contenuto"
 
@@ -2063,14 +2074,14 @@ msgstr "Elenco tipi di contenuto"
 msgid "Post type slugs excluded by default."
 msgstr "Slug dei tipi di contenuto esclusi per impostazione predefinita."
 
-#: includes/settings/content/content.php:27
-#: includes/settings/content/content.php:395
-#: includes/settings/content/content.php:831
-#: includes/settings/content/content.php:1142
-#: includes/settings/content/admin.php:90
-#: includes/settings/content/admin.php:330
+#: includes/settings/content/content.php:31
+#: includes/settings/content/content.php:398
+#: includes/settings/content/content.php:846
+#: includes/settings/content/content.php:1170
+#: includes/settings/content/admin.php:89
+#: includes/settings/content/admin.php:328
 #: includes/settings/content/admin.php:428
-#: includes/settings/content/admin.php:705
+#: includes/settings/content/admin.php:704
 #: includes/settings/content/fields.php:59
 msgid "Post types"
 msgstr "Tipi di contenuto"
@@ -2083,7 +2094,7 @@ msgstr "Elenco articoli"
 msgid "Posts list options"
 msgstr "Opzioni elenco articoli"
 
-#: includes/settings/content/content.php:429
+#: includes/settings/content/content.php:432
 msgid "Posts number"
 msgstr "Numero di articoli"
 
@@ -2096,7 +2107,7 @@ msgstr ""
 "tcres_post_types_get_included(). Gli ID numerici vengono restituiti così "
 "come sono."
 
-#: includes/settings/content/social.php:704
+#: includes/settings/content/social.php:719
 msgid ""
 "Prefills the Telegram compose field when supported. Leave empty to use the "
 "default."
@@ -2104,26 +2115,34 @@ msgstr ""
 "Precompila il campo di composizione di Telegram quando supportato. Lascia "
 "vuoto per usare il valore predefinito."
 
-#: includes/settings/content/social.php:654
+#: includes/settings/content/social.php:669
 msgid "Prefills the WhatsApp compose field. Leave empty to use the default."
 msgstr ""
 "Precompila il campo di composizione di WhatsApp. Lascia vuoto per usare il "
 "valore predefinito."
 
-#: includes/settings/content/content.php:123
+#: includes/settings/content/content.php:127
 msgid "Prevent empty search queries from returning results"
 msgstr "Impedire alle ricerche vuote di restituire risultati"
 
-#: includes/settings/content/content.php:287
+#: includes/settings/content/content.php:290
 msgid "Primary taxonomy for auto picks (default: category)."
 msgstr ""
 "Tassonomia principale per le scelte automatiche (predefinito: category)."
 
-#: includes/settings/content/extras.php:302
+#: includes/settings/content/extras.php:309
+msgid ""
+"Print a plugin settings value. Optional format: esc_html (default), html, "
+"wpautop."
+msgstr ""
+"Stampa un valore delle impostazioni del plugin. Formato opzionale: esc_html "
+"(predefinito), html, wpautop."
+
+#: includes/settings/content/extras.php:299
 msgid "Print a post custom field value."
 msgstr "Stampa il valore di un campo personalizzato dell’articolo."
 
-#: includes/settings/content/privacy.php:129
+#: includes/settings/content/privacy.php:131
 msgid ""
 "Print a privacy notice on the frontend. Settings from this panel are the "
 "defaults; function args override them:"
@@ -2132,16 +2151,12 @@ msgstr ""
 "pannello sono i valori predefiniti; gli argomenti della funzione li "
 "sovrascrivono:"
 
-#: includes/settings/content/extras.php:307
+#: includes/settings/content/extras.php:304
 msgid "Print a taxonomy term custom field value."
 msgstr ""
 "Stampa il valore di un campo personalizzato di un termine di tassonomia."
 
-#: includes/settings/content/extras.php:312
-msgid "Print a WordPress option value."
-msgstr "Stampa il valore di un’opzione WordPress."
-
-#: includes/settings/content/content.php:1008
+#: includes/settings/content/content.php:1027
 msgid ""
 "Print an HTML sitemap on the frontend. Settings from this panel are the "
 "defaults; function args override them. The shortcode has no attributes and "
@@ -2152,11 +2167,11 @@ msgstr ""
 "sovrascrivono. Lo shortcode non ha attributi e usa sempre le impostazioni "
 "del pannello:"
 
-#: includes/settings/content/extras.php:332
+#: includes/settings/content/extras.php:329
 msgid "Print an SVG icon from the sprite."
 msgstr "Stampa un’icona SVG dallo sprite."
 
-#: includes/settings/content/content.php:602
+#: includes/settings/content/content.php:609
 msgid ""
 "Print breadcrumbs on the frontend. Settings from this panel are the defaults;"
 " function args override them. The shortcode has no attributes and always "
@@ -2166,7 +2181,7 @@ msgstr ""
 "valori predefiniti; gli argomenti della funzione li sovrascrivono. Lo "
 "shortcode non ha attributi e usa sempre le impostazioni del pannello:"
 
-#: includes/settings/content/content.php:274
+#: includes/settings/content/content.php:277
 msgid ""
 "Print related content for the current post (or a specific ID). Manual picks "
 "from the metabox come first; remaining slots are filled by taxonomy affinity,"
@@ -2178,7 +2193,7 @@ msgstr ""
 "affinità di tassonomia, poi articoli casuali. Lo shortcode non ha attributi "
 "e usa sempre le impostazioni del pannello:"
 
-#: includes/settings/content/fields.php:248
+#: includes/settings/content/fields.php:244
 msgid ""
 "Print the featured image for the current taxonomy archive term (or a "
 "specific term ID):"
@@ -2186,13 +2201,13 @@ msgstr ""
 "Stampa l’immagine in evidenza del termine dell’archivio di tassonomia "
 "corrente (o di un ID termine specifico):"
 
-#: includes/settings/content/fields.php:328
+#: includes/settings/content/fields.php:324
 msgid "Print the featured video for the current post/term (or a specific ID):"
 msgstr ""
 "Stampa il video in evidenza dell’articolo/termine corrente (o di un ID "
 "specifico):"
 
-#: includes/settings/content/fields.php:198
+#: includes/settings/content/fields.php:194
 msgid ""
 "Print the hero on the frontend (auto-detects singular posts and taxonomy "
 "archives). Includes the title. Background uses Featured video when set (with "
@@ -2209,19 +2224,19 @@ msgstr ""
 msgid "Privacy and forms"
 msgstr "Privacy e moduli"
 
-#: includes/settings/content/privacy.php:337
+#: includes/settings/content/privacy.php:339
 msgid "Privacy consent"
 msgstr "Consenso privacy"
 
-#: includes/settings/content/privacy.php:171
+#: includes/settings/content/privacy.php:172
 msgid "Privacy notice"
 msgstr "Avviso privacy"
 
-#: includes/modules/privacy/privacy-consent.php:57
+#: includes/modules/privacy/privacy-consent.php:59
 msgid "privacy policy"
 msgstr "informativa sulla privacy"
 
-#: includes/settings/content/admin.php:699
+#: includes/settings/content/admin.php:698
 msgid "Private"
 msgstr "Privato"
 
@@ -2229,7 +2244,7 @@ msgstr "Privato"
 msgid "Proxy access is not allowed."
 msgstr "L’accesso tramite proxy non è consentito."
 
-#: includes/settings/content/admin.php:700
+#: includes/settings/content/admin.php:699
 msgid "Published"
 msgstr "Pubblicato"
 
@@ -2237,19 +2252,27 @@ msgstr "Pubblicato"
 msgid "Raw value received from $_POST."
 msgstr "Valore grezzo ricevuto da $_POST."
 
-#: includes/settings/content/content.php:567
-#: includes/modules/content/related-content.php:62
-#: includes/modules/content/related-content.php:514
+#: includes/settings/content/content.php:574
+#: includes/modules/content/related-content.php:65
+#: includes/modules/content/related-content.php:518
 msgid "Read more"
 msgstr "Leggi di più"
 
 #: includes/settings/content/developers.php:20
-msgid "Read post meta, term meta, and plugin or WordPress options."
-msgstr "Legge post meta, term meta e opzioni del plugin o di WordPress."
+msgid "Read post meta, term meta, and plugin settings."
+msgstr "Leggi il meta post, il meta termine e le impostazioni del plug-in."
 
-#: includes/settings/content/content.php:327
+#: includes/settings/content/content.php:330
 msgid "Read-more label."
 msgstr "Etichetta «leggi di più»."
+
+#: includes/settings/content/developers.php:117
+msgid ""
+"Reads a plugin settings group from tcres_settings. Returns null when $name "
+"is not a known settings group or the key is missing."
+msgstr ""
+"Legge un gruppo di impostazioni del plugin da tcres_settings. Restituisce "
+"null quando $name non è un gruppo di impostazioni noto o la chiave manca."
 
 #: includes/settings/content/developers.php:26
 msgid ""
@@ -2260,18 +2283,6 @@ msgstr ""
 "l’articolo, il campo o il valore. Gli shortcode vengono eseguiti solo quando "
 "il valore contiene [."
 
-#: includes/settings/content/developers.php:117
-msgid ""
-"Reads tcres_settings first. If $name is a settings group, returns that "
-"group/key (or null if the key is missing). Otherwise falls back to a "
-"standalone WordPress option. With WPML/Polylang, merges translations over "
-"that option."
-msgstr ""
-"Legge prima tcres_settings. Se $name è un gruppo di impostazioni, "
-"restituisce quel gruppo/chiave (o null se la chiave manca). Altrimenti "
-"ricorre a un’opzione WordPress autonoma. Con WPML/Polylang, unisce le "
-"traduzioni su quell’opzione."
-
 #: includes/settings/content/login.php:51
 msgid "Redirect to"
 msgstr "Reindirizza a"
@@ -2281,11 +2292,11 @@ msgid "Redirects anonymous visitors away from /author/ archive pages."
 msgstr ""
 "Reindirizza i visitatori anonimi lontano dalle pagine archivio /author/."
 
-#: includes/settings/content/privacy.php:375
+#: includes/settings/content/privacy.php:377
 msgid "Register (WordPress and WooCommerce)"
 msgstr "Registrazione (WordPress e WooCommerce)"
 
-#: includes/settings/content/privacy.php:279
+#: includes/settings/content/privacy.php:280
 msgid "Register notice"
 msgstr "Avviso di registrazione"
 
@@ -2299,24 +2310,24 @@ msgstr ""
 "in Aspetto → Menu. Mostralo con tcres_social_menu_get() / [tcres-social-menu]"
 "."
 
-#: includes/settings/content/extras.php:381
+#: includes/settings/content/extras.php:377
 msgid "Registers the standalone shortcodes listed below."
 msgstr "Registra gli shortcode autonomi elencati di seguito."
 
-#: includes/settings/content/content.php:378
-#: includes/modules/content/related-content.php:696
+#: includes/settings/content/content.php:381
+#: includes/modules/content/related-content.php:695
 msgid "Related content"
 msgstr "Contenuti correlati"
 
-#: includes/settings/content/content.php:405
+#: includes/settings/content/content.php:408
 msgid "Related content post types"
 msgstr "Tipi di contenuto per i contenuti correlati"
 
-#: includes/settings/content/content.php:495
+#: includes/settings/content/content.php:502
 msgid "Related content taxonomies to display"
 msgstr "Tassonomie dei contenuti correlati da mostrare"
 
-#: includes/modules/fields/hero.php:320
+#: includes/modules/fields/hero.php:318
 msgid "Remove button"
 msgstr "Rimuovi pulsante"
 
@@ -2328,7 +2339,7 @@ msgstr "Rimuovi DNS prefetch"
 msgid "Remove emoji scripts"
 msgstr "Rimuovi script emoji"
 
-#: includes/modules/fields/term-image.php:141
+#: includes/modules/fields/term-image.php:137
 msgid "Remove image"
 msgstr "Rimuovi immagine"
 
@@ -2349,7 +2360,7 @@ msgid "Remove shortlink"
 msgstr "Rimuovi shortlink"
 
 #: includes/admin-components-i18n.php:19 includes/admin-components-i18n.php:24
-#: includes/modules/fields/featured-video.php:235
+#: includes/modules/fields/featured-video.php:237
 msgid "Remove video"
 msgstr "Rimuovi video"
 
@@ -2361,7 +2372,7 @@ msgstr "Rimuovi manifest WLW"
 msgid "Remove WordPress version"
 msgstr "Rimuovi versione WordPress"
 
-#: includes/settings/content/admin.php:304
+#: includes/settings/content/admin.php:302
 msgid ""
 "Removes comments from the admin, admin bar, and frontend for all post types."
 msgstr ""
@@ -2409,7 +2420,7 @@ msgstr ""
 msgid "Removes the wlwmanifest.xml link used by Windows Live Writer."
 msgstr "Rimuove il link wlwmanifest.xml usato da Windows Live Writer."
 
-#: includes/settings/content/extras.php:322
+#: includes/settings/content/extras.php:319
 msgid ""
 "Render a link styled as a button. Optional: class, title, blank=\"yes\"."
 msgstr ""
@@ -2429,12 +2440,12 @@ msgstr ""
 "vuoto o 0 usa il primo valore."
 
 #: includes/admin-components-i18n.php:14
-#: includes/modules/fields/term-image.php:136
+#: includes/modules/fields/term-image.php:132
 msgid "Replace image"
 msgstr "Sostituisci immagine"
 
 #: includes/admin-components-i18n.php:18
-#: includes/modules/fields/featured-video.php:230
+#: includes/modules/fields/featured-video.php:232
 msgid "Replace video"
 msgstr "Sostituisci video"
 
@@ -2707,24 +2718,24 @@ msgstr ""
 "Salva o elimina post meta da $_POST in admin, con verifica del nonce e "
 "capability edit_post. Chiamalo su save_post."
 
-#: includes/settings/content/content.php:1391
+#: includes/settings/content/content.php:1426
 #: includes/modules/content/scroll-to-top.php:69
 msgid "Scroll to top"
 msgstr "Torna su"
 
-#: includes/settings/content/social.php:346
+#: includes/settings/content/social.php:345
 msgid "Search (is_search)"
 msgstr "Ricerca (is_search)"
 
 #. %s: search query
-#: includes/modules/social/share-content.php:201
-#: includes/modules/content/breadcrumbs.php:386
+#: includes/modules/social/share-content.php:217
+#: includes/modules/content/breadcrumbs.php:412
 #, php-format
 msgid "Search results for “%s”"
 msgstr "Risultati della ricerca per “%s”"
 
-#: includes/settings/content/content.php:1221
-#: includes/settings/content/content.php:1343
+#: includes/settings/content/content.php:1248
+#: includes/settings/content/content.php:1376
 msgid "Section max depth (empty = global)"
 msgstr "Profondità massima sezione (vuoto = globale)"
 
@@ -2740,11 +2751,11 @@ msgstr "Sicurezza e prestazioni"
 msgid "Security options"
 msgstr "Opzioni di sicurezza"
 
-#: includes/modules/fields/hero.php:342
+#: includes/modules/fields/hero.php:340
 msgid "Select"
 msgstr "Seleziona"
 
-#: includes/modules/content/related-content.php:752
+#: includes/modules/content/related-content.php:751
 msgid "Select a post"
 msgstr "Seleziona un articolo"
 
@@ -2757,16 +2768,16 @@ msgid "Select featured video"
 msgstr "Seleziona video in evidenza"
 
 #: includes/admin-components-i18n.php:16
-#: includes/modules/fields/term-image.php:136
+#: includes/modules/fields/term-image.php:132
 msgid "Select image"
 msgstr "Seleziona immagine"
 
-#: includes/modules/content/related-content.php:746
+#: includes/modules/content/related-content.php:745
 msgid "Select posts to display:"
 msgstr "Seleziona gli articoli da mostrare:"
 
 #. %d: Maximum number of related posts
-#: includes/modules/content/related-content.php:768
+#: includes/modules/content/related-content.php:767
 msgid ""
 "Select up to %d related posts. If none are selected, related posts are "
 "chosen automatically. All fields are optional."
@@ -2775,18 +2786,18 @@ msgstr ""
 "scelti automaticamente. Tutti i campi sono opzionali."
 
 #: includes/admin-components-i18n.php:22
-#: includes/modules/fields/featured-video.php:230
+#: includes/modules/fields/featured-video.php:232
 msgid "Select video"
 msgstr "Seleziona video"
 
-#: includes/settings/content/admin.php:119
+#: includes/settings/content/admin.php:118
 msgid ""
 "Selected post type admin screens and frontend URLs redirect to the homepage."
 msgstr ""
 "Le schermate di amministrazione e gli URL frontend dei tipi di contenuto "
 "selezionati reindirizzano alla homepage."
 
-#: includes/settings/content/admin.php:181
+#: includes/settings/content/admin.php:180
 msgid ""
 "Selected taxonomy admin screens and frontend archives redirect to the "
 "homepage."
@@ -2794,7 +2805,7 @@ msgstr ""
 "Le schermate di amministrazione e gli archivi frontend delle tassonomie "
 "selezionate reindirizzano alla homepage."
 
-#: includes/modules/extras/shortcodes.php:127
+#: includes/modules/extras/shortcodes.php:139
 #: includes/modules/fields/hero.php:557
 msgid "Send mail to"
 msgstr "Invia e-mail a"
@@ -2803,11 +2814,11 @@ msgstr "Invia e-mail a"
 msgid "Send WhatsApp message"
 msgstr "Invia messaggio WhatsApp"
 
-#: includes/modules/fields/bodyclass.php:105
+#: includes/modules/fields/bodyclass.php:99
 msgid "Separate with spaces."
 msgstr "Separare con spazi."
 
-#: includes/settings/content/content.php:766
+#: includes/settings/content/content.php:781
 msgid "Separator"
 msgstr "Separatore"
 
@@ -2827,25 +2838,21 @@ msgstr "Gruppo di impostazioni per il set di confronto."
 msgid "Settings group for the source set."
 msgstr "Gruppo di impostazioni per il set di origine."
 
-#: includes/settings/content/developers.php:124
-msgid "Settings group or WordPress option name."
-msgstr "Gruppo di impostazioni o nome di opzione WordPress."
-
 #: includes/settings/content/developers.php:157
 #: includes/settings/content/developers.php:182
 msgid "Settings group to search for keys."
 msgstr "Gruppo di impostazioni in cui cercare le chiavi."
 
-#: includes/settings/content/social.php:183
+#: includes/settings/content/social.php:184
 msgid "Share content"
 msgstr "Condividi contenuti"
 
-#: includes/settings/content/social.php:78
+#: includes/settings/content/social.php:77
 #: includes/modules/social/share-content.php:22
 msgid "Share this"
 msgstr "Condividi questo"
 
-#: includes/modules/social/share-content.php:251
+#: includes/modules/social/share-content.php:267
 msgid "Share this on"
 msgstr "Condividi questo su"
 
@@ -2861,49 +2868,49 @@ msgstr "ID condiviso che collega un trigger a un target."
 msgid "Shop (WooCommerce)"
 msgstr "Negozio (WooCommerce)"
 
-#: includes/settings/content/content.php:339
-#: includes/settings/content/content.php:627
-#: includes/settings/content/content.php:1029
-#: includes/settings/content/privacy.php:138
+#: includes/settings/content/content.php:342
+#: includes/settings/content/content.php:634
+#: includes/settings/content/content.php:1048
+#: includes/settings/content/privacy.php:140
 #: includes/settings/content/social.php:20
-#: includes/settings/content/social.php:142
+#: includes/settings/content/social.php:141
 msgid "Shortcode:"
 msgstr "Shortcode:"
 
-#: includes/settings/content/extras.php:367
+#: includes/settings/content/extras.php:363
 msgid "Shortcodes"
 msgstr "Shortcode"
 
-#: includes/settings/content/content.php:1411
+#: includes/settings/content/content.php:1446
 msgid "Show after"
 msgstr "Mostra dopo"
 
-#: includes/settings/content/content.php:553
+#: includes/settings/content/content.php:560
 msgid "Show button"
 msgstr "Mostra pulsante"
 
-#: includes/settings/content/content.php:1216
-#: includes/settings/content/content.php:1338
+#: includes/settings/content/content.php:1243
+#: includes/settings/content/content.php:1371
 msgid "Show entries"
 msgstr "Mostra voci"
 
-#: includes/settings/content/content.php:540
+#: includes/settings/content/content.php:547
 msgid "Show excerpt"
 msgstr "Mostra riassunto"
 
-#: includes/settings/content/content.php:319
+#: includes/settings/content/content.php:322
 msgid "Show excerpts when true."
 msgstr "Mostra i riassunti quando è true."
 
-#: includes/settings/content/content.php:786
+#: includes/settings/content/content.php:801
 msgid "Show home"
 msgstr "Mostra home"
 
-#: includes/settings/content/content.php:1113
+#: includes/settings/content/content.php:1141
 msgid "Show list bullets"
 msgstr "Mostra elenchi puntati"
 
-#: includes/settings/content/fields.php:341
+#: includes/settings/content/fields.php:337
 msgid ""
 "Show native controls. Default: true when autoplay is off, false when "
 "autoplay is on."
@@ -2920,33 +2927,33 @@ msgstr "Mostra icona rete"
 msgid "Show network name"
 msgstr "Mostra nome rete"
 
-#: includes/settings/content/privacy.php:355
+#: includes/settings/content/privacy.php:357
 #: includes/settings/content/social.php:313
 msgid "Show on"
 msgstr "Mostra su"
 
-#: includes/settings/content/content.php:480
+#: includes/settings/content/content.php:487
 msgid "Show taxonomies"
 msgstr "Mostra tassonomie"
 
-#: includes/settings/content/content.php:1205
-#: includes/settings/content/content.php:1326
+#: includes/settings/content/content.php:1232
+#: includes/settings/content/content.php:1359
 msgid "Show taxonomy"
 msgstr "Mostra tassonomia"
 
-#: includes/settings/content/content.php:529
+#: includes/settings/content/content.php:536
 msgid "Show taxonomy names"
 msgstr "Mostra nomi tassonomia"
 
-#: includes/settings/content/content.php:303
+#: includes/settings/content/content.php:306
 msgid "Show term links on each related item when true."
 msgstr "Mostra i link dei termini su ogni elemento correlato quando è true."
 
-#: includes/settings/content/content.php:323
+#: includes/settings/content/content.php:326
 msgid "Show the read-more button when true."
 msgstr "Mostra il pulsante leggi di più quando è true."
 
-#: includes/settings/content/content.php:315
+#: includes/settings/content/content.php:318
 msgid "Show the taxonomy name before each term list when display is grouped."
 msgstr ""
 "Mostra il nome della tassonomia prima di ogni elenco di termini quando la "
@@ -2960,11 +2967,11 @@ msgstr "Mostra titolo"
 msgid "Show “share this on” before the network name"
 msgstr "Mostra “condividi questo su” prima del nome della rete"
 
-#: includes/settings/content/social.php:487
+#: includes/settings/content/social.php:492
 msgid "Singles"
 msgstr "Singoli"
 
-#: includes/settings/content/content.php:1075
+#: includes/settings/content/content.php:1103
 msgid "Sitemap"
 msgstr "Mappa del sito"
 
@@ -2992,19 +2999,19 @@ msgstr ""
 msgid "Slugs included after exclusions are applied."
 msgstr "Slug inclusi dopo aver applicato le esclusioni."
 
-#: includes/settings/content/extras.php:205
+#: includes/settings/content/extras.php:201
 msgid "Smooth in-page anchor links"
 msgstr "Link di ancoraggio fluidi nella pagina"
 
-#: includes/settings/content/extras.php:185
+#: includes/settings/content/extras.php:181
 msgid "Smooth mouse wheel"
 msgstr "Rotella del mouse fluida"
 
-#: includes/settings/content/extras.php:140
+#: includes/settings/content/extras.php:137
 msgid "Smooth scroll"
 msgstr "Scorrimento fluido"
 
-#: includes/settings/content/extras.php:195
+#: includes/settings/content/extras.php:191
 msgid "Smooth touch scrolling"
 msgstr "Scorrimento touch fluido"
 
@@ -3026,7 +3033,7 @@ msgstr "Colonne ordinabili"
 msgid "Stack buttons vertically"
 msgstr "Impila i pulsanti verticalmente"
 
-#: includes/settings/content/extras.php:368
+#: includes/settings/content/extras.php:364
 msgid ""
 "Standalone shortcodes for fields, markup helpers, and media embeds. "
 "Shortcodes that belong to a module stay in that module."
@@ -3034,15 +3041,15 @@ msgstr ""
 "Shortcode autonomi per campi, helper di markup e embed media. Gli shortcode "
 "che appartengono a un modulo restano in quel modulo."
 
-#: includes/settings/content/fields.php:345
+#: includes/settings/content/fields.php:341
 msgid "Start playback automatically. Default: false."
 msgstr "Avvia la riproduzione automaticamente. Predefinito: false."
 
-#: includes/settings/content/admin.php:739
+#: includes/settings/content/admin.php:738
 msgid "Status"
 msgstr "Stato"
 
-#: includes/settings/content/admin.php:748
+#: includes/settings/content/admin.php:747
 msgid "Status assigned to the new copy."
 msgstr "Stato assegnato alla nuova copia."
 
@@ -3054,11 +3061,11 @@ msgstr ""
 "Interrompe il caricamento dello script wp-embed nel frontend quando non ti "
 "servono gli embed di WordPress."
 
-#: includes/settings/content/privacy.php:235
+#: includes/settings/content/privacy.php:236
 msgid "Subscribe notice"
 msgstr "Avviso di iscrizione"
 
-#: includes/settings/content/fields.php:423
+#: includes/settings/content/fields.php:419
 #: includes/modules/fields/subtitle.php:69
 #: includes/modules/fields/subtitle.php:199
 #: includes/modules/fields/subtitle.php:222
@@ -3066,20 +3073,20 @@ msgstr "Avviso di iscrizione"
 msgid "Subtitle"
 msgstr "Sottotitolo"
 
-#: includes/settings/content/fields.php:207
+#: includes/settings/content/fields.php:203
 msgid "Subtitle tag: p (default), div, span, or h2–h6."
 msgstr "Tag del sottotitolo: p (predefinito), div, span o h2–h6."
 
-#: includes/settings/content/social.php:646
-#: includes/settings/content/social.php:696
+#: includes/settings/content/social.php:661
+#: includes/settings/content/social.php:711
 msgid "Suggested message"
 msgstr "Messaggio suggerito"
 
-#: includes/settings/content/extras.php:249
+#: includes/settings/content/extras.php:247
 msgid "SVG icons"
 msgstr "Icone SVG"
 
-#: includes/modules/admin/svg-uploads.php:183
+#: includes/modules/admin/svg-uploads.php:163
 msgid "SVG sanitization requires DOMDocument."
 msgstr "La sanitizzazione SVG richiede DOMDocument."
 
@@ -3106,30 +3113,30 @@ msgstr ""
 msgid "Tabs"
 msgstr "Tab"
 
-#: includes/settings/components/output-location.php:71
+#: includes/settings/components/output-location.php:81
 msgid "Target"
 msgstr "Target"
 
-#: includes/settings/content/content.php:96
-#: includes/settings/content/admin.php:132
+#: includes/settings/content/content.php:100
+#: includes/settings/content/admin.php:131
 #: includes/settings/content/admin.php:531
-#: includes/settings/content/admin.php:760
+#: includes/settings/content/admin.php:759
 #: includes/settings/content/fields.php:85
-#: includes/settings/content/social.php:457
+#: includes/settings/content/social.php:462
 msgid "Taxonomies"
 msgstr "Tassonomie"
 
-#: includes/settings/content/content.php:505
+#: includes/settings/content/content.php:512
 msgid "Taxonomies display"
 msgstr "Visualizzazione tassonomie"
 
-#: includes/settings/content/content.php:486
+#: includes/settings/content/content.php:493
 msgid "Taxonomies to display"
 msgstr "Tassonomie da mostrare"
 
-#: includes/settings/content/content.php:843
-#: includes/settings/content/content.php:865
-#: includes/settings/content/content.php:927
+#: includes/settings/content/content.php:858
+#: includes/settings/content/content.php:880
+#: includes/settings/content/content.php:946
 msgid "Taxonomy"
 msgstr "Tassonomia"
 
@@ -3137,22 +3144,22 @@ msgstr "Tassonomia"
 msgid "Taxonomy slug."
 msgstr "Slug della tassonomia."
 
-#: includes/settings/content/content.php:307
+#: includes/settings/content/content.php:310
 msgid ""
 "Taxonomy slugs to display (defaults to the selected taxonomies in settings)."
 msgstr ""
 "Slug di tassonomia da mostrare (predefinito: le tassonomie selezionate nelle "
 "impostazioni)."
 
-#: includes/settings/content/social.php:666
+#: includes/settings/content/social.php:681
 msgid "Telegram"
 msgstr "Telegram"
 
-#: includes/settings/content/social.php:693
+#: includes/settings/content/social.php:708
 msgid "Telegram username without @."
 msgstr "Nome utente Telegram senza @."
 
-#: includes/settings/components/output-location.php:83
+#: includes/settings/components/output-location.php:93
 msgid "Template part slug. Hooks into get_template_part_{slug}."
 msgstr "Slug della template part. Si aggancia a get_template_part_{slug}."
 
@@ -3168,11 +3175,11 @@ msgstr "Meta key del termine."
 msgid "Term taxonomy. Required when $type is term."
 msgstr "Tassonomia del termine. Obbligatorio quando $type è term."
 
-#: includes/settings/content/admin.php:594
+#: includes/settings/content/admin.php:593
 msgid "Terms list"
 msgstr "Elenco termini"
 
-#: includes/settings/content/admin.php:605
+#: includes/settings/content/admin.php:604
 msgid "Terms list options"
 msgstr "Opzioni elenco termini"
 
@@ -3184,7 +3191,7 @@ msgstr "Testo aggiunto dopo aver concatenato i valori ripetibili."
 msgid "Text appended to the value."
 msgstr "Testo aggiunto al valore."
 
-#: includes/settings/content/content.php:607
+#: includes/settings/content/content.php:614
 msgid "Text between crumbs (default from settings)."
 msgstr "Testo tra le briciole (predefinito dalle impostazioni)."
 
@@ -3200,7 +3207,7 @@ msgstr "Testo anteposto prima di concatenare i valori ripetibili."
 msgid "Text prepended to the value."
 msgstr "Testo anteposto al valore."
 
-#: includes/settings/content/privacy.php:202
+#: includes/settings/content/privacy.php:203
 msgid "Text shown before expanding the notice. Leave empty to use the default."
 msgstr ""
 "Testo mostrato prima di espandere l’avviso. Lascia vuoto per usare il valore "
@@ -3214,29 +3221,29 @@ msgstr ""
 "text usa sanitize_text_field (+ filtro); html usa wp_kses_post (+ filtro "
 "HTML)."
 
-#: includes/modules/admin/svg-uploads.php:172
+#: includes/modules/admin/svg-uploads.php:152
 msgid "The SVG file contains unsafe content."
 msgstr "Il file SVG contiene contenuto non sicuro."
 
-#: includes/modules/admin/svg-uploads.php:277
-#: includes/modules/admin/svg-uploads.php:321
+#: includes/modules/admin/svg-uploads.php:251
+#: includes/modules/admin/svg-uploads.php:296
 msgid "The SVG file could not be sanitized."
 msgstr "Impossibile sanitizzare il file SVG."
 
-#: includes/modules/admin/svg-uploads.php:164
+#: includes/modules/admin/svg-uploads.php:144
 msgid "The SVG file is empty."
 msgstr "Il file SVG è vuoto."
 
-#: includes/modules/admin/svg-uploads.php:199
+#: includes/modules/admin/svg-uploads.php:179
 msgid "The SVG file is not valid XML."
 msgstr "Il file SVG non è XML valido."
 
-#: includes/modules/admin/svg-uploads.php:304
-#: includes/modules/admin/svg-uploads.php:310
+#: includes/modules/admin/svg-uploads.php:279
+#: includes/modules/admin/svg-uploads.php:285
 msgid "The SVG upload could not be read."
 msgstr "Impossibile leggere il caricamento SVG."
 
-#: includes/modules/admin/svg-uploads.php:207
+#: includes/modules/admin/svg-uploads.php:187
 msgid "The uploaded file is not an SVG document."
 msgstr "Il file caricato non è un documento SVG."
 
@@ -3244,15 +3251,15 @@ msgstr "Il file caricato non è un documento SVG."
 msgid "Theme templates, slug conversion, and locale-aware dates."
 msgstr "Template del tema, conversione degli slug e date con locale."
 
-#: includes/settings/content/content.php:295
+#: includes/settings/content/content.php:298
 msgid "Thumbnail size name, or none to hide images."
 msgstr "Nome della dimensione miniatura, o none per nascondere le immagini."
 
-#: includes/settings/content/content.php:462
+#: includes/settings/content/content.php:469
 msgid "Title tag"
 msgstr "Tag del titolo"
 
-#: includes/settings/content/content.php:299
+#: includes/settings/content/content.php:302
 msgid "Title tag: h2–h6, p or span."
 msgstr "Tag del titolo: h2–h6, p o span."
 
@@ -3260,11 +3267,11 @@ msgstr "Tag del titolo: h2–h6, p o span."
 msgid "TMS Core Essentials"
 msgstr "TMS Core Essentials"
 
-#: includes/settings/components/switch.php:48
+#: includes/settings/components/switch.php:50
 msgid "Toggle"
 msgstr "Attiva/disattiva"
 
-#: includes/settings/content/social.php:605
+#: includes/settings/content/social.php:620
 msgid ""
 "Tooltip / title attribute for the chat trigger and buttons. Leave empty to "
 "use the default."
@@ -3272,16 +3279,16 @@ msgstr ""
 "Tooltip / attributo title del trigger della chat e dei pulsanti. Lascia "
 "vuoto per usare il valore predefinito."
 
-#: includes/settings/content/content.php:569
-#: includes/settings/content/content.php:820
+#: includes/settings/content/content.php:576
+#: includes/settings/content/content.php:835
 #: includes/settings/content/social.php:253
-#: includes/settings/content/social.php:607
-#: includes/settings/content/social.php:656
-#: includes/settings/content/social.php:706
+#: includes/settings/content/social.php:622
+#: includes/settings/content/social.php:671
+#: includes/settings/content/social.php:721
 msgid "Translatable: saved for the current admin language."
 msgstr "Traducibile: salvato per la lingua di amministrazione corrente."
 
-#: includes/settings/content/privacy.php:189
+#: includes/settings/content/privacy.php:190
 msgid "Trigger text"
 msgstr "Testo del trigger"
 
@@ -3289,7 +3296,7 @@ msgstr "Testo del trigger"
 msgid "Tumàs Muntané"
 msgstr "Tumàs Muntané"
 
-#: includes/utilities.php:63
+#: includes/utilities.php:67
 msgid "unknown"
 msgstr "sconosciuto"
 
@@ -3307,7 +3314,7 @@ msgstr "Aggiorna term meta"
 msgid "Updates"
 msgstr "Aggiornamenti"
 
-#: includes/modules/fields/hero.php:333
+#: includes/modules/fields/hero.php:331
 msgid "URL"
 msgstr "URL"
 
@@ -3315,17 +3322,17 @@ msgstr "URL"
 msgid "URL behaviour"
 msgstr "Comportamento dell’URL"
 
-#: includes/settings/content/content.php:273
-#: includes/settings/content/content.php:601
-#: includes/settings/content/content.php:1007
+#: includes/settings/content/content.php:276
+#: includes/settings/content/content.php:608
+#: includes/settings/content/content.php:1026
 #: includes/settings/content/admin.php:570
-#: includes/settings/content/fields.php:163
-#: includes/settings/content/fields.php:197
-#: includes/settings/content/fields.php:247
-#: includes/settings/content/fields.php:327
-#: includes/settings/content/privacy.php:128
+#: includes/settings/content/fields.php:159
+#: includes/settings/content/fields.php:193
+#: includes/settings/content/fields.php:243
+#: includes/settings/content/fields.php:323
+#: includes/settings/content/privacy.php:130
 #: includes/settings/content/social.php:13
-#: includes/settings/content/social.php:134
+#: includes/settings/content/social.php:133
 msgid "Usage"
 msgstr "Utilizzo"
 
@@ -3355,7 +3362,7 @@ msgstr "Usa questa immagine"
 msgid "Use this video"
 msgstr "Usa questo video"
 
-#: includes/settings/content/social.php:685
+#: includes/settings/content/social.php:700
 msgid "Username"
 msgstr "Nome utente"
 
@@ -3365,7 +3372,7 @@ msgstr "Nome utente"
 msgid "Uses the classic editor for the %s post type."
 msgstr "Usa l’editor classico per il tipo di contenuto %s."
 
-#: includes/settings/content/login.php:101
+#: includes/settings/content/login.php:100
 msgid ""
 "Uses the Site Icon as the login logo and automatically points the logo link "
 "and title to the site home and site name."
@@ -3373,11 +3380,11 @@ msgstr ""
 "Usa l'icona del sito come logo di accesso e punta automaticamente il link e "
 "il titolo del logo alla home e al nome del sito."
 
-#: includes/settings/content/admin.php:808
+#: includes/settings/content/admin.php:806
 msgid "Utilities"
 msgstr "Utilità"
 
-#: includes/settings/content/admin.php:819
+#: includes/settings/content/admin.php:817
 msgid "Utilities options"
 msgstr "Opzioni utilità"
 
@@ -3390,16 +3397,16 @@ msgstr "Convalida dimensione immagine"
 msgid "Value already passed through sanitize_text_field."
 msgstr "Valore già passato da sanitize_text_field."
 
-#: includes/settings/content/content.php:1420
+#: includes/settings/content/content.php:1455
 msgid "Viewport heights scrolled before the button appears (1 = one screen)."
 msgstr ""
 "Altezze di viewport scorse prima che appaia il pulsante (1 = una schermata)."
 
-#: includes/modules/extras/shortcodes.php:215
+#: includes/modules/extras/shortcodes.php:232
 msgid "Vimeo video"
 msgstr "Video Vimeo"
 
-#: includes/settings/content/content.php:1409
+#: includes/settings/content/content.php:1444
 msgid "Visibility"
 msgstr "Visibilità"
 
@@ -3407,11 +3414,11 @@ msgstr "Visibilità"
 msgid "Visit plugin site"
 msgstr "Visita il sito del plugin"
 
-#: includes/settings/content/social.php:615
+#: includes/settings/content/social.php:630
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: includes/settings/content/fields.php:375
+#: includes/settings/content/fields.php:371
 msgid ""
 "When a featured video is set, Hero uses it as the background. If a "
 "featured/term image is also set, it is used as the video poster."
@@ -3420,11 +3427,11 @@ msgstr ""
 "impostata anche un’immagine in evidenza/del termine, viene usata come poster "
 "del video."
 
-#: includes/settings/content/content.php:1470
+#: includes/settings/content/content.php:1505
 msgid "When disabled, the button stays fixed at the bottom of the viewport."
 msgstr "Quando è disattivato, il pulsante resta fisso in basso nel viewport."
 
-#: includes/settings/content/social.php:135
+#: includes/settings/content/social.php:134
 msgid ""
 "When enabled, print the share buttons from the theme. The shortcode has no "
 "attributes, uses panel settings, and ignores the “Show on” filters "
@@ -3453,7 +3460,7 @@ msgstr ""
 "trascinamento e la schermata di modifica del termine un campo numerico "
 "Ordine. L’ordine è salvato in term meta:"
 
-#: includes/settings/content/fields.php:236
+#: includes/settings/content/fields.php:232
 msgid ""
 "When Hero is enabled for the same post type or taxonomy as Subtitle, the "
 "standalone Subtitle field is hidden."
@@ -3461,11 +3468,11 @@ msgstr ""
 "Quando Hero è abilitato per lo stesso tipo di contenuto o tassonomia di "
 "Sottotitolo, il campo Sottotitolo autonomo viene nascosto."
 
-#: includes/settings/content/content.php:423
+#: includes/settings/content/content.php:426
 msgid "Which posts appear in the metabox selectors."
 msgstr "Quali articoli appaiono nei selettori del metabox."
 
-#: includes/settings/content/admin.php:652
+#: includes/settings/content/admin.php:651
 msgid "Who can upload"
 msgstr "Chi può caricare"
 
@@ -3481,20 +3488,20 @@ msgstr ""
 msgid "WordPress logo"
 msgstr "Logo WordPress"
 
-#: includes/settings/content/privacy.php:74
+#: includes/settings/content/privacy.php:76
 msgid "WPForms forms"
 msgstr "Moduli WPForms"
 
-#: includes/settings/content/extras.php:327
+#: includes/settings/content/extras.php:324
 msgid "Wrap content in highlighted markup."
 msgstr "Avvolge il contenuto in markup evidenziato."
 
-#: includes/settings/content/fields.php:203
+#: includes/settings/content/fields.php:199
 msgid "Wrapper tag: header (default), section or div."
 msgstr "Tag contenitore: header (predefinito), section o div."
 
 #. %s: language name
-#: includes/multilingual.php:250
+#: includes/multilingual.php:245
 #, php-format
 msgid ""
 "You are currently editing the %s version of translatable text fields. Switch "
@@ -3503,26 +3510,26 @@ msgstr ""
 "Stai modificando la versione %s dei campi di testo traducibili. Cambia la "
 "lingua di amministrazione per modificare un’altra lingua."
 
-#: includes/modules/admin/duplicate-posts.php:111
+#: includes/modules/admin/duplicate-posts.php:106
 msgid "You are not allowed to create posts of this type."
 msgstr "Non sei autorizzato a creare articoli di questo tipo."
 
-#: includes/modules/admin/duplicate-posts.php:106
+#: includes/modules/admin/duplicate-posts.php:101
 msgid "You are not allowed to duplicate this post."
 msgstr "Non sei autorizzato a duplicare questo articolo."
 
-#: includes/modules/admin/svg-uploads.php:298
+#: includes/modules/admin/svg-uploads.php:271
 msgid "You are not allowed to upload SVG files."
 msgstr "Non sei autorizzato a caricare file SVG."
 
-#: includes/modules/extras/shortcodes.php:198
+#: includes/modules/extras/shortcodes.php:215
 msgid "YouTube video"
 msgstr "Video YouTube"
 
-#: includes/settings/content/content.php:1296
+#: includes/settings/content/content.php:1329
 msgid "— Select a page —"
 msgstr "— Seleziona una pagina —"
 
-#: includes/settings/content/social.php:545
+#: includes/settings/content/social.php:550
 msgid "💬 Do you need help?"
 msgstr "💬 Hai bisogno di aiuto?"

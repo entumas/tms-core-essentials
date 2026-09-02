@@ -15,24 +15,15 @@ function tcres_svg_uploads_is_enabled(): bool {
  * Whether the current user may upload SVG files.
  */
 function tcres_svg_uploads_current_user_can(): bool {
-	if ( ! tcres_svg_uploads_is_enabled() ) :
-		return false;
-	endif;
-
-	if ( ! is_user_logged_in() || ! current_user_can( 'upload_files' ) ) :
-		return false;
-	endif;
+	if ( ! tcres_svg_uploads_is_enabled() ) return false;
+	if ( ! is_user_logged_in() || ! current_user_can( 'upload_files' ) ) return false;
 
 	$allowed = tcres_option_get( 'svg_uploads', 'roles' );
-	if ( ! is_array( $allowed ) ) :
-		return false;
-	endif;
+	if ( ! is_array( $allowed ) ) return false;
 
 	$user = wp_get_current_user();
 	foreach ( (array) $user->roles as $role ) :
-		if ( ! empty( $allowed[ $role ] ) ) :
-			return true;
-		endif;
+		if ( ! empty( $allowed[ $role ] ) ) return true;
 	endforeach;
 
 	return false;
@@ -43,15 +34,13 @@ function tcres_svg_uploads_current_user_can(): bool {
  * @param array<string, string> $mimes
  * @return array<string, string>
  */
-function tcres_svg_uploads_upload_mimes( array $mimes ): array {
-	if ( ! tcres_svg_uploads_current_user_can() ) :
-		return $mimes;
-	endif;
+add_filter( 'upload_mimes', function( array $mimes ): array {
+	if ( ! tcres_svg_uploads_current_user_can() ) return $mimes;
 
 	$mimes['svg'] = 'image/svg+xml';
 
 	return $mimes;
-}
+} );
 
 
 /**
@@ -61,23 +50,19 @@ function tcres_svg_uploads_upload_mimes( array $mimes ): array {
  * @param array<string, string>|null                                                     $mimes
  * @return array{ext?: string|false, type?: string|false, proper_filename?: string|false}
  */
-function tcres_svg_uploads_check_filetype_and_ext( array $data, string $file, string $filename, $mimes ): array {
+add_filter( 'wp_check_filetype_and_ext', function( array $data, string $file, string $filename, $mimes ): array {
 	unset( $file, $mimes );
 
-	if ( ! tcres_svg_uploads_current_user_can() ) :
-		return $data;
-	endif;
+	if ( ! tcres_svg_uploads_current_user_can() ) return $data;
 
 	$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
-	if ( $ext !== 'svg' ) :
-		return $data;
-	endif;
+	if ( $ext !== 'svg' ) return $data;
 
 	$data['ext']  = 'svg';
 	$data['type'] = 'image/svg+xml';
 
 	return $data;
-}
+}, 10, 4 );
 
 
 /**
@@ -118,13 +103,8 @@ function tcres_svg_uploads_is_unsafe_uri( string $value ): bool {
 	$value = trim( html_entity_decode( $value, ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
 	$value = preg_replace( '/\s+/', '', $value ) ?? $value;
 
-	if ( $value === '' ) :
-		return false;
-	endif;
-
-	if ( str_starts_with( $value, '#' ) ) :
-		return false;
-	endif;
+	if ( $value === '' ) return false;
+	if ( str_starts_with( $value, '#' ) ) return false;
 
 	$lower = strtolower( $value );
 
@@ -184,8 +164,8 @@ function tcres_svg_uploads_sanitize_contents( string $contents ) {
 		);
 	endif;
 
-	$previous = libxml_use_internal_errors( true );
-	$dom      = new DOMDocument();
+	$previous                = libxml_use_internal_errors( true );
+	$dom                     = new DOMDocument();
 	$dom->preserveWhiteSpace = true;
 	$dom->formatOutput       = false;
 
@@ -214,9 +194,7 @@ function tcres_svg_uploads_sanitize_contents( string $contents ) {
 	// Remove disallowed elements (case-insensitive via local-name).
 	foreach ( $disallowed as $tag ) :
 		$nodes = $xpath->query( '//*[translate(local-name(), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz")="' . $tag . '"]' );
-		if ( ! $nodes ) :
-			continue;
-		endif;
+		if ( ! $nodes ) continue;
 
 		$to_remove = array();
 		foreach ( $nodes as $node ) :
@@ -238,15 +216,11 @@ function tcres_svg_uploads_sanitize_contents( string $contents ) {
 	endforeach;
 
 	foreach ( $to_clean as $element ) :
-		if ( ! $element instanceof DOMElement ) :
-			continue;
-		endif;
+		if ( ! $element instanceof DOMElement ) continue;
 
 		$remove_attrs = array();
 		foreach ( $element->attributes ?? array() as $attr ) :
-			if ( ! $attr instanceof DOMAttr ) :
-				continue;
-			endif;
+			if ( ! $attr instanceof DOMAttr ) continue;
 
 			$name  = strtolower( $attr->localName ?: $attr->name );
 			$value = (string) $attr->value;
@@ -287,19 +261,20 @@ function tcres_svg_uploads_sanitize_contents( string $contents ) {
  * @return array{name?: string, type?: string, tmp_name?: string, error?: int|string, size?: int}
  */
 function tcres_svg_uploads_handle_upload_prefilter( array $file ): array {
-	$name = isset( $file['name'] ) ? (string) $file['name'] : '';
+	$name = isset( $file['name'] )
+		? (string) $file['name']
+		: '';
 	$ext  = strtolower( pathinfo( $name, PATHINFO_EXTENSION ) );
-
-	if ( $ext !== 'svg' ) :
-		return $file;
-	endif;
+	if ( $ext !== 'svg' ) return $file;
 
 	if ( ! tcres_svg_uploads_is_enabled() || ! tcres_svg_uploads_current_user_can() ) :
 		$file['error'] = __( 'You are not allowed to upload SVG files.', 'tms-core-essentials' );
 		return $file;
 	endif;
 
-	$tmp = isset( $file['tmp_name'] ) ? (string) $file['tmp_name'] : '';
+	$tmp = isset( $file['tmp_name'] )
+		? (string) $file['tmp_name']
+		: '';
 	if ( $tmp === '' || ! is_readable( $tmp ) ) :
 		$file['error'] = __( 'The SVG upload could not be read.', 'tms-core-essentials' );
 		return $file;
@@ -326,6 +301,8 @@ function tcres_svg_uploads_handle_upload_prefilter( array $file ): array {
 
 	return $file;
 }
+add_filter( 'wp_handle_upload_prefilter', 'tcres_svg_uploads_handle_upload_prefilter' );
+add_filter( 'wp_handle_sideload_prefilter', 'tcres_svg_uploads_handle_upload_prefilter' );
 
 
 /**
@@ -334,21 +311,15 @@ function tcres_svg_uploads_handle_upload_prefilter( array $file ): array {
  * @param array<string, mixed> $metadata
  * @return array<string, mixed>
  */
-function tcres_svg_uploads_generate_attachment_metadata( array $metadata, int $attachment_id ): array {
+add_filter( 'wp_generate_attachment_metadata', function( array $metadata, int $attachment_id ): array {
 	$mime = get_post_mime_type( $attachment_id );
-	if ( $mime !== 'image/svg+xml' ) :
-		return $metadata;
-	endif;
+	if ( $mime !== 'image/svg+xml' ) return $metadata;
 
 	$file = get_attached_file( $attachment_id );
-	if ( ! is_string( $file ) || $file === '' || ! is_readable( $file ) ) :
-		return $metadata;
-	endif;
+	if ( ! is_string( $file ) || $file === '' || ! is_readable( $file ) ) return $metadata;
 
 	$contents = file_get_contents( $file );
-	if ( ! is_string( $contents ) ) :
-		return $metadata;
-	endif;
+	if ( ! is_string( $contents ) ) return $metadata;
 
 	$width  = 0;
 	$height = 0;
@@ -371,7 +342,7 @@ function tcres_svg_uploads_generate_attachment_metadata( array $metadata, int $a
 	$metadata['file'] = _wp_relative_upload_path( $file );
 
 	return $metadata;
-}
+}, 10, 2 );
 
 
 /**
@@ -380,24 +351,24 @@ function tcres_svg_uploads_generate_attachment_metadata( array $metadata, int $a
  * @param array{0?: string, 1?: int, 2?: int, 3?: bool}|false $image
  * @return array{0?: string, 1?: int, 2?: int, 3?: bool}|false
  */
-function tcres_svg_uploads_image_downsize( $image, int $attachment_id, $size ) {
+add_filter( 'image_downsize', function( $image, int $attachment_id, $size ) {
 	unset( $size );
 
-	if ( get_post_mime_type( $attachment_id ) !== 'image/svg+xml' ) :
-		return $image;
-	endif;
+	if ( get_post_mime_type( $attachment_id ) !== 'image/svg+xml' ) return $image;
 
 	$url = wp_get_attachment_url( $attachment_id );
-	if ( ! is_string( $url ) || $url === '' ) :
-		return $image;
-	endif;
+	if ( ! is_string( $url ) || $url === '' ) return $image;
 
 	$meta   = wp_get_attachment_metadata( $attachment_id );
-	$width  = isset( $meta['width'] ) ? (int) $meta['width'] : 0;
-	$height = isset( $meta['height'] ) ? (int) $meta['height'] : 0;
+	$width  = isset( $meta['width'] )
+		? (int) $meta['width']
+		: 0;
+	$height = isset( $meta['height'] )
+		? (int) $meta['height']
+		: 0;
 
 	return array( $url, $width, $height, false );
-}
+}, 10, 3 );
 
 
 /**
@@ -406,14 +377,16 @@ function tcres_svg_uploads_image_downsize( $image, int $attachment_id, $size ) {
  * @param array<string, mixed> $response
  * @return array<string, mixed>
  */
-function tcres_svg_uploads_prepare_attachment_for_js( array $response, WP_Post $attachment ): array {
-	if ( ( $response['mime'] ?? '' ) !== 'image/svg+xml' && get_post_mime_type( $attachment ) !== 'image/svg+xml' ) :
-		return $response;
-	endif;
+add_filter( 'wp_prepare_attachment_for_js', function( array $response, WP_Post $attachment ): array {
+	if ( ( $response['mime'] ?? '' ) !== 'image/svg+xml' && get_post_mime_type( $attachment ) !== 'image/svg+xml' ) return $response;
 
 	$meta   = wp_get_attachment_metadata( $attachment->ID );
-	$width  = isset( $meta['width'] ) ? (int) $meta['width'] : 0;
-	$height = isset( $meta['height'] ) ? (int) $meta['height'] : 0;
+	$width  = isset( $meta['width'] )
+		? (int) $meta['width']
+		: 0;
+	$height = isset( $meta['height'] )
+		? (int) $meta['height']
+		: 0;
 
 	if ( $width > 0 && $height > 0 ) :
 		$response['width']  = $width;
@@ -429,40 +402,28 @@ function tcres_svg_uploads_prepare_attachment_for_js( array $response, WP_Post $
 	endif;
 
 	return $response;
-}
+}, 10, 2 );
 
 
-function tcres_svg_uploads_admin_css(): void {
-	if ( ! tcres_svg_uploads_is_enabled() ) :
-		return;
-	endif;
+add_action( 'admin_enqueue_scripts', function(): void {
+	if ( ! tcres_svg_uploads_is_enabled() ) return;
 
-	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-	if ( ! $screen ) :
-		return;
-	endif;
+	$screen = function_exists( 'get_current_screen' )
+		? get_current_screen()
+		: null;
+	if ( ! $screen ) return;
 
 	$ids = array( 'upload', 'media', 'attachment' );
-	if ( ! in_array( $screen->id, $ids, true ) && $screen->base !== 'upload' ) :
-		return;
-	endif;
+	if ( ! in_array( $screen->id, $ids, true ) && $screen->base !== 'upload' ) return;
 
-	echo '<style id="tcres-svg-uploads-admin">
-		.attachment .thumbnail img[src$=".svg"],
+	$css = '.attachment .thumbnail img[src$=".svg"],
 		.media-icon img[src$=".svg"],
 		table.media .column-title .media-icon img[src$=".svg"] {
 			width: 100%;
 			height: auto;
-		}
-	</style>';
-}
+		}';
 
-
-add_filter( 'upload_mimes', 'tcres_svg_uploads_upload_mimes' );
-add_filter( 'wp_check_filetype_and_ext', 'tcres_svg_uploads_check_filetype_and_ext', 10, 4 );
-add_filter( 'wp_handle_upload_prefilter', 'tcres_svg_uploads_handle_upload_prefilter' );
-add_filter( 'wp_handle_sideload_prefilter', 'tcres_svg_uploads_handle_upload_prefilter' );
-add_filter( 'wp_generate_attachment_metadata', 'tcres_svg_uploads_generate_attachment_metadata', 10, 2 );
-add_filter( 'image_downsize', 'tcres_svg_uploads_image_downsize', 10, 3 );
-add_filter( 'wp_prepare_attachment_for_js', 'tcres_svg_uploads_prepare_attachment_for_js', 10, 2 );
-add_action( 'admin_head', 'tcres_svg_uploads_admin_css' );
+	wp_register_style( 'tcres-svg-uploads-admin', false, array(), TCRES_PLUGIN_VERSION );
+	wp_enqueue_style( 'tcres-svg-uploads-admin' );
+	wp_add_inline_style( 'tcres-svg-uploads-admin', $css );
+} );

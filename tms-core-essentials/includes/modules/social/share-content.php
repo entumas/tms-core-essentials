@@ -103,8 +103,12 @@ function tcres_share_content_should_display(): bool {
 
 		foreach ( $templates as $template ) :
 			if ( ! is_array( $template ) ) continue;
-			$file = isset( $template['file'] ) ? (string) $template['file'] : '';
-			$slug = isset( $template['slug'] ) ? (string) $template['slug'] : '';
+			$file = isset( $template['file'] )
+				? (string) $template['file']
+				: '';
+			$slug = isset( $template['slug'] )
+				? (string) $template['slug']
+				: '';
 			if ( $file === '' || $slug === '' ) continue;
 			if ( is_page_template( $file ) ) :
 				return tcres_share_content_is_show_on_item( $show_templates, $slug );
@@ -136,7 +140,9 @@ function tcres_share_content_should_display(): bool {
 		endif;
 		if ( ! is_string( $post_type ) || $post_type === '' ) :
 			$object = get_queried_object();
-			$post_type = $object instanceof WP_Post_Type ? $object->name : '';
+			$post_type = $object instanceof WP_Post_Type
+				? $object->name
+				: '';
 		endif;
 		if ( $post_type === '' ) return false;
 
@@ -149,7 +155,9 @@ function tcres_share_content_should_display(): bool {
 
 	if ( is_category() || is_tag() || is_tax() ) :
 		$object = get_queried_object();
-		$taxonomy = $object instanceof WP_Term ? (string) $object->taxonomy : '';
+		$taxonomy = $object instanceof WP_Term
+			? (string) $object->taxonomy
+			: '';
 		if ( $taxonomy === '' ) return false;
 
 		$show_taxonomies = isset( $group['show_on_taxonomies'] ) && is_array( $group['show_on_taxonomies'] )
@@ -182,18 +190,26 @@ function tcres_share_content_get_context(): array {
 	elseif ( is_front_page() && is_page() ) :
 		$title     = get_the_title();
 		$permalink = get_permalink() ?: home_url( '/' );
-		$excerpt   = has_excerpt() ? get_the_excerpt() : '';
+		$excerpt   = has_excerpt()
+			? get_the_excerpt()
+			: '';
 		$image     = (string) ( get_the_post_thumbnail_url( null, 'full' ) ?: '' );
 	elseif ( is_singular() ) :
 		$title     = get_the_title();
 		$permalink = get_permalink() ?: '';
-		$excerpt   = has_excerpt() ? get_the_excerpt() : '';
+		$excerpt   = has_excerpt()
+			? get_the_excerpt()
+			: '';
 		$image     = (string) ( get_the_post_thumbnail_url( null, 'full' ) ?: '' );
 	elseif ( is_archive() ) :
 		$title = wp_strip_all_tags( get_the_archive_title() );
 		global $wp;
-		$request   = isset( $wp->request ) ? (string) $wp->request : '';
-		$permalink = $request !== '' ? home_url( user_trailingslashit( $request ) ) : home_url( '/' );
+		$request   = isset( $wp->request )
+			? (string) $wp->request
+			: '';
+		$permalink = $request !== ''
+			? home_url( user_trailingslashit( $request ) )
+			: home_url( '/' );
 		$excerpt   = wp_strip_all_tags( (string) get_the_archive_description() );
 	elseif ( is_search() ) :
 		$title     = sprintf(
@@ -399,7 +415,9 @@ function tcres_share_content_get( bool $respect_show_on = true ): string {
 	endif;
 
 	if ( ! empty( $group['network_email'] ) ) :
-		$subject = $title !== '' ? $title : $blogname;
+		$subject = $title !== ''
+			? $title
+			: $blogname;
 		$body    = $title !== ''
 			? $title . "\n\n" . $permalink
 			: $permalink;
@@ -437,7 +455,9 @@ function tcres_share_content_get( bool $respect_show_on = true ): string {
 	$output = '<aside class="tcres-share-content">';
 
 	if ( ! empty( $group['show_title'] ) ) :
-		$share_title = isset( $group['title'] ) ? trim( (string) $group['title'] ) : '';
+		$share_title = isset( $group['title'] )
+			? trim( (string) $group['title'] )
+			: '';
 		if ( $share_title === '' ) :
 			$share_title = tcres_share_content_default_title();
 		endif;
@@ -461,8 +481,6 @@ function tcres_share_content_shortcode(): string {
 }
 
 
-function tcres_share_content_register_shortcode(): void {
+add_action( 'init', function(): void {
 	add_shortcode( 'tcres-share-content', 'tcres_share_content_shortcode' );
-}
-
-add_action( 'init', 'tcres_share_content_register_shortcode' );
+} );

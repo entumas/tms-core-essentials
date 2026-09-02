@@ -100,7 +100,7 @@ function tcres_disable_features_get_admin_bar_nodes_for_current_user(): array {
 }
 
 
-function tcres_disable_features_remove_post_type_menus(): void {
+add_action( 'admin_menu', function(): void {
 	foreach ( tcres_disable_features_get_disabled_post_types() as $post_type ) :
 		if ( $post_type === 'post' ) :
 			remove_menu_page( 'edit.php' );
@@ -109,14 +109,14 @@ function tcres_disable_features_remove_post_type_menus(): void {
 
 		remove_menu_page( 'edit.php?post_type=' . $post_type );
 	endforeach;
-}
+}, 100 );
 
 
-function tcres_disable_features_remove_comments_menu(): void {
+add_action( 'admin_menu', function(): void {
 	if ( ! tcres_disable_features_comments_are_disabled() ) return;
 
 	remove_menu_page( 'edit-comments.php' );
-}
+}, 100 );
 
 
 function tcres_disable_features_remove_comments_admin_bar(): void {
@@ -127,6 +127,8 @@ function tcres_disable_features_remove_comments_admin_bar(): void {
 
 	$wp_admin_bar->remove_node( 'comments' );
 }
+add_action( 'admin_bar_menu', 'tcres_disable_features_remove_comments_admin_bar', 1000 );
+add_action( 'wp_before_admin_bar_render', 'tcres_disable_features_remove_comments_admin_bar', 1000 );
 
 
 function tcres_disable_features_clean_admin_bar_nodes(): void {
@@ -140,9 +142,11 @@ function tcres_disable_features_clean_admin_bar_nodes(): void {
 		$wp_admin_bar->remove_node( $node_id );
 	endforeach;
 }
+add_action( 'admin_bar_menu', 'tcres_disable_features_clean_admin_bar_nodes', 999 );
+add_action( 'wp_before_admin_bar_render', 'tcres_disable_features_clean_admin_bar_nodes', 999 );
 
 
-function tcres_disable_features_disable_comments_support(): void {
+add_action( 'admin_init', function(): void {
 	if ( ! tcres_disable_features_comments_are_disabled() ) return;
 
 	foreach ( get_post_types( array(), 'names' ) as $post_type ) :
@@ -153,33 +157,33 @@ function tcres_disable_features_disable_comments_support(): void {
 			remove_post_type_support( $post_type, 'trackbacks' );
 		endif;
 	endforeach;
-}
+} );
 
 
-function tcres_disable_features_filter_comments_open( bool $open ): bool {
+add_filter( 'comments_open', function( bool $open ): bool {
 	if ( tcres_disable_features_comments_are_disabled() ) return false;
 	return $open;
-}
+}, 10, 1 );
 
 
-function tcres_disable_features_filter_pings_open( bool $open ): bool {
+add_filter( 'pings_open', function( bool $open ): bool {
 	if ( tcres_disable_features_comments_are_disabled() ) return false;
 	return $open;
-}
+}, 10, 1 );
 
 
-function tcres_disable_features_hide_comments_array( array $comments ): array {
+add_filter( 'comments_array', function( array $comments ): array {
 	if ( tcres_disable_features_comments_are_disabled() ) return array();
 	return $comments;
-}
+}, 10, 1 );
 
-function tcres_disable_features_hide_discussion_settings_menu(): void {
+add_action( 'admin_menu', function(): void {
 	if ( ! tcres_disable_features_comments_are_disabled() ) return;
 	remove_submenu_page( 'options-general.php', 'options-discussion.php' );
-}
+}, 100 );
 
 
-function tcres_disable_features_redirect_discussion_if_disabled(): void {
+add_action( 'admin_init', function(): void {
 	if ( ! tcres_disable_features_comments_are_disabled() ) return;
 	if ( ! is_admin() ) return;
 
@@ -190,10 +194,10 @@ function tcres_disable_features_redirect_discussion_if_disabled(): void {
 
 	wp_safe_redirect( admin_url( 'options-general.php' ) );
 	exit;
-}
+}, 1 );
 
 
-function tcres_disable_features_unregister_taxonomies(): void {
+add_action( 'init', function(): void {
 	foreach ( tcres_disable_features_get_disabled_taxonomies() as $taxonomy ) :
 		$object = get_taxonomy( $taxonomy );
 		if ( ! $object || empty( $object->object_type ) || ! is_array( $object->object_type ) ) continue;
@@ -202,10 +206,10 @@ function tcres_disable_features_unregister_taxonomies(): void {
 			unregister_taxonomy_for_object_type( $taxonomy, (string) $post_type );
 		endforeach;
 	endforeach;
-}
+}, 100 );
 
 
-function tcres_disable_features_maybe_redirect_admin_requests(): void {
+add_action( 'admin_init', function(): void {
 	if ( ! is_admin() || wp_doing_ajax() ) return;
 
 	$disabled_post_types = tcres_disable_features_get_disabled_post_types();
@@ -248,7 +252,7 @@ function tcres_disable_features_maybe_redirect_admin_requests(): void {
 			exit;
 		endif;
 	endif;
-}
+}, 1 );
 
 
 function tcres_disable_features_is_disabled_blog_context(): bool {
@@ -259,7 +263,7 @@ function tcres_disable_features_is_disabled_blog_context(): bool {
 }
 
 
-function tcres_disable_features_maybe_redirect_frontend_requests(): void {
+add_action( 'template_redirect', function(): void {
 	if ( is_admin() ) return;
 
 	$disabled_post_types = tcres_disable_features_get_disabled_post_types();
@@ -291,21 +295,4 @@ function tcres_disable_features_maybe_redirect_frontend_requests(): void {
 			exit;
 		endif;
 	endforeach;
-}
-
-
-add_action( 'init', 'tcres_disable_features_unregister_taxonomies', 100 );
-add_action( 'admin_menu', 'tcres_disable_features_hide_discussion_settings_menu', 100 );
-add_action( 'admin_menu', 'tcres_disable_features_remove_post_type_menus', 100 );
-add_action( 'admin_menu', 'tcres_disable_features_remove_comments_menu', 100 );
-add_action( 'admin_init', 'tcres_disable_features_maybe_redirect_admin_requests', 1 );
-add_action( 'admin_bar_menu', 'tcres_disable_features_clean_admin_bar_nodes', 999 );
-add_action( 'wp_before_admin_bar_render', 'tcres_disable_features_clean_admin_bar_nodes', 999 );
-add_action( 'admin_init', 'tcres_disable_features_redirect_discussion_if_disabled', 1 );
-add_action( 'admin_bar_menu', 'tcres_disable_features_remove_comments_admin_bar', 1000 );
-add_action( 'wp_before_admin_bar_render', 'tcres_disable_features_remove_comments_admin_bar', 1000 );
-add_action( 'admin_init', 'tcres_disable_features_disable_comments_support' );
-add_action( 'template_redirect', 'tcres_disable_features_maybe_redirect_frontend_requests', 1 );
-add_filter( 'comments_open', 'tcres_disable_features_filter_comments_open', 10, 1 );
-add_filter( 'pings_open', 'tcres_disable_features_filter_pings_open', 10, 1 );
-add_filter( 'comments_array', 'tcres_disable_features_hide_comments_array', 10, 1 );
+}, 1 );

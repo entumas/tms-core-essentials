@@ -34,9 +34,7 @@ function tcres_terms_list_get_drag_order_taxonomies(): array {
 		if ( in_array( $taxonomy, $exclude, true ) ) continue;
 
 		// WooCommerce product attributes already have their own ordering UI.
-		if ( function_exists( 'taxonomy_is_product_attribute' ) && taxonomy_is_product_attribute( $taxonomy ) ) :
-			continue;
-		endif;
+		if ( function_exists( 'taxonomy_is_product_attribute' ) && taxonomy_is_product_attribute( $taxonomy ) ) continue;
 
 		$taxonomies[] = $taxonomy;
 	endforeach;
@@ -124,42 +122,34 @@ function tcres_terms_list_drag_order_get_terms_args( array $args, array $taxonom
 			? (string) ( $args['taxonomy'][0] ?? '' )
 			: (string) $args['taxonomy'];
 	endif;
-
-	if ( $taxonomy === '' || ! tcres_terms_list_drag_order_is_enabled_for_taxonomy( $taxonomy ) ) :
-		return $args;
-	endif;
+	if ( $taxonomy === '' || ! tcres_terms_list_drag_order_is_enabled_for_taxonomy( $taxonomy ) ) return $args;
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Reading sort params for query modification, not form processing.
 	$request_orderby = isset( $_REQUEST['orderby'] )
 		? sanitize_key( wp_unslash( (string) $_REQUEST['orderby'] ) )
 		: '';
 
-	$screen        = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+	$screen        = function_exists( 'get_current_screen' )
+		? get_current_screen()
+		: null;
 	$on_terms_list = $screen
 		&& $screen->base === 'edit-tags'
 		&& ! empty( $screen->taxonomy )
 		&& (string) $screen->taxonomy === $taxonomy;
 
 	// Only on the taxonomy list screen (or explicit Order column sort).
-	if ( ! $on_terms_list && $request_orderby !== 'tcres_order' ) :
-		return $args;
-	endif;
-
-	if ( $request_orderby !== '' && $request_orderby !== 'tcres_order' ) :
-		return $args;
-	endif;
+	if ( ! $on_terms_list && $request_orderby !== 'tcres_order' ) return $args;
+	if ( $request_orderby !== '' && $request_orderby !== 'tcres_order' ) return $args;
 
 	$order = isset( $_REQUEST['order'] )
 		? strtoupper( sanitize_key( wp_unslash( (string) $_REQUEST['order'] ) ) )
 		: 'ASC';
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended
-	if ( $order !== 'DESC' ) :
-		$order = 'ASC';
-	endif;
+	if ( $order !== 'DESC' ) $order = 'ASC';
 
 	$args['tcres_term_order_sort'] = true;
-	$args['orderby']              = 'name'; // keep a valid key for WP_Term_Query
-	$args['order']                = $order;
+	$args['orderby']               = 'name'; // keep a valid key for WP_Term_Query
+	$args['order']                 = $order;
 	unset( $args['meta_key'] );
 
 	return $args;
@@ -243,7 +233,7 @@ function tcres_terms_list_drag_order_save_term( int $term_id, int $tt_id = 0 ): 
 }
 
 
-function tcres_terms_list_drag_order_ajax_update(): void {
+add_action( 'wp_ajax_tcres_admin_update_term_order', function(): void {
 	check_ajax_referer( 'tcres_drag_order', 'nonce' );
 
 	$taxonomy = isset( $_POST['taxonomy'] )
@@ -277,10 +267,10 @@ function tcres_terms_list_drag_order_ajax_update(): void {
 	endforeach;
 
 	wp_send_json_success();
-}
+} );
 
 
-function tcres_terms_list_admin_init_register(): void {
+add_action( 'admin_init', function(): void {
 	if ( ! tcres_terms_list_setting_is_enabled( 'drag_order' ) ) return;
 
 	foreach ( tcres_terms_list_get_drag_order_taxonomies() as $taxonomy ) :
@@ -298,8 +288,4 @@ function tcres_terms_list_admin_init_register(): void {
 
 	add_filter( 'get_terms_args', 'tcres_terms_list_drag_order_get_terms_args', 10, 2 );
 	add_filter( 'terms_clauses', 'tcres_terms_list_drag_order_terms_clauses', 10, 3 );
-}
-
-
-add_action( 'admin_init', 'tcres_terms_list_admin_init_register' );
-add_action( 'wp_ajax_tcres_admin_update_term_order', 'tcres_terms_list_drag_order_ajax_update' );
+} );

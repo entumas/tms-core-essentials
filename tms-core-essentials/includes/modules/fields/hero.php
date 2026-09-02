@@ -9,9 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Settings helpers ========================================
 
 function tcres_hero_is_enabled(): bool {
-	if ( ! (bool) tcres_option_get( 'hero', 'enable' ) ) :
-		return false;
-	endif;
+	if ( ! (bool) tcres_option_get( 'hero', 'enable' ) ) return false;
 
 	return ! empty( tcres_hero_get_post_types() )
 		|| ! empty( tcres_hero_get_taxonomies() );
@@ -22,9 +20,7 @@ function tcres_hero_is_enabled(): bool {
  * @return array<int, string>
  */
 function tcres_hero_get_post_types(): array {
-	if ( ! (bool) tcres_option_get( 'hero', 'enable' ) ) :
-		return array();
-	endif;
+	if ( ! (bool) tcres_option_get( 'hero', 'enable' ) ) return array();
 
 	$post_types = tcres_option_get_for_post_types( 'hero', '' );
 	if ( ! is_array( $post_types ) ) return array();
@@ -37,9 +33,7 @@ function tcres_hero_get_post_types(): array {
  * @return array<int, string>
  */
 function tcres_hero_get_taxonomies(): array {
-	if ( ! (bool) tcres_option_get( 'hero', 'enable' ) ) :
-		return array();
-	endif;
+	if ( ! (bool) tcres_option_get( 'hero', 'enable' ) ) return array();
 
 	$taxonomies = tcres_option_get_for_taxonomies( 'hero', 'tax_' );
 	if ( ! is_array( $taxonomies ) ) return array();
@@ -307,8 +301,12 @@ function tcres_hero_render_buttons_ui( array $buttons ): void {
  * @param array{title?: string, url?: string, target?: string} $button
  */
 function tcres_hero_render_button_row( $index, array $button ): void {
-	$title  = isset( $button['title'] ) ? (string) $button['title'] : '';
-	$url    = isset( $button['url'] ) ? (string) $button['url'] : '';
+	$title  = isset( $button['title'] )
+		? (string) $button['title']
+		: '';
+	$url    = isset( $button['url'] )
+		? (string) $button['url']
+		: '';
 	$target = ! empty( $button['target'] );
 	$base   = 'tcres_hero_buttons[' . $index . ']';
 	$url_id = 'tcres_hero_button_url_' . $index;
@@ -356,7 +354,9 @@ function tcres_hero_render_button_row( $index, array $button ): void {
 
 
 function tcres_hero_render_fields( string $subtitle, string $description, array $buttons, string $context = 'metabox' ): void {
-	$suffix = $context === 'term' ? '_term' : '';
+	$suffix = $context === 'term'
+		? '_term'
+		: '';
 	?>
 	<div class="tcres-hero-fields">
 		<div class="tcres-metabox-field tcres-wysiwyg-compact">
@@ -694,7 +694,9 @@ function tcres_hero_render_background_html( int $attachment_id, $image_size, int
 		$url = wp_get_attachment_url( $video_id );
 		if ( is_string( $url ) && $url !== '' ) :
 			$mime = get_post_mime_type( $video_id );
-			$mime = is_string( $mime ) ? $mime : '';
+			$mime = is_string( $mime )
+				? $mime
+				: '';
 
 			$poster_attr = '';
 			if ( $attachment_id > 0 && wp_attachment_is_image( $attachment_id ) ) :

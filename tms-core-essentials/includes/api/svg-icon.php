@@ -11,7 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Empty setting → plugin sprite.
  */
 function tcres_svg_icon_get_default_file_url(): string {
-	$key = is_admin() ? 'admin_file' : 'frontend_file';
+	$key = is_admin()
+		? 'admin_file'
+		: 'frontend_file';
 	$url = trim( (string) tcres_option_get( 'svg_icons', $key ) );
 
 	return $url !== ''
@@ -29,10 +31,14 @@ if ( ! function_exists( 'tcres_svg_icon_get' ) ) :
 	 * } $args
 	 */
 	function tcres_svg_icon_get( array $args = array() ): string {
-		$icon = isset( $args['icon'] ) ? trim( (string) $args['icon'] ) : '';
+		$icon = isset( $args['icon'] )
+			? trim( (string) $args['icon'] )
+			: '';
 		if ( $icon === '' ) return '';
 
-		$file = isset( $args['file'] ) ? trim( (string) $args['file'] ) : '';
+		$file = isset( $args['file'] )
+			? trim( (string) $args['file'] )
+			: '';
 		$url  = $file !== ''
 			? $file
 			: tcres_svg_icon_get_default_file_url();

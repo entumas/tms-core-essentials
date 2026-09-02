@@ -50,7 +50,9 @@ function tcres_privacy_consent_privacy_policy_link_html(): string {
 		$page_id = (int) get_option( 'wp_page_for_privacy_policy' );
 		if ( $page_id > 0 ) :
 			$permalink = get_permalink( $page_id );
-			$url       = is_string( $permalink ) ? $permalink : '';
+			$url       = is_string( $permalink )
+				? $permalink
+				: '';
 		endif;
 	endif;
 
@@ -93,7 +95,9 @@ function tcres_privacy_consent_expand_tokens( string $html ): string {
  */
 function tcres_privacy_consent_get_label_html(): string {
 	$stored = tcres_option_get( 'privacy_consent', 'label' );
-	$stored = is_string( $stored ) ? trim( $stored ) : '';
+	$stored = is_string( $stored )
+		? trim( $stored )
+		: '';
 
 	if ( $stored !== '' && trim( wp_strip_all_tags( $stored ) ) !== '' ) :
 		return tcres_privacy_consent_expand_tokens( wp_kses_post( $stored ) );
@@ -117,10 +121,14 @@ function tcres_privacy_consent_error_message(): string {
  * @param array{form?: string, id?: string} $args
  */
 function tcres_privacy_consent_get( array $args = array() ): string {
-	$form = isset( $args['form'] ) ? sanitize_key( (string) $args['form'] ) : '';
+	$form = isset( $args['form'] )
+		? sanitize_key( (string) $args['form'] )
+		: '';
 	if ( $form === '' || ! tcres_privacy_consent_is_enabled_for( $form ) ) return '';
 
-	$id = isset( $args['id'] ) ? sanitize_html_class( (string) $args['id'] ) : '';
+	$id = isset( $args['id'] )
+		? sanitize_html_class( (string) $args['id'] )
+		: '';
 	if ( $id === '' ) :
 		$id = 'tcres-privacy-consent-' . $form;
 	endif;

@@ -53,35 +53,32 @@ function tcres_plugin_requirements_are_met(): bool {
 }
 
 
-function tcres_plugin_requirements_render_admin_notice(): void {
-	if ( ! current_user_can( 'activate_plugins' ) ) return;
-
-	global $wp_version;
-
-	$wp_current = is_string( $wp_version )
-		? $wp_version
-		: __( 'unknown', 'tms-core-essentials' );
-	$name = tcres_plugin_get_name();
-
-	$message = sprintf(
-		/* translators: 1: plugin name, 2: required WP version, 3: current WP version, 4: required PHP version, 5: current PHP version */
-		__( '%1$s requires WordPress %2$s or higher (you are running %3$s) and PHP %4$s or higher (this server reports %5$s). Please update WordPress or PHP, or contact your host.', 'tms-core-essentials' ),
-		$name,
-		TCRES_REQUIRES_WP,
-		$wp_current,
-		TCRES_REQUIRES_PHP,
-		PHP_VERSION
-	);
-
-	echo '<div class="notice notice-error"><p>' . esc_html( $message ) . '</p></div>';
-}
-
-
 /**
  * Register admin notice when requirements are not met (plugin boot stops in main file)
  */
 function tcres_plugin_requirements_register_admin_notice(): void {
-	add_action( 'admin_notices', 'tcres_plugin_requirements_render_admin_notice', 0 );
+	add_action( 'admin_notices', function(): void {
+		if ( ! current_user_can( 'activate_plugins' ) ) return;
+
+		global $wp_version;
+
+		$wp_current = is_string( $wp_version )
+			? $wp_version
+			: __( 'unknown', 'tms-core-essentials' );
+		$name = tcres_plugin_get_name();
+
+		$message = sprintf(
+			/* translators: 1: plugin name, 2: required WP version, 3: current WP version, 4: required PHP version, 5: current PHP version */
+			__( '%1$s requires WordPress %2$s or higher (you are running %3$s) and PHP %4$s or higher (this server reports %5$s). Please update WordPress or PHP, or contact your host.', 'tms-core-essentials' ),
+			$name,
+			TCRES_REQUIRES_WP,
+			$wp_current,
+			TCRES_REQUIRES_PHP,
+			PHP_VERSION
+		);
+
+		echo '<div class="notice notice-error"><p>' . esc_html( $message ) . '</p></div>';
+	}, 0 );
 }
 
 

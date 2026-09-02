@@ -25,7 +25,7 @@ Configure everything from **Settings → TMS Core Essentials**. Enable only what
 - Administration (Gutenberg, lists, comments, admin bar, duplicate posts, SVG uploads)
 - Login (custom login page, logout redirect)
 - Security and performance (login hardening, head cleanup)
-- Extras (frontend assets, CDN libraries, SVG icons, shortcodes)
+- Extras (frontend assets, bundled libraries, SVG icons, shortcodes)
 - Developers reference (PHP API and frontend JavaScript utilities)
 
 **Bundled translations:**
@@ -97,6 +97,6 @@ To build from source: clone the repository, open the project root in Prepros, th
 * NEW: Share content: social share buttons via tcres_share_content() / tcres_share_content_get() / [tcres-share-content].
 * NEW: Chats: floating WhatsApp, Telegram, and/or Messenger buttons in the footer.
 * NEW: Frontend assets: options to disable the plugin frontend CSS and JS.
-* NEW: External scripts: optional Swiper, GLightbox, Choices, and Smooth scroll (Lenis) from CDN.
+* NEW: External scripts: optional Swiper, GLightbox, Choices, and Smooth scroll (Lenis), bundled with the plugin.
 * NEW: SVG icons: configurable admin/frontend sprite URLs for tcres_svg_icon_get().
 * NEW: Shortcodes: [tcres-field], [tcres-tax-field], [tcres-option], [tcres-button], [tcres-highlighted], [tcres-svgicon], [tcres-youtube], and [tcres-vimeo].

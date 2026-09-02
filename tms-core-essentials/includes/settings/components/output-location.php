@@ -18,12 +18,22 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * } $args
  */
 function tcres_settings_render_output_location( array $args ): void {
-	$group_key   = isset( $args['group_key'] ) ? sanitize_key( (string) $args['group_key'] ) : '';
-	$option_name = isset( $args['option_name'] ) ? (string) $args['option_name'] : TCRES_OPTION_NAME;
-	$id_prefix   = isset( $args['id_prefix'] ) ? (string) $args['id_prefix'] : 'tcres-output';
-	$choices     = isset( $args['choices'] ) && is_array( $args['choices'] ) ? $args['choices'] : array();
-	$location    = isset( $args['location'] ) ? sanitize_key( (string) $args['location'] ) : 'manual';
-	$target      = isset( $args['target'] ) ? (string) $args['target'] : '';
+	$group_key    = isset( $args['group_key'] )
+		? sanitize_key( (string) $args['group_key'] )
+		: '';
+	$option_name  = isset( $args['option_name'] )
+		? (string) $args['option_name']
+		: TCRES_OPTION_NAME;
+	$id_prefix    = isset( $args['id_prefix'] )
+		? (string) $args['id_prefix']
+		: 'tcres-output';
+	$choices      = isset( $args['choices'] ) && is_array( $args['choices'] ) ? $args['choices'] : array();
+	$location     = isset( $args['location'] )
+		? sanitize_key( (string) $args['location'] )
+		: 'manual';
+	$target       = isset( $args['target'] )
+		? (string) $args['target']
+		: '';
 	$usage_render = isset( $args['usage_render'] ) && is_callable( $args['usage_render'] )
 		? $args['usage_render']
 		: null;
