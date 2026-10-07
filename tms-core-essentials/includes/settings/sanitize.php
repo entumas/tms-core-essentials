@@ -50,8 +50,33 @@ function tcres_settings_sanitize( $value ): array {
 		$disable_gutenberg = isset( $value['disable_gutenberg'] ) && is_array( $value['disable_gutenberg'] )
 			? $value['disable_gutenberg']
 			: array();
-		foreach ( tcres_settings_disable_gutenberg_get_post_type_defaults() as $key => $default ) :
+		foreach ( tcres_settings_disable_gutenberg_get_post_types() as $post_type ) :
+			$key = 'disable_' . $post_type;
 			$out['disable_gutenberg'][ $key ] = ! empty( $disable_gutenberg[ $key ] );
+		endforeach;
+
+		$submitted_keep = isset( $disable_gutenberg['keep_block_editor_on_templates'] ) && is_array( $disable_gutenberg['keep_block_editor_on_templates'] )
+			? $disable_gutenberg['keep_block_editor_on_templates']
+			: array();
+		foreach ( tcres_settings_disable_gutenberg_keep_templates_defaults() as $post_type => $default ) :
+			$allowed = tcres_settings_disable_gutenberg_get_keep_template_slugs( $post_type );
+			$submitted = isset( $submitted_keep[ $post_type ] ) && is_array( $submitted_keep[ $post_type ] )
+				? $submitted_keep[ $post_type ]
+				: array();
+
+			if ( empty( $allowed ) ) :
+				$out['disable_gutenberg']['keep_block_editor_on_templates'][ $post_type ] = array();
+				continue;
+			endif;
+
+			$out['disable_gutenberg']['keep_block_editor_on_templates'][ $post_type ] = array_values(
+				array_filter(
+					array_map( 'sanitize_key', $submitted ),
+					static function ( string $slug ) use ( $allowed ): bool {
+						return $slug !== '' && in_array( $slug, $allowed, true );
+					}
+				)
+			);
 		endforeach;
 
 		$disable_features = isset( $value['disable_features'] ) && is_array( $value['disable_features'] )

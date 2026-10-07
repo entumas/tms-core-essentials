@@ -225,5 +225,5 @@ function tcres_chats_get(): string {
 
 
 function tcres_chats_render(): void {
-	echo tcres_chats_get(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with escaping.
+	tcres_echo_html( tcres_chats_get() );
 }

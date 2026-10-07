@@ -102,7 +102,7 @@ add_action( 'after_setup_theme', function(): void {
 
 
 function tcres_social_menu_shortcode(): string {
-	return tcres_social_menu_get();
+	return tcres_kses_html( tcres_social_menu_get() );
 }
 
 

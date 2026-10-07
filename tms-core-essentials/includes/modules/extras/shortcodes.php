@@ -32,6 +32,22 @@ function tcres_shortcodes_sanitize_embed_id( string $id ): string {
 }
 
 
+/**
+ * Normalize shortcode output format (defaults to esc_html).
+ *
+ * @param array<int, string> $allowed
+ */
+function tcres_shortcodes_resolve_format( string $format, array $allowed ): string {
+	$format = $format !== ''
+		? sanitize_key( $format )
+		: 'esc_html';
+
+	if ( ! in_array( $format, $allowed, true ) ) return 'esc_html';
+
+	return $format;
+}
+
+
 // Data / API ========================================
 
 function tcres_shortcode_field( $atts ): string {
@@ -52,6 +68,11 @@ function tcres_shortcode_field( $atts ): string {
 	);
 
 	if ( $atts['field'] === '' ) return '';
+
+	$atts['format'] = tcres_shortcodes_resolve_format(
+		$atts['format'],
+		tcres_field_get_allowed_formats()
+	);
 
 	$args = array_filter( $atts, static fn( $value ) => $value !== '' );
 	return tcres_field_get( $args );
@@ -78,6 +99,11 @@ function tcres_shortcode_tax_field( $atts ): string {
 
 	if ( $atts['tax'] === '' || $atts['field'] === '' ) return '';
 
+	$atts['format'] = tcres_shortcodes_resolve_format(
+		$atts['format'],
+		tcres_field_get_allowed_formats()
+	);
+
 	$args = array_filter( $atts, static fn( $value ) => $value !== '' );
 	return tcres_tax_field_get( $args );
 }
@@ -97,12 +123,10 @@ function tcres_shortcode_option( $atts ): string {
 	$name = sanitize_key( $atts['name'] );
 	if ( ! tcres_option_is_plugin_group( $name ) ) return '';
 
-	$format = $atts['format'] !== ''
-		? sanitize_key( $atts['format'] )
-		: 'esc_html';
-	if ( ! in_array( $format, array( 'esc_html', 'html', 'wpautop' ), true ) ) :
-		$format = 'esc_html';
-	endif;
+	$format = tcres_shortcodes_resolve_format(
+		$atts['format'],
+		array( 'esc_html', 'html', 'wysiwyg_title', 'wpautop' )
+	);
 
 	$result = tcres_option_get( $name, $atts['value'], $format );
 	if ( null === $result || false === $result ) return '';
@@ -187,14 +211,18 @@ function tcres_shortcode_svgicon( $atts ): string {
 	endif;
 
 	$html = tcres_svg_icon_get( $args );
-	if ( $html === '' || $atts['class'] === '' ) return $html;
+	if ( $html === '' ) return '';
 
-	return preg_replace(
-		'/class="/',
-		'class="' . esc_attr( $atts['class'] ) . ' ',
-		$html,
-		1
-	) ?: $html;
+	if ( $atts['class'] !== '' ) :
+		$html = preg_replace(
+			'/class="/',
+			'class="' . esc_attr( $atts['class'] ) . ' ',
+			$html,
+			1
+		) ?: $html;
+	endif;
+
+	return tcres_kses_html( $html );
 }
 
 

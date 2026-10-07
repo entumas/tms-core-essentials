@@ -31,7 +31,7 @@ add_action( 'login_enqueue_scripts', function(): void {
 
 	$css = sprintf(
 		'#login h1 a{background-image:url(%1$s);width:1em;height:1em;font-size:96px;background-size:1em;background-position:center;}',
-		esc_url_raw( $icon_url )
+		esc_url( $icon_url )
 	);
 
 	wp_register_style( 'tcres-login-customization-inline', false, array(), TCRES_PLUGIN_VERSION );

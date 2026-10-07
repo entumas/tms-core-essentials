@@ -110,6 +110,75 @@ function tcres_format_editor_content( string $html ): string {
 
 
 /**
+ * Allowed HTML tags for plugin frontend output (post context + icons/video).
+ *
+ * @return array<string, array<string, bool>>
+ */
+function tcres_get_kses_allowed_html(): array {
+	$allowed = wp_kses_allowed_html( 'post' );
+
+	$allowed['svg'] = array(
+		'class'       => true,
+		'aria-hidden' => true,
+		'focusable'   => true,
+		'role'        => true,
+		'xmlns'       => true,
+		'width'       => true,
+		'height'      => true,
+		'viewbox'     => true,
+		'viewBox'     => true,
+	);
+
+	$allowed['use'] = array(
+		'href'       => true,
+		'xlink:href' => true,
+	);
+
+	$allowed['video'] = array(
+		'class'       => true,
+		'autoplay'    => true,
+		'muted'       => true,
+		'loop'        => true,
+		'playsinline' => true,
+		'controls'    => true,
+		'preload'     => true,
+		'poster'      => true,
+		'src'         => true,
+	);
+
+	$allowed['source'] = array(
+		'src'  => true,
+		'type' => true,
+	);
+
+	/**
+	 * Filter kses allowlist used by tcres_kses_html() / tcres_echo_html().
+	 *
+	 * @param array<string, array<string, bool>> $allowed
+	 */
+	return apply_filters( 'tcres_kses_allowed_html', $allowed );
+}
+
+
+/**
+ * Sanitize HTML at output time (escape late).
+ */
+function tcres_kses_html( string $html ): string {
+	if ( $html === '' ) return '';
+
+	return wp_kses( $html, tcres_get_kses_allowed_html() );
+}
+
+
+/**
+ * Echo HTML after late escaping.
+ */
+function tcres_echo_html( string $html ): void {
+	echo tcres_kses_html( $html );
+}
+
+
+/**
  * Safely require a file from /includes relative path
  */
 function tcres_include_file( string $relative ): void {

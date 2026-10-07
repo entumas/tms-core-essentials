@@ -118,15 +118,25 @@ function tcres_output_location_get_pair( string $group_key ): array {
 
 
 /**
+ * Sanitize module HTML before it is injected into frontend output.
+ */
+function tcres_output_location_sanitize_html( string $html ): string {
+	if ( $html === '' ) return '';
+
+	return tcres_kses_html( $html );
+}
+
+
+/**
  * Resolve printable HTML from a callback that returns string or echoes.
  *
  * @param callable $callback
  */
 function tcres_output_location_capture( callable $callback ): string {
 	$result = $callback();
-	if ( is_string( $result ) ) return $result;
+	if ( ! is_string( $result ) || $result === '' ) return '';
 
-	return '';
+	return tcres_output_location_sanitize_html( $result );
 }
 
 
@@ -145,7 +155,7 @@ function tcres_output_location_register( string $group_key, callable $callback )
 	$echo_html = static function () use ( $callback ): void {
 		$html = tcres_output_location_capture( $callback );
 		if ( $html !== '' ) :
-			echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- module builders escape.
+			tcres_echo_html( $html );
 		endif;
 	};
 

@@ -75,7 +75,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<li>
 						<code><?php echo esc_html( '$args[\'format\']' ); ?></code>
 						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
-						&mdash; <?php esc_html_e( 'Output format: wpautop or esc_html.', 'tms-core-essentials' ); ?>
+						&mdash; <?php esc_html_e( 'Output format: empty (no formatting), esc_html, html (wp_kses_post), or wpautop (wp_kses_post + wpautop). Shortcodes default to esc_html.', 'tms-core-essentials' ); ?>
 					</li>
 				</ul>
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
@@ -131,7 +131,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<li>
 						<code><?php echo esc_html( '$format' ); ?></code>
 						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
-						&mdash; <?php esc_html_e( 'Output format: empty (no formatting), esc_html, html (wp_kses_post), or wpautop.', 'tms-core-essentials' ); ?>
+						&mdash; <?php esc_html_e( 'Output format: empty (no formatting), esc_html, html (wp_kses_post), wysiwyg_title (tcres_clean_wysiwyg_title), or wpautop.', 'tms-core-essentials' ); ?>
 					</li>
 				</ul>
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
@@ -306,7 +306,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 				<h3>⇒ <?php esc_html_e( 'Get SVG icon', 'tms-core-essentials' ); ?></h3>
 				<p><code><?php echo esc_html( 'tcres_svg_icon_get( array $args = [] ): string' ); ?></code></p>
 				<p><?php esc_html_e( 'Outputs SVG icon markup using a sprite (<use href="file.svg#icon-id">).', 'tms-core-essentials' ); ?></p>
-				<p class="description"><?php esc_html_e( 'Classes: tcres-svg-icon + tcres-svg-icon-{icon-id}. Optional inline adds tcres-svg-icon-inline.', 'tms-core-essentials' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Classes: tcres-svg-icon svg-icon svg-icon-inline (if inline) svg-icon-{icon-id}.', 'tms-core-essentials' ); ?></p>
 				<h4><?php esc_html_e( 'Parameters', 'tms-core-essentials' ); ?></h4>
 				<ul>
 					<li>
@@ -322,7 +322,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<li>
 						<code><?php echo esc_html( '$args[\'inline\']' ); ?></code>
 						(<?php echo esc_html( 'bool' ); ?><?php esc_html_e( ', optional, default false', 'tms-core-essentials' ); ?>)
-						&mdash; <?php esc_html_e( 'If true, adds the class tcres-svg-icon-inline.', 'tms-core-essentials' ); ?>
+						&mdash; <?php esc_html_e( 'If true, adds the class svg-icon-inline.', 'tms-core-essentials' ); ?>
 					</li>
 				</ul>
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
@@ -337,8 +337,8 @@ function tcres_settings_developers_render_tab_fields(): void {
 
 			<section id="tcres-dev-template-info">
 				<h3>⇒ <?php esc_html_e( 'Get template information', 'tms-core-essentials' ); ?></h3>
-				<p><code><?php echo esc_html( 'tcres_template_get_info(): array' ); ?></code></p>
-				<p><?php esc_html_e( 'Returns page templates registered by the active theme.', 'tms-core-essentials' ); ?></p>
+				<p><code><?php echo esc_html( 'tcres_template_get_info( string $post_type = \'page\' ): array' ); ?></code></p>
+				<p><?php esc_html_e( 'Returns page templates registered by the active theme for a post type.', 'tms-core-essentials' ); ?></p>
 				<p class="description"><?php esc_html_e( 'Slug example: templates/template-contact.php → contact. No hyphens in the slug.', 'tms-core-essentials' ); ?></p>
 				<h4><?php esc_html_e( 'Parameters', 'tms-core-essentials' ); ?></h4>
 				<p class="description"><?php esc_html_e( 'No parameters.', 'tms-core-essentials' ); ?></p>
@@ -399,6 +399,26 @@ function tcres_settings_developers_render_tab_fields(): void {
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
 				<pre><code><?php echo esc_html( "echo tcres_date_format( '2024-06-15' );" ); ?></code></pre>
 				<p class="description"><?php esc_html_e( 'Returns: formatted date for the site locale, or an empty string if the date is invalid.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<hr>
+
+			<section id="tcres-dev-clean-wysiwyg-title">
+				<h3>⇒ <?php esc_html_e( 'Clean WYSIWYG title', 'tms-core-essentials' ); ?></h3>
+				<p><code><?php echo esc_html( 'tcres_clean_wysiwyg_title( string $title ): string' ); ?></code></p>
+				<p><?php esc_html_e( 'Prepares WYSIWYG title HTML for frontend output: converts paragraphs to line breaks and allows only safe inline tags (strong, em, links, etc.).', 'tms-core-essentials' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Use on output only. When saving from the admin, use tcres_post_meta_update( ..., \'html\' ) for wp_kses_post sanitization; call this function when echoing the value.', 'tms-core-essentials' ); ?></p>
+				<h4><?php esc_html_e( 'Parameters', 'tms-core-essentials' ); ?></h4>
+				<ul>
+					<li>
+						<code><?php echo esc_html( '$title' ); ?></code>
+						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', required', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Raw HTML from a WYSIWYG title field.', 'tms-core-essentials' ); ?>
+					</li>
+				</ul>
+				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
+				<pre><code><?php echo esc_html( "echo tcres_clean_wysiwyg_title( get_post_meta( get_the_ID(), 'my_title', true ) );" ); ?></code></pre>
+				<p class="description"><?php esc_html_e( 'Also available via tcres_option_get( $name, $key, \'wysiwyg_title\' ). Returns: sanitized HTML ready to print, or an empty string.', 'tms-core-essentials' ); ?></p>
 			</section>
 
 			<h2 id="tcres-dev-meta-write"><?php esc_html_e( 'Meta write', 'tms-core-essentials' ); ?></h2>
@@ -582,6 +602,88 @@ function tcres_settings_developers_render_tab_fields(): void {
 
 			<hr>
 
+			<section id="tcres-dev-modal">
+				<h3>⇒ <?php esc_html_e( 'Modal', 'tms-core-essentials' ); ?></h3>
+				<p>
+					<code><?php echo esc_html( 'tcresShowModal( target )' ); ?></code>,
+					<code><?php echo esc_html( 'tcresHideModal( target )' ); ?></code>,
+					<code><?php echo esc_html( 'tcresModalInit( root = document )' ); ?></code>
+				</p>
+				<p><?php esc_html_e( 'Reusable modal dialog. Open imperatively with tcresShowModal() or declaratively with data-tcres-modal-open. The plugin calls tcresModalInit() on DOMContentLoaded; call it again after injecting markup dynamically.', 'tms-core-essentials' ); ?></p>
+				<h4><?php esc_html_e( 'Markup', 'tms-core-essentials' ); ?></h4>
+				<ul>
+					<li>
+						<code>.tcres-modal</code>
+						&mdash; <?php esc_html_e( 'Root overlay. Hidden until .is-open is added.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.tcres-modal-backdrop</code>
+						&mdash; <?php esc_html_e( 'Full-screen backdrop inside the modal.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.tcres-modal-dialog</code>
+						&mdash; <?php esc_html_e( 'Centered panel with role="dialog" and aria-modal="true".', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.tcres-modal-header</code>, <code>.tcres-modal-body</code>, <code>.tcres-modal-footer</code>
+						&mdash; <?php esc_html_e( 'Optional layout regions. Style them in the theme.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-modal-close</code>
+						&mdash; <?php esc_html_e( 'Closes the nearest .tcres-modal (backdrop, × button, Cancel, etc.).', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-modal-open</code>
+						&mdash; <?php esc_html_e( 'On a button: modal id (#my-modal) or selector to open on click.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.tcres-modal-static</code>
+						&mdash; <?php esc_html_e( 'Panel appears in place with no panel fade (backdrop may still fade).', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.tcres-modal-from-top</code>, <code>.tcres-modal-from-right</code>, <code>.tcres-modal-from-bottom</code>, <code>.tcres-modal-from-left</code>
+						&mdash; <?php esc_html_e( 'Slide the panel in from off-screen (no panel fade).', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.tcres-modal-from-top-fade</code>, <code>.tcres-modal-from-right-fade</code>, <code>.tcres-modal-from-bottom-fade</code>, <code>.tcres-modal-from-left-fade</code>
+						&mdash; <?php esc_html_e( 'Same directions with panel fade while sliding.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.tcres-modal-full</code>
+						&mdash; <?php esc_html_e( 'Optional layout modifier: the dialog fills the viewport. Combine with any .tcres-modal-from-* animation class.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>.is-open</code>, <code>.is-entering</code>, <code>.is-leaving</code>
+						&mdash; <?php esc_html_e( 'State classes toggled by the script. Closed modals are not clickable; enter/exit animations run under .is-entering / .is-leaving before the modal settles.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>tcres-modal-hide</code>
+						&mdash; <?php esc_html_e( 'Custom event dispatched on the modal element after it closes.', 'tms-core-essentials' ); ?>
+					</li>
+				</ul>
+				<h4><?php esc_html_e( 'Animations', 'tms-core-essentials' ); ?></h4>
+				<ul>
+					<li><?php esc_html_e( 'Static fade (default): no extra class; the panel fades in and out.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Static, no fade: .tcres-modal-static — panel appears in place.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Slide: .tcres-modal-from-top | -right | -bottom | -left — panel slides in from off-screen while the backdrop fades.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Slide + fade: .tcres-modal-from-top-fade | -right-fade | -bottom-fade | -left-fade — panel slides from off-screen and fades at the same time.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Add one animation class on the same element as .tcres-modal, then open it from any trigger with data-tcres-modal-open.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Combine with .tcres-modal-full for a full-viewport panel using the same animation classes.', 'tms-core-essentials' ); ?></li>
+				</ul>
+				<h4><?php esc_html_e( 'Behaviour', 'tms-core-essentials' ); ?></h4>
+				<ul>
+					<li><?php esc_html_e( 'Escape closes the topmost open modal.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Tab cycles focus inside the open modal.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'body.tcres-is-modal-open blocks page scroll while a modal is open.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Focus returns to the element that was focused before open.', 'tms-core-essentials' ); ?></li>
+				</ul>
+				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
+				<pre><code><?php echo esc_html( "<button type=\"button\" data-tcres-modal-open=\"my-modal\">Open</button>\n\n<div class=\"tcres-modal\" id=\"my-modal\" aria-hidden=\"true\">\n\t<div class=\"tcres-modal-backdrop\" data-tcres-modal-close></div>\n\t<div class=\"tcres-modal-dialog\"\n\t\trole=\"dialog\"\n\t\taria-modal=\"true\"\n\t\taria-labelledby=\"my-modal-title\">\n\t\t<div class=\"tcres-modal-header\">\n\t\t\t<p class=\"tcres-modal-title\" id=\"my-modal-title\">Title</p>\n\t\t\t<button type=\"button\"\n\t\t\t\tclass=\"tcres-modal-close\"\n\t\t\t\tdata-tcres-modal-close\n\t\t\t\taria-label=\"Close\">&times;</button>\n\t\t</div>\n\t\t<div class=\"tcres-modal-body\">\n\t\t\t<p>Content.</p>\n\t\t</div>\n\t\t<div class=\"tcres-modal-footer\">\n\t\t\t<button type=\"button\" data-tcres-modal-close>Cancel</button>\n\t\t</div>\n\t</div>\n</div>\n\n// Imperative:\nwindow.tcresShowModal( document.getElementById( 'my-modal' ) );\nwindow.tcresHideModal( '#my-modal' );\n\n// After AJAX:\nwindow.tcresModalInit();" ); ?></code></pre>
+				<p class="description"><?php esc_html_e( 'Example with slide + fade from bottom: tcres-modal tcres-modal-from-bottom-fade. Full viewport: tcres-modal tcres-modal-full tcres-modal-from-bottom-fade. Override colors and spacing in the theme.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<hr>
+
 			<section id="tcres-dev-tabs">
 				<h3>⇒ <?php esc_html_e( 'Tabs', 'tms-core-essentials' ); ?></h3>
 				<p><code><?php echo esc_html( 'tcresTabsInit( root = document )' ); ?></code></p>
@@ -671,6 +773,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 						<li><a href="#tcres-dev-template-info"><?php esc_html_e( 'Get template information', 'tms-core-essentials' ); ?></a></li>
 						<li><a href="#tcres-dev-slug-to-id"><?php esc_html_e( 'Convert slug to ID', 'tms-core-essentials' ); ?></a></li>
 						<li><a href="#tcres-dev-date-format"><?php esc_html_e( 'Format dates', 'tms-core-essentials' ); ?></a></li>
+						<li><a href="#tcres-dev-clean-wysiwyg-title"><?php esc_html_e( 'Clean WYSIWYG title', 'tms-core-essentials' ); ?></a></li>
 					</ul>
 				</section>
 
@@ -701,6 +804,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<h3 id="tcres-toc-js"><a href="#tcres-dev-js"><?php esc_html_e( 'JavaScript', 'tms-core-essentials' ); ?></a></h3>
 					<ul>
 						<li><a href="#tcres-dev-collapse"><?php esc_html_e( 'Collapse', 'tms-core-essentials' ); ?></a></li>
+						<li><a href="#tcres-dev-modal"><?php esc_html_e( 'Modal', 'tms-core-essentials' ); ?></a></li>
 						<li><a href="#tcres-dev-tabs"><?php esc_html_e( 'Tabs', 'tms-core-essentials' ); ?></a></li>
 					</ul>
 				</section>

@@ -12,11 +12,7 @@ if ( ! function_exists( 'tcres_tax_field_get' ) ) :
 	 * Retrieve a taxonomy term custom field value for a post's first assigned term
 	 */
 	function tcres_tax_field_get( array $args = array() ): string {
-		$format = isset( $args['format'] )
-			? (string) $args['format']
-			: '';
-
-		return tcres_field_apply_output_format( tcres_tax_field_get_value( $args ), $format );
+		return tcres_tax_field_get_value( $args );
 	}
 
 
@@ -46,9 +42,14 @@ if ( ! function_exists( 'tcres_tax_field_get' ) ) :
 			? (string) $args['after']
 			: '';
 		$before_repeat = isset( $args['before_repeat'] )
-			? (string) $args['before_repeat'] : '';
+			? (string) $args['before_repeat']
+			: '';
 		$after_repeat = isset( $args['after_repeat'] )
-			? (string) $args['after_repeat'] : '';
+			? (string) $args['after_repeat']
+			: '';
+		$format = isset( $args['format'] )
+			? (string) $args['format']
+			: '';
 		$output        = '';
 
 		if ( $tax === '' || $field === '' || $post_id <= 0 ) return '';
@@ -58,19 +59,27 @@ if ( ! function_exists( 'tcres_tax_field_get' ) ) :
 
 		$term_id = (int) $terms[0]->term_id;
 
+		list( $before, $after, $before_repeat, $after_repeat ) = tcres_field_format_wrapper_parts(
+			$before,
+			$after,
+			$before_repeat,
+			$after_repeat,
+			$format
+		);
+
 		if ( $group === '' ) :
 			if ( $field_num === '' || $field_num === 0 ) :
 				$value = get_term_meta( $term_id, $field, true );
-				return $before . tcres_field_apply_value_format( (string) $value ) . $after;
+				return tcres_field_build_segment( $before, (string) $value, $after, $format );
 			endif;
 
 			$field_num_search = 1;
 			$entries          = get_term_meta( $term_id, $field, true );
 			foreach ( (array) $entries as $value ) :
 				if ( ! empty( $value ) && (int) $field_num === -1 ) :
-					$output .= $before . tcres_field_apply_value_format( (string) $value ) . $after;
+					$output .= tcres_field_build_segment( $before, (string) $value, $after, $format );
 				elseif ( ! empty( $value ) && (int) $field_num_search === (int) $field_num ) :
-					return $before . tcres_field_apply_value_format( (string) $value ) . $after;
+					return tcres_field_build_segment( $before, (string) $value, $after, $format );
 				else :
 					$field_num_search++;
 				endif;
@@ -86,9 +95,9 @@ if ( ! function_exists( 'tcres_tax_field_get' ) ) :
 
 			if ( $field_num === '' || $field_num === 0 ) :
 				if ( ! empty( $value[ $field ] ) && ( $group_num === '' || $group_num === 0 ) ) :
-					return $before . tcres_field_apply_value_format( (string) $value[ $field ] ) . $after;
+					return tcres_field_build_segment( $before, (string) $value[ $field ], $after, $format );
 				elseif ( ! empty( $value[ $field ] ) && (int) $group_num_search === (int) $group_num ) :
-					return $before . tcres_field_apply_value_format( (string) $value[ $field ] ) . $after;
+					return tcres_field_build_segment( $before, (string) $value[ $field ], $after, $format );
 				endif;
 
 				$group_num_search++;
@@ -108,9 +117,9 @@ if ( ! function_exists( 'tcres_tax_field_get' ) ) :
 
 				foreach ( (array) $nested as $nested_value ) :
 					if ( (int) $field_num === -1 && $nested_value ) :
-						$output .= $before . tcres_field_apply_value_format( (string) $nested_value ) . $after;
+						$output .= tcres_field_build_segment( $before, (string) $nested_value, $after, $format );
 					elseif ( (int) $field_num_search === (int) $field_num ) :
-						return $before . tcres_field_apply_value_format( (string) $nested_value ) . $after;
+						return tcres_field_build_segment( $before, (string) $nested_value, $after, $format );
 					else :
 						$field_num_search++;
 					endif;

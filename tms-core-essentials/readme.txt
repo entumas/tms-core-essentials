@@ -65,6 +65,7 @@ To build from source: clone the repository, open the project root in Prepros, th
 = 1.0.0 =
 * NEW: PHP API: tcres_option_get(), tcres_field_get(), tcres_tax_field_get(), tcres_post_meta_update(), tcres_term_meta_update(), tcres_post_types_get_included(), tcres_taxonomies_get_included(), tcres_option_get_for_post_types(), tcres_option_get_for_taxonomies(), tcres_option_get_for_post_types_diff(), tcres_slug_convert_to_id(), tcres_svg_icon_get(), tcres_date_format(), tcres_image_validate_size(), tcres_template_get_info(), and tcres_image_size_get_registered().
 * NEW: JavaScript API: window.tcresCollapseInit() and window.tcresTabsInit() for frontend collapse/accordion and tabs markup.
+* NEW: JavaScript API: window.tcresModalInit(), window.tcresShowModal(), and window.tcresHideModal() for frontend modal dialogs.
 * NEW: Security: hide login error messages, block user enumeration, block author archives, disable XML-RPC, and block proxy visits.
 * NEW: Performance: remove WordPress version, DNS prefetch, RSD, WLW manifest, shortlink, REST API link, oEmbed discovery, emoji scripts, and the wp-embed script.
 * NEW: Disable Gutenberg: turn off the block editor per post type and use the classic editor instead.

@@ -16,9 +16,10 @@ function tcres_settings_disable_gutenberg_get_post_type_items(): array {
 			: ucwords( str_replace( array( '-', '_' ), ' ', $post_type ) );
 
 		$items[] = array(
-			'id'    => 'tcres-disable-gutenberg-' . sanitize_html_class( $post_type ),
-			'key'   => 'disable_' . $post_type,
-			'title' => sprintf(
+			'id'        => 'tcres-disable-gutenberg-' . sanitize_html_class( $post_type ),
+			'key'       => 'disable_' . $post_type,
+			'post_type' => $post_type,
+			'title'     => sprintf(
 				/* translators: %s: Post type label. */
 				__( 'Disable block editor for %s', 'tms-core-essentials' ),
 				$label
@@ -32,6 +33,81 @@ function tcres_settings_disable_gutenberg_get_post_type_items(): array {
 	endforeach;
 
 	return $items;
+}
+
+
+function tcres_settings_disable_gutenberg_is_keep_template_selected( array $selected, string $slug ): bool {
+	return in_array( $slug, $selected, true );
+}
+
+
+function tcres_settings_admin_render_disable_gutenberg_templates_config( string $post_type, array $group, string $option_name ): void {
+	if ( ! tcres_template_post_type_has_custom_templates( $post_type ) ) return;
+
+	$templates = tcres_template_get_info( $post_type );
+	$selected  = isset( $group['keep_block_editor_on_templates'] ) && is_array( $group['keep_block_editor_on_templates'] )
+		&& isset( $group['keep_block_editor_on_templates'][ $post_type ] )
+		&& is_array( $group['keep_block_editor_on_templates'][ $post_type ] )
+		? $group['keep_block_editor_on_templates'][ $post_type ]
+		: array();
+	$label_id  = 'tcres-disable-gutenberg-templates-' . sanitize_html_class( $post_type );
+	$default   = tcres_template_get_default_slug();
+	?>
+	<h4 id="<?php echo esc_attr( $label_id ); ?>" class="subtitle"><?php esc_html_e( 'Exclude templates', 'tms-core-essentials' ); ?></h4>
+	<fieldset aria-labelledby="<?php echo esc_attr( $label_id ); ?>">
+		<ul class="checks">
+			<li>
+				<?php $default_id = $label_id . '-default'; ?>
+				<label class="has-checkbox" for="<?php echo esc_attr( $default_id ); ?>">
+					<input
+						type="checkbox"
+						id="<?php echo esc_attr( $default_id ); ?>"
+						name="<?php echo esc_attr( $option_name . '[disable_gutenberg][keep_block_editor_on_templates][' . $post_type . '][]' ); ?>"
+						value="<?php echo esc_attr( $default ); ?>"
+						<?php checked( tcres_settings_disable_gutenberg_is_keep_template_selected( $selected, $default ) ); ?> />
+					<?php esc_html_e( 'Default template', 'tms-core-essentials' ); ?>
+				</label>
+			</li>
+			<?php foreach ( $templates as $template ) : ?>
+				<?php
+				if ( ! is_array( $template ) ) continue;
+				$slug = isset( $template['slug'] )
+					? (string) $template['slug']
+					: '';
+				$name = isset( $template['name'] )
+					? (string) $template['name']
+					: $slug;
+				$file = isset( $template['file'] )
+					? (string) $template['file']
+					: '';
+				if ( $slug === '' ) continue;
+				$id = $label_id . '-' . sanitize_html_class( $slug );
+				?>
+				<li>
+					<label class="has-checkbox" for="<?php echo esc_attr( $id ); ?>">
+						<input
+							type="checkbox"
+							id="<?php echo esc_attr( $id ); ?>"
+							name="<?php echo esc_attr( $option_name . '[disable_gutenberg][keep_block_editor_on_templates][' . $post_type . '][]' ); ?>"
+							value="<?php echo esc_attr( $slug ); ?>"
+							<?php checked( tcres_settings_disable_gutenberg_is_keep_template_selected( $selected, $slug ) ); ?> />
+						<?php
+						echo esc_html(
+							sprintf(
+								/* translators: 1: template name, 2: template file */
+								__( '%1$s (%2$s)', 'tms-core-essentials' ),
+								$name,
+								$file
+							)
+						);
+						?>
+					</label>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</fieldset>
+	<p class="description"><?php esc_html_e( 'Keep the block editor on the selected templates. If none are selected, the block editor is disabled for the whole post type.', 'tms-core-essentials' ); ?></p>
+	<?php
 }
 
 
@@ -61,12 +137,24 @@ function tcres_settings_admin_render_disable_gutenberg_panel(): void {
 			);
 			tcres_settings_cards_render_grid_start( __( 'Disable Gutenberg options', 'tms-core-essentials' ) );
 			foreach ( $items as $item ) :
+				$config_render = null;
+				if ( tcres_template_post_type_has_custom_templates( $item['post_type'] ) ) :
+					$config_render = static function () use ( $item, $disable_gutenberg, $option ): void {
+						tcres_settings_admin_render_disable_gutenberg_templates_config(
+							$item['post_type'],
+							$disable_gutenberg,
+							$option
+						);
+					};
+				endif;
+
 				tcres_settings_card_render_field(
 					$item['id'],
 					$option . '[disable_gutenberg][' . $item['key'] . ']',
 					! empty( $disable_gutenberg[ $item['key'] ] ),
 					$item['title'],
-					$item['description']
+					$item['description'],
+					$config_render
 				);
 			endforeach;
 			tcres_settings_cards_render_grid_end();

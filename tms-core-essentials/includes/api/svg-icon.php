@@ -48,12 +48,12 @@ if ( ! function_exists( 'tcres_svg_icon_get' ) ) :
 			: false;
 
 		$icon_class = sanitize_html_class( $icon );
-		$classes    = 'tcres-svg-icon';
-		if ( $icon_class !== '' ) :
-			$classes .= ' tcres-svg-icon-' . $icon_class;
-		endif;
+		$classes    = 'tcres-svg-icon svg-icon';
 		if ( $inline ) :
-			$classes .= ' tcres-svg-icon-inline';
+			$classes .= ' svg-icon-inline';
+		endif;
+		if ( $icon_class !== '' ) :
+			$classes .= ' svg-icon-' . $icon_class;
 		endif;
 
 		return sprintf(

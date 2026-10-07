@@ -189,6 +189,8 @@ function tcres_terms_list_drag_order_terms_clauses( array $clauses, array $taxon
 
 function tcres_terms_list_drag_order_render_add_field( string $taxonomy ): void {
 	if ( ! tcres_terms_list_drag_order_is_enabled_for_taxonomy( $taxonomy ) ) return;
+
+	wp_nonce_field( '_tcres_term_order_nonce', 'tcres_term_order_nonce' );
 	?>
 	<div class="form-field term-tcres-order-wrap">
 		<label for="tcres-term-order"><?php esc_html_e( 'Order', 'tms-core-essentials' ); ?></label>
@@ -203,6 +205,8 @@ function tcres_terms_list_drag_order_render_edit_field( WP_Term $term, string $t
 	if ( ! tcres_terms_list_drag_order_is_enabled_for_taxonomy( $taxonomy ) ) return;
 
 	$order = tcres_terms_list_get_term_order( (int) $term->term_id );
+
+	wp_nonce_field( '_tcres_term_order_nonce', 'tcres_term_order_nonce' );
 	?>
 	<tr class="form-field term-tcres-order-wrap">
 		<th scope="row">
@@ -226,9 +230,20 @@ function tcres_terms_list_drag_order_save_term( int $term_id, int $tt_id = 0 ): 
 	$taxonomy = (string) $term->taxonomy;
 	if ( ! tcres_terms_list_drag_order_is_enabled_for_taxonomy( $taxonomy ) ) return;
 
-	if ( ! isset( $_POST['tcres_term_order'] ) ) return; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	if (
+		! isset( $_POST['tcres_term_order_nonce'] )
+		|| ! wp_verify_nonce(
+			sanitize_text_field( wp_unslash( (string) $_POST['tcres_term_order_nonce'] ) ),
+			'_tcres_term_order_nonce'
+		)
+		|| ! current_user_can( 'edit_term', $term_id )
+	) :
+		return;
+	endif;
 
-	$order = (int) wp_unslash( $_POST['tcres_term_order'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	if ( ! isset( $_POST['tcres_term_order'] ) ) return;
+
+	$order = (int) wp_unslash( $_POST['tcres_term_order'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	update_term_meta( $term_id, TCRES_TERM_ORDER_META_KEY, $order );
 }
 

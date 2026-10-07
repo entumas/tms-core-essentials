@@ -497,7 +497,7 @@ function tcres_sitemap_get( array $args = array() ): string {
 
 
 function tcres_sitemap_shortcode(): string {
-	return tcres_sitemap_get();
+	return tcres_kses_html( tcres_sitemap_get() );
 }
 
 

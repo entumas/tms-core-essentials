@@ -472,12 +472,12 @@ function tcres_share_content_get( bool $respect_show_on = true ): string {
 
 
 function tcres_share_content(): void {
-	echo tcres_share_content_get(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with escaping.
+	tcres_echo_html( tcres_share_content_get() );
 }
 
 
 function tcres_share_content_shortcode(): string {
-	return tcres_share_content_get( false );
+	return tcres_kses_html( tcres_share_content_get( false ) );
 }
 
 

@@ -91,7 +91,7 @@ function tcres_scroll_to_top_get(): string {
 
 
 function tcres_scroll_to_top_render(): void {
-	echo tcres_scroll_to_top_get(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with escaping.
+	tcres_echo_html( tcres_scroll_to_top_get() );
 }
 
 

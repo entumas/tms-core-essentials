@@ -149,7 +149,7 @@ function tcres_privacy_consent_get( array $args = array() ): string {
 			data-tcres-privacy-consent
 			data-tcres-privacy-consent-error="<?php echo esc_attr( tcres_privacy_consent_error_message() ); ?>" />
 		<label for="<?php echo esc_attr( $id ); ?>">
-			<?php echo $label; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- kses'd / token-expanded above. ?>
+			<?php tcres_echo_html( $label ); ?>
 		</label>
 	</p>
 	<?php
@@ -159,10 +159,12 @@ function tcres_privacy_consent_get( array $args = array() ): string {
 
 
 function tcres_privacy_consent_render( string $form, string $id = '' ): void {
-	echo tcres_privacy_consent_get( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in getter.
-		array(
-			'form' => $form,
-			'id'   => $id,
+	tcres_echo_html(
+		tcres_privacy_consent_get(
+			array(
+				'form' => $form,
+				'id'   => $id,
+			)
 		)
 	);
 }

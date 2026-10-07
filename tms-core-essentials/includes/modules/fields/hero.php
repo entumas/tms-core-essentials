@@ -59,18 +59,14 @@ function tcres_hero_covers_taxonomy( string $taxonomy ): bool {
  * @param string $meta_key
  */
 function tcres_hero_sanitize_html_value( string $value, string $meta_key ): string {
-	if ( $meta_key === 'tcres_hero_subtitle' ) return tcres_subtitle_normalize_html( $value );
+	if ( $meta_key !== 'tcres_hero_description' ) return $value;
 
-	if ( $meta_key === 'tcres_hero_description' ) :
-		$value = trim( $value );
-		if ( $value === '' ) return '';
+	$value = trim( $value );
+	if ( $value === '' ) return '';
 
-		// Match classic WP: plain newlines become paragraphs when no block markup is present
-		if ( ! preg_match( '/<(p|div|ul|ol|li|h[1-6]|blockquote|table)[\s>\/]/i', $value ) ) :
-			$value = wpautop( $value );
-		endif;
-
-		return $value;
+	// Match classic WP: plain newlines become paragraphs when no block markup is present
+	if ( ! preg_match( '/<(p|div|ul|ol|li|h[1-6]|blockquote|table)[\s>\/]/i', $value ) ) :
+		$value = wpautop( $value );
 	endif;
 
 	return $value;
@@ -822,10 +818,7 @@ function tcres_hero_get( array $args = array() ): string {
 		: '';
 	if ( $title === '' ) return '';
 
-	$subtitle = tcres_subtitle_normalize_html( $subtitle );
-	$subtitle = $subtitle !== ''
-		? wp_kses_post( $subtitle )
-		: '';
+	$subtitle = tcres_clean_wysiwyg_title( $subtitle );
 
 	// Like the_content: keep HTML, and turn bare newlines into <p> when needed.
 	if ( $description !== '' ) :
@@ -897,5 +890,5 @@ function tcres_hero_get( array $args = array() ): string {
  * } $args
  */
 function tcres_hero( array $args = array() ): void {
-	echo tcres_hero_get( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with escaping helpers
+	tcres_echo_html( tcres_hero_get( $args ) );
 }

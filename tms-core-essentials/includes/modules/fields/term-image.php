@@ -103,7 +103,7 @@ function tcres_term_image_get( array $args = array() ): string {
  * @param array{class?: string, image_size?: string|array{0?: int, 1?: int}, term_id?: int} $args
  */
 function tcres_term_image( array $args = array() ): void {
-	echo tcres_term_image_get( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_get_attachment_image
+	tcres_echo_html( tcres_term_image_get( $args ) );
 }
 
 
@@ -125,7 +125,7 @@ function tcres_term_image_render_field( int $attachment_id ): void {
 				value="<?php echo esc_attr( (string) ( $has_image ? $attachment_id : 0 ) ); ?>"
 				data-tcres-term-image-input />
 			<div class="tcres-term-image-preview" data-tcres-term-image-preview<?php echo $has_image ? '' : ' hidden'; ?>>
-				<?php echo $preview; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_get_attachment_image ?>
+				<?php tcres_echo_html( $preview ); ?>
 			</div>
 			<p class="tcres-term-image-actions">
 				<button type="button" class="button" data-tcres-term-image-select>

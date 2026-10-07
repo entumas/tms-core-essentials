@@ -3,17 +3,21 @@
 // --------------------------------------------------
 
 
-import { tcresCollapseInit } 				from './modules/frontend/collapse.js'
-import { tcresTabsInit } 					from './modules/frontend/tabs.js'
-import { tcresPrivacyNoticeWatchCheckout } 	from './modules/frontend/privacy/notice-checkout.js'
-import { tcresPrivacyConsentInit } 			from './modules/frontend/privacy/consent.js'
-import { tcresShareContentInit } 			from './modules/frontend/share-content.js'
-import { tcresChatsInit } 					from './modules/frontend/chats.js'
-import { tcresScrollToTopInit } 			from './modules/frontend/scroll-to-top.js'
+import { tcresCollapseInit } 								from './modules/frontend/collapse.js'
+import { tcresModalInit, tcresShowModal, tcresHideModal } 	from './modules/frontend/modal.js'
+import { tcresTabsInit } 									from './modules/frontend/tabs.js'
+import { tcresPrivacyNoticeWatchCheckout } 					from './modules/frontend/privacy/notice-checkout.js'
+import { tcresPrivacyConsentInit } 							from './modules/frontend/privacy/consent.js'
+import { tcresShareContentInit } 							from './modules/frontend/share-content.js'
+import { tcresChatsInit } 									from './modules/frontend/chats.js'
+import { tcresScrollToTopInit } 							from './modules/frontend/scroll-to-top.js'
 
 
 window.tcresCollapseInit = tcresCollapseInit
 window.tcresTabsInit = tcresTabsInit
+window.tcresModalInit = tcresModalInit
+window.tcresShowModal = tcresShowModal
+window.tcresHideModal = tcresHideModal
 window.tcresPrivacyConsentInit = tcresPrivacyConsentInit
 window.tcresShareContentInit = tcresShareContentInit
 window.tcresChatsInit = tcresChatsInit
@@ -26,6 +30,7 @@ window.tcresScrollToTopInit = tcresScrollToTopInit
 	const init = () => {
 		tcresCollapseInit()
 		tcresTabsInit()
+		tcresModalInit()
 		tcresPrivacyConsentInit()
 		tcresShareContentInit()
 		tcresChatsInit()
@@ -40,6 +45,7 @@ window.tcresScrollToTopInit = tcresScrollToTopInit
 			tcresPrivacyNoticeWatchCheckout( () => {
 				tcresCollapseInit()
 				tcresTabsInit()
+				tcresModalInit()
 				tcresPrivacyConsentInit()
 			} )
 		}

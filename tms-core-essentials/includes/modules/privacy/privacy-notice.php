@@ -88,13 +88,13 @@ function tcres_privacy_notice_get( array $args = array() ): string {
 			aria-expanded="false"
 			data-tcres-collapse-trigger
 			data-tcres-collapse-id="<?php echo esc_attr( $collapse_id ); ?>">
-			<?php echo $trigger; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- kses'd above. ?>
+			<?php tcres_echo_html( $trigger ); ?>
 		</div>
 		<div
 			class="tcres-privacy-notice-content tcres-collapse-content"
 			data-tcres-collapse-target
 			data-tcres-collapse-id="<?php echo esc_attr( $collapse_id ); ?>">
-			<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- kses'd above. ?>
+			<?php tcres_echo_html( $content ); ?>
 		</div>
 	</div>
 	<?php
@@ -104,7 +104,7 @@ function tcres_privacy_notice_get( array $args = array() ): string {
 
 
 function tcres_privacy_notice_render( string $notice ): void {
-	echo tcres_privacy_notice_get( array( 'notice' => $notice ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in getter.
+	tcres_echo_html( tcres_privacy_notice_get( array( 'notice' => $notice ) ) );
 }
 
 
@@ -119,9 +119,11 @@ add_shortcode( 'tcres-privacy-notice', static function ( $atts ): string {
 		'tcres-privacy-notice'
 	);
 
-	return tcres_privacy_notice_get(
-		array(
-			'notice' => (string) $atts['notice'],
+	return tcres_kses_html(
+		tcres_privacy_notice_get(
+			array(
+				'notice' => (string) $atts['notice'],
+			)
 		)
 	);
 } );
@@ -262,7 +264,7 @@ add_action(
 
 		printf(
 			'<template id="tcres-privacy-notice-checkout-template">%s</template>',
-			$notice // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- kses'd in getter.
+			tcres_kses_html( $notice )
 		);
 	},
 	5

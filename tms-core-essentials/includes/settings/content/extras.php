@@ -296,17 +296,17 @@ function tcres_settings_shortcodes_get_groups(): array {
 				array(
 					'tag'         => 'tcres-field',
 					'example'     => '[tcres-field field="field"]',
-					'description' => __( 'Print a post custom field value.', 'tms-core-essentials' ),
+					'description' => __( 'Print a post custom field value. Optional format: esc_html (default), html, wpautop.', 'tms-core-essentials' ),
 				),
 				array(
 					'tag'         => 'tcres-tax-field',
 					'example'     => '[tcres-tax-field tax="category" field="field"]',
-					'description' => __( 'Print a taxonomy term custom field value.', 'tms-core-essentials' ),
+					'description' => __( 'Print a taxonomy term custom field value. Optional format: esc_html (default), html, wpautop.', 'tms-core-essentials' ),
 				),
 				array(
 					'tag'         => 'tcres-option',
 					'example'     => '[tcres-option name="breadcrumbs" value="home_label"]',
-					'description' => __( 'Print a plugin settings value. Optional format: esc_html (default), html, wpautop.', 'tms-core-essentials' ),
+					'description' => __( 'Print a plugin settings value. Optional format: esc_html (default), html, wysiwyg_title, wpautop.', 'tms-core-essentials' ),
 				),
 			),
 		),

@@ -16,13 +16,14 @@ add_action( 'plugins_loaded', function (): void {
 	endif;
 
 
-	// API: discovery & utilities (no settings) ==============
+	// API: discovery & utilities (no settings) ========================================
 
 	tcres_include_file( 'api/included-post-types.php' );
 	tcres_include_file( 'api/included-taxonomies.php' );
 	tcres_include_file( 'api/get-templates-info.php' );
 	tcres_include_file( 'api/get-registered-image-sizes.php' );
 	tcres_include_file( 'api/format-date.php' );
+	tcres_include_file( 'api/clean-wysiwyg-title.php' );
 	tcres_include_file( 'api/validate-image-size.php' );
 	tcres_include_file( 'api/convert-slug-to-id.php' );
 
@@ -33,14 +34,14 @@ add_action( 'plugins_loaded', function (): void {
 	tcres_include_file( 'api/update-term-meta.php' );
 
 
-	// Settings defaults helpers =============================
+	// Settings defaults helpers ========================================
 	// option.php defaults call posts-list / terms-list getters.
 
 	tcres_include_file( 'modules/admin/posts-list.php' );
 	tcres_include_file( 'modules/admin/terms-list.php' );
 
 
-	// Settings storage + option API =========================
+	// Settings storage + option API ========================================
 
 	tcres_include_file( 'settings/option.php' );
 	tcres_include_file( 'api/get-option.php' );
@@ -51,7 +52,7 @@ add_action( 'plugins_loaded', function (): void {
 	tcres_include_file( 'api/output-location.php' );
 
 
-	// Settings UI ===========================================
+	// Settings UI ========================================
 
 	tcres_include_file( 'settings/components/switch.php' );
 	tcres_include_file( 'settings/components/card.php' );
@@ -72,7 +73,7 @@ add_action( 'plugins_loaded', function (): void {
 	tcres_include_file( 'settings/page.php' );
 
 
-	// Feature modules =======================================
+	// Feature modules ========================================
 
 	tcres_include_file( 'modules/security/security.php' );
 	tcres_include_file( 'modules/security/performance.php' );
@@ -110,13 +111,13 @@ add_action( 'plugins_loaded', function (): void {
 	tcres_include_file( 'modules/extras/shortcodes.php' );
 
 
-	// Sanitize + register settings (after modules) ==========
+	// Sanitize + register settings (after modules) ========================================
 
 	tcres_include_file( 'settings/sanitize.php' );
 	tcres_include_file( 'settings/hooks.php' );
 
 
-	// Integrations ==========================================
+	// Integrations ========================================
 
 	tcres_include_file( 'integrations/contact-form-7.php' );
 

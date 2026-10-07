@@ -31,7 +31,9 @@ if ( ! function_exists( 'tcres_option_get' ) ) :
 		if ( ! array_key_exists( $name, $settings ) ) return null;
 
 		if ( $key !== '' ) :
-			if ( ! is_array( $settings[ $name ] ) ) return null;
+			if ( ! is_array( $settings[ $name ] ) ) :
+				return null;
+			endif;
 			return $settings[ $name ][ $key ] ?? null;
 		endif;
 
@@ -44,7 +46,8 @@ if ( ! function_exists( 'tcres_option_get' ) ) :
 
 		if ( 'esc_html' === $format ) return esc_html( (string) $value );
 		if ( 'html' === $format ) return wp_kses_post( (string) $value );
-		if ( 'wpautop' === $format ) return wpautop( (string) $value );
+		if ( 'wysiwyg_title' === $format ) return tcres_clean_wysiwyg_title( (string) $value );
+		if ( 'wpautop' === $format ) return wp_kses_post( wpautop( (string) $value ) );
 
 		return $value;
 	}

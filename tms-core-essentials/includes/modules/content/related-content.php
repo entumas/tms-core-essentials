@@ -649,12 +649,12 @@ function tcres_related_content_get( array $args = array() ): string {
  * } $args
  */
 function tcres_related_content( array $args = array() ): void {
-	echo tcres_related_content_get( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with escaping helpers.
+	tcres_echo_html( tcres_related_content_get( $args ) );
 }
 
 
 function tcres_related_content_shortcode(): string {
-	return tcres_related_content_get();
+	return tcres_kses_html( tcres_related_content_get() );
 }
 
 

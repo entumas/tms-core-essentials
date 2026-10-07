@@ -30,7 +30,42 @@ function tcres_settings_disable_gutenberg_get_post_types(): array {
 
 
 /**
- * Default Disable Gutenberg post type option keys
+ * Default Disable Gutenberg template exception keys per post type
+ *
+ * @return array<string, array<int, string>>
+ */
+function tcres_settings_disable_gutenberg_keep_templates_defaults(): array {
+	$defaults = array();
+
+	foreach ( tcres_settings_disable_gutenberg_get_post_types() as $post_type ) :
+		$defaults[ $post_type ] = array();
+	endforeach;
+
+	return $defaults;
+}
+
+
+/**
+ * Template slugs allowed as block-editor exceptions for a post type
+ *
+ * @return array<int, string>
+ */
+function tcres_settings_disable_gutenberg_get_keep_template_slugs( string $post_type ): array {
+	if ( ! tcres_template_post_type_has_custom_templates( $post_type ) ) return array();
+
+	$slugs = array( tcres_template_get_default_slug() );
+
+	foreach ( tcres_template_get_info( $post_type ) as $template ) :
+		if ( ! is_array( $template ) || empty( $template['slug'] ) ) continue;
+		$slugs[] = (string) $template['slug'];
+	endforeach;
+
+	return $slugs;
+}
+
+
+/**
+ * Default Disable Gutenberg option keys
  */
 function tcres_settings_disable_gutenberg_get_post_type_defaults(): array {
 	$defaults = array();
@@ -38,6 +73,8 @@ function tcres_settings_disable_gutenberg_get_post_type_defaults(): array {
 	foreach ( tcres_settings_disable_gutenberg_get_post_types() as $post_type ) :
 		$defaults[ 'disable_' . $post_type ] = false;
 	endforeach;
+
+	$defaults['keep_block_editor_on_templates'] = tcres_settings_disable_gutenberg_keep_templates_defaults();
 
 	return $defaults;
 }

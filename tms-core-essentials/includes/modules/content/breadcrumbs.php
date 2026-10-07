@@ -535,7 +535,7 @@ function tcres_breadcrumb_get( array $args = array() ): string {
 
 
 function tcres_breadcrumb_shortcode(): string {
-	return tcres_breadcrumb_get();
+	return tcres_kses_html( tcres_breadcrumb_get() );
 }
 
 

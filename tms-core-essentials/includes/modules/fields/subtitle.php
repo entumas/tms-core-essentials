@@ -82,51 +82,6 @@ function tcres_subtitle_register_meta_box(): void {
 
 
 /**
- * Convert paragraph markup to line breaks for subtitle HTML
- */
-function tcres_subtitle_normalize_html( string $html ): string {
-	$html = trim( $html );
-	if ( $html === '' ) return '';
-
-	$html = str_replace( array( '&nbsp;', '&#160;', '&#xA0;', "\xC2\xA0" ), ' ', $html );
-
-	$html = preg_replace( '#</p>\s*<p(?:\s[^>]*)?>#i', "<br />\n", $html );
-	$html = is_string( $html )
-		? $html
-		: '';
-	$html = preg_replace( '#<p(?:\s[^>]*)?>#i', '', $html );
-	$html = is_string( $html )
-		? $html
-		: '';
-	$html = preg_replace( '#</p>#i', '', $html );
-	$html = is_string( $html )
-		? $html
-		: '';
-	$html = preg_replace( '#^(?:<br\s*/?>\s*)+#i', '', $html );
-	$html = is_string( $html )
-		? $html
-		: '';
-	$html = preg_replace( '#(?:\s*<br\s*/?>)+$#i', '', $html );
-	$html = is_string( $html )
-		? $html
-		: '';
-
-	return trim( $html );
-}
-
-
-/**
- * @param string $value
- * @param string $meta_key
- */
-function tcres_subtitle_sanitize_html_value( string $value, string $meta_key ): string {
-	if ( $meta_key !== 'tcres_subtitle' ) return $value;
-
-	return tcres_subtitle_normalize_html( $value );
-}
-
-
-/**
  * TinyMCE init: Enter inserts <br>, not <p>
  *
  * @param array<string, mixed> $settings
@@ -260,7 +215,6 @@ add_action( 'init', function (): void {
 
 	add_filter( 'teeny_mce_buttons', 'tcres_subtitle_teeny_buttons', 10, 2 );
 	add_filter( 'tiny_mce_before_init', 'tcres_subtitle_tiny_mce_before_init', 10, 2 );
-	add_filter( 'tcres_post_meta_sanitize_html_value', 'tcres_subtitle_sanitize_html_value', 10, 2 );
 }, 20 );
 
 
@@ -314,10 +268,8 @@ function tcres_subtitle_get( array $args = array() ): string {
 	endif;
 	if ( $content === '' ) return '';
 
-	$content = tcres_subtitle_normalize_html( $content );
+	$content = tcres_clean_wysiwyg_title( $content );
 	if ( $content === '' ) return '';
-
-	$content = wp_kses_post( $content );
 
 	$tag = isset( $args['tag'] )
 		? strtolower( sanitize_key( (string) $args['tag'] ) )

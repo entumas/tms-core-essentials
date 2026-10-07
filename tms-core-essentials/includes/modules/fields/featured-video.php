@@ -184,7 +184,7 @@ function tcres_featured_video_get( array $args = array() ): string {
  * } $args
  */
 function tcres_featured_video( array $args = array() ): void {
-	echo tcres_featured_video_get( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with escaping helpers.
+	tcres_echo_html( tcres_featured_video_get( $args ) );
 }
 
 
@@ -225,7 +225,7 @@ function tcres_featured_video_render_field( int $attachment_id ): void {
 				value="<?php echo esc_attr( (string) ( $has_video ? $attachment_id : 0 ) ); ?>"
 				data-tcres-featured-video-input />
 			<div class="tcres-featured-video-preview" data-tcres-featured-video-preview<?php echo $has_video ? '' : ' hidden'; ?>>
-				<?php echo $preview; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>
+				<?php tcres_echo_html( $preview ); ?>
 			</div>
 			<p class="tcres-featured-video-actions">
 				<button type="button" class="button" data-tcres-featured-video-select>
