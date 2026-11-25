@@ -187,7 +187,40 @@ function tcres_settings_fields_render_subtitle_usage(): void {
 
 
 function tcres_settings_fields_render_hero_usage(): void {
-	$example = "echo tcres_hero_get( array(\n\t'tag'          => 'header',\n\t'subtitle_tag' => 'p',\n\t'class'        => 'hero',\n\t'image_size'   => 'large',\n) );";
+	$settings = tcres_settings_get();
+	$group    = isset( $settings['hero'] ) && is_array( $settings['hero'] )
+		? $settings['hero']
+		: array();
+	$option   = TCRES_OPTION_NAME;
+	$fields   = array(
+		'disable_pretitle'    => __( 'Pretitle', 'tms-core-essentials' ),
+		'disable_subtitle'    => __( 'Subtitle', 'tms-core-essentials' ),
+		'disable_description' => __( 'Description', 'tms-core-essentials' ),
+		'disable_buttons'     => __( 'Buttons', 'tms-core-essentials' ),
+	);
+	$heading_id = 'tcres-hero-fields';
+	?>
+	<h4 id="<?php echo esc_attr( $heading_id ); ?>" class="subtitle"><?php esc_html_e( 'Fields', 'tms-core-essentials' ); ?></h4>
+	<fieldset aria-labelledby="<?php echo esc_attr( $heading_id ); ?>">
+		<p class="description"><?php esc_html_e( 'Disable fields in the Hero editor. Existing values still print on the frontend.', 'tms-core-essentials' ); ?></p>
+		<ul class="checks">
+			<?php foreach ( $fields as $key => $label ) : ?>
+				<?php $name = $option . '[hero][' . $key . ']'; ?>
+				<li>
+					<label class="has-checkbox">
+						<input type="hidden" name="<?php echo esc_attr( $name ); ?>" value="0" />
+						<input type="checkbox"
+							name="<?php echo esc_attr( $name ); ?>"
+							value="1"
+							<?php checked( ! empty( $group[ $key ] ) ); ?> />
+						<?php echo esc_html( $label ); ?>
+					</label>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</fieldset>
+	<?php
+	$example = "echo tcres_hero_get( array(\n\t'tag'           => 'header',\n\t'pretitle_tag'  => 'p',\n\t'subtitle_tag'  => 'p',\n\t'class'         => 'hero',\n\t'image_size'    => 'large',\n) );";
 	?>
 	<details class="tcres-settings-usage">
 		<summary><?php esc_html_e( 'Usage', 'tms-core-essentials' ); ?></summary>
@@ -197,6 +230,10 @@ function tcres_settings_fields_render_hero_usage(): void {
 			<li>
 				<code>tag</code>
 				&mdash; <?php esc_html_e( 'Wrapper tag: header (default), section or div.', 'tms-core-essentials' ); ?>
+			</li>
+			<li>
+				<code>pretitle_tag</code>
+				&mdash; <?php esc_html_e( 'Pretitle tag: p (default), div or span.', 'tms-core-essentials' ); ?>
 			</li>
 			<li>
 				<code>subtitle_tag</code>
@@ -221,6 +258,7 @@ function tcres_settings_fields_render_hero_usage(): void {
 		</ul>
 		<p class="description">
 			<?php esc_html_e( 'Meta keys:', 'tms-core-essentials' ); ?>
+			<code>tcres_hero_pretitle</code>
 			<code>tcres_hero_subtitle</code>
 			<code>tcres_hero_description</code>
 			<code>tcres_hero_buttons</code>
@@ -443,7 +481,7 @@ function tcres_settings_fields_render_hero_panel(): void {
 		$post_types,
 		$taxonomies,
 		__( 'Hero', 'tms-core-essentials' ),
-		__( 'Adds a Hero with title, featured image or featured video (posts), subtitle, description (WYSIWYG) and repeatable link buttons for posts and terms.', 'tms-core-essentials' ),
+		__( 'Adds a Hero with title, featured image or featured video (posts), pretitle, subtitle, description (WYSIWYG) and repeatable link buttons for posts and terms.', 'tms-core-essentials' ),
 		true,
 		true,
 		'tax_',

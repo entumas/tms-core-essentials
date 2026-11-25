@@ -4,11 +4,11 @@ Tags: security, performance, privacy, administration, frontend functionalities
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Core utilities and shared essentials for TMS WordPress projects.
+Core utilities and shared essentials forWordPress projects.
 
 
 == Description ==
@@ -61,6 +61,21 @@ To build from source: clone the repository, open the project root in Prepros, th
 
 
 == Changelog ==
+
+= 1.1.0 =
+* TWEAK: Swiper, GLightbox, and Choices register when enabled and print only when a script depends on their handle or enqueues it.
+* NEW: Developers: document frontend assets, bundled libraries, smooth scroll, the SVG sprite, and shortcodes.
+* FIX: Privacy notice: keep editor line breaks when the notice is printed inside a form.
+* NEW: Privacy notice: hiring notice for recruitment forms.
+* NEW: Privacy notice: Fluent Forms Free, with form checkboxes and tcres-* shortcodes in Custom HTML fields.
+* NEW: Query listing: AJAX filters, search, order, count, and load more or pagination for a post grid. The theme writes the grid, toolbar, and navigation. tcres_query_listing_register() defines the query, including a scope the visitor cannot widen. tcres_query_listing_attrs() and tcres_query_listing_items() print the signed query and the first-page cards.
+* FIX: Disable Gutenberg: keep the selected page templates when saving settings.
+* FIX: Share content: keep the selected page templates when saving settings.
+* NEW: Add custom CSS classes on each button to Hero block.
+* NEW: Add pretitle to Hero block.
+* TWEAK: Privacy notice: use native details/summary for the first-layer collapse, with CSS open animation.
+* NEW: Add option to disable pretitle, subtitle, description, and buttons in the editor to Hero block.
+* TWEAK: Frontend CSS classes: only the module root keeps the tcres- prefix. Inner elements now use short class names.
 
 = 1.0.0 =
 * NEW: PHP API: tcres_option_get(), tcres_field_get(), tcres_tax_field_get(), tcres_post_meta_update(), tcres_term_meta_update(), tcres_post_types_get_included(), tcres_taxonomies_get_included(), tcres_option_get_for_post_types(), tcres_option_get_for_taxonomies(), tcres_option_get_for_post_types_diff(), tcres_slug_convert_to_id(), tcres_svg_icon_get(), tcres_date_format(), tcres_image_validate_size(), tcres_template_get_info(), and tcres_image_size_get_registered().

@@ -317,7 +317,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<li>
 						<code><?php echo esc_html( '$args[\'file\']' ); ?></code>
 						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
-						&mdash; <?php esc_html_e( 'Full URL to the sprite .svg. Empty uses Extras → SVG icons (frontend/admin), then the plugin default.', 'tms-core-essentials' ); ?>
+						&mdash; <?php esc_html_e( 'Full URL to the sprite .svg. Empty uses the frontend or admin sprite URL, then the plugin sprite. See Assets, libraries, and shortcodes.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
 						<code><?php echo esc_html( '$args[\'inline\']' ); ?></code>
@@ -591,12 +591,12 @@ function tcres_settings_developers_render_tab_fields(): void {
 						&mdash; <?php esc_html_e( 'Optional on the trigger: do not preventDefault (useful for real links).', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-collapse</code>, <code>.tcres-collapse-title</code>, <code>.tcres-collapse-content</code>
+						<code>.tcres-collapse</code>, <code>.title</code>, <code>.content</code>
 						&mdash; <?php esc_html_e( 'CSS classes for the default open/close animation. Toggle state uses .is-open. Keep the title label as plain/inline text (no wrapping block tags).', 'tms-core-essentials' ); ?>
 					</li>
 				</ul>
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
-				<pre><code><?php echo esc_html( "\$id = tcres_unique_id( 'tcres-collapse-' );\n\n<div class=\"tcres-collapse\">\n\t<div\n\t\tclass=\"tcres-collapse-title\"\n\t\trole=\"button\"\n\t\ttabindex=\"0\"\n\t\taria-expanded=\"false\"\n\t\tdata-tcres-collapse-trigger\n\t\tdata-tcres-collapse-id=\"{id}\">\n\t\tShow details\n\t</div>\n\t<div\n\t\tclass=\"tcres-collapse-content\"\n\t\tdata-tcres-collapse-target\n\t\tdata-tcres-collapse-id=\"{id}\">\n\t\t<p>Hidden until opened.</p>\n\t</div>\n</div>\n\n// Replace {id} with esc_attr( \$id ). After AJAX:\nwindow.tcresCollapseInit();" ); ?></code></pre>
+				<pre><code><?php echo esc_html( "\$id = tcres_unique_id( 'tcres-collapse-' );\n\n<div class=\"tcres-collapse\">\n\t<div\n\t\tclass=\"title\"\n\t\trole=\"button\"\n\t\ttabindex=\"0\"\n\t\taria-expanded=\"false\"\n\t\tdata-tcres-collapse-trigger\n\t\tdata-tcres-collapse-id=\"{id}\">\n\t\tShow details\n\t</div>\n\t<div\n\t\tclass=\"content\"\n\t\tdata-tcres-collapse-target\n\t\tdata-tcres-collapse-id=\"{id}\">\n\t\t<p>Hidden until opened.</p>\n\t</div>\n</div>\n\n// Replace {id} with esc_attr( \$id ). After AJAX:\nwindow.tcresCollapseInit();" ); ?></code></pre>
 				<p class="description"><?php esc_html_e( 'Generate unique IDs in PHP with tcres_unique_id(). Frontend scripts expose window.tcresCollapseInit for manual re-init.', 'tms-core-essentials' ); ?></p>
 			</section>
 
@@ -617,15 +617,15 @@ function tcres_settings_developers_render_tab_fields(): void {
 						&mdash; <?php esc_html_e( 'Root overlay. Hidden until .is-open is added.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-modal-backdrop</code>
+						<code>.backdrop</code>
 						&mdash; <?php esc_html_e( 'Full-screen backdrop inside the modal.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-modal-dialog</code>
+						<code>.dialog</code>
 						&mdash; <?php esc_html_e( 'Centered panel with role="dialog" and aria-modal="true".', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-modal-header</code>, <code>.tcres-modal-body</code>, <code>.tcres-modal-footer</code>
+						<code>.header</code>, <code>.body</code>, <code>.footer</code>
 						&mdash; <?php esc_html_e( 'Optional layout regions. Style them in the theme.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
@@ -637,20 +637,20 @@ function tcres_settings_developers_render_tab_fields(): void {
 						&mdash; <?php esc_html_e( 'On a button: modal id (#my-modal) or selector to open on click.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-modal-static</code>
+						<code>.is-static</code>
 						&mdash; <?php esc_html_e( 'Panel appears in place with no panel fade (backdrop may still fade).', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-modal-from-top</code>, <code>.tcres-modal-from-right</code>, <code>.tcres-modal-from-bottom</code>, <code>.tcres-modal-from-left</code>
+						<code>.from-top</code>, <code>.from-right</code>, <code>.from-bottom</code>, <code>.from-left</code>
 						&mdash; <?php esc_html_e( 'Slide the panel in from off-screen (no panel fade).', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-modal-from-top-fade</code>, <code>.tcres-modal-from-right-fade</code>, <code>.tcres-modal-from-bottom-fade</code>, <code>.tcres-modal-from-left-fade</code>
+						<code>.from-top-fade</code>, <code>.from-right-fade</code>, <code>.from-bottom-fade</code>, <code>.from-left-fade</code>
 						&mdash; <?php esc_html_e( 'Same directions with panel fade while sliding.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-modal-full</code>
-						&mdash; <?php esc_html_e( 'Optional layout modifier: the dialog fills the viewport. Combine with any .tcres-modal-from-* animation class.', 'tms-core-essentials' ); ?>
+						<code>.is-full-screen</code>
+						&mdash; <?php esc_html_e( 'Optional layout modifier: the dialog fills the viewport. Combine with any .from-* animation class.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
 						<code>.is-open</code>, <code>.is-entering</code>, <code>.is-leaving</code>
@@ -664,11 +664,11 @@ function tcres_settings_developers_render_tab_fields(): void {
 				<h4><?php esc_html_e( 'Animations', 'tms-core-essentials' ); ?></h4>
 				<ul>
 					<li><?php esc_html_e( 'Static fade (default): no extra class; the panel fades in and out.', 'tms-core-essentials' ); ?></li>
-					<li><?php esc_html_e( 'Static, no fade: .tcres-modal-static — panel appears in place.', 'tms-core-essentials' ); ?></li>
-					<li><?php esc_html_e( 'Slide: .tcres-modal-from-top | -right | -bottom | -left — panel slides in from off-screen while the backdrop fades.', 'tms-core-essentials' ); ?></li>
-					<li><?php esc_html_e( 'Slide + fade: .tcres-modal-from-top-fade | -right-fade | -bottom-fade | -left-fade — panel slides from off-screen and fades at the same time.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Static, no fade: .is-static — panel appears in place.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Slide: .from-top, .from-right, .from-bottom or .from-left — panel slides in from off-screen while the backdrop fades.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Slide + fade: .from-top-fade, .from-right-fade, .from-bottom-fade or .from-left-fade — panel slides from off-screen and fades at the same time.', 'tms-core-essentials' ); ?></li>
 					<li><?php esc_html_e( 'Add one animation class on the same element as .tcres-modal, then open it from any trigger with data-tcres-modal-open.', 'tms-core-essentials' ); ?></li>
-					<li><?php esc_html_e( 'Combine with .tcres-modal-full for a full-viewport panel using the same animation classes.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Combine with .is-full-screen for a full-viewport panel using the same animation classes.', 'tms-core-essentials' ); ?></li>
 				</ul>
 				<h4><?php esc_html_e( 'Behaviour', 'tms-core-essentials' ); ?></h4>
 				<ul>
@@ -678,8 +678,174 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<li><?php esc_html_e( 'Focus returns to the element that was focused before open.', 'tms-core-essentials' ); ?></li>
 				</ul>
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
-				<pre><code><?php echo esc_html( "<button type=\"button\" data-tcres-modal-open=\"my-modal\">Open</button>\n\n<div class=\"tcres-modal\" id=\"my-modal\" aria-hidden=\"true\">\n\t<div class=\"tcres-modal-backdrop\" data-tcres-modal-close></div>\n\t<div class=\"tcres-modal-dialog\"\n\t\trole=\"dialog\"\n\t\taria-modal=\"true\"\n\t\taria-labelledby=\"my-modal-title\">\n\t\t<div class=\"tcres-modal-header\">\n\t\t\t<p class=\"tcres-modal-title\" id=\"my-modal-title\">Title</p>\n\t\t\t<button type=\"button\"\n\t\t\t\tclass=\"tcres-modal-close\"\n\t\t\t\tdata-tcres-modal-close\n\t\t\t\taria-label=\"Close\">&times;</button>\n\t\t</div>\n\t\t<div class=\"tcres-modal-body\">\n\t\t\t<p>Content.</p>\n\t\t</div>\n\t\t<div class=\"tcres-modal-footer\">\n\t\t\t<button type=\"button\" data-tcres-modal-close>Cancel</button>\n\t\t</div>\n\t</div>\n</div>\n\n// Imperative:\nwindow.tcresShowModal( document.getElementById( 'my-modal' ) );\nwindow.tcresHideModal( '#my-modal' );\n\n// After AJAX:\nwindow.tcresModalInit();" ); ?></code></pre>
-				<p class="description"><?php esc_html_e( 'Example with slide + fade from bottom: tcres-modal tcres-modal-from-bottom-fade. Full viewport: tcres-modal tcres-modal-full tcres-modal-from-bottom-fade. Override colors and spacing in the theme.', 'tms-core-essentials' ); ?></p>
+				<pre><code><?php echo esc_html( "<button type=\"button\" data-tcres-modal-open=\"my-modal\">Open</button>\n\n<div class=\"tcres-modal\" id=\"my-modal\" aria-hidden=\"true\">\n\t<div class=\"backdrop\" data-tcres-modal-close></div>\n\t<div class=\"dialog\"\n\t\trole=\"dialog\"\n\t\taria-modal=\"true\"\n\t\taria-labelledby=\"my-modal-title\">\n\t\t<div class=\"header\">\n\t\t\t<p class=\"title\" id=\"my-modal-title\">Title</p>\n\t\t\t<button type=\"button\"\n\t\t\t\tclass=\"close\"\n\t\t\t\tdata-tcres-modal-close\n\t\t\t\taria-label=\"Close\">&times;</button>\n\t\t</div>\n\t\t<div class=\"body\">\n\t\t\t<p>Content.</p>\n\t\t</div>\n\t\t<div class=\"footer\">\n\t\t\t<button type=\"button\" data-tcres-modal-close>Cancel</button>\n\t\t</div>\n\t</div>\n</div>\n\n// Imperative:\nwindow.tcresShowModal( document.getElementById( 'my-modal' ) );\nwindow.tcresHideModal( '#my-modal' );\n\n// After AJAX:\nwindow.tcresModalInit();" ); ?></code></pre>
+				<p class="description"><?php esc_html_e( 'Example with slide + fade from bottom: tcres-modal from-bottom-fade. Full viewport: tcres-modal is-full-screen from-bottom-fade. Override colors and spacing in the theme.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<hr>
+
+			<section id="tcres-dev-query-listing">
+				<h3>⇒ <?php esc_html_e( 'Query listing', 'tms-core-essentials' ); ?></h3>
+				<p>
+					<code><?php echo esc_html( 'tcres_query_listing_register( string $id, array $args ): void' ); ?></code>,
+					<code><?php echo esc_html( 'tcres_query_listing_attrs( string $id ): void' ); ?></code>,
+					<code><?php echo esc_html( 'tcres_query_listing_items( string $id ): void' ); ?></code>,
+					<code><?php echo esc_html( 'tcresQueryListingInit( root = document )' ); ?></code>
+				</p>
+				<p><?php esc_html_e( 'AJAX post listing. Register the query in PHP. The theme writes the grid, the toolbar, and the navigation, and chooses which controls exist. tcres_query_listing_attrs() prints the signed attributes on the theme grid, and tcres_query_listing_items() prints the cards inside it. The pieces share data-tcres-query-listing-id and do not need a common parent, so the toolbar can live in an offcanvas. Several toolbars with the same id stay in sync. The plugin calls tcresQueryListingInit() on DOMContentLoaded; call it again after injecting a listing dynamically.', 'tms-core-essentials' ); ?></p>
+
+				<h4><?php esc_html_e( 'Register', 'tms-core-essentials' ); ?></h4>
+				<p><?php esc_html_e( 'Call tcres_query_listing_register() where the listing is printed, after the post type exists. The signed config carries the query, the order, and the card, so AJAX does not need another register call. If the post type does not exist yet, register does nothing.', 'tms-core-essentials' ); ?></p>
+				<h4><?php esc_html_e( 'Parameters', 'tms-core-essentials' ); ?></h4>
+				<ul>
+					<li>
+						<code><?php echo esc_html( '$id' ); ?></code>
+						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', required', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Listing id shared by the toolbar, the grid, and the navigation.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'post_type\']' ); ?></code>
+						(<?php echo esc_html( 'string|array' ); ?><?php esc_html_e( ', required', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Public post types this listing may query. The visitor can only narrow this list.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'posts_per_page\']' ); ?></code>
+						(<?php echo esc_html( 'int' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Items per page when the listing uses load more or pagination. Omit it to show every post, which is what happens without that navigation. A value from 1 to 100 limits the page; larger values become 100.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'orderby\']' ); ?></code>
+						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Initial orderby: date, title, or menu_order. Default date.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'order\']' ); ?></code>
+						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Initial direction: ASC or DESC. Default DESC.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'taxonomies\']' ); ?></code>
+						(<?php echo esc_html( 'array' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Public taxonomies attached to those post types. Visitor taxonomy and term filters can only use this list. Scope is not limited by it.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'scope\']' ); ?></code>
+						(<?php echo esc_html( 'array' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Locked query. relation is AND (default) or OR, and it only combines these clauses with each other. A filter is type taxonomy (values are taxonomy slugs; in and and mean the post has a term in that taxonomy, not_in means it has none) or type term (taxonomy, operator in, and, or not_in, values are term slugs). The visitor cannot remove it. Visitor filters are added with AND, so a toolbar OR cannot leave it. Omit it for no locked terms. The first page and the base total use this query, before any toolbar control.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'empty\']' ); ?></code>
+						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'HTML for an empty result, written by the theme. It is stored in a template, so it stays out of the indexed body while there are posts. If the first query is already empty, it is also printed as real content.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'error\']' ); ?></code>
+						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', optional', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'HTML shown when an AJAX request fails, written by the theme. Posts already on screen stay in place.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code><?php echo esc_html( '$args[\'render_item\']' ); ?></code>
+						(<?php echo esc_html( 'string' ); ?><?php esc_html_e( ', required', 'tms-core-essentials' ); ?>)
+						&mdash; <?php esc_html_e( 'Card for every item. A theme template slug (get_template_part, child theme then parent, any folder) or an existing .php file under wp-content. The loop is set up, so the_title() and the_permalink() work. The card root must have data-tcres-query-listing-item. The value is signed with the query and is not taken from the AJAX request.', 'tms-core-essentials' ); ?>
+					</li>
+				</ul>
+
+				<h4><?php esc_html_e( 'Grid', 'tms-core-essentials' ); ?></h4>
+				<p><?php esc_html_e( 'The theme writes the grid element, with its tag, classes, and any other attributes. Call tcres_query_listing_attrs() in the opening tag. It prints the listing id, the AJAX URL, the signed config, and the first-page totals. Call tcres_query_listing_items() inside the element. It prints the loading marker, the empty and error templates, and the cards of the registered query. Scope applies. A checked toolbar control does not, until the visitor changes a control. A later request removes any other child of that element.', 'tms-core-essentials' ); ?></p>
+
+				<h4><?php esc_html_e( 'Markup', 'tms-core-essentials' ); ?></h4>
+				<ul>
+					<li>
+						<code>data-tcres-query-listing-grid</code>
+						&mdash; <?php esc_html_e( 'Theme grid element. tcres_query_listing_attrs() prints this flag together with the id, the AJAX URL, the signed config, the total, and the page count.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-animate</code>
+						&mdash; <?php esc_html_e( 'enter animates new items in. both also animates the current items out. Leave it empty for an instant swap.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-step</code>
+						&mdash; <?php esc_html_e( 'Milliseconds between items. Default 60. Maximum 1000.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-toolbar</code>
+						&mdash; <?php esc_html_e( 'Toolbar root. Pair it with data-tcres-query-listing-id. Include only the filters, the search field, the order select, and the count you want. With no order select, the order from register is used.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-relation</code>
+						&mdash; <?php esc_html_e( 'AND (default) or OR. On the toolbar it combines post type filters, taxonomy filters, and the terms block. On the terms wrapper it combines the term clauses.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-filter</code>
+						&mdash; <?php esc_html_e( 'Filter control. The value is post_type, taxonomy, or term. Use a select, a multiple select, checkboxes, or a mix. An empty select value, or no checked box, means the filter is not applied. The values inside one control are a single clause.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-taxonomy</code>
+						&mdash; <?php esc_html_e( 'Taxonomy slug. Required when the filter value is term.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-operator</code>
+						&mdash; <?php esc_html_e( 'in (default, any), and (all; terms only), or not_in (none). post_type accepts only in and not_in. For a taxonomy filter, in means the post has a term in that taxonomy, and not_in means it has none.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-terms</code>
+						&mdash; <?php esc_html_e( 'Wrapper around the term filters. Set data-tcres-query-listing-relation on it. Default AND.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-search</code>
+						&mdash; <?php esc_html_e( 'Search field. An empty value is not applied. The text narrows the registered query and the active filters. WordPress matches the title, the content, and the excerpt. The count gets is-filtered while the field has text. The query runs when the field is committed: Enter, leaving the field, or clearing it.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-order</code>
+						&mdash; <?php esc_html_e( 'Order select. Option values are date|DESC, date|ASC, title|ASC, title|DESC, menu_order|ASC, and menu_order|DESC.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-count</code>
+						&mdash; <?php esc_html_e( 'Result count. Put data-tcres-query-listing-shown, data-tcres-query-listing-sep, and data-tcres-query-listing-total inside it. From the first paint the count is shown / total. Shown is how many cards are in the grid. The total is the registered base total: scope counts, visitor filters do not. The count gets is-filtered only while a visitor filter is active. Changing the order alone does not add that class.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-nav</code>
+						&mdash; <?php esc_html_e( 'The pagination nav or the load-more button. Add data-tcres-query-listing-id on that same element. The nav also has data-tcres-query-listing-pagination. The button also has data-tcres-query-listing-more. On a single page the element is hidden.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-more</code>
+						&mdash; <?php esc_html_e( 'Button that appends the next page. Hidden when there is no next page. is-loading goes on this button while the next page loads. The grid shows its loading state too.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-pagination</code>
+						&mdash; <?php esc_html_e( 'Pagination nav. It is a previous link, an ordered list with one item per page, and a next link. Each link has data-tcres-query-listing-page set to prev, next, or the page number. The current link uses is-current and aria-current="page". An unavailable link uses aria-disabled="true". The sample number href is reused for every page: a {page} token is replaced, otherwise the path segment equal to the sample page is replaced. A filter or an order change goes back to page 1 and replaces the grid. Previous and next labels stay; the sample item is cloned to match the new page count.', 'tms-core-essentials' ); ?>
+					</li>
+					<li>
+						<code>data-tcres-query-listing-item</code>
+						&mdash; <?php esc_html_e( 'Required on the root element of the card.', 'tms-core-essentials' ); ?>
+					</li>
+				</ul>
+
+				<h4><?php esc_html_e( 'Behaviour', 'tms-core-essentials' ); ?></h4>
+				<ul>
+					<li><?php esc_html_e( 'A request that changes the grid (filter, order, pagination, or load more) sets is-loading on the grid and shows the element with data-tcres-query-listing-loading. Load more also sets is-loading on its button. Controls stay disabled until the request ends. A newer request aborts the one in flight.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Animation classes on each item: is-entering, then is-visible. Leaving items use is-leaving. prefers-reduced-motion skips straight to is-visible. The first paint is not animated. The plugin CSS is only a neutral fade on the item; layout, and how is-unavailable looks, belong to the theme.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'After each response, an option with no matches gets is-unavailable on its checkbox label and on the Choices.js item (.choices__item[data-value]). The script does not disable or hide it. The whole filter gets is-unavailable when every real option is unavailable. Each filter is tested without its own current values. Only the first 50 options are checked; any option after those is marked unavailable. If a selected value is no longer available, that filter is cleared and the listing runs once more. Start Choices.js in the theme; the script reads the native control.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Empty and error HTML are the theme strings passed to register. AJAX does not rebuild them, so they stay in the language of the page.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'The signed config stores the current language. AJAX switches to that language before the query, for WPML and for Polylang. Term slugs are used as the theme rendered them.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'The signature keeps the query inside the registered post types, taxonomies, scope, page size, order, card, language, and base total. Only published, viewable content is queried.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'New cards initialize collapse, tabs, and modal again when those helpers are loaded. If the plugin frontend JavaScript is disabled in Extras, the listing stays on the first page printed by PHP. This version does not copy filters into the URL.', 'tms-core-essentials' ); ?></li>
+				</ul>
+
+				<h4><?php esc_html_e( 'Filter parameters', 'tms-core-essentials' ); ?></h4>
+				<p><code><?php echo esc_html( 'tcres_query_listing_orderby' ); ?></code></p>
+				<ul>
+					<li>
+						<code><?php echo esc_html( '$allowed' ); ?></code>
+						(<?php echo esc_html( 'array<string>' ); ?>)
+						&mdash; <?php esc_html_e( 'Whitelist of orderby values for the order control. date, title, and menu_order are included by default. Add the matching option in the select, for example modified|DESC.', 'tms-core-essentials' ); ?>
+					</li>
+				</ul>
+				<p class="description"><?php esc_html_e( 'Returns: the array you return is the accepted orderby list. A non-array, or an empty result, keeps date and title.', 'tms-core-essentials' ); ?></p>
+
+				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
+				<pre><code><?php echo esc_html( "tcres_query_listing_register( 'news', array(\n\t\t'post_type'      => array( 'post', 'project' ),\n\t\t'posts_per_page' => 12,\n\t\t'orderby'        => 'date',\n\t\t'order'          => 'DESC',\n\t\t'taxonomies'     => array( 'category', 'project_type' ),\n\t\t'scope'          => array(\n\t\t\t'relation' => 'AND',\n\t\t\t'filters'  => array(\n\t\t\t\tarray(\n\t\t\t\t\t'type'     => 'term',\n\t\t\t\t\t'taxonomy' => 'category',\n\t\t\t\t\t'operator' => 'in',\n\t\t\t\t\t'values'   => array( 'news' ),\n\t\t\t\t),\n\t\t\t),\n\t\t),\n\t\t'empty'          => '<p>' . esc_html__( 'No results.', 'my-theme' ) . '</p>',\n\t\t'error'          => '<p>' . esc_html__( 'Could not load.', 'my-theme' ) . '</p>',\n\t\t'render_item'    => 'blocks/cards/project',\n\t) );\n\n<search\n\tclass=\"query-listing\"\n\tdata-tcres-query-listing-toolbar\n\tdata-tcres-query-listing-id=\"news\"\n\tdata-tcres-query-listing-relation=\"AND\">\n\t<div\n\t\tdata-tcres-query-listing-filter=\"post_type\"\n\t\tdata-tcres-query-listing-operator=\"in\">\n\t\t<select>\n\t\t\t<option value=\"\">All types</option>\n\t\t\t<option value=\"post\">Posts</option>\n\t\t</select>\n\t</div>\n\t<div\n\t\tdata-tcres-query-listing-terms\n\t\tdata-tcres-query-listing-relation=\"AND\">\n\t\t<div\n\t\t\tdata-tcres-query-listing-filter=\"term\"\n\t\t\tdata-tcres-query-listing-taxonomy=\"category\"\n\t\t\tdata-tcres-query-listing-operator=\"in\">\n\t\t\t<label><input type=\"checkbox\" value=\"news\"> News</label>\n\t\t</div>\n\t</div>\n\t<input type=\"search\" data-tcres-query-listing-search placeholder=\"Search\">\n\t<select data-tcres-query-listing-order>\n\t\t<option value=\"date|DESC\">Newest</option>\n\t\t<option value=\"title|ASC\">A–Z</option>\n\t\t<option value=\"menu_order|ASC\">Manual</option>\n\t</select>\n\t<p data-tcres-query-listing-count>\n\t\t<span data-tcres-query-listing-shown></span>\n\t\t<span data-tcres-query-listing-sep> / </span>\n\t\t<span data-tcres-query-listing-total></span>\n\t</p>\n</search>\n\n<div\n\tclass=\"query-listing grid\"\n\tdata-tcres-query-listing-animate=\"enter\"\n\tdata-tcres-query-listing-step=\"60\"\n\t<?php tcres_query_listing_attrs( 'news' ); ?>>\n\t<?php tcres_query_listing_items( 'news' ); ?>\n</div>\n\n<nav\n\tclass=\"query-listing\"\n\tdata-tcres-query-listing-nav\n\tdata-tcres-query-listing-id=\"news\"\n\tdata-tcres-query-listing-pagination\n\taria-label=\"Pagination\">\n\t<a href=\"/page/1/\" rel=\"prev\" data-tcres-query-listing-page=\"prev\">Previous</a>\n\t<ol>\n\t\t<li><a href=\"/page/1/\" data-tcres-query-listing-page=\"1\">1</a></li>\n\t</ol>\n\t<a href=\"/page/2/\" rel=\"next\" data-tcres-query-listing-page=\"next\">Next</a>\n</nav>\n\n// Load more, instead of the pagination nav:\n// <button type=\"button\" class=\"query-listing\" data-tcres-query-listing-nav data-tcres-query-listing-id=\"news\" data-tcres-query-listing-more>Load more</button>\n\n// Card root: <article data-tcres-query-listing-item>\n// Plugin file: 'render_item' => plugin_dir_path( __FILE__ ) . 'views/card.php'" ); ?></code></pre>
+				<p class="description"><?php esc_html_e( 'Use the theme text domain on the empty and error HTML. A file path passed as render_item must live under wp-content.', 'tms-core-essentials' ); ?></p>
 			</section>
 
 			<hr>
@@ -687,12 +853,12 @@ function tcres_settings_developers_render_tab_fields(): void {
 			<section id="tcres-dev-tabs">
 				<h3>⇒ <?php esc_html_e( 'Tabs', 'tms-core-essentials' ); ?></h3>
 				<p><code><?php echo esc_html( 'tcresTabsInit( root = document )' ); ?></code></p>
-				<p><?php esc_html_e( 'Reusable tab panels with URL hash sync. The tab nav must be immediately followed by the panels wrapper. The plugin calls tcresTabsInit() on DOMContentLoaded; call it again after injecting markup dynamically.', 'tms-core-essentials' ); ?></p>
+				<p><?php esc_html_e( 'Reusable tab panels with URL hash sync. The tab list must be immediately followed by the panels wrapper. The plugin calls tcresTabsInit() on DOMContentLoaded; call it again after injecting markup dynamically.', 'tms-core-essentials' ); ?></p>
 				<h4><?php esc_html_e( 'Markup', 'tms-core-essentials' ); ?></h4>
 				<ul>
 					<li>
 						<code>data-tcres-tabs</code>
-						&mdash; <?php esc_html_e( 'Tab list container (usually a nav with role="tablist").', 'tms-core-essentials' ); ?>
+						&mdash; <?php esc_html_e( 'Tab list container (a div with role="tablist").', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
 						<code>data-tcres-tab-id</code>
@@ -711,7 +877,7 @@ function tcres_settings_developers_render_tab_fields(): void {
 						&mdash; <?php esc_html_e( 'Use the WAI-ARIA tabs pattern. Active state uses .is-active on tabs and panels.', 'tms-core-essentials' ); ?>
 					</li>
 					<li>
-						<code>.tcres-tab-panels</code>, <code>.tcres-tab-panel</code>
+						<code>.tcres-tab-panels</code>, <code>.panel</code>
 						&mdash; <?php esc_html_e( 'Plugin CSS classes for panel positioning and fade animation.', 'tms-core-essentials' ); ?>
 					</li>
 				</ul>
@@ -723,8 +889,124 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<li><?php esc_html_e( 'Browser back and forward sync tabs via popstate and hashchange.', 'tms-core-essentials' ); ?></li>
 				</ul>
 				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
-				<pre><code><?php echo esc_html( "\$group_id = wp_unique_id( 'tcres-tab-' );\n\$tabs = array(\n\t'specs'    => __( 'Specs', 'my-theme' ),\n\t'reviews'  => __( 'Reviews', 'my-theme' ),\n);\n?>\n<nav class=\"tcres-tabs\" data-tcres-tabs role=\"tablist\" aria-label=\"<?php echo esc_attr( __( 'Product details', 'my-theme' ) ); ?>\">\n\t<?php foreach ( \$tabs as \$tab_id => \$label ) : ?>\n\t\t<button type=\"button\"\n\t\t\tid=\"<?php echo esc_attr( \$group_id . '-tab-' . \$tab_id ); ?>\"\n\t\t\tclass=\"tcres-tab\"\n\t\t\tdata-tcres-tab-id=\"<?php echo esc_attr( \$tab_id ); ?>\"\n\t\t\t<?php if ( \$tab_id === 'specs' ) echo ' data-tcres-tab-default'; ?>\n\t\t\trole=\"tab\"\n\t\t\ttabindex=\"-1\"\n\t\t\taria-selected=\"false\"\n\t\t\taria-controls=\"<?php echo esc_attr( \$group_id . '-panel-' . \$tab_id ); ?>\">\n\t\t\t<?php echo esc_html( \$label ); ?>\n\t\t</button>\n\t<?php endforeach; ?>\n</nav>\n<div class=\"tcres-tab-panels\" data-tcres-tab-panels>\n\t<?php foreach ( \$tabs as \$tab_id => \$label ) : ?>\n\t\t<div\n\t\t\tid=\"<?php echo esc_attr( \$group_id . '-panel-' . \$tab_id ); ?>\"\n\t\t\tclass=\"tcres-tab-panel\"\n\t\t\trole=\"tabpanel\"\n\t\t\taria-labelledby=\"<?php echo esc_attr( \$group_id . '-tab-' . \$tab_id ); ?>\"\n\t\t\thidden>\n\t\t\t<p><?php echo esc_html( \$label ); ?> panel content.</p>\n\t\t</div>\n\t<?php endforeach; ?>\n</div>\n<?php\n// After AJAX:\nwindow.tcresTabsInit();" ); ?></code></pre>
-				<p class="description"><?php esc_html_e( 'Use button type="button" for tabs (recommended). Anchors with href="#tab-id" and the same data attributes also work. Style .tcres-tab in the theme; the plugin ships only structural panel CSS.', 'tms-core-essentials' ); ?></p>
+				<pre><code><?php echo esc_html( "\$group_id = wp_unique_id( 'tcres-tab-' );\n\$tabs = array(\n\t'specs'    => __( 'Specs', 'my-theme' ),\n\t'reviews'  => __( 'Reviews', 'my-theme' ),\n);\n?>\n<div class=\"tcres-tabs\" data-tcres-tabs role=\"tablist\" aria-label=\"<?php echo esc_attr( __( 'Product details', 'my-theme' ) ); ?>\">\n\t<?php foreach ( \$tabs as \$tab_id => \$label ) : ?>\n\t\t<button type=\"button\"\n\t\t\tid=\"<?php echo esc_attr( \$group_id . '-tab-' . \$tab_id ); ?>\"\n\t\t\tclass=\"tab\"\n\t\t\tdata-tcres-tab-id=\"<?php echo esc_attr( \$tab_id ); ?>\"\n\t\t\t<?php if ( \$tab_id === 'specs' ) echo ' data-tcres-tab-default'; ?>\n\t\t\trole=\"tab\"\n\t\t\ttabindex=\"-1\"\n\t\t\taria-selected=\"false\"\n\t\t\taria-controls=\"<?php echo esc_attr( \$group_id . '-panel-' . \$tab_id ); ?>\">\n\t\t\t<?php echo esc_html( \$label ); ?>\n\t\t</button>\n\t<?php endforeach; ?>\n</div>\n<div class=\"tcres-tab-panels\" data-tcres-tab-panels>\n\t<?php foreach ( \$tabs as \$tab_id => \$label ) : ?>\n\t\t<div\n\t\t\tid=\"<?php echo esc_attr( \$group_id . '-panel-' . \$tab_id ); ?>\"\n\t\t\tclass=\"panel\"\n\t\t\trole=\"tabpanel\"\n\t\t\taria-labelledby=\"<?php echo esc_attr( \$group_id . '-tab-' . \$tab_id ); ?>\"\n\t\t\thidden>\n\t\t\t<p><?php echo esc_html( \$label ); ?> panel content.</p>\n\t\t</div>\n\t<?php endforeach; ?>\n</div>\n<?php\n// After AJAX:\nwindow.tcresTabsInit();" ); ?></code></pre>
+				<p class="description"><?php esc_html_e( 'Use button type="button" for tabs (recommended). Anchors with href="#tab-id" and the same data attributes also work. Style .tab in the theme; the plugin ships only structural panel CSS.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<h2 id="tcres-dev-assets"><?php esc_html_e( 'Assets, libraries, and shortcodes', 'tms-core-essentials' ); ?></h2>
+			<p class="description">
+				<?php esc_html_e( 'These options are on the Extras screen. Each switch is independent.', 'tms-core-essentials' ); ?>
+			</p>
+
+			<?php
+			$tcres_dev_libraries = function_exists( 'tcres_external_scripts_get_libraries' )
+				? tcres_external_scripts_get_libraries()
+				: array();
+			$tcres_dev_lenis = function_exists( 'tcres_smooth_scroll_get_vendor_assets' )
+				? tcres_smooth_scroll_get_vendor_assets()
+				: array( 'version' => '' );
+			?>
+
+			<section id="tcres-dev-frontend-assets">
+				<h3>⇒ <?php esc_html_e( 'Frontend assets', 'tms-core-essentials' ); ?></h3>
+				<p><?php esc_html_e( 'Disable frontend CSS skips the plugin stylesheet on the public site (assets/css/styles.css, handle tcres-styles) and the login stylesheet. Disable frontend JS skips assets/js/scripts.js (handle tcres-scripts) and the login script. Collapse, tabs, modals, and the query listing need that script. Swiper, GLightbox, Choices, and smooth scroll follow their own switches.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<hr>
+
+			<section id="tcres-dev-libraries">
+				<h3>⇒ <?php esc_html_e( 'Swiper, GLightbox, and Choices', 'tms-core-essentials' ); ?></h3>
+				<p><?php esc_html_e( 'Each switch registers one bundled library on public pages. The admin and the login screen do not register them. With the switch off, that handle stays unregistered and nothing prints.', 'tms-core-essentials' ); ?></p>
+				<p><?php esc_html_e( 'With the switch on, the files stay registered and print when a queued script is that handle, or depends on it, including through another dependency. CSS uses the same handle. This plugin prints the stylesheet when it sees the script handle, so the theme only declares the script dependency.', 'tms-core-essentials' ); ?></p>
+				<p><?php esc_html_e( 'Initialization stays in the theme. After the script prints, use window.Swiper, window.GLightbox, or window.Choices from a script that lists the matching handle in its dependencies.', 'tms-core-essentials' ); ?></p>
+				<ul>
+					<?php if ( isset( $tcres_dev_libraries['swiper'] ) ) : ?>
+						<li>
+							<?php
+							echo esc_html( sprintf(
+								/* translators: 1: library version, 2: script handle */
+								__( 'Swiper %1$s. Handle %2$s. Global window.Swiper.', 'tms-core-essentials' ),
+								$tcres_dev_libraries['swiper']['version'],
+								$tcres_dev_libraries['swiper']['handle_js']
+							) );
+							?>
+						</li>
+					<?php endif; ?>
+					<?php if ( isset( $tcres_dev_libraries['glightbox'] ) ) : ?>
+						<li>
+							<?php
+							echo esc_html( sprintf(
+								/* translators: 1: library version, 2: script handle */
+								__( 'GLightbox %1$s. Handle %2$s. Global window.GLightbox.', 'tms-core-essentials' ),
+								$tcres_dev_libraries['glightbox']['version'],
+								$tcres_dev_libraries['glightbox']['handle_js']
+							) );
+							?>
+						</li>
+					<?php endif; ?>
+					<?php if ( isset( $tcres_dev_libraries['choices'] ) ) : ?>
+						<li>
+							<?php
+							echo esc_html( sprintf(
+								/* translators: 1: library version, 2: script handle */
+								__( 'Choices %1$s. Handle %2$s. Global window.Choices. The query listing can mark an existing Choices control. The theme still starts Choices and depends on this handle.', 'tms-core-essentials' ),
+								$tcres_dev_libraries['choices']['version'],
+								$tcres_dev_libraries['choices']['handle_js']
+							) );
+							?>
+						</li>
+					<?php endif; ?>
+				</ul>
+				<h4><?php esc_html_e( 'Example', 'tms-core-essentials' ); ?></h4>
+				<pre><code><?php echo esc_html( "wp_enqueue_script(\n\t'my-theme',\n\tget_stylesheet_directory_uri() . '/assets/js/theme.js',\n\tarray( 'tcres-swiper', 'tcres-glightbox' ),\n\tnull,\n\ttrue\n);" ); ?></code></pre>
+				<p class="description"><?php esc_html_e( 'wp_enqueue_script( \'tcres-swiper\' ) also prints that library. The same pattern uses tcres-glightbox and tcres-choices.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<hr>
+
+			<section id="tcres-dev-smooth-scroll">
+				<h3>⇒ <?php esc_html_e( 'Smooth scroll', 'tms-core-essentials' ); ?></h3>
+				<p>
+					<?php
+					echo esc_html( sprintf(
+						/* translators: %s: Lenis version */
+						__( 'Lenis %s prints on every public page while the switch is on, and the plugin starts it. Handle tcres-smooth-scroll. The instance is window.tcresSmoothScrollInstance.', 'tms-core-essentials' ),
+						isset( $tcres_dev_lenis['version'] )
+							? (string) $tcres_dev_lenis['version']
+							: ''
+					) );
+					?>
+				</p>
+				<ul>
+					<li><?php esc_html_e( 'Lerp, from 0.01 to 1. Default 0.05. Lower is smoother and heavier.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Smooth mouse wheel, smooth touch scrolling, and smooth in-page anchor links.', 'tms-core-essentials' ); ?></li>
+					<li><?php esc_html_e( 'Exclude selectors: one CSS selector per line. Commas are accepted. Each match gets data-lenis-prevent. A theme can also put that attribute in the markup. The default list is .swiper.', 'tms-core-essentials' ); ?></li>
+				</ul>
+				<p><?php esc_html_e( 'Filter tcres_smooth_scroll_config runs before the config is printed. The first argument is the config array. The second is the saved group. Return an array; any other return value is ignored. The printed config is window.tcresSmoothScroll.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<hr>
+
+			<section id="tcres-dev-svg-sprite">
+				<h3>⇒ <?php esc_html_e( 'SVG sprite', 'tms-core-essentials' ); ?></h3>
+				<p><?php esc_html_e( 'Admin and Frontend are the full URL of the sprite used by tcres_svg_icon_get() when the call does not pass file. Empty uses the plugin sprite, assets/images/icons.svg. The admin URL is used in the admin. The frontend URL is used on the public site.', 'tms-core-essentials' ); ?></p>
+			</section>
+
+			<hr>
+
+			<section id="tcres-dev-shortcodes">
+				<h3>⇒ <?php esc_html_e( 'Shortcodes', 'tms-core-essentials' ); ?></h3>
+				<p><?php esc_html_e( 'The switch registers the shortcodes below. Shortcodes that belong to a module, such as breadcrumbs or share buttons, stay with that module and ignore this switch.', 'tms-core-essentials' ); ?></p>
+				<ul>
+					<li><code>[tcres-field]</code> &mdash; <?php esc_html_e( 'Print a post custom field. Optional format: esc_html (default), html, wpautop.', 'tms-core-essentials' ); ?></li>
+					<li><code>[tcres-tax-field]</code> &mdash; <?php esc_html_e( 'Print a taxonomy term custom field. Optional format: esc_html (default), html, wpautop.', 'tms-core-essentials' ); ?></li>
+					<li><code>[tcres-option]</code> &mdash; <?php esc_html_e( 'Print a plugin settings value. Optional format: esc_html (default), html, wysiwyg_title, wpautop.', 'tms-core-essentials' ); ?></li>
+					<li><code>[tcres-button]</code> &mdash; <?php esc_html_e( 'Link styled as a button. Optional: class, title, blank="yes".', 'tms-core-essentials' ); ?></li>
+					<li><code>[tcres-highlighted]</code> &mdash; <?php esc_html_e( 'Wrap content in highlighted markup.', 'tms-core-essentials' ); ?></li>
+					<li><code>[tcres-svgicon]</code> &mdash; <?php esc_html_e( 'SVG icon from the sprite.', 'tms-core-essentials' ); ?></li>
+					<li><code>[tcres-youtube]</code> &mdash; <?php esc_html_e( 'YouTube embed by video ID.', 'tms-core-essentials' ); ?></li>
+					<li><code>[tcres-vimeo]</code> &mdash; <?php esc_html_e( 'Vimeo embed by video ID.', 'tms-core-essentials' ); ?></li>
+				</ul>
 			</section>
 		</main>
 
@@ -805,7 +1087,21 @@ function tcres_settings_developers_render_tab_fields(): void {
 					<ul>
 						<li><a href="#tcres-dev-collapse"><?php esc_html_e( 'Collapse', 'tms-core-essentials' ); ?></a></li>
 						<li><a href="#tcres-dev-modal"><?php esc_html_e( 'Modal', 'tms-core-essentials' ); ?></a></li>
+						<li><a href="#tcres-dev-query-listing"><?php esc_html_e( 'Query listing', 'tms-core-essentials' ); ?></a></li>
 						<li><a href="#tcres-dev-tabs"><?php esc_html_e( 'Tabs', 'tms-core-essentials' ); ?></a></li>
+					</ul>
+				</section>
+
+				<hr>
+
+				<section aria-labelledby="tcres-toc-assets">
+					<h3 id="tcres-toc-assets"><a href="#tcres-dev-assets"><?php esc_html_e( 'Assets, libraries, and shortcodes', 'tms-core-essentials' ); ?></a></h3>
+					<ul>
+						<li><a href="#tcres-dev-frontend-assets"><?php esc_html_e( 'Frontend assets', 'tms-core-essentials' ); ?></a></li>
+						<li><a href="#tcres-dev-libraries"><?php esc_html_e( 'Swiper, GLightbox, and Choices', 'tms-core-essentials' ); ?></a></li>
+						<li><a href="#tcres-dev-smooth-scroll"><?php esc_html_e( 'Smooth scroll', 'tms-core-essentials' ); ?></a></li>
+						<li><a href="#tcres-dev-svg-sprite"><?php esc_html_e( 'SVG sprite', 'tms-core-essentials' ); ?></a></li>
+						<li><a href="#tcres-dev-shortcodes"><?php esc_html_e( 'Shortcodes', 'tms-core-essentials' ); ?></a></li>
 					</ul>
 				</section>
 			</nav>

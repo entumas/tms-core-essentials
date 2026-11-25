@@ -354,7 +354,7 @@ function tcres_settings_social_render_share_content_panel(): void {
 									<h4 id="tcres-share-content-show-templates"><?php esc_html_e( 'Page templates', 'tms-core-essentials' ); ?></h4>
 									<fieldset aria-labelledby="tcres-share-content-show-templates">
 										<ul class="checks is-horizontal">
-											<?php foreach ( $templates as $template ) : ?>
+											<?php foreach ( $templates as $template_index => $template ) : ?>
 												<?php
 												if ( ! is_array( $template ) ) continue;
 												$slug = isset( $template['slug'] )
@@ -367,7 +367,7 @@ function tcres_settings_social_render_share_content_panel(): void {
 													? (string) $template['file']
 													: '';
 												if ( $slug === '' ) continue;
-												$id = 'tcres-share-content-show-template-' . sanitize_html_class( $slug );
+												$id = 'tcres-share-content-show-template-' . (int) $template_index;
 												?>
 												<li>
 													<label class="has-checkbox" for="<?php echo esc_attr( $id ); ?>">

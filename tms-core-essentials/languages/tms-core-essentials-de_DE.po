@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TMS Core Essentials\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-11 16:28+0000\n"
-"PO-Revision-Date: 2026-09-02 15:14+0000\n"
+"PO-Revision-Date: 2026-11-25 13:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -13,9 +13,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: tms-core-essentials\n"
-"X-Loco-Version: 2.8.8; wp-7.0.2; php-8.3.33"
+"X-Loco-Version: 2.8.9; wp-7.1.3; php-8.4.27"
 
 #. 1: template name, 2: template file
+#: includes/settings/content/admin.php:98
 #: includes/settings/content/social.php:384
 #, php-format
 msgid "%1$s (%2$s)"
@@ -87,8 +88,15 @@ msgstr "(Kopie)"
 #: includes/settings/content/developers.php:366
 #: includes/settings/content/developers.php:371
 #: includes/settings/content/developers.php:395
-#: includes/settings/content/developers.php:428
-#: includes/settings/content/developers.php:463
+#: includes/settings/content/developers.php:448
+#: includes/settings/content/developers.php:483
+#: includes/settings/content/developers.php:713
+#: includes/settings/content/developers.php:718
+#: includes/settings/content/developers.php:723
+#: includes/settings/content/developers.php:728
+#: includes/settings/content/developers.php:733
+#: includes/settings/content/developers.php:738
+#: includes/settings/content/developers.php:743
 msgid ", optional"
 msgstr ", optional"
 
@@ -96,8 +104,8 @@ msgstr ", optional"
 msgid ", optional, default false"
 msgstr ", optional, Standard false"
 
-#: includes/settings/content/developers.php:433
-#: includes/settings/content/developers.php:468
+#: includes/settings/content/developers.php:453
+#: includes/settings/content/developers.php:488
 msgid ", optional, default text"
 msgstr ", optional, Standard text"
 
@@ -117,12 +125,29 @@ msgstr ", optional, Standard text"
 #: includes/settings/content/developers.php:314
 #: includes/settings/content/developers.php:361
 #: includes/settings/content/developers.php:390
-#: includes/settings/content/developers.php:418
-#: includes/settings/content/developers.php:423
-#: includes/settings/content/developers.php:453
-#: includes/settings/content/developers.php:458
+#: includes/settings/content/developers.php:415
+#: includes/settings/content/developers.php:438
+#: includes/settings/content/developers.php:443
+#: includes/settings/content/developers.php:473
+#: includes/settings/content/developers.php:478
+#: includes/settings/content/developers.php:703
+#: includes/settings/content/developers.php:708
+#: includes/settings/content/developers.php:748
 msgid ", required"
 msgstr ", erforderlich"
+
+#: includes/settings/content/developers.php:826
+msgid ""
+"A request that changes the grid (filter, order, pagination, or load more) "
+"sets is-loading on the grid and shows the element with data-tcres-query-"
+"listing-loading. Load more also sets is-loading on its button. Controls stay "
+"disabled until the request ends. A newer request aborts the one in flight."
+msgstr ""
+"Eine Anfrage, die das Raster ändert (Filter, Sortierung, Paginierung oder "
+"Mehr laden), setzt is-loading auf das Raster und zeigt das Element mit data-"
+"tcres-query-listing-loading. Mehr laden setzt is-loading auch auf seinen "
+"Button. Die Steuerelemente bleiben deaktiviert, bis die Anfrage endet. Eine "
+"neuere Anfrage bricht die laufende ab."
 
 #: includes/settings/components/output-location.php:96
 msgid "Action hook name from your theme or plugin."
@@ -132,7 +157,7 @@ msgstr "Name des Action-Hooks aus Ihrem Theme oder Plugin."
 msgid "Active"
 msgstr "Aktiv"
 
-#: includes/modules/fields/hero.php:279
+#: includes/modules/fields/hero.php:309
 msgid "Add button"
 msgstr "Schaltfläche hinzufügen"
 
@@ -140,7 +165,15 @@ msgstr "Schaltfläche hinzufügen"
 msgid "Add classes to <body>"
 msgstr "Klassen zu <body> hinzufügen"
 
-#: includes/settings/content/admin.php:512
+#: includes/settings/content/developers.php:670
+msgid ""
+"Add one animation class on the same element as .tcres-modal, then open it "
+"from any trigger with data-tcres-modal-open."
+msgstr ""
+"Fügen Sie eine Animationsklasse auf demselben Element wie .tcres-modal hinzu "
+"und öffnen Sie es über einen beliebigen Trigger mit data-tcres-modal-open."
+
+#: includes/settings/content/admin.php:600
 msgid ""
 "Adds a drag handle on the admin list to reorder items by menu_order for the "
 "selected post types."
@@ -148,7 +181,7 @@ msgstr ""
 "Fügt in der Admin-Liste einen Ziehgriff hinzu, um Einträge für die "
 "ausgewählten Beitragstypen nach menu_order neu zu ordnen."
 
-#: includes/settings/content/admin.php:610
+#: includes/settings/content/admin.php:698
 msgid ""
 "Adds a drag handle on the terms list and an Order field on the term edit "
 "screen for the selected taxonomies."
@@ -156,13 +189,13 @@ msgstr ""
 "Fügt in der Term-Liste einen Ziehgriff und auf dem Bearbeitungsbildschirm "
 "des Terms ein Feld Reihenfolge für die ausgewählten Taxonomien hinzu."
 
-#: includes/settings/content/admin.php:823
+#: includes/settings/content/admin.php:911
 msgid "Adds a Duplicate action on the admin list for the selected post types."
 msgstr ""
 "Fügt in der Admin-Liste eine Aktion Duplizieren für die ausgewählten "
 "Beitragstypen hinzu."
 
-#: includes/settings/content/fields.php:309
+#: includes/settings/content/fields.php:347
 msgid ""
 "Adds a featured image field on term screens. Useful for taxonomy archives "
 "and modules such as Hero."
@@ -170,7 +203,7 @@ msgstr ""
 "Fügt auf Term-Bildschirmen ein Feld für das Beitragsbild hinzu. Nützlich für "
 "Taxonomie-Archive und Module wie Hero."
 
-#: includes/settings/content/fields.php:394
+#: includes/settings/content/fields.php:432
 msgid ""
 "Adds a featured video field on post and term screens. When set, Hero uses "
 "this video as the background (featured/term image becomes the poster when "
@@ -180,7 +213,7 @@ msgstr ""
 "hinzu. Wenn gesetzt, nutzt Hero dieses Video als Hintergrund (das Beitrags-"
 "/Term-Bild wird bei Verfügbarkeit zum Poster)."
 
-#: includes/settings/content/fields.php:285
+#: includes/settings/content/fields.php:323
 msgid ""
 "Adds a field to enter extra CSS classes. Classes are applied to the frontend "
 "body tag on singular posts and taxonomy archives."
@@ -213,14 +246,15 @@ msgstr ""
 "Fügt einen konfigurierbaren Frontend-HTML-Sitemap-Helper hinzu. Ausgabe mit "
 "tcres_sitemap_get() oder dem Shortcode [tcres-sitemap]."
 
-#: includes/settings/content/fields.php:446
+#: includes/settings/content/fields.php:484
 msgid ""
-"Adds a Hero with title, featured image or featured video (posts), subtitle, "
-"description (WYSIWYG) and repeatable link buttons for posts and terms."
+"Adds a Hero with title, featured image or featured video (posts), pretitle, "
+"subtitle, description (WYSIWYG) and repeatable link buttons for posts and "
+"terms."
 msgstr ""
 "Fügt einen Hero mit Titel, Beitragsbild oder Featured-Video (Beiträge), "
-"Untertitel, Beschreibung (WYSIWYG) und wiederholbaren Link-Schaltflächen für "
-"Beiträge und Terms hinzu."
+"Vortitel, Untertitel, Beschreibung (WYSIWYG) und wiederholbaren Link-"
+"Schaltflächen für Beiträge und Terms hinzu."
 
 #: includes/settings/content/content.php:389
 msgid ""
@@ -232,13 +266,13 @@ msgstr ""
 "Wählen Sie eine automatische Ausgabeposition oder geben Sie sie mit "
 "tcres_related_content_get() / [tcres-related-content] aus."
 
-#: includes/settings/content/privacy.php:347
+#: includes/settings/content/privacy.php:540
 msgid "Adds a required privacy policy checkbox on selected forms."
 msgstr ""
 "Fügt auf ausgewählten Formularen ein Pflicht-Kontrollkästchen für die "
 "Datenschutzrichtlinie hinzu."
 
-#: includes/settings/content/fields.php:420
+#: includes/settings/content/fields.php:458
 msgid ""
 "Adds a subtitle WYSIWYG in the main editor area for posts, and on term "
 "screens (no media button; primary toolbar only)."
@@ -246,14 +280,14 @@ msgstr ""
 "Fügt im Haupteditorbereich für Beiträge und auf Term-Bildschirmen einen "
 "WYSIWYG-Untertitel hinzu (kein Mediendutton; nur die Hauptwerkzeugleiste)."
 
-#: includes/settings/content/admin.php:492
+#: includes/settings/content/admin.php:580
 msgid ""
 "Adds an image column to the selected post type list tables in the admin."
 msgstr ""
 "Fügt in den Listentabellen der ausgewählten Beitragstypen in der "
 "Administration eine Bildspalte hinzu."
 
-#: includes/settings/content/privacy.php:180
+#: includes/settings/content/privacy.php:307
 msgid "Adds collapsible privacy notices for forms, registration, and checkout."
 msgstr ""
 "Fügt einklappbare Datenschutzhinweise für Formulare, Registrierung und "
@@ -266,7 +300,7 @@ msgstr ""
 "Fügt schwebende WhatsApp-, Telegram- und/oder Messenger-Schaltflächen im "
 "Footer der Website hinzu."
 
-#: includes/settings/content/developers.php:485
+#: includes/settings/content/developers.php:505
 msgid ""
 "Adds post type slugs to the exclusion list before computing included types."
 msgstr ""
@@ -288,9 +322,43 @@ msgstr ""
 msgid "Admin"
 msgstr "Admin"
 
+#: includes/settings/content/developers.php:992
+msgid ""
+"Admin and Frontend are the full URL of the sprite used by "
+"tcres_svg_icon_get() when the call does not pass file. Empty uses the plugin "
+"sprite, assets/images/icons.svg. The admin URL is used in the admin. The "
+"frontend URL is used on the public site."
+msgstr ""
+"Admin und Frontend sind die vollständige URL des Sprites, den "
+"tcres_svg_icon_get() verwendet, wenn der Aufruf file nicht übergibt. Leer "
+"verwendet das Plugin-Sprite, assets/images/icons.svg. Die Admin-URL wird im "
+"Admin verwendet. Die Frontend-URL wird auf der öffentlichen Website "
+"verwendet."
+
 #: includes/settings/navigation.php:35
 msgid "Administration"
 msgstr "Administration"
+
+#: includes/settings/content/developers.php:828
+msgid ""
+"After each response, an option with no matches gets is-unavailable on its "
+"checkbox label and on the Choices.js item (.choices__item[data-value]). The "
+"script does not disable or hide it. The whole filter gets is-unavailable "
+"when every real option is unavailable. Each filter is tested without its own "
+"current values. Only the first 50 options are checked; any option after "
+"those is marked unavailable. If a selected value is no longer available, "
+"that filter is cleared and the listing runs once more. Start Choices.js in "
+"the theme; the script reads the native control."
+msgstr ""
+"Nach jeder Antwort erhält eine Option ohne Treffer is-unavailable auf dem "
+"Checkbox-Label und auf dem Choices.js-Eintrag (.choices__item[data-value]). "
+"Das Script deaktiviert oder versteckt sie nicht. Der ganze Filter erhält is-"
+"unavailable, wenn jede echte Option nicht verfügbar ist. Jeder Filter wird "
+"ohne seine aktuellen Werte geprüft. Nur die ersten 50 Optionen werden "
+"geprüft; jede weitere wird als nicht verfügbar markiert. Ist ein gewählter "
+"Wert nicht mehr verfügbar, wird dieser Filter geleert und die Liste läuft "
+"noch einmal. Starten Sie Choices.js im Theme; das Script liest das native "
+"Steuerelement."
 
 #: includes/settings/content/login.php:128
 msgid ""
@@ -303,6 +371,27 @@ msgstr ""
 #: includes/api/output-location.php:16
 msgid "After post content"
 msgstr "Nach dem Beitragsinhalt"
+
+#: includes/settings/content/developers.php:695
+msgid ""
+"AJAX post listing. Register the query in PHP. The theme writes the grid, the "
+"toolbar, and the navigation, and chooses which controls exist. "
+"tcres_query_listing_attrs() prints the signed attributes on the theme grid, "
+"and tcres_query_listing_items() prints the cards inside it. The pieces share "
+"data-tcres-query-listing-id and do not need a common parent, so the toolbar "
+"can live in an offcanvas. Several toolbars with the same id stay in sync. "
+"The plugin calls tcresQueryListingInit() on DOMContentLoaded; call it again "
+"after injecting a listing dynamically."
+msgstr ""
+"AJAX-Beitragsliste. Registrieren Sie die Abfrage in PHP. Das Theme schreibt "
+"Raster, Werkzeugleiste und Navigation und wählt, welche Steuerelemente es "
+"gibt. tcres_query_listing_attrs() gibt die signierten Attribute am Theme-"
+"Raster aus, und tcres_query_listing_items() gibt die Karten darin aus. Die "
+"Teile teilen sich data-tcres-query-listing-id und brauchen kein gemeinsames "
+"Elternelement, die Leiste kann also in einem Offcanvas leben. Mehrere "
+"Leisten mit derselben ID bleiben synchron. Das Plugin ruft "
+"tcresQueryListingInit() bei DOMContentLoaded auf; rufen Sie es erneut auf, "
+"nachdem Sie ein Listing dynamisch eingefügt haben."
 
 #: includes/settings/components/card.php:50
 msgid "All"
@@ -318,14 +407,14 @@ msgstr ""
 "Alle öffentlichen benutzerdefinierten Felder (schließt Schlüssel aus, die "
 "mit _ beginnen)"
 
-#: includes/settings/content/admin.php:833
+#: includes/settings/content/admin.php:921
 msgid ""
 "Allow SVG files in the Media Library. Uploaded SVGs are always sanitized."
 msgstr ""
 "SVG-Dateien in der Mediathek zulassen. Hochgeladene SVGs werden stets "
 "bereinigt."
 
-#: includes/settings/content/admin.php:832
+#: includes/settings/content/admin.php:920
 msgid "Allow SVG uploads"
 msgstr "SVG-Uploads zulassen"
 
@@ -333,11 +422,19 @@ msgstr "SVG-Uploads zulassen"
 msgid "Alphabetical (title)"
 msgstr "Alphabetisch (Titel)"
 
+#: includes/settings/content/developers.php:421
+msgid ""
+"Also available via tcres_option_get( $name, $key, 'wysiwyg_title' ). Returns:"
+" sanitized HTML ready to print, or an empty string."
+msgstr ""
+"Auch verfügbar über tcres_option_get( $name, $key, 'wysiwyg_title' ). "
+"Rückgabe: bereinigtes HTML, bereit zur Ausgabe, oder ein leerer String."
+
 #: includes/settings/content/content.php:109
 msgid "Also search term names and descriptions"
 msgstr "Auch Term-Namen und -Beschreibungen durchsuchen"
 
-#: includes/settings/content/developers.php:504
+#: includes/settings/content/developers.php:524
 msgid "Alters the final list returned by tcres_post_types_get_included()."
 msgstr ""
 "Ändert die endgültige Liste, die von tcres_post_types_get_included() "
@@ -348,9 +445,41 @@ msgstr ""
 msgid "Anchor page in sitemap"
 msgstr "Ankerseite in der Sitemap"
 
+#: includes/settings/content/developers.php:776
+msgid ""
+"AND (default) or OR. On the toolbar it combines post type filters, taxonomy "
+"filters, and the terms block. On the terms wrapper it combines the term "
+"clauses."
+msgstr ""
+"AND (Standard) oder OR. Auf der Leiste verbindet es Post-Type-Filter, "
+"Taxonomie-Filter und den Term-Block. Auf dem Term-Wrapper verbindet es die "
+"Term-Klauseln."
+
+#: includes/settings/content/developers.php:827
+msgid ""
+"Animation classes on each item: is-entering, then is-visible. Leaving items "
+"use is-leaving. prefers-reduced-motion skips straight to is-visible. The "
+"first paint is not animated. The plugin CSS is only a neutral fade on the "
+"item; layout, and how is-unavailable looks, belong to the theme."
+msgstr ""
+"Animationsklassen an jedem Eintrag: is-entering, dann is-visible. "
+"Verschwindende Einträge nutzen is-leaving. prefers-reduced-motion springt "
+"direkt zu is-visible. Die erste Ausgabe wird nicht animiert. Das Plugin-CSS "
+"ist nur ein neutrales Ausblenden des Eintrags; Layout und das Aussehen von "
+"is-unavailable gehören zum Theme."
+
+#: includes/settings/content/developers.php:664
+msgid "Animations"
+msgstr "Animationen"
+
 #: includes/settings/content/social.php:399
 msgid "Archives"
 msgstr "Archive"
+
+#: includes/settings/content/developers.php:896
+#: includes/settings/content/developers.php:1098
+msgid "Assets, libraries, and shortcodes"
+msgstr "Ressourcen, Bibliotheken und Shortcodes"
 
 #: includes/modules/admin/posts-list.php:221
 msgid "Author"
@@ -364,12 +493,12 @@ msgstr "Autor (is_author)"
 msgid "Automatic (Posts page)"
 msgstr "Automatisch (Beitragsseite)"
 
-#: includes/settings/content/privacy.php:274
+#: includes/settings/content/privacy.php:467
 msgid "Automatic output on the comments form when this notice has content."
 msgstr ""
 "Automatische Ausgabe im Kommentarformular, wenn dieser Hinweis Inhalt hat."
 
-#: includes/settings/content/privacy.php:308
+#: includes/settings/content/privacy.php:501
 msgid ""
 "Automatic output on the WooCommerce checkout (classic shortcode and Checkout "
 "block) when this notice has content."
@@ -377,7 +506,7 @@ msgstr ""
 "Automatische Ausgabe im WooCommerce-Checkout (klassisches Shortcode und "
 "Checkout-Block), wenn dieser Hinweis Inhalt hat."
 
-#: includes/settings/content/privacy.php:291
+#: includes/settings/content/privacy.php:484
 msgid ""
 "Automatic output on the WordPress registration form and the WooCommerce "
 "registration form when this notice has content."
@@ -396,7 +525,7 @@ msgstr ""
 msgid "Before post content"
 msgstr "Vor dem Beitragsinhalt"
 
-#: includes/settings/content/privacy.php:168
+#: includes/settings/content/privacy.php:295
 #: includes/modules/privacy/privacy-notice.php:23
 msgid ""
 "Before submitting the form, take a look at the basic information on data "
@@ -404,6 +533,11 @@ msgid ""
 msgstr ""
 "Bevor Sie das Formular absenden, lesen Sie hier die grundlegenden "
 "Informationen zum Datenschutz."
+
+#: includes/settings/content/developers.php:673
+#: includes/settings/content/developers.php:824
+msgid "Behaviour"
+msgstr "Verhalten"
 
 #: includes/settings/content/security.php:31
 msgid "Block author archives"
@@ -454,12 +588,18 @@ msgstr ""
 "Blog-Abschnitt unter einer Ankerseite (0 = Beitragsseite aus den "
 "Leseeinstellungen)."
 
-#: includes/settings/content/fields.php:284
+#: includes/settings/content/fields.php:322
 #: includes/modules/fields/bodyclass.php:69
 #: includes/modules/fields/bodyclass.php:128
 #: includes/modules/fields/bodyclass.php:151
 msgid "Body classes"
 msgstr "Body-Klassen"
+
+#: includes/settings/content/developers.php:677
+msgid "body.tcres-is-modal-open blocks page scroll while a modal is open."
+msgstr ""
+"body.tcres-is-modal-open blockiert das Scrollen der Seite, solange ein Modal "
+"offen ist."
 
 #: includes/modules/content/breadcrumbs.php:507
 msgid "Breadcrumb"
@@ -469,12 +609,12 @@ msgstr "Breadcrumb"
 msgid "Breadcrumbs"
 msgstr "Breadcrumbs"
 
-#: includes/settings/content/developers.php:621
+#: includes/settings/content/developers.php:889
 msgid "Browser back and forward sync tabs via popstate and hashchange."
 msgstr ""
 "Browser-Zurück und -Vor synchronisieren Tabs über popstate und hashchange."
 
-#: includes/modules/fields/hero.php:316
+#: includes/modules/fields/hero.php:350
 msgid "Button"
 msgstr "Schaltfläche"
 
@@ -486,32 +626,74 @@ msgstr "Schaltflächenkonfiguration"
 msgid "Button label"
 msgstr "Schaltflächenbeschriftung"
 
-#: includes/modules/fields/hero.php:259
+#: includes/settings/content/developers.php:812
+msgid ""
+"Button that appends the next page. Hidden when there is no next page. is-"
+"loading goes on this button while the next page loads. The grid shows its "
+"loading state too."
+msgstr ""
+"Button, der die nächste Seite anhängt. Er wird ausgeblendet, wenn es keine "
+"weitere Seite gibt. is-loading liegt auf diesem Button, während die nächste "
+"Seite lädt. Das Raster zeigt ebenfalls seinen Ladezustand."
+
+#: includes/settings/content/fields.php:199
+#: includes/modules/fields/hero.php:288
 msgid "Buttons"
 msgstr "Schaltflächen"
 
-#: includes/modules/extras/shortcodes.php:137
-#: includes/modules/fields/hero.php:554
+#: includes/settings/content/developers.php:698
+msgid ""
+"Call tcres_query_listing_register() where the listing is printed, after the "
+"post type exists. The signed config carries the query, the order, and the "
+"card, so AJAX does not need another register call. If the post type does not "
+"exist yet, register does nothing."
+msgstr ""
+"Rufen Sie tcres_query_listing_register() dort auf, wo das Listing ausgegeben "
+"wird, nachdem der Post Type existiert. Die signierte Konfiguration enthält "
+"die Abfrage, die Sortierung und die Card, daher braucht AJAX keinen weiteren "
+"register-Aufruf. Wenn der Post Type noch nicht existiert, tut register "
+"nichts."
+
+#: includes/modules/extras/shortcodes.php:161
 msgid "Call to"
 msgstr "Anrufen"
+
+#: includes/settings/content/developers.php:749
+msgid ""
+"Card for every item. A theme template slug (get_template_part, child theme "
+"then parent, any folder) or an existing .php file under wp-content. The loop "
+"is set up, so the_title() and the_permalink() work. The card root must have "
+"data-tcres-query-listing-item. The value is signed with the query and is not "
+"taken from the AJAX request."
+msgstr ""
+"Card für jedes Element. Ein Template-Slug des Themes (get_template_part, "
+"zuerst das Child Theme, dann das Parent, in jedem Ordner) oder eine "
+"vorhandene .php-Datei unter wp-content. Der Loop ist vorbereitet, daher "
+"funktionieren the_title() und the_permalink(). Die Card-Wurzel muss data-"
+"tcres-query-listing-item haben. Der Wert wird mit der Abfrage signiert und "
+"nicht aus der AJAX-Anfrage gelesen."
 
 #: includes/settings/content/login.php:23
 msgid "Cart (WooCommerce)"
 msgstr "Warenkorb (WooCommerce)"
 
+#: includes/settings/content/developers.php:625
+msgid "Centered panel with role=\"dialog\" and aria-modal=\"true\"."
+msgstr "Zentriertes Panel mit role=\"dialog\" und aria-modal=\"true\"."
+
 #: includes/settings/content/social.php:593
 msgid "Chats"
 msgstr "Chats"
 
-#: includes/settings/content/privacy.php:397
+#: includes/settings/content/privacy.php:590
 msgid "Checkbox label"
 msgstr "Kontrollkästchen-Beschriftung"
 
-#: includes/settings/content/privacy.php:387
+#: includes/settings/content/privacy.php:580
 msgid "Checkout (WooCommerce)"
 msgstr "Checkout (WooCommerce)"
 
-#: includes/settings/content/privacy.php:297
+#: includes/settings/content/privacy.php:490
 msgid "Checkout notice"
 msgstr "Checkout-Hinweis"
 
@@ -523,59 +705,90 @@ msgstr ""
 "Prüft, ob die Abmessungen eines Anhangs optionale Breiten- und/oder "
 "Höhenregeln erfüllen."
 
+#. 1: library version, 2: script handle
+#: includes/settings/content/developers.php:952
+#, php-format
+msgid ""
+"Choices %1$s. Handle %2$s. Global window.Choices. The query listing can mark "
+"an existing Choices control. The theme still starts Choices and depends on "
+"this handle."
+msgstr ""
+"Choices %1$s. Handle %2$s. Globales Objekt window.Choices. Das Abfrage-"
+"Listing kann ein vorhandenes Choices-Steuerelement markieren. Das Theme "
+"startet Choices weiterhin und hängt von diesem Handle ab."
+
 #: includes/settings/content/developers.php:309
 msgid ""
-"Classes: tcres-svg-icon + tcres-svg-icon-{icon-id}. Optional inline adds "
-"tcres-svg-icon-inline."
+"Classes: tcres-svg-icon svg-icon svg-icon-inline (if inline) svg-icon-{icon-"
+"id}."
 msgstr ""
-"Klassen: tcres-svg-icon + tcres-svg-icon-{icon-id}. Optionales inline fügt "
-"tcres-svg-icon-inline hinzu."
+"Klassen: tcres-svg-icon svg-icon svg-icon-inline (wenn inline) svg-icon-"
+"{icon-id}."
 
-#: includes/settings/content/admin.php:308
+#: includes/settings/content/admin.php:396
 msgid "Clean admin bar"
 msgstr "Admin-Leiste bereinigen"
 
-#: includes/settings/content/developers.php:555
+#: includes/settings/content/developers.php:407
+#: includes/settings/content/developers.php:1058
+msgid "Clean WYSIWYG title"
+msgstr "WYSIWYG-Titel bereinigen"
+
+#: includes/settings/content/developers.php:575
 msgid "Clickable control (also supports Enter / Space)."
 msgstr "Klickbares Steuerelement (unterstützt auch Enter / Leertaste)."
 
-#: includes/settings/content/developers.php:618
+#: includes/settings/content/developers.php:886
 msgid "Clicking a tab updates the URL hash with history.pushState."
 msgstr ""
 "Ein Klick auf einen Tab aktualisiert den URL-Hash mit history.pushState."
 
-#: includes/settings/content/developers.php:548
-#: includes/settings/content/developers.php:703
+#: includes/settings/content/developers.php:633
+msgid "Closes the nearest .tcres-modal (backdrop, × button, Cancel, etc.)."
+msgstr ""
+"Schließt das nächste .tcres-modal (Hintergrund, ×-Schaltfläche, Abbrechen "
+"usw.)."
+
+#: includes/settings/content/developers.php:568
+#: includes/settings/content/developers.php:1088
 msgid "Collapse"
 msgstr "Einklappen"
 
-#: includes/settings/content/admin.php:369
+#: includes/settings/content/admin.php:457
 msgid "Columns by post type"
 msgstr "Spalten nach Beitragstyp"
 
-#: includes/modules/privacy/privacy-consent.php:211
+#: includes/settings/content/developers.php:671
+msgid ""
+"Combine with .is-full-screen for a full-viewport panel using the same "
+"animation classes."
+msgstr ""
+"Kombinieren Sie es mit .is-full-screen für ein Panel über den gesamten "
+"Viewport mit denselben Animationsklassen."
+
+#: includes/modules/privacy/privacy-consent.php:213
 msgid "Comment Submission Failure"
 msgstr "Fehler beim Absenden des Kommentars"
 
-#: includes/settings/option.php:133 includes/settings/content/privacy.php:367
+#: includes/settings/option.php:170 includes/settings/content/privacy.php:560
 msgid "Comments"
 msgstr "Kommentare"
 
-#: includes/settings/content/privacy.php:263
+#: includes/settings/content/privacy.php:456
 msgid "Comments notice"
 msgstr "Kommentarhinweis"
 
-#: includes/settings/content/developers.php:429
-#: includes/settings/content/developers.php:464
+#: includes/settings/content/developers.php:449
+#: includes/settings/content/developers.php:484
 msgid "Common prefix for keys and nonce (e.g. my_)."
 msgstr "Gemeinsames Präfix für Schlüssel und Nonce (z. B. my_)."
 
 #: includes/settings/content/developers.php:198
-#: includes/settings/content/developers.php:649
+#: includes/settings/content/developers.php:1033
 msgid "Compare post types across options"
 msgstr "Beitragstypen über Optionen vergleichen"
 
-#: includes/settings/content/privacy.php:441
+#: includes/settings/content/privacy.php:634
 msgid ""
 "Compatible only with the GDPR Cookie Compliance plugin. Sets all Google "
 "consent signals to denied by default and updates them when the user accepts "
@@ -585,11 +798,11 @@ msgstr ""
 "Consent-Signale standardmäßig auf denied und aktualisiert sie, wenn der "
 "Benutzer Statistik- oder Marketing-Cookies akzeptiert."
 
-#: includes/settings/content/privacy.php:110
+#: includes/settings/content/privacy.php:209
 msgid "Contact Form 7 shortcode:"
 msgstr "Contact Form 7-Shortcode:"
 
-#: includes/settings/content/privacy.php:209
+#: includes/settings/content/privacy.php:336
 msgid "Contact notice"
 msgstr "Kontakthinweis"
 
@@ -597,12 +810,12 @@ msgstr "Kontakthinweis"
 msgid "Content"
 msgstr "Inhalt"
 
-#: includes/settings/content/developers.php:631
+#: includes/settings/content/developers.php:1015
 msgid "Contents"
 msgstr "Inhalte"
 
 #: includes/settings/content/developers.php:353
-#: includes/settings/content/developers.php:672
+#: includes/settings/content/developers.php:1056
 msgid "Convert slug to ID"
 msgstr "Slug in ID umwandeln"
 
@@ -624,19 +837,19 @@ msgstr "Kopiert"
 msgid "Copy link"
 msgstr "Link kopieren"
 
-#: includes/settings/content/admin.php:748
+#: includes/settings/content/admin.php:836
 msgid "Copy options"
 msgstr "Kopieroptionen"
 
 #. Description of the plugin
-msgid "Core utilities and shared essentials for TMS WordPress projects."
+msgid "Core utilities and shared essentials forWordPress projects."
 msgstr "Kern-Utilities und gemeinsame Essentials für TMS-WordPress-Projekte."
 
 #: includes/settings/content/social.php:658
 msgid "Country code + number, digits only (no spaces or +)."
 msgstr "Ländercode + Nummer, nur Ziffern (keine Leerzeichen oder +)."
 
-#: includes/settings/content/developers.php:575
+#: includes/settings/content/developers.php:595
 msgid ""
 "CSS classes for the default open/close animation. Toggle state uses .is-open."
 " Keep the title label as plain/inline text (no wrapping block tags)."
@@ -662,6 +875,7 @@ msgid "Custom"
 msgstr "Benutzerdefiniert"
 
 #: includes/modules/fields/bodyclass.php:90
+#: includes/modules/fields/hero.php:374
 msgid "Custom classes"
 msgstr "Benutzerdefinierte Klassen"
 
@@ -671,6 +885,12 @@ msgstr ""
 "Benutzerdefinierte CSS-Klassen für den Wrapper (nur wenn ein Tag gesetzt ist)"
 "."
 
+#: includes/settings/content/developers.php:661
+msgid "Custom event dispatched on the modal element after it closes."
+msgstr ""
+"Benutzerdefiniertes Ereignis, das nach dem Schließen auf dem Modal-Element "
+"ausgelöst wird."
+
 #: includes/settings/content/content.php:66
 msgid "Custom fields"
 msgstr "Benutzerdefinierte Felder"
@@ -679,12 +899,12 @@ msgstr "Benutzerdefinierte Felder"
 msgid "Custom login page"
 msgstr "Benutzerdefinierte Anmeldeseite"
 
-#: includes/settings/content/admin.php:234
+#: includes/settings/content/admin.php:322
 msgid "Custom node IDs"
 msgstr "Benutzerdefinierte Knoten-IDs"
 
-#: includes/modules/admin/terms-list.php:196
-#: includes/modules/admin/terms-list.php:213
+#: includes/modules/admin/terms-list.php:198
+#: includes/modules/admin/terms-list.php:217
 msgid "Custom sort order for this term. Lower numbers appear first."
 msgstr ""
 "Benutzerdefinierte Sortierreihenfolge für diesen Begriff. Niedrigere Zahlen "
@@ -695,12 +915,12 @@ msgstr ""
 msgid "Custom URL"
 msgstr "Benutzerdefinierte URL"
 
-#: includes/settings/option.php:136
+#: includes/settings/option.php:173
 msgid "Customize"
 msgstr "Anpassen"
 
 #: includes/settings/content/developers.php:18
-#: includes/settings/content/developers.php:634
+#: includes/settings/content/developers.php:1018
 msgid "Data"
 msgstr "Daten"
 
@@ -729,7 +949,12 @@ msgstr ""
 "file-Argument übergeben wird. Leer lassen, um das Plugin-Sprite zu verwenden "
 "(assets/images/icons.svg)."
 
-#: includes/modules/fields/hero.php:374
+#: includes/settings/content/admin.php:68
+msgid "Default template"
+msgstr "Standardvorlage"
+
+#: includes/settings/content/fields.php:198
+#: includes/modules/fields/hero.php:431
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -742,44 +967,69 @@ msgid "Developers"
 msgstr "Entwickler"
 
 #. %s: Post type label.
-#: includes/settings/content/admin.php:23
+#: includes/settings/content/admin.php:24
 #, php-format
 msgid "Disable block editor for %s"
 msgstr "Block-Editor für %s deaktivieren"
 
-#: includes/settings/content/admin.php:301
+#: includes/settings/content/admin.php:389
 msgid "Disable comments"
 msgstr "Kommentare deaktivieren"
 
-#: includes/settings/content/admin.php:265
+#: includes/settings/content/admin.php:353
 msgid "Disable features"
 msgstr "Funktionen deaktivieren"
 
-#: includes/settings/content/admin.php:276
+#: includes/settings/content/admin.php:364
 msgid "Disable features options"
 msgstr "Optionen zum Deaktivieren"
+
+#: includes/settings/content/fields.php:205
+msgid ""
+"Disable fields in the Hero editor. Existing values still print on the "
+"frontend."
+msgstr ""
+"Felder im Hero-Editor deaktivieren. Vorhandene Werte werden weiterhin im "
+"Frontend ausgegeben."
 
 #: includes/settings/content/extras.php:31
 msgid "Disable frontend CSS"
 msgstr "Frontend-CSS deaktivieren"
 
+#: includes/settings/content/developers.php:912
+msgid ""
+"Disable frontend CSS skips the plugin stylesheet on the public site "
+"(assets/css/styles.css, handle tcres-styles) and the login stylesheet. "
+"Disable frontend JS skips assets/js/scripts.js (handle tcres-scripts) and "
+"the login script. Collapse, tabs, modals, and the query listing need that "
+"script. Swiper, GLightbox, Choices, and smooth scroll follow their own "
+"switches."
+msgstr ""
+"Frontend-CSS deaktivieren überspringt das Stylesheet des Plugins auf der "
+"öffentlichen Website (assets/css/styles.css, Handle tcres-styles) und das "
+"Stylesheet der Anmeldeseite. Frontend-JS deaktivieren überspringt "
+"assets/js/scripts.js (Handle tcres-scripts) und das Skript der Anmeldeseite. "
+"Einklappen, Tabs, Modals und das Abfrage-Listing brauchen dieses Skript. "
+"Swiper, GLightbox, Choices und sanftes Scrollen folgen ihren eigenen "
+"Schaltern."
+
 #: includes/settings/content/extras.php:43
 msgid "Disable frontend JS"
 msgstr "Frontend-JS deaktivieren"
 
-#: includes/settings/content/admin.php:50
+#: includes/settings/content/admin.php:126
 msgid "Disable Gutenberg"
 msgstr "Gutenberg deaktivieren"
 
-#: includes/settings/content/admin.php:62
+#: includes/settings/content/admin.php:138
 msgid "Disable Gutenberg options"
 msgstr "Optionen zum Deaktivieren von Gutenberg"
 
-#: includes/settings/content/admin.php:281
+#: includes/settings/content/admin.php:369
 msgid "Disable post types"
 msgstr "Inhaltstypen deaktivieren"
 
-#: includes/settings/content/admin.php:291
+#: includes/settings/content/admin.php:379
 msgid "Disable taxonomies"
 msgstr "Taxonomien deaktivieren"
 
@@ -799,7 +1049,7 @@ msgstr ""
 "Deaktiviert Emoji-Skripte und -Styles im Frontend, Admin, Block-Editor, RSS, "
 "E-Mail und klassischen Editor."
 
-#: includes/settings/content/admin.php:282
+#: includes/settings/content/admin.php:370
 msgid ""
 "Disables selected post type admin screens and redirects their frontend URLs "
 "to the homepage."
@@ -807,7 +1057,7 @@ msgstr ""
 "Deaktiviert die Admin-Bildschirme der ausgewählten Inhaltstypen und leitet "
 "deren Frontend-URLs zur Startseite weiter."
 
-#: includes/settings/content/admin.php:292
+#: includes/settings/content/admin.php:380
 msgid ""
 "Disables selected taxonomy admin screens and redirects their frontend "
 "archives to the homepage."
@@ -839,12 +1089,12 @@ msgstr "Benutzerdefinierte Felder nicht durchsuchen"
 msgid "Do you need help?"
 msgstr "Brauchst du Hilfe?"
 
-#: includes/settings/content/admin.php:696
+#: includes/settings/content/admin.php:784
 msgid "Draft"
 msgstr "Entwurf"
 
-#: includes/settings/content/admin.php:511
-#: includes/settings/content/admin.php:609
+#: includes/settings/content/admin.php:599
+#: includes/settings/content/admin.php:697
 #: includes/modules/admin/terms-list.php:88
 #: includes/modules/admin/posts-list.php:93
 msgid "Drag to reorder"
@@ -854,7 +1104,7 @@ msgstr "Zum Neuordnen ziehen"
 msgid "Duplicate"
 msgstr "Duplizieren"
 
-#: includes/settings/content/admin.php:822
+#: includes/settings/content/admin.php:910
 msgid "Duplicate posts"
 msgstr "Beiträge duplizieren"
 
@@ -864,7 +1114,7 @@ msgstr "Beiträge duplizieren"
 msgid "Duplicate “%s”"
 msgstr "„%s“ duplizieren"
 
-#: includes/settings/content/admin.php:736
+#: includes/settings/content/admin.php:824
 msgid "Duplicated post"
 msgstr "Duplizierter Beitrag"
 
@@ -881,6 +1131,17 @@ msgstr ""
 "Sprite übereinstimmen (z. B. facebook, x, bluesky). Markup-Optionen werden "
 "nur in diesem Panel konfiguriert."
 
+#: includes/settings/content/developers.php:919
+msgid ""
+"Each switch registers one bundled library on public pages. The admin and the "
+"login screen do not register them. With the switch off, that handle stays "
+"unregistered and nothing prints."
+msgstr ""
+"Jeder Schalter registriert eine mitgelieferte Bibliothek auf öffentlichen "
+"Seiten. Der Admin und die Anmeldeseite registrieren sie nicht. Ist der "
+"Schalter aus, bleibt dieser Handle unregistriert und es wird nichts "
+"ausgegeben."
+
 #: includes/settings/content/extras.php:344
 msgid "Embed a Vimeo video by ID."
 msgstr "Ein Vimeo-Video per ID einbetten."
@@ -892,6 +1153,14 @@ msgstr "Ein YouTube-Video per ID einbetten."
 #: includes/settings/content/extras.php:334
 msgid "Embeds"
 msgstr "Einbettungen"
+
+#: includes/settings/content/developers.php:829
+msgid ""
+"Empty and error HTML are the theme strings passed to register. AJAX does not "
+"rebuild them, so they stay in the language of the page."
+msgstr ""
+"Leer- und Fehler-HTML sind die Theme-Texte, die an register gehen. AJAX baut "
+"sie nicht neu, sie bleiben also in der Sprache der Seite."
 
 #: includes/settings/content/content.php:118
 msgid "Empty searches"
@@ -923,9 +1192,21 @@ msgstr "WhatsApp aktivieren"
 msgid "Enables smooth scrolling on the frontend."
 msgstr "Aktiviert sanftes Scrollen im Frontend."
 
+#: includes/settings/content/developers.php:764
+msgid ""
+"enter animates new items in. both also animates the current items out. Leave "
+"it empty for an instant swap."
+msgstr ""
+"enter animiert neue Einträge hinein. both animiert die aktuellen Einträge "
+"auch hinaus. Leer lassen für einen sofortigen Wechsel."
+
 #: includes/settings/content/developers.php:367
 msgid "Entity type: post (default) or term."
 msgstr "Entitätstyp: post (Standard) oder term."
+
+#: includes/settings/content/developers.php:675
+msgid "Escape closes the topmost open modal."
+msgstr "Escape schließt das oberste geöffnete Modal."
 
 #: includes/settings/content/developers.php:81
 #: includes/settings/content/developers.php:107
@@ -941,24 +1222,52 @@ msgstr "Entitätstyp: post (Standard) oder term."
 #: includes/settings/content/developers.php:345
 #: includes/settings/content/developers.php:375
 #: includes/settings/content/developers.php:399
-#: includes/settings/content/developers.php:437
-#: includes/settings/content/developers.php:472
-#: includes/settings/content/developers.php:494
-#: includes/settings/content/developers.php:513
-#: includes/settings/content/developers.php:537
-#: includes/settings/content/developers.php:578
-#: includes/settings/content/developers.php:623
+#: includes/settings/content/developers.php:419
+#: includes/settings/content/developers.php:457
+#: includes/settings/content/developers.php:492
+#: includes/settings/content/developers.php:514
+#: includes/settings/content/developers.php:533
+#: includes/settings/content/developers.php:557
+#: includes/settings/content/developers.php:598
+#: includes/settings/content/developers.php:680
+#: includes/settings/content/developers.php:846
+#: includes/settings/content/developers.php:891
+#: includes/settings/content/developers.php:960
 msgid "Example"
 msgstr "Beispiel"
 
-#: includes/settings/content/developers.php:483
-#: includes/settings/content/developers.php:692
+#: includes/settings/content/developers.php:682
+msgid ""
+"Example with slide + fade from bottom: tcres-modal from-bottom-fade. Full "
+"viewport: tcres-modal is-full-screen from-bottom-fade. Override colors and "
+"spacing in the theme."
+msgstr ""
+"Beispiel mit Slide und Fade von unten: tcres-modal from-bottom-fade. Voller "
+"Viewport: tcres-modal is-full-screen from-bottom-fade. Farben und Abstände "
+"im Theme überschreiben."
+
+#: includes/settings/content/developers.php:503
+#: includes/settings/content/developers.php:1077
 msgid "Exclude post types from the included list"
 msgstr "Beitragstypen aus der eingeschlossenen Liste ausschließen"
 
 #: includes/settings/content/extras.php:212
 msgid "Exclude selectors"
 msgstr "Selektoren ausschließen"
+
+#: includes/settings/content/developers.php:983
+msgid ""
+"Exclude selectors: one CSS selector per line. Commas are accepted. Each "
+"match gets data-lenis-prevent. A theme can also put that attribute in the "
+"markup. The default list is .swiper."
+msgstr ""
+"Selektoren ausschließen: ein CSS-Selektor pro Zeile. Kommas sind erlaubt. "
+"Jeder Treffer erhält data-lenis-prevent. Ein Theme kann dieses Attribut auch "
+"ins Markup setzen. Die Standardliste ist .swiper."
+
+#: includes/settings/content/admin.php:56
+msgid "Exclude templates"
+msgstr "Vorlagen ausschließen"
 
 #: includes/settings/content/extras.php:210
 msgid "Exclusions"
@@ -996,7 +1305,7 @@ msgid "Extra CSS class(es). The nav always includes tcres-breadcrumbs."
 msgstr ""
 "Zusätzliche CSS-Klasse(n). Die Navigation enthält immer tcres-breadcrumbs."
 
-#: includes/settings/content/fields.php:207
+#: includes/settings/content/fields.php:244
 msgid "Extra CSS class(es). The wrapper always includes tcres-hero."
 msgstr "Zusätzliche CSS-Klasse(n). Der Wrapper enthält immer tcres-hero."
 
@@ -1021,25 +1330,25 @@ msgstr "Facebook-Seiten-ID"
 msgid "Fallback taxonomy (default: post_tag)."
 msgstr "Fallback-Taxonomie (Standard: post_tag)."
 
-#: includes/settings/content/admin.php:781
+#: includes/settings/content/admin.php:869
 #: includes/modules/fields/term-image.php:150
 #: includes/modules/fields/term-image.php:170
 msgid "Featured image"
 msgstr "Beitragsbild"
 
-#: includes/settings/content/admin.php:491
+#: includes/settings/content/admin.php:579
 msgid "Featured image column"
 msgstr "Beitragsbild-Spalte"
 
-#: includes/settings/content/fields.php:308
+#: includes/settings/content/fields.php:346
 msgid "Featured image for terms"
 msgstr "Beitragsbild für Begriffe"
 
-#: includes/settings/content/fields.php:211
+#: includes/settings/content/fields.php:248
 msgid "Featured image size name (default: full), or [width, height]."
 msgstr "Name der Beitragsbildgröße (Standard: full), oder [width, height]."
 
-#: includes/settings/content/fields.php:393
+#: includes/settings/content/fields.php:431
 #: includes/modules/fields/featured-video.php:252
 #: includes/modules/fields/featured-video.php:305
 #: includes/modules/fields/featured-video.php:325
@@ -1051,21 +1360,48 @@ msgid "Field modules"
 msgstr "Feldmodule"
 
 #: includes/settings/navigation.php:32 includes/settings/content/fields.php:131
+#: includes/settings/content/fields.php:203
 msgid "Fields"
 msgstr "Felder"
 
-#: includes/settings/content/developers.php:486
-#: includes/settings/content/developers.php:505
-#: includes/settings/content/developers.php:524
+#: includes/settings/content/developers.php:780
+msgid ""
+"Filter control. The value is post_type, taxonomy, or term. Use a select, a "
+"multiple select, checkboxes, or a mix. An empty select value, or no checked "
+"box, means the filter is not applied. The values inside one control are a "
+"single clause."
+msgstr ""
+"Filter-Steuerelement. Der Wert ist post_type, taxonomy oder term. Nutzen Sie "
+"ein Select, ein Mehrfach-Select, Checkboxen oder eine Mischung. Ein leerer "
+"Select-Wert oder keine gesetzte Checkbox heißt, der Filter gilt nicht. Die "
+"Werte eines Steuerelements sind eine einzige Klausel."
+
+#: includes/settings/content/developers.php:506
+#: includes/settings/content/developers.php:525
+#: includes/settings/content/developers.php:544
+#: includes/settings/content/developers.php:835
 msgid "Filter parameters"
 msgstr "Filterparameter"
 
-#: includes/settings/content/developers.php:477
-#: includes/settings/content/developers.php:690
+#: includes/settings/content/developers.php:985
+msgid ""
+"Filter tcres_smooth_scroll_config runs before the config is printed. The "
+"first argument is the config array. The second is the saved group. Return an "
+"array; any other return value is ignored. The printed config is window."
+"tcresSmoothScroll."
+msgstr ""
+"Der Filter tcres_smooth_scroll_config läuft, bevor die Konfiguration "
+"ausgegeben wird. Das erste Argument ist das Konfigurations-Array. Das zweite "
+"ist die gespeicherte Gruppe. Geben Sie ein Array zurück; jeder andere "
+"Rückgabewert wird ignoriert. Die ausgegebene Konfiguration ist window."
+"tcresSmoothScroll."
+
+#: includes/settings/content/developers.php:497
+#: includes/settings/content/developers.php:1075
 msgid "Filters"
 msgstr "Filter"
 
-#: includes/settings/content/developers.php:523
+#: includes/settings/content/developers.php:543
 msgid ""
 "Filters the sanitized meta field value before saving with "
 "tcres_post_meta_update() or tcres_term_meta_update() when sanitize is text."
@@ -1073,6 +1409,21 @@ msgstr ""
 "Filtert den bereinigten Meta-Feldwert vor dem Speichern mit "
 "tcres_post_meta_update() oder tcres_term_meta_update(), wenn sanitize text "
 "ist."
+
+#: includes/settings/content/privacy.php:365
+#: includes/settings/content/privacy.php:405
+#: includes/settings/content/privacy.php:445
+msgid "Fluent Forms"
+msgstr "Fluent Forms"
+
+#: includes/settings/content/privacy.php:222
+msgid "Fluent Forms shortcode (Custom HTML field):"
+msgstr "Fluent-Forms-Shortcode (benutzerdefiniertes HTML-Feld):"
+
+#: includes/settings/content/developers.php:678
+msgid "Focus returns to the element that was focused before open."
+msgstr ""
+"Der Fokus kehrt zu dem Element zurück, das vor dem Öffnen fokussiert war."
 
 #: includes/settings/content/content.php:1462
 msgid "Footer"
@@ -1087,7 +1438,7 @@ msgid "Forbidden"
 msgstr "Verboten"
 
 #: includes/settings/content/developers.php:383
-#: includes/settings/content/developers.php:673
+#: includes/settings/content/developers.php:1057
 msgid "Format dates"
 msgstr "Daten formatieren"
 
@@ -1099,11 +1450,13 @@ msgstr "Startseite (is_front_page)"
 msgid "Frontend"
 msgstr "Frontend"
 
+#: includes/settings/content/developers.php:911
+#: includes/settings/content/developers.php:1100
 #: includes/settings/content/extras.php:19
 msgid "Frontend assets"
 msgstr "Frontend-Assets"
 
-#: includes/settings/content/developers.php:544
+#: includes/settings/content/developers.php:564
 msgid ""
 "Frontend utilities bundled in the plugin scripts (assets/js/scripts.js). "
 "They initialize automatically when matching markup is present."
@@ -1129,11 +1482,16 @@ msgstr "Vollständige URL zum im Frontend verwendeten .svg-Sprite."
 
 #: includes/settings/content/developers.php:320
 msgid ""
-"Full URL to the sprite .svg. Empty uses Extras → SVG icons (frontend/admin), "
-"then the plugin default."
+"Full URL to the sprite .svg. Empty uses the frontend or admin sprite URL, "
+"then the plugin sprite. See Assets, libraries, and shortcodes."
 msgstr ""
-"Vollständige URL zum .svg-Sprite. Leer verwendet Extras → SVG-Icons "
-"(Frontend/Admin), danach den Plugin-Standard."
+"Vollständige URL zur .svg des Sprites. Ist das Feld leer, wird die Sprite-"
+"URL von Frontend oder Admin verwendet und danach das Plugin-Sprite. Siehe "
+"Ressourcen, Bibliotheken und Shortcodes."
+
+#: includes/settings/content/developers.php:621
+msgid "Full-screen backdrop inside the modal."
+msgstr "Vollflächiger Hintergrund innerhalb des Modals."
 
 #: includes/settings/content/content.php:1492
 msgid "Gap above footer"
@@ -1150,7 +1508,7 @@ msgstr "Allgemein"
 msgid "General list behaviour (page tree)."
 msgstr "Allgemeines Listenverhalten (Seitenbaum)."
 
-#: includes/settings/content/developers.php:580
+#: includes/settings/content/developers.php:600
 msgid ""
 "Generate unique IDs in PHP with tcres_unique_id(). Frontend scripts expose "
 "window.tcresCollapseInit for manual re-init."
@@ -1163,52 +1521,52 @@ msgid "Get help"
 msgstr "Hilfe holen"
 
 #: includes/settings/content/developers.php:232
-#: includes/settings/content/developers.php:650
+#: includes/settings/content/developers.php:1034
 msgid "Get included post types"
 msgstr "Eingeschlossene Beitragstypen abrufen"
 
 #: includes/settings/content/developers.php:246
-#: includes/settings/content/developers.php:651
+#: includes/settings/content/developers.php:1035
 msgid "Get included taxonomies"
 msgstr "Eingeschlossene Taxonomien abrufen"
 
 #: includes/settings/content/developers.php:115
-#: includes/settings/content/developers.php:638
+#: includes/settings/content/developers.php:1022
 msgid "Get options"
 msgstr "Optionen abrufen"
 
 #: includes/settings/content/developers.php:24
-#: includes/settings/content/developers.php:636
+#: includes/settings/content/developers.php:1020
 msgid "Get post fields"
 msgstr "Beitragsfelder abrufen"
 
 #: includes/settings/content/developers.php:148
-#: includes/settings/content/developers.php:647
+#: includes/settings/content/developers.php:1031
 msgid "Get post types by option"
 msgstr "Beitragstypen nach Option abrufen"
 
 #: includes/settings/content/developers.php:263
-#: includes/settings/content/developers.php:660
+#: includes/settings/content/developers.php:1044
 msgid "Get registered image sizes"
 msgstr "Registrierte Bildgrößen abrufen"
 
 #: includes/settings/content/developers.php:306
-#: includes/settings/content/developers.php:662
+#: includes/settings/content/developers.php:1046
 msgid "Get SVG icon"
 msgstr "SVG-Icon abrufen"
 
 #: includes/settings/content/developers.php:173
-#: includes/settings/content/developers.php:648
+#: includes/settings/content/developers.php:1032
 msgid "Get taxonomies by option"
 msgstr "Taxonomien nach Option abrufen"
 
 #: includes/settings/content/developers.php:339
-#: includes/settings/content/developers.php:671
+#: includes/settings/content/developers.php:1055
 msgid "Get template information"
 msgstr "Template-Informationen abrufen"
 
 #: includes/settings/content/developers.php:89
-#: includes/settings/content/developers.php:637
+#: includes/settings/content/developers.php:1021
 msgid "Get term fields"
 msgstr "Begriffsfelder abrufen"
 
@@ -1224,9 +1582,19 @@ msgstr ""
 msgid "get_template_part"
 msgstr "get_template_part"
 
-#: includes/settings/content/privacy.php:433
+#. 1: library version, 2: script handle
+#: includes/settings/content/developers.php:940
+#, php-format
+msgid "GLightbox %1$s. Handle %2$s. Global window.GLightbox."
+msgstr "GLightbox %1$s. Handle %2$s. Globales Objekt window.GLightbox."
+
+#: includes/settings/content/privacy.php:626
 msgid "Google Consent Mode v2"
 msgstr "Google Consent Mode v2"
+
+#: includes/settings/content/developers.php:753
+msgid "Grid"
+msgstr "Raster"
 
 #: includes/settings/content/content.php:520
 msgid "Grouped (one list per taxonomy)"
@@ -1253,13 +1621,13 @@ msgstr ""
 "Hallo, ich brauche mehr Informationen zu Ihren Produkten/Dienstleistungen."
 
 #: includes/settings/content/developers.php:333
-#: includes/settings/content/developers.php:669
+#: includes/settings/content/developers.php:1053
 msgid "Helpers"
 msgstr "Hilfsfunktionen"
 
-#: includes/settings/content/fields.php:445
-#: includes/modules/fields/hero.php:415 includes/modules/fields/hero.php:445
-#: includes/modules/fields/hero.php:476
+#: includes/settings/content/fields.php:483
+#: includes/modules/fields/hero.php:481 includes/modules/fields/hero.php:516
+#: includes/modules/fields/hero.php:552
 msgid "Hero"
 msgstr "Hero"
 
@@ -1271,12 +1639,16 @@ msgstr "Leere Taxonomie-Begriffe ausblenden"
 msgid "Hide login error messages"
 msgstr "Anmeldefehler ausblenden"
 
-#: includes/settings/content/admin.php:309
+#: includes/settings/content/admin.php:397
 msgid ""
 "Hides selected admin bar nodes per user role, including custom node IDs."
 msgstr ""
 "Blendet ausgewählte Admin-Bar-Knoten pro Benutzerrolle aus, einschließlich "
 "benutzerdefinierter Knoten-IDs."
+
+#: includes/settings/content/privacy.php:416
+msgid "Hiring notice"
+msgstr "Einstellungshinweis"
 
 #: includes/settings/content/login.php:16
 msgid "Home"
@@ -1298,10 +1670,28 @@ msgstr "Start-Anzeige"
 msgid "Home label"
 msgstr "Start-Beschriftung"
 
-#: includes/settings/content/developers.php:479
+#: includes/settings/content/developers.php:499
 msgid "Hooks to adjust included post types and meta sanitization."
 msgstr ""
 "Hooks zum Anpassen eingeschlossener Beitragstypen und der Meta-Bereinigung."
+
+#: includes/settings/content/developers.php:739
+msgid ""
+"HTML for an empty result, written by the theme. It is stored in a template, "
+"so it stays out of the indexed body while there are posts. If the first "
+"query is already empty, it is also printed as real content."
+msgstr ""
+"HTML für ein leeres Ergebnis, vom Theme geschrieben. Es liegt in einem "
+"template, bleibt also aus dem indexierten Inhalt, solange es Beiträge gibt. "
+"Ist schon die erste Abfrage leer, wird es auch als echter Inhalt ausgegeben."
+
+#: includes/settings/content/developers.php:744
+msgid ""
+"HTML shown when an AJAX request fails, written by the theme. Posts already "
+"on screen stay in place."
+msgstr ""
+"HTML, das bei einem fehlgeschlagenen AJAX-Aufruf erscheint, vom Theme "
+"geschrieben. Beiträge, die schon zu sehen sind, bleiben stehen."
 
 #. URI of the plugin
 msgid "https://github.com/entumas/tms-core-essentials"
@@ -1317,11 +1707,11 @@ msgstr "https://tumasmuntane.com/"
 msgid "I accept the %s."
 msgstr "Ich akzeptiere die %s."
 
-#: includes/settings/content/privacy.php:335
+#: includes/settings/content/privacy.php:528
 msgid "I accept the [privacy_policy]."
 msgstr "Ich akzeptiere die [privacy_policy]."
 
-#: includes/modules/privacy/privacy-consent.php:352
+#: includes/modules/privacy/privacy-consent.php:354
 msgid "I accept the privacy policy."
 msgstr "Ich akzeptiere die Datenschutzrichtlinie."
 
@@ -1333,9 +1723,15 @@ msgstr "Icon und Beschriftung"
 msgid "Icon only"
 msgstr "Nur Icon"
 
+#: includes/settings/content/privacy.php:224
+msgid "If the form is also selected above, the notice is shown twice."
+msgstr ""
+"Wenn das Formular oben ebenfalls ausgewählt ist, wird der Hinweis zweimal "
+"angezeigt."
+
 #: includes/settings/content/developers.php:325
-msgid "If true, adds the class tcres-svg-icon-inline."
-msgstr "Wenn true, wird die Klasse tcres-svg-icon-inline hinzugefügt."
+msgid "If true, adds the class svg-icon-inline."
+msgstr "Wenn true, wird die Klasse svg-icon-inline hinzugefügt."
 
 #: includes/modules/admin/posts-list.php:267
 msgid "Image"
@@ -1349,7 +1745,7 @@ msgstr "ID des Bildanhangs."
 msgid "Image size"
 msgstr "Bildgröße"
 
-#: includes/settings/content/fields.php:249
+#: includes/settings/content/fields.php:287
 msgid "Image size name (default: full), or [width, height]."
 msgstr "Name der Bildgröße (Standard: full), oder [width, height]."
 
@@ -1361,6 +1757,16 @@ msgstr "Bildgrößen, Dimensionsprüfungen und SVG-Sprite-Icons."
 msgid "in"
 msgstr "in"
 
+#: includes/settings/content/developers.php:788
+msgid ""
+"in (default, any), and (all; terms only), or not_in (none). post_type "
+"accepts only in and not_in. For a taxonomy filter, in means the post has a "
+"term in that taxonomy, and not_in means it has none."
+msgstr ""
+"in (Standard, irgendeiner), and (alle; nur Terms) oder not_in (keiner). "
+"post_type akzeptiert nur in und not_in. Bei einem Taxonomie-Filter heißt in, "
+"der Beitrag hat einen Term dieser Taxonomie, und not_in, er hat keinen."
+
 #: includes/settings/components/card.php:68
 msgid "Inactive"
 msgstr "Inaktiv"
@@ -1370,9 +1776,37 @@ msgstr "Inaktiv"
 msgid "Include section in sitemap"
 msgstr "Abschnitt in die Sitemap aufnehmen"
 
+#: includes/settings/content/developers.php:724
+msgid "Initial direction: ASC or DESC. Default DESC."
+msgstr "Anfängliche Richtung: ASC oder DESC. Standard DESC."
+
+#: includes/settings/content/developers.php:719
+msgid "Initial orderby: date, title, or menu_order. Default date."
+msgstr "Anfängliches orderby: date, title oder menu_order. Standard date."
+
+#: includes/settings/content/developers.php:921
+msgid ""
+"Initialization stays in the theme. After the script prints, use window."
+"Swiper, window.GLightbox, or window.Choices from a script that lists the "
+"matching handle in its dependencies."
+msgstr ""
+"Die Initialisierung bleibt im Theme. Nachdem das Skript ausgegeben wurde, "
+"verwenden Sie window.Swiper, window.GLightbox oder window.Choices aus einem "
+"Skript, das den passenden Handle in seinen Abhängigkeiten aufführt."
+
 #: includes/modules/admin/duplicate-posts.php:198
 msgid "Invalid post."
 msgstr "Ungültiger Beitrag."
+
+#: includes/settings/content/developers.php:714
+msgid ""
+"Items per page when the listing uses load more or pagination. Omit it to "
+"show every post, which is what happens without that navigation. A value from "
+"1 to 100 limits the page; larger values become 100."
+msgstr ""
+"Einträge pro Seite, wenn die Liste Mehr laden oder Paginierung nutzt. "
+"Weglassen zeigt alle Beiträge, das Verhalten ohne diese Navigation. Ein Wert "
+"von 1 bis 100 begrenzt die Seite; größere Werte werden 100."
 
 #: includes/settings/content/developers.php:151
 msgid ""
@@ -1390,10 +1824,19 @@ msgstr ""
 "Durchläuft Taxonomien aus tcres_taxonomies_get_included(). Dasselbe "
 "Präfixmuster wie beim Beitragstypen-Helper."
 
-#: includes/settings/content/developers.php:542
-#: includes/settings/content/developers.php:701
+#: includes/settings/content/developers.php:562
+#: includes/settings/content/developers.php:1086
 msgid "JavaScript"
 msgstr "JavaScript"
+
+#: includes/settings/content/admin.php:109
+msgid ""
+"Keep the block editor on the selected templates. If none are selected, the "
+"block editor is disabled for the whole post type."
+msgstr ""
+"Lassen Sie den Block-Editor bei den ausgewählten Vorlagen aktiv. Wenn keine "
+"ausgewählt ist, wird der Block-Editor für den gesamten Beitragstyp "
+"deaktiviert."
 
 #: includes/settings/content/developers.php:221
 msgid "Key prefix for the comparison set."
@@ -1437,7 +1880,7 @@ msgstr "Eine Bewertung hinterlassen"
 msgid "Leave empty to use the default title."
 msgstr "Leer lassen, um den Standardtitel zu verwenden."
 
-#: includes/settings/content/privacy.php:411
+#: includes/settings/content/privacy.php:604
 msgid ""
 "Leave empty to use the default. Use the token [privacy_policy] to insert a "
 "link to the WordPress privacy policy page."
@@ -1449,41 +1892,50 @@ msgstr ""
 msgid "Leave empty to use the front page title."
 msgstr "Leer lassen, um den Titel der Startseite zu verwenden."
 
+#. %s: Lenis version
+#: includes/settings/content/developers.php:973
+#, php-format
+msgid ""
+"Lenis %s prints on every public page while the switch is on, and the plugin "
+"starts it. Handle tcres-smooth-scroll. The instance is window."
+"tcresSmoothScrollInstance."
+msgstr ""
+"Lenis %s wird auf jeder öffentlichen Seite ausgegeben, solange der Schalter "
+"an ist, und das Plugin startet es. Handle tcres-smooth-scroll. Die Instanz "
+"ist window.tcresSmoothScrollInstance."
+
 #: includes/settings/content/extras.php:162
 msgid "Lerp"
 msgstr "Lerp"
+
+#: includes/settings/content/developers.php:981
+msgid "Lerp, from 0.01 to 1. Default 0.05. Lower is smoother and heavier."
+msgstr ""
+"Lerp, von 0.01 bis 1. Standard 0.05. Niedriger ist sanfter und schwerer."
 
 #: includes/settings/content/social.php:612
 msgid "Link attribute title"
 msgstr "Link-Attribut title"
 
-#: includes/modules/fields/hero.php:323
+#: includes/settings/content/developers.php:1004
+msgid "Link styled as a button. Optional: class, title, blank=\"yes\"."
+msgstr "Link im Button-Stil. Optional: class, title, blank=\"yes\"."
+
+#: includes/modules/fields/hero.php:357
 msgid "Link text"
 msgstr "Linktext"
 
-#: includes/settings/content/developers.php:619
+#: includes/settings/content/developers.php:704
+msgid "Listing id shared by the toolbar, the grid, and the navigation."
+msgstr "Listen-id, gemeinsam für Leiste, Raster und Navigation."
+
+#: includes/settings/content/developers.php:887
 msgid "Loading /page#specs opens the matching tab."
 msgstr "Das Laden von /page#specs öffnet den passenden Tab."
 
-#: includes/settings/content/developers.php:620
+#: includes/settings/content/developers.php:888
 msgid "Loading without a hash opens the default tab without changing the URL."
 msgstr "Laden ohne Hash öffnet den Standard-Tab, ohne die URL zu ändern."
-
-#: includes/settings/content/extras.php:78
-msgid ""
-"Loads Choices.js (CSS + JS) on the frontend. Use window.Choices from your "
-"theme."
-msgstr ""
-"Lädt Choices.js (CSS + JS) im Frontend. Verwenden Sie window.Choices aus "
-"Ihrem Theme."
-
-#: includes/settings/content/extras.php:72
-msgid ""
-"Loads GLightbox.js (CSS + JS) on the frontend. Use window.GLightbox from "
-"your theme."
-msgstr ""
-"Lädt GLightbox.js (CSS + JS) im Frontend. Verwenden Sie window.GLightbox aus "
-"Ihrem Theme."
 
 #: includes/settings/content/extras.php:151
 msgid ""
@@ -1493,13 +1945,25 @@ msgstr ""
 "Lädt Lenis.js (CSS + JS) im Frontend. Initialisiert sanftes Scrollen "
 "automatisch."
 
-#: includes/settings/content/extras.php:66
+#: includes/settings/content/developers.php:734
 msgid ""
-"Loads Swiper.js (CSS + JS) on the frontend. Use window.Swiper from your "
-"theme."
+"Locked query. relation is AND (default) or OR, and it only combines these "
+"clauses with each other. A filter is type taxonomy (values are taxonomy "
+"slugs; in and and mean the post has a term in that taxonomy, not_in means it "
+"has none) or type term (taxonomy, operator in, and, or not_in, values are "
+"term slugs). The visitor cannot remove it. Visitor filters are added with "
+"AND, so a toolbar OR cannot leave it. Omit it for no locked terms. The first "
+"page and the base total use this query, before any toolbar control."
 msgstr ""
-"Lädt Swiper.js (CSS + JS) im Frontend. Verwenden Sie window.Swiper aus Ihrem "
-"Theme."
+"Festgelegte Abfrage. relation ist AND (Standard) oder OR und verbindet nur "
+"diese Klauseln miteinander. Ein Filter hat den Typ taxonomy (values sind "
+"Taxonomie-Slugs; in und and bedeuten, dass der Beitrag einen Term dieser "
+"Taxonomie hat, not_in, dass er keinen hat) oder den Typ term (taxonomy, "
+"Operator in, and oder not_in, values sind Term-Slugs). Der Besucher kann ihn "
+"nicht entfernen. Besucherfilter werden mit AND ergänzt, ein OR der Leiste "
+"kann den Scope also nicht verlassen. Weglassen, wenn keine Terme festgelegt "
+"sind. Die erste Seite und die Basissumme verwenden diese Abfrage, vor jedem "
+"Leisten-Steuerelement."
 
 #: includes/settings/navigation.php:36
 msgid "Login"
@@ -1519,7 +1983,7 @@ msgstr "Anmeldeseite"
 msgid "Logout redirect"
 msgstr "Weiterleitung nach Abmeldung"
 
-#: includes/settings/content/fields.php:349
+#: includes/settings/content/fields.php:387
 msgid "Loop playback. Default: false."
 msgstr "Wiedergabe in Schleife. Standard: false."
 
@@ -1536,7 +2000,7 @@ msgstr "Niedriger = sanfter / schwerer (Standard 0.05)."
 msgid "Mail"
 msgstr "E-Mail"
 
-#: includes/settings/content/admin.php:502
+#: includes/settings/content/admin.php:590
 msgid ""
 "Makes selected list columns sortable for each post type (author and taxonomy "
 "columns)."
@@ -1548,8 +2012,10 @@ msgstr ""
 msgid "Manual"
 msgstr "Manuell"
 
-#: includes/settings/content/developers.php:551
-#: includes/settings/content/developers.php:589
+#: includes/settings/content/developers.php:571
+#: includes/settings/content/developers.php:613
+#: includes/settings/content/developers.php:756
+#: includes/settings/content/developers.php:857
 msgid "Markup"
 msgstr "Markup"
 
@@ -1562,7 +2028,7 @@ msgid "Max depth (page hierarchy)"
 msgstr "Maximale Tiefe (Seitenebenen)"
 
 #: includes/settings/content/developers.php:257
-#: includes/settings/content/developers.php:658
+#: includes/settings/content/developers.php:1042
 msgid "Media"
 msgstr "Medien"
 
@@ -1574,7 +2040,7 @@ msgstr "Menüreihenfolge"
 msgid "Messenger"
 msgstr "Messenger"
 
-#: includes/settings/content/admin.php:770
+#: includes/settings/content/admin.php:858
 msgid "Meta"
 msgstr "Meta"
 
@@ -1584,8 +2050,8 @@ msgstr "Meta-Schlüssel, der eine Feldgruppe speichert."
 
 #: includes/settings/content/content.php:338
 #: includes/settings/content/fields.php:181
-#: includes/settings/content/fields.php:261
-#: includes/settings/content/fields.php:367
+#: includes/settings/content/fields.php:299
+#: includes/settings/content/fields.php:405
 msgid "Meta key:"
 msgstr "Meta-Schlüssel:"
 
@@ -1593,14 +2059,14 @@ msgstr "Meta-Schlüssel:"
 msgid "Meta keys"
 msgstr "Meta-Schlüssel"
 
-#: includes/settings/content/developers.php:424
-#: includes/settings/content/developers.php:459
+#: includes/settings/content/developers.php:444
+#: includes/settings/content/developers.php:479
 msgid "Meta keys to read from $_POST. Nonce is derived from the first element."
 msgstr ""
 "Aus $_POST zu lesende Meta-Schlüssel. Der Nonce wird vom ersten Element "
 "abgeleitet."
 
-#: includes/settings/content/fields.php:223
+#: includes/settings/content/fields.php:260
 msgid "Meta keys:"
 msgstr "Meta-Schlüssel:"
 
@@ -1614,17 +2080,26 @@ msgstr ""
 "array( array( 'title' => '…' ), … ); repeatable innerhalb von group → Zeile "
 "mit einem Schlüssel, dessen Wert array( '…', '…' ) ist."
 
-#: includes/settings/content/developers.php:404
-#: includes/settings/content/developers.php:680
+#: includes/settings/content/developers.php:424
+#: includes/settings/content/developers.php:1065
 msgid "Meta write"
 msgstr "Meta schreiben"
+
+#: includes/settings/content/developers.php:768
+msgid "Milliseconds between items. Default 60. Maximum 1000."
+msgstr "Millisekunden zwischen den Einträgen. Standard 60. Höchstens 1000."
 
 #: includes/settings/content/content.php:521
 msgid "Mixed (single flat list)"
 msgstr "Gemischt (eine einzige flache Liste)"
 
-#: includes/settings/content/developers.php:502
-#: includes/settings/content/developers.php:693
+#: includes/settings/content/developers.php:606
+#: includes/settings/content/developers.php:1089
+msgid "Modal"
+msgstr "Modal"
+
+#: includes/settings/content/developers.php:522
+#: includes/settings/content/developers.php:1078
 msgid "Modify included post types"
 msgstr "Eingeschlossene Beitragstypen ändern"
 
@@ -1636,7 +2111,7 @@ msgstr "Bewegung"
 msgid "Move up when the footer is visible"
 msgstr "Nach oben verschieben, wenn der Footer sichtbar ist"
 
-#: includes/settings/content/fields.php:345
+#: includes/settings/content/fields.php:383
 msgid ""
 "Mute audio. Default: true when autoplay is on (required by browsers), "
 "otherwise false."
@@ -1652,7 +2127,19 @@ msgstr "Mein Konto (WooCommerce)"
 msgid "Networks"
 msgstr "Netzwerke"
 
-#: includes/settings/option.php:134
+#: includes/settings/content/developers.php:832
+msgid ""
+"New cards initialize collapse, tabs, and modal again when those helpers are "
+"loaded. If the plugin frontend JavaScript is disabled in Extras, the listing "
+"stays on the first page printed by PHP. This version does not copy filters "
+"into the URL."
+msgstr ""
+"Neue Karten initialisieren Collapse, Tabs und Modal erneut, wenn diese "
+"Helfer geladen sind. Ist das Frontend-JavaScript des Plugins unter Extras "
+"deaktiviert, bleibt die Liste auf der ersten von PHP ausgegebenen Seite. "
+"Diese Version schreibt Filter nicht in die URL."
+
+#: includes/settings/option.php:171
 msgid "New content"
 msgstr "Neuer Inhalt"
 
@@ -1660,27 +2147,33 @@ msgstr "Neuer Inhalt"
 msgid "No custom post types with a UI were found."
 msgstr "Keine benutzerdefinierten Beitragstypen mit UI gefunden."
 
-#: includes/settings/content/admin.php:200
+#: includes/settings/content/admin.php:288
 msgid "No editable roles were found."
 msgstr "Keine bearbeitbaren Rollen gefunden."
 
 #: includes/settings/content/content.php:409
-#: includes/settings/content/admin.php:76
-#: includes/settings/content/admin.php:91
-#: includes/settings/content/admin.php:330
-#: includes/settings/content/admin.php:371
-#: includes/settings/content/admin.php:430
-#: includes/settings/content/admin.php:706
+#: includes/settings/content/admin.php:164
+#: includes/settings/content/admin.php:179
+#: includes/settings/content/admin.php:418
+#: includes/settings/content/admin.php:459
+#: includes/settings/content/admin.php:518
+#: includes/settings/content/admin.php:794
 #: includes/settings/content/fields.php:74
 msgid "No eligible post types were found."
 msgstr "Keine geeigneten Beitragstypen gefunden."
 
 #: includes/settings/content/content.php:503
-#: includes/settings/content/admin.php:133
-#: includes/settings/content/admin.php:533
+#: includes/settings/content/admin.php:221
+#: includes/settings/content/admin.php:621
 #: includes/settings/content/fields.php:100
 msgid "No eligible taxonomies were found."
 msgstr "Keine geeigneten Taxonomien gefunden."
+
+#: includes/settings/content/privacy.php:366
+#: includes/settings/content/privacy.php:406
+#: includes/settings/content/privacy.php:446
+msgid "No Fluent Forms forms were found."
+msgstr "Es wurden keine Fluent-Forms-Formulare gefunden."
 
 #: includes/settings/content/developers.php:237
 #: includes/settings/content/developers.php:251
@@ -1694,7 +2187,7 @@ msgid "No public custom post types are registered."
 msgstr ""
 "Es sind keine öffentlichen benutzerdefinierten Beitragstypen registriert."
 
-#: includes/settings/content/admin.php:653
+#: includes/settings/content/admin.php:741
 msgid "No roles with upload permission were found."
 msgstr "Keine Rollen mit Upload-Berechtigung gefunden."
 
@@ -1702,7 +2195,7 @@ msgstr "Keine Rollen mit Upload-Berechtigung gefunden."
 msgid "No searchable post types were found."
 msgstr "Keine durchsuchbaren Beitragstypen gefunden."
 
-#: includes/settings/content/admin.php:389
+#: includes/settings/content/admin.php:477
 msgid "No sortable columns available for this post type."
 msgstr "Keine sortierbaren Spalten für diesen Beitragstyp verfügbar."
 
@@ -1714,17 +2207,17 @@ msgstr "Keine Taxonomien für Beiträge verfügbar."
 msgid "No taxonomies available for this post type."
 msgstr "Keine Taxonomien für diesen Beitragstyp verfügbar."
 
-#: includes/settings/content/privacy.php:71
+#: includes/settings/content/privacy.php:198
 msgid "No WPForms forms were found."
 msgstr "Keine WPForms-Formulare gefunden."
 
-#: includes/settings/content/developers.php:448
+#: includes/settings/content/developers.php:468
 msgid "Nonce derivation matches post meta. Sanitize modes: text or html."
 msgstr ""
 "Die Nonce-Ableitung entspricht den Beitrags-Meta. Bereinigungsmodi: text "
 "oder html."
 
-#: includes/settings/content/developers.php:413
+#: includes/settings/content/developers.php:433
 msgid ""
 "Nonce: with prefix my_ and key my_subtitle → field my_subtitle_nonce and "
 "action _my_subtitle_nonce (segment after the prefix, up to the first _ if "
@@ -1751,7 +2244,7 @@ msgstr ""
 "Netzwerke aus sind. Die automatische Ausgabe berücksichtigt auch „Anzeigen "
 "auf“."
 
-#: includes/settings/content/privacy.php:136
+#: includes/settings/content/privacy.php:249
 msgid "Notice key: contact, subscribe, comments, register, or checkout."
 msgstr ""
 "Hinweis-Schlüssel: contact, subscribe, comments, register oder checkout."
@@ -1760,7 +2253,12 @@ msgstr ""
 msgid "Number of items (default from settings, max 12)."
 msgstr "Anzahl der Elemente (Standard aus den Einstellungen, max. 12)."
 
-#: includes/settings/content/fields.php:229
+#: includes/settings/content/developers.php:637
+msgid "On a button: modal id (#my-modal) or selector to open on click."
+msgstr ""
+"An einem Button: Modal-ID (#my-modal) oder Selektor, der beim Klick öffnet."
+
+#: includes/settings/content/fields.php:267
 msgid ""
 "On taxonomy archives, the image comes from Featured image for terms when "
 "that module is enabled for the taxonomy."
@@ -1768,11 +2266,11 @@ msgstr ""
 "In Taxonomie-Archiven stammt das Bild aus Beitragsbild für Begriffe, wenn "
 "dieses Modul für die Taxonomie aktiviert ist."
 
-#: includes/settings/content/admin.php:573
+#: includes/settings/content/admin.php:661
 msgid "On the frontend, query terms with that meta key:"
 msgstr "Im Frontend Terme mit diesem Meta-Schlüssel abfragen:"
 
-#: includes/settings/content/admin.php:242
+#: includes/settings/content/admin.php:330
 msgid "One admin bar node ID per line, or separated by commas."
 msgstr "Eine Admin-Bar-Knoten-ID pro Zeile oder durch Kommas getrennt."
 
@@ -1788,7 +2286,7 @@ msgstr ""
 msgid "One key per line, or separated by commas."
 msgstr "Ein Schlüssel pro Zeile, oder durch Kommas getrennt."
 
-#: includes/settings/content/admin.php:679
+#: includes/settings/content/admin.php:767
 msgid ""
 "Only roles that can already upload media are listed. SVG sanitization is "
 "always enabled and cannot be turned off."
@@ -1804,36 +2302,45 @@ msgstr "Nur bestimmte Meta-Schlüssel"
 msgid "Open chat options"
 msgstr "Chat-Optionen öffnen"
 
-#: includes/modules/fields/hero.php:348
+#: includes/modules/fields/hero.php:390
 msgid "Open in new tab"
 msgstr "In neuem Tab öffnen"
 
 #: includes/settings/content/extras.php:86
-#| msgid ""
-#| "Optional third-party libraries from CDN. Enable only what your theme "
-#| "needs; the plugin does not initialize them."
 msgid ""
 "Optional bundled third-party libraries. Enable only what your theme needs; "
 "the plugin does not initialize them."
 msgstr ""
-"Optionale Drittanbieter-Bibliotheken per CDN. Aktivieren Sie nur, was Ihr "
-"Theme braucht; das Plugin initialisiert sie nicht."
+"Optionale mitgelieferte Drittanbieter-Bibliotheken. Aktivieren Sie nur, was "
+"Ihr Theme braucht; das Plugin initialisiert sie nicht."
 
-#: includes/settings/content/fields.php:253
+#: includes/settings/content/fields.php:291
 msgid "Optional CSS class for the img element."
 msgstr "Optionale CSS-Klasse für das img-Element."
 
-#: includes/settings/content/fields.php:329
+#: includes/settings/content/fields.php:367
 msgid "Optional CSS class for the video element."
 msgstr "Optionale CSS-Klasse für das video-Element."
 
-#: includes/settings/content/developers.php:601
+#: includes/settings/content/developers.php:653
+msgid ""
+"Optional layout modifier: the dialog fills the viewport. Combine with any ."
+"from-* animation class."
+msgstr ""
+"Optionaler Layout-Modifikator: der Dialog füllt den Viewport. Kombinieren "
+"Sie ihn mit einer beliebigen Animationsklasse .from-*."
+
+#: includes/settings/content/developers.php:629
+msgid "Optional layout regions. Style them in the theme."
+msgstr "Optionale Layout-Bereiche. Gestalten Sie sie im Theme."
+
+#: includes/settings/content/developers.php:869
 msgid "Optional on one tab: opens when the URL has no hash or an invalid hash."
 msgstr ""
 "Optional bei einem Tab: öffnet sich, wenn die URL keinen Hash oder einen "
 "ungültigen Hash hat."
 
-#: includes/settings/content/developers.php:571
+#: includes/settings/content/developers.php:591
 msgid "Optional on the trigger: do not preventDefault (useful for real links)."
 msgstr ""
 "Optional am Trigger: preventDefault nicht aufrufen (nützlich für echte Links)"
@@ -1844,19 +2351,19 @@ msgid "Optional post ID (defaults to the current post)."
 msgstr "Optionale Beitrags-ID (Standard: aktueller Beitrag)."
 
 #: includes/settings/content/content.php:334
-#: includes/settings/content/fields.php:215
-#: includes/settings/content/fields.php:359
+#: includes/settings/content/fields.php:252
+#: includes/settings/content/fields.php:397
 msgid "Optional post ID (defaults to the current singular post)."
 msgstr "Optionale Beitrags-ID (Standard: aktueller Einzelbeitrag)."
 
 #: includes/settings/content/fields.php:177
-#: includes/settings/content/fields.php:219
-#: includes/settings/content/fields.php:257
-#: includes/settings/content/fields.php:363
+#: includes/settings/content/fields.php:256
+#: includes/settings/content/fields.php:295
+#: includes/settings/content/fields.php:401
 msgid "Optional term ID (defaults to the current taxonomy archive term)."
 msgstr "Optionale Term-ID (Standard: Term des aktuellen Taxonomie-Archivs)."
 
-#: includes/settings/content/fields.php:333
+#: includes/settings/content/fields.php:371
 msgid "Optional video attributes:"
 msgstr "Optionale Video-Attribute:"
 
@@ -1868,7 +2375,7 @@ msgstr ""
 "Optionales Wrapper-Tag: p, div, span, h2–h6. Weglassen für nur Inhalt (kein "
 "Wrapper, keine Klasse)."
 
-#: includes/settings/content/developers.php:567
+#: includes/settings/content/developers.php:587
 msgid "Optional wrapper: opening one item closes siblings inside it."
 msgstr ""
 "Optionaler Wrapper: Das Öffnen eines Elements schließt Geschwister darin."
@@ -1882,16 +2389,24 @@ msgstr ""
 "after, before_repeat, after_repeat, format)."
 
 #: includes/settings/content/developers.php:142
-#: includes/settings/content/developers.php:645
+#: includes/settings/content/developers.php:1029
 msgid "Options / discovery"
 msgstr "Optionen / Discovery"
 
 #: includes/modules/admin/terms-list.php:71
-#: includes/modules/admin/terms-list.php:194
-#: includes/modules/admin/terms-list.php:209
+#: includes/modules/admin/terms-list.php:196
+#: includes/modules/admin/terms-list.php:213
 #: includes/modules/admin/posts-list.php:82
 msgid "Order"
 msgstr "Reihenfolge"
+
+#: includes/settings/content/developers.php:800
+msgid ""
+"Order select. Option values are date|DESC, date|ASC, title|ASC, title|DESC, "
+"menu_order|ASC, and menu_order|DESC."
+msgstr ""
+"Sortier-Select. Die Optionswerte sind date|DESC, date|ASC, title|ASC, "
+"title|DESC, menu_order|ASC und menu_order|DESC."
 
 #: includes/modules/admin/duplicate-posts.php:93
 msgid "Original post not found."
@@ -1901,17 +2416,22 @@ msgstr "Originalbeitrag nicht gefunden."
 msgid "Other post types"
 msgstr "Andere Beitragstypen"
 
-#: includes/settings/content/developers.php:134
+#: includes/settings/content/developers.php:78
 msgid ""
 "Output format: empty (no formatting), esc_html, html (wp_kses_post), or "
-"wpautop."
+"wpautop (wp_kses_post + wpautop). Shortcodes default to esc_html."
 msgstr ""
 "Ausgabeformat: leer (keine Formatierung), esc_html, html (wp_kses_post) oder "
-"wpautop."
+"wpautop (wp_kses_post + wpautop). Shortcodes verwenden standardmäßig "
+"esc_html."
 
-#: includes/settings/content/developers.php:78
-msgid "Output format: wpautop or esc_html."
-msgstr "Ausgabeformat: wpautop oder esc_html."
+#: includes/settings/content/developers.php:134
+msgid ""
+"Output format: empty (no formatting), esc_html, html (wp_kses_post), "
+"wysiwyg_title (tcres_clean_wysiwyg_title), or wpautop."
+msgstr ""
+"Ausgabeformat: leer (keine Formatierung), esc_html, html (wp_kses_post), "
+"wysiwyg_title (tcres_clean_wysiwyg_title) oder wpautop."
 
 #: includes/settings/components/output-location.php:63
 msgid "Output location"
@@ -1939,11 +2459,40 @@ msgstr "Seitenvorlagen"
 msgid "Page username or ID for m.me links."
 msgstr "Seiten-Benutzername oder ID für m.me-Links."
 
-#: includes/settings/content/developers.php:559
+#: includes/settings/content/developers.php:816
+msgid ""
+"Pagination nav. It is a previous link, an ordered list with one item per "
+"page, and a next link. Each link has data-tcres-query-listing-page set to "
+"prev, next, or the page number. The current link uses is-current and aria-"
+"current=\"page\". An unavailable link uses aria-disabled=\"true\". The "
+"sample number href is reused for every page: a {page} token is replaced, "
+"otherwise the path segment equal to the sample page is replaced. A filter or "
+"an order change goes back to page 1 and replaces the grid. Previous and next "
+"labels stay; the sample item is cloned to match the new page count."
+msgstr ""
+"Paginierungsnavigation. Sie besteht aus einem Link zur vorherigen Seite, "
+"einer geordneten Liste mit einem Eintrag pro Seite und einem Link zur "
+"nächsten Seite. Jeder Link hat data-tcres-query-listing-page mit prev, next "
+"oder der Seitenzahl. Der aktuelle Link verwendet is-current und aria-"
+"current=\"page\". Ein nicht verfügbarer Link verwendet aria-"
+"disabled=\"true\". Der href der Beispielzahl wird für jede Seite "
+"wiederverwendet: ein {page}-Platzhalter wird ersetzt, andernfalls das "
+"Pfadsegment, das der Beispielseite entspricht. Ein Filter oder eine "
+"Sortieränderung geht zurück auf Seite 1 und ersetzt das Raster. Die "
+"Beschriftungen von zurück und weiter bleiben; der Beispieleintrag wird "
+"geklont, damit er zur neuen Seitenzahl passt."
+
+#: includes/settings/content/developers.php:641
+msgid "Panel appears in place with no panel fade (backdrop may still fade)."
+msgstr ""
+"Das Panel erscheint an Ort und Stelle, ohne Panel-Fade (der Hintergrund kann "
+"weiter ausblenden)."
+
+#: includes/settings/content/developers.php:579
 msgid "Panel that opens and closes."
 msgstr "Panel, das sich öffnet und schließt."
 
-#: includes/settings/content/developers.php:605
+#: includes/settings/content/developers.php:873
 msgid ""
 "Panels wrapper placed as the next sibling after the tab list. Enables fade "
 "transitions."
@@ -1965,8 +2514,10 @@ msgstr ""
 #: includes/settings/content/developers.php:343
 #: includes/settings/content/developers.php:357
 #: includes/settings/content/developers.php:386
-#: includes/settings/content/developers.php:414
-#: includes/settings/content/developers.php:449
+#: includes/settings/content/developers.php:411
+#: includes/settings/content/developers.php:434
+#: includes/settings/content/developers.php:469
+#: includes/settings/content/developers.php:699
 msgid "Parameters"
 msgstr "Parameter"
 
@@ -1983,7 +2534,7 @@ msgstr ""
 "Parst eine Datumszeichenkette und formatiert sie mit der WordPress-Locale "
 "(wp_date)."
 
-#: includes/settings/content/admin.php:697
+#: includes/settings/content/admin.php:785
 msgid "Pending review"
 msgstr "Ausstehende Überprüfung"
 
@@ -2030,7 +2581,7 @@ msgstr ""
 msgid "Pixels between the button and the footer when lifting."
 msgstr "Pixel zwischen Schaltfläche und Fußzeile beim Anheben."
 
-#: includes/settings/content/fields.php:353
+#: includes/settings/content/fields.php:391
 msgid "Play inline on mobile. Default: true."
 msgstr "Inline auf Mobilgeräten abspielen. Standard: true."
 
@@ -2042,7 +2593,7 @@ msgstr "Bitte akzeptieren Sie die Datenschutzrichtlinie."
 msgid "Plugin"
 msgstr "Plugin"
 
-#: includes/settings/content/developers.php:613
+#: includes/settings/content/developers.php:881
 msgid "Plugin CSS classes for panel positioning and fade animation."
 msgstr "Plugin-CSS-Klassen für Panel-Positionierung und Fade-Animation."
 
@@ -2050,7 +2601,7 @@ msgstr "Plugin-CSS-Klassen für Panel-Positionierung und Fade-Animation."
 msgid "Plugin settings group name."
 msgstr "Name der Plugin-Einstellungsgruppe."
 
-#: includes/settings/content/developers.php:419
+#: includes/settings/content/developers.php:439
 msgid "Post ID to update."
 msgstr "Beitrags-ID zum Aktualisieren."
 
@@ -2074,7 +2625,7 @@ msgstr "Beitragstyp-Archive"
 msgid "Post type list"
 msgstr "Beitragstyp-Liste"
 
-#: includes/settings/content/developers.php:491
+#: includes/settings/content/developers.php:511
 msgid "Post type slugs excluded by default."
 msgstr "Beitragstyp-Slugs, die standardmäßig ausgeschlossen sind."
 
@@ -2082,19 +2633,19 @@ msgstr "Beitragstyp-Slugs, die standardmäßig ausgeschlossen sind."
 #: includes/settings/content/content.php:398
 #: includes/settings/content/content.php:846
 #: includes/settings/content/content.php:1170
-#: includes/settings/content/admin.php:89
-#: includes/settings/content/admin.php:328
-#: includes/settings/content/admin.php:428
-#: includes/settings/content/admin.php:704
+#: includes/settings/content/admin.php:177
+#: includes/settings/content/admin.php:416
+#: includes/settings/content/admin.php:516
+#: includes/settings/content/admin.php:792
 #: includes/settings/content/fields.php:59
 msgid "Post types"
 msgstr "Beitragstypen"
 
-#: includes/settings/content/admin.php:475
+#: includes/settings/content/admin.php:563
 msgid "Posts list"
 msgstr "Beitragsliste"
 
-#: includes/settings/content/admin.php:486
+#: includes/settings/content/admin.php:574
 msgid "Posts list options"
 msgstr "Beitragslisten-Optionen"
 
@@ -2123,6 +2674,24 @@ msgstr ""
 msgid "Prefills the WhatsApp compose field. Leave empty to use the default."
 msgstr "Füllt das WhatsApp-Eingabefeld vor. Leer lassen für den Standardwert."
 
+#: includes/settings/content/developers.php:409
+msgid ""
+"Prepares WYSIWYG title HTML for frontend output: converts paragraphs to line "
+"breaks and allows only safe inline tags (strong, em, links, etc.)."
+msgstr ""
+"Bereitet WYSIWYG-Titel-HTML für die Frontend-Ausgabe vor: wandelt Absätze in "
+"Zeilenumbrüche um und erlaubt nur sichere Inline-Tags (strong, em, Links usw."
+")."
+
+#: includes/settings/content/fields.php:196
+#: includes/modules/fields/hero.php:407
+msgid "Pretitle"
+msgstr "Vortitel"
+
+#: includes/settings/content/fields.php:236
+msgid "Pretitle tag: p (default), div or span."
+msgstr "Vortitel-Tag: p (Standard), div oder span."
+
 #: includes/settings/content/content.php:127
 msgid "Prevent empty search queries from returning results"
 msgstr "Leere Suchanfragen daran hindern, Ergebnisse zurückzugeben"
@@ -2131,19 +2700,32 @@ msgstr "Leere Suchanfragen daran hindern, Ergebnisse zurückzugeben"
 msgid "Primary taxonomy for auto picks (default: category)."
 msgstr "Primäre Taxonomie für automatische Auswahl (Standard: category)."
 
+#: includes/settings/content/developers.php:1003
 #: includes/settings/content/extras.php:309
 msgid ""
 "Print a plugin settings value. Optional format: esc_html (default), html, "
-"wpautop."
+"wysiwyg_title, wpautop."
 msgstr ""
-"Drucken Sie einen Plugin-Einstellungswert. Optionales Format: esc_html "
-"(Standard), html, wpautop."
+"Gibt einen Plugin-Einstellungswert aus. Optionales Format: esc_html "
+"(Standard), html, wysiwyg_title, wpautop."
 
 #: includes/settings/content/extras.php:299
-msgid "Print a post custom field value."
-msgstr "Gibt den Wert eines benutzerdefinierten Beitragfeldes aus."
+msgid ""
+"Print a post custom field value. Optional format: esc_html (default), html, "
+"wpautop."
+msgstr ""
+"Gibt den Wert eines benutzerdefinierten Felds eines Beitrags aus. Optionales "
+"Format: esc_html (Standard), html, wpautop."
 
-#: includes/settings/content/privacy.php:131
+#: includes/settings/content/developers.php:1001
+msgid ""
+"Print a post custom field. Optional format: esc_html (default), html, "
+"wpautop."
+msgstr ""
+"Gibt ein individuelles Beitragsfeld aus. Optionales Format: esc_html "
+"(Standard), html, wpautop."
+
+#: includes/settings/content/privacy.php:244
 msgid ""
 "Print a privacy notice on the frontend. Settings from this panel are the "
 "defaults; function args override them:"
@@ -2152,9 +2734,20 @@ msgstr ""
 "Panels sind die Standardwerte; Funktionsargumente überschreiben sie:"
 
 #: includes/settings/content/extras.php:304
-msgid "Print a taxonomy term custom field value."
+msgid ""
+"Print a taxonomy term custom field value. Optional format: esc_html (default)"
+", html, wpautop."
 msgstr ""
-"Gibt den Wert eines benutzerdefinierten Feldes eines Taxonomie-Terms aus."
+"Gibt den Wert eines benutzerdefinierten Felds eines Taxonomie-Terms aus. "
+"Optionales Format: esc_html (Standard), html, wpautop."
+
+#: includes/settings/content/developers.php:1002
+msgid ""
+"Print a taxonomy term custom field. Optional format: esc_html (default), "
+"html, wpautop."
+msgstr ""
+"Gibt ein individuelles Feld eines Taxonomie-Terms aus. Optionales Format: "
+"esc_html (Standard), html, wpautop."
 
 #: includes/settings/content/content.php:1027
 msgid ""
@@ -2192,7 +2785,7 @@ msgstr ""
 "per Taxonomie-Affinität, dann per Zufall gefüllt. Der Shortcode hat keine "
 "Attribute und verwendet immer die Panel-Einstellungen:"
 
-#: includes/settings/content/fields.php:244
+#: includes/settings/content/fields.php:282
 msgid ""
 "Print the featured image for the current taxonomy archive term (or a "
 "specific term ID):"
@@ -2200,13 +2793,13 @@ msgstr ""
 "Gibt das Beitragsbild des aktuellen Taxonomie-Archiv-Terms aus (oder einer "
 "bestimmten Term-ID):"
 
-#: includes/settings/content/fields.php:324
+#: includes/settings/content/fields.php:362
 msgid "Print the featured video for the current post/term (or a specific ID):"
 msgstr ""
 "Gibt das Featured-Video des aktuellen Beitrags/Terms aus (oder einer "
 "bestimmten ID):"
 
-#: includes/settings/content/fields.php:194
+#: includes/settings/content/fields.php:227
 msgid ""
 "Print the hero on the frontend (auto-detects singular posts and taxonomy "
 "archives). Includes the title. Background uses Featured video when set (with "
@@ -2222,11 +2815,11 @@ msgstr ""
 msgid "Privacy and forms"
 msgstr "Datenschutz und Formulare"
 
-#: includes/settings/content/privacy.php:339
+#: includes/settings/content/privacy.php:532
 msgid "Privacy consent"
 msgstr "Datenschutzeinwilligung"
 
-#: includes/settings/content/privacy.php:172
+#: includes/settings/content/privacy.php:299
 msgid "Privacy notice"
 msgstr "Datenschutzhinweis"
 
@@ -2234,7 +2827,7 @@ msgstr "Datenschutzhinweis"
 msgid "privacy policy"
 msgstr "Datenschutzrichtlinie"
 
-#: includes/settings/content/admin.php:698
+#: includes/settings/content/admin.php:786
 msgid "Private"
 msgstr "Privat"
 
@@ -2242,11 +2835,37 @@ msgstr "Privat"
 msgid "Proxy access is not allowed."
 msgstr "Proxy-Zugriff ist nicht erlaubt."
 
-#: includes/settings/content/admin.php:699
+#: includes/settings/content/developers.php:709
+msgid ""
+"Public post types this listing may query. The visitor can only narrow this "
+"list."
+msgstr ""
+"Öffentliche Post Types, die diese Liste abfragen darf. Besuchende können "
+"diese Liste nur eingrenzen."
+
+#: includes/settings/content/developers.php:729
+msgid ""
+"Public taxonomies attached to those post types. Visitor taxonomy and term "
+"filters can only use this list. Scope is not limited by it."
+msgstr ""
+"Öffentliche Taxonomien, die an diese Post Types gebunden sind. Taxonomie- "
+"und Term-Filter des Besuchers dürfen nur diese Liste verwenden. Scope ist "
+"dadurch nicht begrenzt."
+
+#: includes/settings/content/admin.php:787
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: includes/settings/content/developers.php:534
+#: includes/settings/content/developers.php:688
+#: includes/settings/content/developers.php:1090
+msgid "Query listing"
+msgstr "Abfrage-Listing"
+
+#: includes/settings/content/developers.php:416
+msgid "Raw HTML from a WYSIWYG title field."
+msgstr "Rohes HTML aus einem WYSIWYG-Titelfeld."
+
+#: includes/settings/content/developers.php:554
 msgid "Raw value received from $_POST."
 msgstr "Rohwert aus $_POST empfangen."
 
@@ -2288,11 +2907,15 @@ msgstr "Umleiten nach"
 msgid "Redirects anonymous visitors away from /author/ archive pages."
 msgstr "Leitet anonyme Besucher von /author/-Archivseiten weg."
 
-#: includes/settings/content/privacy.php:377
+#: includes/settings/content/developers.php:697
+msgid "Register"
+msgstr "Registrieren"
+
+#: includes/settings/content/privacy.php:570
 msgid "Register (WordPress and WooCommerce)"
 msgstr "Registrierung (WordPress und WooCommerce)"
 
-#: includes/settings/content/privacy.php:280
+#: includes/settings/content/privacy.php:473
 msgid "Register notice"
 msgstr "Registrierungshinweis"
 
@@ -2323,7 +2946,7 @@ msgstr "Beitragstypen für verwandte Inhalte"
 msgid "Related content taxonomies to display"
 msgstr "Anzuzeigende Taxonomien der verwandten Inhalte"
 
-#: includes/modules/fields/hero.php:318
+#: includes/modules/fields/hero.php:352
 msgid "Remove button"
 msgstr "Schaltfläche entfernen"
 
@@ -2368,7 +2991,7 @@ msgstr "WLW-Manifest entfernen"
 msgid "Remove WordPress version"
 msgstr "WordPress-Version entfernen"
 
-#: includes/settings/content/admin.php:302
+#: includes/settings/content/admin.php:390
 msgid ""
 "Removes comments from the admin, admin bar, and frontend for all post types."
 msgstr ""
@@ -2453,6 +3076,10 @@ msgstr "Video ersetzen"
 msgid "Replaces detailed login errors with a generic message."
 msgstr "Ersetzt detaillierte Anmeldefehler durch eine generische Meldung."
 
+#: includes/settings/content/developers.php:820
+msgid "Required on the root element of the card."
+msgstr "Pflicht am Wurzelelement der Karte."
+
 #: includes/settings/content/developers.php:144
 msgid ""
 "Resolve which post types or taxonomies are enabled for a settings group, and "
@@ -2461,6 +3088,23 @@ msgstr ""
 "Ermittelt, welche Beitragstypen oder Taxonomien für eine Einstellungsgruppe "
 "aktiviert sind, und listet eingeschlossene Site-Typen."
 
+#: includes/settings/content/developers.php:804
+msgid ""
+"Result count. Put data-tcres-query-listing-shown, data-tcres-query-listing-"
+"sep, and data-tcres-query-listing-total inside it. From the first paint the "
+"count is shown / total. Shown is how many cards are in the grid. The total "
+"is the registered base total: scope counts, visitor filters do not. The "
+"count gets is-filtered only while a visitor filter is active. Changing the "
+"order alone does not add that class."
+msgstr ""
+"Ergebniszahl. Setzen Sie data-tcres-query-listing-shown, data-tcres-query-"
+"listing-sep und data-tcres-query-listing-total hinein. Ab der ersten Ausgabe "
+"ist die Zahl angezeigt / Summe. Angezeigt ist, wie viele Karten im Raster "
+"sind. Die Summe ist die registrierte Basissumme: der Scope zählt, "
+"Besucherfilter nicht. Die Zahl erhält is-filtered nur, solange ein "
+"Besucherfilter aktiv ist. Nur die Sortierung zu ändern fügt diese Klasse "
+"nicht hinzu."
+
 #: includes/settings/content/developers.php:265
 msgid "Returns image sizes registered in WordPress, ready for UI selects."
 msgstr ""
@@ -2468,8 +3112,10 @@ msgstr ""
 "Auswahllisten."
 
 #: includes/settings/content/developers.php:341
-msgid "Returns page templates registered by the active theme."
-msgstr "Gibt vom aktiven Theme registrierte Seitenvorlagen zurück."
+msgid "Returns page templates registered by the active theme for a post type."
+msgstr ""
+"Gibt die vom aktiven Theme für einen Beitragstyp registrierten "
+"Seitenvorlagen zurück."
 
 #: includes/settings/content/developers.php:200
 msgid "Returns post types active in one option set but not in another."
@@ -2580,7 +3226,7 @@ msgstr ""
 "Rückgabe: indexiertes Array von Zeilen mit label, value und optional "
 "selected (medium)."
 
-#: includes/settings/content/developers.php:439
+#: includes/settings/content/developers.php:459
 msgid ""
 "Returns: nothing. Saves a sanitized value or deletes meta if the POST field "
 "is empty. The value \"0\" is saved."
@@ -2588,7 +3234,7 @@ msgstr ""
 "Rückgabe: nichts. Speichert einen bereinigten Wert oder löscht Meta, wenn "
 "das POST-Feld leer ist. Der Wert \"0\" wird gespeichert."
 
-#: includes/settings/content/developers.php:474
+#: includes/settings/content/developers.php:494
 msgid "Returns: nothing. Saves or deletes term meta like the post helper."
 msgstr ""
 "Rückgabe: nichts. Speichert oder löscht Term-Meta wie der Beitrags-Helper."
@@ -2601,7 +3247,7 @@ msgstr ""
 "Rückgabe: Beitragstypen aktiv in a/on_ aber nicht in b/on_; leeres Array, "
 "wenn es keine Unterschiede gibt."
 
-#: includes/settings/content/developers.php:539
+#: includes/settings/content/developers.php:559
 msgid "Returns: string saved to meta."
 msgstr "Rückgabe: in Meta gespeicherter String."
 
@@ -2613,7 +3259,15 @@ msgstr ""
 "Rückgabe: Term-Meta-Wert, oder ein leerer String, wenn der Beitrag in dieser "
 "Taxonomie keine Terme hat."
 
-#: includes/settings/content/developers.php:515
+#: includes/settings/content/developers.php:844
+msgid ""
+"Returns: the array you return is the accepted orderby list. A non-array, or "
+"an empty result, keeps date and title."
+msgstr ""
+"Rückgabe: das zurückgegebene Array ist die akzeptierte orderby-Liste. Kein "
+"Array oder ein leeres Ergebnis behält date und title."
+
+#: includes/settings/content/developers.php:535
 msgid ""
 "Returns: the array you return is the final tcres_post_types_get_included() "
 "list."
@@ -2621,7 +3275,7 @@ msgstr ""
 "Rückgabe: Das Array, das Sie zurückgeben, ist die endgültige Liste von "
 "tcres_post_types_get_included()."
 
-#: includes/settings/content/developers.php:496
+#: includes/settings/content/developers.php:516
 msgid ""
 "Returns: the array you return replaces the default exclusion list before "
 "computation."
@@ -2645,7 +3299,7 @@ msgstr ""
 "Rückgabe: true nur wenn mindestens eine Regel übergeben wurde und alle "
 "bestehen; sonst false oder ohne Bildmetadaten."
 
-#: includes/settings/content/developers.php:550
+#: includes/settings/content/developers.php:570
 msgid ""
 "Reusable collapse / accordion behaviour. Pair a trigger and a target with "
 "the same data-tcres-collapse-id. The plugin calls tcresCollapseInit() on "
@@ -2657,16 +3311,31 @@ msgstr ""
 "tcresCollapseInit() bei DOMContentLoaded auf, wenn ein Trigger existiert; "
 "rufen Sie es nach dynamischem Einfügen von Markup erneut auf."
 
-#: includes/settings/content/developers.php:588
+#: includes/settings/content/developers.php:612
 msgid ""
-"Reusable tab panels with URL hash sync. The tab nav must be immediately "
+"Reusable modal dialog. Open imperatively with tcresShowModal() or "
+"declaratively with data-tcres-modal-open. The plugin calls tcresModalInit() "
+"on DOMContentLoaded; call it again after injecting markup dynamically."
+msgstr ""
+"Wiederverwendbarer modaler Dialog. Öffnen Sie ihn imperativ mit "
+"tcresShowModal() oder deklarativ mit data-tcres-modal-open. Das Plugin ruft "
+"tcresModalInit() bei DOMContentLoaded auf; rufen Sie es nach dynamischem "
+"Einfügen von Markup erneut auf."
+
+#: includes/settings/content/developers.php:856
+msgid ""
+"Reusable tab panels with URL hash sync. The tab list must be immediately "
 "followed by the panels wrapper. The plugin calls tcresTabsInit() on "
 "DOMContentLoaded; call it again after injecting markup dynamically."
 msgstr ""
-"Wiederverwendbare Tab-Panels mit URL-Hash-Synchronisierung. Die Tab-"
-"Navigation muss unmittelbar vom Panel-Container gefolgt werden. Das Plugin "
-"ruft tcresTabsInit() bei DOMContentLoaded auf; rufen Sie es nach dynamischem "
+"Wiederverwendbare Tab-Panels mit URL-Hash-Synchronisierung. Die Tab-Liste "
+"muss unmittelbar vom Panel-Container gefolgt werden. Das Plugin ruft "
+"tcresTabsInit() bei DOMContentLoaded auf; rufen Sie es nach dynamischem "
 "Einfügen von Markup erneut auf."
+
+#: includes/settings/content/developers.php:617
+msgid "Root overlay. Hidden until .is-open is added."
+msgstr "Wurzel-Overlay. Verborgen, bis .is-open gesetzt wird."
 
 #: includes/settings/content/developers.php:91
 msgid ""
@@ -2676,6 +3345,10 @@ msgstr ""
 "Wie tcres_field_get, liest aber term_meta vom ersten dem Beitrag in der "
 "angegebenen Taxonomie zugewiesenen Term."
 
+#: includes/settings/content/developers.php:649
+msgid "Same directions with panel fade while sliding."
+msgstr "Dieselben Richtungen, mit Panel-Fade während des Einschiebens."
+
 #: includes/settings/content/developers.php:92
 msgid ""
 "Same meta structure and arguments as tcres_field_get (simple, repeatable, "
@@ -2684,7 +3357,7 @@ msgstr ""
 "Gleiche Meta-Struktur und Argumente wie tcres_field_get (simple, repeatable, "
 "group)."
 
-#: includes/settings/content/developers.php:447
+#: includes/settings/content/developers.php:467
 msgid ""
 "Same pattern as tcres_post_meta_update, for taxonomy terms. Call it from "
 "created_{taxonomy} / edited_{taxonomy} (or equivalent). Requires edit_term "
@@ -2694,8 +3367,8 @@ msgstr ""
 "created_{taxonomy} / edited_{taxonomy} (oder gleichwertig). Erfordert die "
 "Capability edit_term."
 
-#: includes/settings/content/developers.php:521
-#: includes/settings/content/developers.php:694
+#: includes/settings/content/developers.php:541
+#: includes/settings/content/developers.php:1079
 msgid "Sanitize meta before save"
 msgstr "Meta vor dem Speichern bereinigen"
 
@@ -2703,12 +3376,12 @@ msgstr "Meta vor dem Speichern bereinigen"
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: includes/settings/content/developers.php:406
+#: includes/settings/content/developers.php:426
 msgid "Save metabox fields from $_POST with nonce and capability checks."
 msgstr ""
 "Speichert Metabox-Felder aus $_POST mit Nonce- und Capability-Prüfungen."
 
-#: includes/settings/content/developers.php:412
+#: includes/settings/content/developers.php:432
 msgid ""
 "Saves or deletes post meta from $_POST in the admin, with nonce verification "
 "and edit_post capability. Call it on save_post."
@@ -2724,6 +3397,19 @@ msgstr "Nach oben scrollen"
 #: includes/settings/content/social.php:345
 msgid "Search (is_search)"
 msgstr "Suche (is_search)"
+
+#: includes/settings/content/developers.php:796
+msgid ""
+"Search field. An empty value is not applied. The text narrows the registered "
+"query and the active filters. WordPress matches the title, the content, and "
+"the excerpt. The count gets is-filtered while the field has text. The query "
+"runs when the field is committed: Enter, leaving the field, or clearing it."
+msgstr ""
+"Suchfeld. Ein leerer Wert wird nicht angewendet. Der Text grenzt die "
+"registrierte Abfrage und die aktiven Filter ein. WordPress vergleicht Titel, "
+"Inhalt und Auszug. Die Zählung erhält is-filtered, solange das Feld Text "
+"enthält. Die Abfrage läuft, wenn das Feld bestätigt wird: Eingabetaste, "
+"Verlassen des Feldes oder Leeren."
 
 #. %s: search query
 #: includes/modules/social/share-content.php:217
@@ -2749,7 +3435,7 @@ msgstr "Sicherheit und Leistung"
 msgid "Security options"
 msgstr "Sicherheitsoptionen"
 
-#: includes/modules/fields/hero.php:340
+#: includes/modules/fields/hero.php:382
 msgid "Select"
 msgstr "Auswählen"
 
@@ -2788,14 +3474,14 @@ msgstr ""
 msgid "Select video"
 msgstr "Video auswählen"
 
-#: includes/settings/content/admin.php:118
+#: includes/settings/content/admin.php:206
 msgid ""
 "Selected post type admin screens and frontend URLs redirect to the homepage."
 msgstr ""
 "Die Admin-Bildschirme und Frontend-URLs der ausgewählten Inhaltstypen leiten "
 "zur Startseite weiter."
 
-#: includes/settings/content/admin.php:180
+#: includes/settings/content/admin.php:268
 msgid ""
 "Selected taxonomy admin screens and frontend archives redirect to the "
 "homepage."
@@ -2803,14 +3489,9 @@ msgstr ""
 "Die Admin-Bildschirme und Frontend-Archive der ausgewählten Taxonomien "
 "leiten zur Startseite weiter."
 
-#: includes/modules/extras/shortcodes.php:139
-#: includes/modules/fields/hero.php:557
+#: includes/modules/extras/shortcodes.php:163
 msgid "Send mail to"
 msgstr "E-Mail senden an"
-
-#: includes/modules/fields/hero.php:560
-msgid "Send WhatsApp message"
-msgstr "WhatsApp-Nachricht senden"
 
 #: includes/modules/fields/bodyclass.php:99
 msgid "Separate with spaces."
@@ -2858,7 +3539,7 @@ msgstr "Dies teilen auf"
 msgid "Share title"
 msgstr "Teilen-Titel"
 
-#: includes/settings/content/developers.php:563
+#: includes/settings/content/developers.php:583
 msgid "Shared ID linking one trigger to one target."
 msgstr "Gemeinsame ID, die einen Trigger mit einem Ziel verknüpft."
 
@@ -2869,12 +3550,14 @@ msgstr "Shop (WooCommerce)"
 #: includes/settings/content/content.php:342
 #: includes/settings/content/content.php:634
 #: includes/settings/content/content.php:1048
-#: includes/settings/content/privacy.php:140
+#: includes/settings/content/privacy.php:253
 #: includes/settings/content/social.php:20
 #: includes/settings/content/social.php:141
 msgid "Shortcode:"
 msgstr "Shortcode:"
 
+#: includes/settings/content/developers.php:998
+#: includes/settings/content/developers.php:1104
 #: includes/settings/content/extras.php:363
 msgid "Shortcodes"
 msgstr "Shortcodes"
@@ -2908,7 +3591,7 @@ msgstr "Startseite anzeigen"
 msgid "Show list bullets"
 msgstr "Listenaufzählungszeichen anzeigen"
 
-#: includes/settings/content/fields.php:337
+#: includes/settings/content/fields.php:375
 msgid ""
 "Show native controls. Default: true when autoplay is off, false when "
 "autoplay is on."
@@ -2925,7 +3608,7 @@ msgstr "Netzwerk-Icon anzeigen"
 msgid "Show network name"
 msgstr "Netzwerkname anzeigen"
 
-#: includes/settings/content/privacy.php:357
+#: includes/settings/content/privacy.php:550
 #: includes/settings/content/social.php:313
 msgid "Show on"
 msgstr "Anzeigen auf"
@@ -2977,6 +3660,28 @@ msgstr "Sitemap"
 msgid "Skips sizes without defined width and height."
 msgstr "Überspringt Größen ohne definierte Breite und Höhe."
 
+#: includes/settings/content/developers.php:669
+msgid ""
+"Slide + fade: .from-top-fade, .from-right-fade, .from-bottom-fade or .from-"
+"left-fade — panel slides from off-screen and fades at the same time."
+msgstr ""
+"Slide und Fade: .from-top-fade, .from-right-fade, .from-bottom-fade oder ."
+"from-left-fade — das Panel kommt von außerhalb des Bildschirms und blendet "
+"gleichzeitig ein."
+
+#: includes/settings/content/developers.php:645
+msgid "Slide the panel in from off-screen (no panel fade)."
+msgstr ""
+"Schiebt das Panel von außerhalb des Bildschirms herein (ohne Panel-Fade)."
+
+#: includes/settings/content/developers.php:668
+msgid ""
+"Slide: .from-top, .from-right, .from-bottom or .from-left — panel slides in "
+"from off-screen while the backdrop fades."
+msgstr ""
+"Slide: .from-top, .from-right, .from-bottom oder .from-left — das Panel "
+"kommt von außerhalb des Bildschirms, während der Hintergrund ausblendet."
+
 #: includes/settings/content/developers.php:342
 msgid ""
 "Slug example: templates/template-contact.php → contact. No hyphens in the "
@@ -2993,7 +3698,7 @@ msgstr ""
 "Slug oder Liste von Slugs/IDs. Bei einem Array: Array von IDs in derselben "
 "Reihenfolge."
 
-#: includes/settings/content/developers.php:510
+#: includes/settings/content/developers.php:530
 msgid "Slugs included after exclusions are applied."
 msgstr "Nach Ausschlüssen eingeschlossene Slugs."
 
@@ -3005,6 +3710,14 @@ msgstr "Sanfte Ankerlinks auf der Seite"
 msgid "Smooth mouse wheel"
 msgstr "Sanftes Mausrad"
 
+#: includes/settings/content/developers.php:982
+msgid ""
+"Smooth mouse wheel, smooth touch scrolling, and smooth in-page anchor links."
+msgstr ""
+"Sanftes Mausrad, sanftes Touch-Scrollen und sanfte Ankerlinks auf der Seite."
+
+#: includes/settings/content/developers.php:968
+#: includes/settings/content/developers.php:1102
 #: includes/settings/content/extras.php:137
 msgid "Smooth scroll"
 msgstr "Sanftes Scrollen"
@@ -3023,7 +3736,7 @@ msgstr "Social und Kontakt"
 msgid "Social menu"
 msgstr "Social-Menü"
 
-#: includes/settings/content/admin.php:501
+#: includes/settings/content/admin.php:589
 msgid "Sortable columns"
 msgstr "Sortierbare Spalten"
 
@@ -3039,15 +3752,36 @@ msgstr ""
 "Eigenständige Shortcodes für Felder, Markup-Helfer und Media-Embeds. "
 "Shortcodes eines Moduls bleiben in diesem Modul."
 
-#: includes/settings/content/fields.php:341
+#: includes/settings/content/fields.php:379
 msgid "Start playback automatically. Default: false."
 msgstr "Wiedergabe automatisch starten. Standard: false."
 
-#: includes/settings/content/admin.php:738
+#: includes/settings/content/developers.php:657
+msgid ""
+"State classes toggled by the script. Closed modals are not clickable; "
+"enter/exit animations run under .is-entering / .is-leaving before the modal "
+"settles."
+msgstr ""
+"Zustandsklassen, die das Skript umschaltet. Geschlossene Modals sind nicht "
+"anklickbar; Ein- und Ausgangsanimationen laufen unter .is-entering / .is-"
+"leaving, bevor das Modal zur Ruhe kommt."
+
+#: includes/settings/content/developers.php:666
+msgid "Static fade (default): no extra class; the panel fades in and out."
+msgstr ""
+"Statischer Fade (Standard): keine zusätzliche Klasse; das Panel blendet ein "
+"und aus."
+
+#: includes/settings/content/developers.php:667
+msgid "Static, no fade: .is-static — panel appears in place."
+msgstr ""
+"Statisch, ohne Fade: .is-static — das Panel erscheint an Ort und Stelle."
+
+#: includes/settings/content/admin.php:826
 msgid "Status"
 msgstr "Status"
 
-#: includes/settings/content/admin.php:747
+#: includes/settings/content/admin.php:835
 msgid "Status assigned to the new copy."
 msgstr "Status der neuen Kopie."
 
@@ -3059,19 +3793,20 @@ msgstr ""
 "Lädt das wp-embed-Skript im Frontend nicht, wenn Sie keine WordPress-Embeds "
 "brauchen."
 
-#: includes/settings/content/privacy.php:236
+#: includes/settings/content/privacy.php:376
 msgid "Subscribe notice"
 msgstr "Abonnementhinweis"
 
-#: includes/settings/content/fields.php:419
+#: includes/settings/content/fields.php:197
+#: includes/settings/content/fields.php:457
 #: includes/modules/fields/subtitle.php:69
-#: includes/modules/fields/subtitle.php:199
-#: includes/modules/fields/subtitle.php:222
-#: includes/modules/fields/hero.php:364
+#: includes/modules/fields/subtitle.php:154
+#: includes/modules/fields/subtitle.php:177
+#: includes/modules/fields/hero.php:419
 msgid "Subtitle"
 msgstr "Untertitel"
 
-#: includes/settings/content/fields.php:203
+#: includes/settings/content/fields.php:240
 msgid "Subtitle tag: p (default), div, span, or h2–h6."
 msgstr "Untertitel-Tag: p (Standard), div, span oder h2–h6."
 
@@ -3079,6 +3814,10 @@ msgstr "Untertitel-Tag: p (Standard), div, span oder h2–h6."
 #: includes/settings/content/social.php:711
 msgid "Suggested message"
 msgstr "Vorgeschlagene Nachricht"
+
+#: includes/settings/content/developers.php:1006
+msgid "SVG icon from the sprite."
+msgstr "SVG-Icon aus dem Sprite."
 
 #: includes/settings/content/extras.php:247
 msgid "SVG icons"
@@ -3088,24 +3827,44 @@ msgstr "SVG-Icons"
 msgid "SVG sanitization requires DOMDocument."
 msgstr "Die SVG-Bereinigung erfordert DOMDocument."
 
+#: includes/settings/content/developers.php:991
+#: includes/settings/content/developers.php:1103
+msgid "SVG sprite"
+msgstr "SVG-Sprite"
+
+#. 1: library version, 2: script handle
+#: includes/settings/content/developers.php:928
+#, php-format
+msgid "Swiper %1$s. Handle %2$s. Global window.Swiper."
+msgstr "Swiper %1$s. Handle %2$s. Globales Objekt window.Swiper."
+
+#: includes/settings/content/developers.php:918
+#: includes/settings/content/developers.php:1101
+msgid "Swiper, GLightbox, and Choices"
+msgstr "Swiper, GLightbox und Choices"
+
 #: includes/settings/content/developers.php:315
 msgid ""
 "Symbol ID within the sprite (e.g. arrow-up). Empty returns an empty string."
 msgstr ""
 "Symbol-ID im Sprite (z. B. arrow-up). Leer gibt einen leeren String zurück."
 
-#: includes/settings/content/developers.php:593
-msgid "Tab list container (usually a nav with role=\"tablist\")."
-msgstr "Container der Tab-Liste (normalerweise ein nav mit role=\"tablist\")."
+#: includes/settings/content/developers.php:676
+msgid "Tab cycles focus inside the open modal."
+msgstr "Tab bewegt den Fokus im Kreis innerhalb des geöffneten Modals."
 
-#: includes/settings/content/developers.php:597
+#: includes/settings/content/developers.php:861
+msgid "Tab list container (a div with role=\"tablist\")."
+msgstr "Container der Tab-Liste (ein div mit role=\"tablist\")."
+
+#: includes/settings/content/developers.php:865
 msgid "Tab slug used in the URL hash (#specs). Must be unique across the page."
 msgstr ""
 "Tab-Slug, der im URL-Hash verwendet wird (#specs). Er muss auf der ganzen "
 "Seite eindeutig sein."
 
-#: includes/settings/content/developers.php:586
-#: includes/settings/content/developers.php:704
+#: includes/settings/content/developers.php:854
+#: includes/settings/content/developers.php:1091
 msgid "Tabs"
 msgstr "Tabs"
 
@@ -3114,9 +3873,9 @@ msgid "Target"
 msgstr "Ziel"
 
 #: includes/settings/content/content.php:100
-#: includes/settings/content/admin.php:131
-#: includes/settings/content/admin.php:531
-#: includes/settings/content/admin.php:759
+#: includes/settings/content/admin.php:219
+#: includes/settings/content/admin.php:619
+#: includes/settings/content/admin.php:847
 #: includes/settings/content/fields.php:85
 #: includes/settings/content/social.php:462
 msgid "Taxonomies"
@@ -3140,6 +3899,10 @@ msgstr "Taxonomie"
 msgid "Taxonomy slug."
 msgstr "Taxonomie-Slug."
 
+#: includes/settings/content/developers.php:784
+msgid "Taxonomy slug. Required when the filter value is term."
+msgstr "Taxonomie-Slug. Pflicht, wenn der Filterwert term ist."
+
 #: includes/settings/content/content.php:310
 msgid ""
 "Taxonomy slugs to display (defaults to the selected taxonomies in settings)."
@@ -3159,7 +3922,7 @@ msgstr "Telegram-Benutzername ohne @."
 msgid "Template part slug. Hooks into get_template_part_{slug}."
 msgstr "Template-Part-Slug. Hookt in get_template_part_{slug}."
 
-#: includes/settings/content/developers.php:454
+#: includes/settings/content/developers.php:474
 msgid "Term ID to update."
 msgstr "Term-ID zum Aktualisieren."
 
@@ -3171,11 +3934,11 @@ msgstr "Term-Meta-Schlüssel."
 msgid "Term taxonomy. Required when $type is term."
 msgstr "Term-Taxonomie. Erforderlich, wenn $type term ist."
 
-#: includes/settings/content/admin.php:593
+#: includes/settings/content/admin.php:681
 msgid "Terms list"
 msgstr "Termliste"
 
-#: includes/settings/content/admin.php:604
+#: includes/settings/content/admin.php:692
 msgid "Terms list options"
 msgstr "Termlisten-Optionen"
 
@@ -3191,7 +3954,7 @@ msgstr "An den Wert angehängter Text."
 msgid "Text between crumbs (default from settings)."
 msgstr "Text zwischen den Krümeln (Standard aus den Einstellungen)."
 
-#: includes/settings/content/developers.php:469
+#: includes/settings/content/developers.php:489
 msgid "text or html (same behaviour as post meta update)."
 msgstr ""
 "text oder html (gleiches Verhalten wie bei der Beitrags-Meta-Aktualisierung)."
@@ -3204,18 +3967,51 @@ msgstr "Text, der vor dem Verketten wiederholbarer Werte vorangestellt wird."
 msgid "Text prepended to the value."
 msgstr "Dem Wert vorangestellter Text."
 
-#: includes/settings/content/privacy.php:203
+#: includes/settings/content/privacy.php:330
 msgid "Text shown before expanding the notice. Leave empty to use the default."
 msgstr ""
 "Text vor dem Aufklappen des Hinweises. Leer lassen für den Standardwert."
 
-#: includes/settings/content/developers.php:434
+#: includes/settings/content/developers.php:454
 msgid ""
 "text uses sanitize_text_field (+ filter); html uses wp_kses_post (+ HTML "
 "filter)."
 msgstr ""
 "text verwendet sanitize_text_field (+ Filter); html verwendet wp_kses_post "
 "(+ HTML-Filter)."
+
+#: includes/settings/content/developers.php:808
+msgid ""
+"The pagination nav or the load-more button. Add data-tcres-query-listing-id "
+"on that same element. The nav also has data-tcres-query-listing-pagination. "
+"The button also has data-tcres-query-listing-more. On a single page the "
+"element is hidden."
+msgstr ""
+"Die Paginierungsnavigation oder der Mehr-laden-Button. Setzen Sie data-tcres-"
+"query-listing-id auf dasselbe Element. Die Navigation hat außerdem data-"
+"tcres-query-listing-pagination. Der Button hat außerdem data-tcres-query-"
+"listing-more. Bei nur einer Seite wird das Element versteckt."
+
+#: includes/settings/content/developers.php:831
+msgid ""
+"The signature keeps the query inside the registered post types, taxonomies, "
+"scope, page size, order, card, language, and base total. Only published, "
+"viewable content is queried."
+msgstr ""
+"Die Signatur hält die Abfrage innerhalb der registrierten Post Types, "
+"Taxonomien, des Scope, der Seitengröße, der Sortierung, der Card, der "
+"Sprache und der Basis-Gesamtzahl. Es wird nur veröffentlichter, sichtbarer "
+"Inhalt abgefragt."
+
+#: includes/settings/content/developers.php:830
+msgid ""
+"The signed config stores the current language. AJAX switches to that "
+"language before the query, for WPML and for Polylang. Term slugs are used as "
+"the theme rendered them."
+msgstr ""
+"Die signierte Config speichert die aktuelle Sprache. AJAX wechselt vor der "
+"Abfrage in diese Sprache, für WPML und für Polylang. Term-Slugs werden so "
+"verwendet, wie das Theme sie ausgegeben hat."
 
 #: includes/modules/admin/svg-uploads.php:152
 msgid "The SVG file contains unsafe content."
@@ -3239,13 +4035,58 @@ msgstr "Die SVG-Datei ist kein gültiges XML."
 msgid "The SVG upload could not be read."
 msgstr "Der SVG-Upload konnte nicht gelesen werden."
 
+#: includes/settings/content/developers.php:999
+msgid ""
+"The switch registers the shortcodes below. Shortcodes that belong to a "
+"module, such as breadcrumbs or share buttons, stay with that module and "
+"ignore this switch."
+msgstr ""
+"Der Schalter registriert die Shortcodes unten. Shortcodes, die zu einem "
+"Modul gehören, etwa Breadcrumbs oder Teilen-Buttons, bleiben bei diesem "
+"Modul und ignorieren diesen Schalter."
+
+#: includes/settings/content/developers.php:754
+msgid ""
+"The theme writes the grid element, with its tag, classes, and any other "
+"attributes. Call tcres_query_listing_attrs() in the opening tag. It prints "
+"the listing id, the AJAX URL, the signed config, and the first-page totals. "
+"Call tcres_query_listing_items() inside the element. It prints the loading "
+"marker, the empty and error templates, and the cards of the registered query."
+" Scope applies. A checked toolbar control does not, until the visitor "
+"changes a control. A later request removes any other child of that element."
+msgstr ""
+"Das Theme schreibt das Raster-Element, mit Tag, Klassen und weiteren "
+"Attributen. Rufen Sie tcres_query_listing_attrs() im öffnenden Tag auf. Die "
+"Funktion gibt die Listing-ID, die AJAX-URL, die signierte Config und die "
+"Summen der ersten Seite aus. Rufen Sie tcres_query_listing_items() im "
+"Element auf. Die Funktion gibt die Lade-Markierung, die Templates für leer "
+"und Fehler und die Karten der registrierten Abfrage aus. Der Scope gilt. Ein "
+"markiertes Steuerelement der Leiste gilt nicht, bis der Besucher ein "
+"Steuerelement ändert. Eine spätere Anfrage entfernt jedes andere Kind dieses "
+"Elements."
+
 #: includes/modules/admin/svg-uploads.php:187
 msgid "The uploaded file is not an SVG document."
 msgstr "Die hochgeladene Datei ist kein SVG-Dokument."
 
+#: includes/settings/content/developers.php:760
+msgid ""
+"Theme grid element. tcres_query_listing_attrs() prints this flag together "
+"with the id, the AJAX URL, the signed config, the total, and the page count."
+msgstr ""
+"Raster-Element des Themes. tcres_query_listing_attrs() gibt dieses "
+"Kennzeichen zusammen mit der ID, der AJAX-URL, der signierten Config, der "
+"Summe und der Seitenzahl aus."
+
 #: includes/settings/content/developers.php:335
 msgid "Theme templates, slug conversion, and locale-aware dates."
 msgstr "Theme-Vorlagen, Slug-Konvertierung und locale-bewusste Daten."
+
+#: includes/settings/content/developers.php:898
+msgid "These options are on the Extras screen. Each switch is independent."
+msgstr ""
+"Diese Optionen stehen auf dem Bildschirm Extras. Jeder Schalter ist "
+"unabhängig."
 
 #: includes/settings/content/content.php:298
 msgid "Thumbnail size name, or none to hide images."
@@ -3267,6 +4108,16 @@ msgstr "TMS Core Essentials"
 msgid "Toggle"
 msgstr "Umschalten"
 
+#: includes/settings/content/developers.php:772
+msgid ""
+"Toolbar root. Pair it with data-tcres-query-listing-id. Include only the "
+"filters, the search field, the order select, and the count you want. With no "
+"order select, the order from register is used."
+msgstr ""
+"Wurzel der Leiste. Mit data-tcres-query-listing-id koppeln. Nur die "
+"gewünschten Filter, das Suchfeld, die Sortierauswahl und die Zählung "
+"aufnehmen. Ohne Sortierauswahl gilt die Reihenfolge aus der Registrierung."
+
 #: includes/settings/content/social.php:620
 msgid ""
 "Tooltip / title attribute for the chat trigger and buttons. Leave empty to "
@@ -3284,7 +4135,7 @@ msgstr ""
 msgid "Translatable: saved for the current admin language."
 msgstr "Übersetzbar: gespeichert für die aktuelle Admin-Sprache."
 
-#: includes/settings/content/privacy.php:190
+#: includes/settings/content/privacy.php:317
 msgid "Trigger text"
 msgstr "Trigger-Text"
 
@@ -3296,54 +4147,71 @@ msgstr "Tumàs Muntané"
 msgid "unknown"
 msgstr "unbekannt"
 
-#: includes/settings/content/developers.php:410
-#: includes/settings/content/developers.php:682
+#: includes/settings/content/developers.php:430
+#: includes/settings/content/developers.php:1067
 msgid "Update post meta"
 msgstr "Beitrags-Meta aktualisieren"
 
-#: includes/settings/content/developers.php:445
-#: includes/settings/content/developers.php:683
+#: includes/settings/content/developers.php:465
+#: includes/settings/content/developers.php:1068
 msgid "Update term meta"
 msgstr "Term-Meta aktualisieren"
 
-#: includes/settings/option.php:135
+#: includes/settings/option.php:172
 msgid "Updates"
 msgstr "Updates"
 
-#: includes/modules/fields/hero.php:331
+#: includes/modules/fields/hero.php:365
 msgid "URL"
 msgstr "URL"
 
-#: includes/settings/content/developers.php:616
+#: includes/settings/content/developers.php:884
 msgid "URL behaviour"
 msgstr "URL-Verhalten"
 
 #: includes/settings/content/content.php:276
 #: includes/settings/content/content.php:608
 #: includes/settings/content/content.php:1026
-#: includes/settings/content/admin.php:570
+#: includes/settings/content/admin.php:658
 #: includes/settings/content/fields.php:159
-#: includes/settings/content/fields.php:193
-#: includes/settings/content/fields.php:243
-#: includes/settings/content/fields.php:323
-#: includes/settings/content/privacy.php:130
+#: includes/settings/content/fields.php:226
+#: includes/settings/content/fields.php:281
+#: includes/settings/content/fields.php:361
+#: includes/settings/content/privacy.php:243
 #: includes/settings/content/social.php:13
 #: includes/settings/content/social.php:133
 msgid "Usage"
 msgstr "Verwendung"
 
-#: includes/settings/content/developers.php:625
+#: includes/settings/content/developers.php:893
 msgid ""
 "Use button type=\"button\" for tabs (recommended). Anchors with href=\"#tab-"
-"id\" and the same data attributes also work. Style .tcres-tab in the theme; "
-"the plugin ships only structural panel CSS."
+"id\" and the same data attributes also work. Style .tab in the theme; the "
+"plugin ships only structural panel CSS."
 msgstr ""
 "Verwenden Sie button type=\"button\" für Tabs (empfohlen). Links mit "
 "href=\"#tab-id\" und denselben data-Attributen funktionieren ebenfalls. "
-"Gestalten Sie .tcres-tab im Theme; das Plugin liefert nur strukturelles "
-"Panel-CSS."
+"Gestalten Sie .tab im Theme; das Plugin liefert nur strukturelles Panel-CSS."
 
-#: includes/settings/content/developers.php:609
+#: includes/settings/content/developers.php:410
+msgid ""
+"Use on output only. When saving from the admin, use tcres_post_meta_update( ."
+".., 'html' ) for wp_kses_post sanitization; call this function when echoing "
+"the value."
+msgstr ""
+"Nur bei der Ausgabe verwenden. Verwenden Sie beim Speichern im Admin "
+"tcres_post_meta_update( ..., 'html' ) für die Bereinigung mit wp_kses_post; "
+"rufen Sie diese Funktion auf, wenn Sie den Wert ausgeben."
+
+#: includes/settings/content/developers.php:848
+msgid ""
+"Use the theme text domain on the empty and error HTML. A file path passed as "
+"render_item must live under wp-content."
+msgstr ""
+"Nutzen Sie die Text Domain des Themes für das Leer- und Fehler-HTML. Ein "
+"Dateipfad als render_item muss unter wp-content liegen."
+
+#: includes/settings/content/developers.php:877
 msgid ""
 "Use the WAI-ARIA tabs pattern. Active state uses .is-active on tabs and "
 "panels."
@@ -3364,7 +4232,7 @@ msgid "Username"
 msgstr "Benutzername"
 
 #. %s: Post type label.
-#: includes/settings/content/admin.php:28
+#: includes/settings/content/admin.php:29
 #, php-format
 msgid "Uses the classic editor for the %s post type."
 msgstr "Verwendet den klassischen Editor für den Beitragstyp %s."
@@ -3377,20 +4245,20 @@ msgstr ""
 "Verwendet das Site-Icon als Anmeldelogo und verweist Link und Titel des "
 "Logos automatisch auf Startseite und Seitennamen."
 
-#: includes/settings/content/admin.php:806
+#: includes/settings/content/admin.php:894
 msgid "Utilities"
 msgstr "Hilfsmittel"
 
-#: includes/settings/content/admin.php:817
+#: includes/settings/content/admin.php:905
 msgid "Utilities options"
 msgstr "Hilfsmittel-Optionen"
 
 #: includes/settings/content/developers.php:277
-#: includes/settings/content/developers.php:661
+#: includes/settings/content/developers.php:1045
 msgid "Validate image size"
 msgstr "Bildgröße prüfen"
 
-#: includes/settings/content/developers.php:529
+#: includes/settings/content/developers.php:549
 msgid "Value already passed through sanitize_text_field."
 msgstr "Wert bereits durch sanitize_text_field verarbeitet."
 
@@ -3400,7 +4268,11 @@ msgstr ""
 "Viewport-Höhen gescrollt, bevor die Schaltfläche erscheint (1 = ein "
 "Bildschirm)."
 
-#: includes/modules/extras/shortcodes.php:232
+#: includes/settings/content/developers.php:1008
+msgid "Vimeo embed by video ID."
+msgstr "Vimeo-Einbettung per Video-ID."
+
+#: includes/modules/extras/shortcodes.php:260
 msgid "Vimeo video"
 msgstr "Vimeo-Video"
 
@@ -3416,7 +4288,7 @@ msgstr "Plugin-Website besuchen"
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: includes/settings/content/fields.php:371
+#: includes/settings/content/fields.php:409
 msgid ""
 "When a featured video is set, Hero uses it as the background. If a "
 "featured/term image is also set, it is used as the video poster."
@@ -3430,6 +4302,28 @@ msgstr ""
 "Wenn deaktiviert, bleibt die Schaltfläche am unteren Rand des Viewports "
 "fixiert."
 
+#: includes/settings/content/extras.php:78
+msgid ""
+"When enabled, Choices (CSS + JS) is registered and printed when a script "
+"depends on tcres-choices or the theme enqueues that handle. Add tcres-"
+"choices to your script dependencies and use window.Choices."
+msgstr ""
+"Wenn aktiviert, wird Choices (CSS + JS) registriert und ausgegeben, wenn ein "
+"Skript von tcres-choices abhängt oder das Theme diesen Handle einreiht. "
+"Fügen Sie tcres-choices zu den Skript-Abhängigkeiten hinzu und verwenden Sie "
+"window.Choices."
+
+#: includes/settings/content/extras.php:72
+msgid ""
+"When enabled, GLightbox (CSS + JS) is registered and printed when a script "
+"depends on tcres-glightbox or the theme enqueues that handle. Add tcres-"
+"glightbox to your script dependencies and use window.GLightbox."
+msgstr ""
+"Wenn aktiviert, wird GLightbox (CSS + JS) registriert und ausgegeben, wenn "
+"ein Skript von tcres-glightbox abhängt oder das Theme diesen Handle einreiht."
+" Fügen Sie tcres-glightbox zu den Skript-Abhängigkeiten hinzu und verwenden "
+"Sie window.GLightbox."
+
 #: includes/settings/content/social.php:134
 msgid ""
 "When enabled, print the share buttons from the theme. The shortcode has no "
@@ -3439,6 +4333,17 @@ msgstr ""
 "Wenn aktiviert, gibt die Teilen-Schaltflächen aus dem Theme aus. Der "
 "Shortcode hat keine Attribute, nutzt die Panel-Einstellungen und ignoriert "
 "die Filter „Anzeigen auf“ (Platzierung ist beabsichtigt):"
+
+#: includes/settings/content/extras.php:66
+msgid ""
+"When enabled, Swiper (CSS + JS) is registered and printed when a script "
+"depends on tcres-swiper or the theme enqueues that handle. Add tcres-swiper "
+"to your script dependencies and use window.Swiper."
+msgstr ""
+"Wenn aktiviert, wird Swiper (CSS + JS) registriert und ausgegeben, wenn ein "
+"Skript von tcres-swiper abhängt oder das Theme diesen Handle einreiht. Fügen "
+"Sie tcres-swiper zu den Skript-Abhängigkeiten hinzu und verwenden Sie window."
+"Swiper."
 
 #: includes/settings/content/social.php:14
 msgid ""
@@ -3451,7 +4356,7 @@ msgstr ""
 "Theme aus. Der Shortcode hat keine Attribute und verwendet immer die Panel-"
 "Einstellungen:"
 
-#: includes/settings/content/admin.php:571
+#: includes/settings/content/admin.php:659
 msgid ""
 "When enabled, the terms list gains a drag handle and the term edit screen "
 "gets a numeric Order field. Order is stored in term meta:"
@@ -3460,7 +4365,7 @@ msgstr ""
 "Bearbeitungsbildschirm ein numerisches Feld Reihenfolge. Die Reihenfolge "
 "wird in Term-Meta gespeichert:"
 
-#: includes/settings/content/fields.php:232
+#: includes/settings/content/fields.php:270
 msgid ""
 "When Hero is enabled for the same post type or taxonomy as Subtitle, the "
 "standalone Subtitle field is hidden."
@@ -3472,7 +4377,17 @@ msgstr ""
 msgid "Which posts appear in the metabox selectors."
 msgstr "Welche Beiträge in den Metabox-Auswahllisten erscheinen."
 
-#: includes/settings/content/admin.php:651
+#: includes/settings/content/developers.php:841
+msgid ""
+"Whitelist of orderby values for the order control. date, title, and "
+"menu_order are included by default. Add the matching option in the select, "
+"for example modified|DESC."
+msgstr ""
+"Whitelist der orderby-Werte für die Sortierung. date, title und menu_order "
+"sind standardmäßig enthalten. Fügen Sie die passende Option im Select hinzu, "
+"zum Beispiel modified|DESC."
+
+#: includes/settings/content/admin.php:739
 msgid "Who can upload"
 msgstr "Wer hochladen darf"
 
@@ -3484,19 +4399,49 @@ msgstr ""
 "Breitenregel: array( 'size' => int, 'operator' => '>' | '>=' | '<' | '<=' | "
 "'==' )."
 
-#: includes/settings/option.php:132
+#: includes/settings/content/developers.php:920
+msgid ""
+"With the switch on, the files stay registered and print when a queued script "
+"is that handle, or depends on it, including through another dependency. CSS "
+"uses the same handle. This plugin prints the stylesheet when it sees the "
+"script handle, so the theme only declares the script dependency."
+msgstr ""
+"Ist der Schalter an, bleiben die Dateien registriert und werden ausgegeben, "
+"wenn ein eingereihtes Skript dieser Handle ist oder davon abhängt, auch über "
+"eine andere Abhängigkeit. Das CSS verwendet denselben Handle. Dieses Plugin "
+"gibt das Stylesheet aus, wenn es den Skript-Handle sieht, sodass das Theme "
+"nur die Skript-Abhängigkeit deklariert."
+
+#: includes/settings/option.php:169
 msgid "WordPress logo"
 msgstr "WordPress-Logo"
 
-#: includes/settings/content/privacy.php:76
+#: includes/settings/content/developers.php:962
+msgid ""
+"wp_enqueue_script( 'tcres-swiper' ) also prints that library. The same "
+"pattern uses tcres-glightbox and tcres-choices."
+msgstr ""
+"wp_enqueue_script( 'tcres-swiper' ) gibt diese Bibliothek ebenfalls aus. "
+"Dasselbe Muster verwendet tcres-glightbox und tcres-choices."
+
+#: includes/settings/content/privacy.php:197
 msgid "WPForms forms"
 msgstr "WPForms-Formulare"
 
+#: includes/settings/content/developers.php:1005
 #: includes/settings/content/extras.php:324
 msgid "Wrap content in highlighted markup."
 msgstr "Umschließt Inhalt mit hervorgehobenem Markup."
 
-#: includes/settings/content/fields.php:199
+#: includes/settings/content/developers.php:792
+msgid ""
+"Wrapper around the term filters. Set data-tcres-query-listing-relation on it."
+" Default AND."
+msgstr ""
+"Wrapper um die Term-Filter. Setzen Sie darauf data-tcres-query-listing-"
+"relation. Standard AND."
+
+#: includes/settings/content/fields.php:232
 msgid "Wrapper tag: header (default), section or div."
 msgstr "Wrapper-Tag: header (Standard), section oder div."
 
@@ -3522,7 +4467,11 @@ msgstr "Sie dürfen diesen Beitrag nicht duplizieren."
 msgid "You are not allowed to upload SVG files."
 msgstr "Sie dürfen keine SVG-Dateien hochladen."
 
-#: includes/modules/extras/shortcodes.php:215
+#: includes/settings/content/developers.php:1007
+msgid "YouTube embed by video ID."
+msgstr "YouTube-Einbettung per Video-ID."
+
+#: includes/modules/extras/shortcodes.php:243
 msgid "YouTube video"
 msgstr "YouTube-Video"
 

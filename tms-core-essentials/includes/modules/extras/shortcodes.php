@@ -239,7 +239,7 @@ function tcres_shortcode_youtube( $atts ): string {
 	$id = tcres_shortcodes_sanitize_embed_id( $atts['id'] );
 	if ( $id === '' ) return '';
 
-	return '<div class="tcres-embed tcres-embed-youtube">'
+	return '<div class="tcres-embed youtube">'
 		. '<iframe src="https://www.youtube.com/embed/' . esc_attr( $id ) . '" title="' . esc_attr__( 'YouTube video', 'tms-core-essentials' ) . '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>'
 		. '</div>';
 }
@@ -256,7 +256,7 @@ function tcres_shortcode_vimeo( $atts ): string {
 	$id = tcres_shortcodes_sanitize_embed_id( $atts['id'] );
 	if ( $id === '' ) return '';
 
-	return '<div class="tcres-embed tcres-embed-vimeo">'
+	return '<div class="tcres-embed vimeo">'
 		. '<iframe src="https://player.vimeo.com/video/' . esc_attr( $id ) . '" title="' . esc_attr__( 'Vimeo video', 'tms-core-essentials' ) . '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>'
 		. '</div>';
 }

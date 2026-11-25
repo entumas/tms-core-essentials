@@ -335,7 +335,7 @@ function tcres_sitemap_get_posts_for_post_type( string $post_type, string $lang 
 function tcres_sitemap_render_post_links( array $posts ): string {
 	if ( empty( $posts ) ) return '';
 
-	$html = '<ul class="tcres-sitemap-posts">';
+	$html = '<ul class="posts">';
 	foreach ( $posts as $post ) :
 		if ( ! $post instanceof WP_Post ) continue;
 		$html .= '<li><a href="' . esc_url( get_permalink( $post ) ) . '">' . esc_html( get_the_title( $post ) ) . '</a></li>';
@@ -399,8 +399,8 @@ function tcres_sitemap_render_post_type_section( string $post_type, array $cfg, 
 
 	if ( $show_tax ) :
 		$ul_class = $taxonomy === 'category'
-			? 'tcres-sitemap-categories tcres-sitemap-post-type-' . sanitize_html_class( $post_type )
-			: 'tcres-sitemap-terms tcres-sitemap-terms-' . sanitize_html_class( $taxonomy ) . ' tcres-sitemap-post-type-' . sanitize_html_class( $post_type );
+			? 'categories post-type-' . sanitize_html_class( $post_type )
+			: 'terms terms-' . sanitize_html_class( $taxonomy ) . ' post-type-' . sanitize_html_class( $post_type );
 		return '<ul class="' . esc_attr( $ul_class ) . '">' . $inner . '</ul>';
 	endif;
 
@@ -434,7 +434,7 @@ function tcres_sitemap_build_page_list_item( WP_Post $page, int $depth, array $a
 				$sub .= tcres_sitemap_build_page_list_item( $child, $depth + 1, $args, $lang );
 			endforeach;
 			if ( $sub !== '' ) :
-				$extra .= '<ul class="tcres-sitemap-pages">' . $sub . '</ul>';
+				$extra .= '<ul class="pages">' . $sub . '</ul>';
 			endif;
 		endif;
 	endif;
@@ -471,7 +471,7 @@ function tcres_sitemap_get( array $args = array() ): string {
 	$list = apply_filters( 'tcres_sitemap_list_html', $list, $config );
 	if ( ! is_string( $list ) ) $list = '';
 
-	$inner = '<ul class="tcres-sitemap-root">' . $list . '</ul>';
+	$inner = '<ul class="root">' . $list . '</ul>';
 
 	$class = 'tcres-sitemap';
 	if ( empty( $config['show_list_bullets'] ) ) $class .= ' is-no-bullets';

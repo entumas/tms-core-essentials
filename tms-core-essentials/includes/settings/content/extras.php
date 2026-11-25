@@ -63,19 +63,19 @@ function tcres_settings_extras_render_external_scripts_panel(): void {
 			'id'          => 'tcres-external-scripts-swiper',
 			'key'         => 'swiper',
 			'title'       => 'Swiper.js',
-			'description' => __( 'Loads Swiper.js (CSS + JS) on the frontend. Use window.Swiper from your theme.', 'tms-core-essentials' ),
+			'description' => __( 'When enabled, Swiper (CSS + JS) is registered and printed when a script depends on tcres-swiper or the theme enqueues that handle. Add tcres-swiper to your script dependencies and use window.Swiper.', 'tms-core-essentials' ),
 		),
 		array(
 			'id'          => 'tcres-external-scripts-glightbox',
 			'key'         => 'glightbox',
 			'title'       => 'GLightbox.js',
-			'description' => __( 'Loads GLightbox.js (CSS + JS) on the frontend. Use window.GLightbox from your theme.', 'tms-core-essentials' ),
+			'description' => __( 'When enabled, GLightbox (CSS + JS) is registered and printed when a script depends on tcres-glightbox or the theme enqueues that handle. Add tcres-glightbox to your script dependencies and use window.GLightbox.', 'tms-core-essentials' ),
 		),
 		array(
 			'id'          => 'tcres-external-scripts-choices',
 			'key'         => 'choices',
 			'title'       => 'Choices.js',
-			'description' => __( 'Loads Choices.js (CSS + JS) on the frontend. Use window.Choices from your theme.', 'tms-core-essentials' ),
+			'description' => __( 'When enabled, Choices (CSS + JS) is registered and printed when a script depends on tcres-choices or the theme enqueues that handle. Add tcres-choices to your script dependencies and use window.Choices.', 'tms-core-essentials' ),
 		),
 	);
 	?>

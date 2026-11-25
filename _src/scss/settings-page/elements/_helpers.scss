@@ -36,10 +36,15 @@
 			gap: 8px 12px;
 			align-items: start;
 
+			> li {
+				min-width: 0;
+			}
+
 			.has-checkbox {
 				display: flex;
 				min-width: 0;
 				width: 100%;
+				overflow-wrap: anywhere;
 			}
 		}
 	}

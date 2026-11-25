@@ -7,7 +7,7 @@
 	text-align: center;
 
 
-	&-buttons {
+	.buttons {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -21,7 +21,7 @@
 	}
 
 
-	&-button {
+	.button {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -53,7 +53,7 @@
 		&.copy { color: $color--gray-700; }
 
 
-		&.is-copied &-name {
+		&.is-copied .name {
 			opacity: .9;
 		}
 	}

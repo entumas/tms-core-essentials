@@ -267,11 +267,11 @@ function tcres_share_content_get_button(
 		? __( 'Share this on', 'tms-core-essentials' )
 		: '';
 	$prefix_class = $show_text
-		? 'tcres-share-content-button-share-text'
-		: 'tcres-share-content-button-share-text screen-reader-text';
+		? 'share-text'
+		: 'share-text screen-reader-text';
 	$name_class = $show_name
-		? 'tcres-share-content-button-name'
-		: 'tcres-share-content-button-name screen-reader-text';
+		? 'name'
+		: 'name screen-reader-text';
 
 	$text_html  = '<span class="' . esc_attr( $prefix_class ) . '">' . esc_html( $share_prefix ) . '</span>';
 	$text_html .= '<span class="' . esc_attr( $name_class ) . '">' . esc_html( $label ) . '</span>';
@@ -282,7 +282,7 @@ function tcres_share_content_get_button(
 		$attr_html .= ' ' . esc_attr( (string) $attr_key ) . '="' . esc_attr( (string) $attr_value ) . '"';
 	endforeach;
 
-	$classes = trim( 'tcres-share-content-button ' . $network_class );
+	$classes = trim( 'button ' . $network_class );
 
 	return '<a class="' . esc_attr( $classes ) . '" href="' . esc_url( $href ) . '"' . $attr_html . '>'
 		. $icon_html
@@ -447,7 +447,7 @@ function tcres_share_content_get( bool $respect_show_on = true ): string {
 
 	if ( $buttons === '' ) return '';
 
-	$buttons_class = 'tcres-share-content-buttons';
+	$buttons_class = 'buttons';
 	if ( ! empty( $group['buttons_vertical'] ) ) :
 		$buttons_class .= ' is-vertical';
 	endif;
@@ -461,7 +461,7 @@ function tcres_share_content_get( bool $respect_show_on = true ): string {
 		if ( $share_title === '' ) :
 			$share_title = tcres_share_content_default_title();
 		endif;
-		$output .= '<p class="tcres-share-content-title">' . esc_html( $share_title ) . '</p>';
+		$output .= '<p class="title">' . esc_html( $share_title ) . '</p>';
 	endif;
 
 	$output .= '<div class="' . esc_attr( $buttons_class ) . '">' . $buttons . '</div>';

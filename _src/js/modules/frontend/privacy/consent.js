@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 
-const ERROR_CLASS = 'tcres-privacy-consent-error'
+const ERROR_CLASS = 'error'
 
 
 const getErrorMessage = ( checkbox ) => {

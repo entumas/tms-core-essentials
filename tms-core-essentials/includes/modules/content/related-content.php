@@ -156,7 +156,7 @@ function tcres_related_content_get_item_taxonomies_html(
 			if ( ! ( $term instanceof WP_Term ) ) continue;
 			$url = get_term_link( $term );
 			if ( is_wp_error( $url ) ) continue;
-			$term_links[] = '<a class="tcres-related-content-term" data-taxonomy="' . esc_attr( $taxonomy ) . '" href="' . esc_url( $url ) . '">'
+			$term_links[] = '<a class="term" data-taxonomy="' . esc_attr( $taxonomy ) . '" href="' . esc_url( $url ) . '">'
 				. esc_html( $term->name )
 				. '</a>';
 		endforeach;
@@ -176,7 +176,7 @@ function tcres_related_content_get_item_taxonomies_html(
 
 	if ( empty( $groups ) ) return '';
 
-	$html = '<div class="tcres-related-content-taxonomies tcres-related-content-taxonomies-' . esc_attr( $display ) . '">';
+	$html = '<div class="taxonomies ' . esc_attr( $display ) . '">';
 
 	if ( $display === 'mixed' ) :
 		$all_links = array();
@@ -185,15 +185,15 @@ function tcres_related_content_get_item_taxonomies_html(
 				$all_links[] = $link;
 			endforeach;
 		endforeach;
-		$html .= implode( ' <span class="tcres-related-content-term-separator" aria-hidden="true">·</span> ', $all_links );
+		$html .= implode( ' <span class="separator" aria-hidden="true">·</span> ', $all_links );
 	else :
 		foreach ( $groups as $group ) :
-			$html .= '<div class="tcres-related-content-taxonomy" data-taxonomy="' . esc_attr( $group['taxonomy'] ) . '">';
+			$html .= '<div class="taxonomy" data-taxonomy="' . esc_attr( $group['taxonomy'] ) . '">';
 			if ( $show_labels ) :
-				$html .= '<span class="tcres-related-content-taxonomy-label">' . esc_html( $group['label'] ) . '</span>';
+				$html .= '<span class="label">' . esc_html( $group['label'] ) . '</span>';
 			endif;
-			$html .= '<span class="tcres-related-content-taxonomy-terms">'
-				. implode( ' <span class="tcres-related-content-term-separator" aria-hidden="true">·</span> ', $group['links'] )
+			$html .= '<span class="terms">'
+				. implode( ' <span class="separator" aria-hidden="true">·</span> ', $group['links'] )
 				. '</span>';
 			$html .= '</div>';
 		endforeach;
@@ -551,7 +551,7 @@ function tcres_related_content_get( array $args = array() ): string {
 	$class = 'tcres-related-content';
 	$count = count( $ids );
 	if ( $count > 1 ) :
-		$class .= ' tcres-related-content-grid-' . $count;
+		$class .= ' grid-' . $count;
 	endif;
 	if ( isset( $args['class'] ) ) :
 		$extra = trim( preg_replace( '/\s+/', ' ', (string) $args['class'] ) ?? '' );
@@ -582,16 +582,16 @@ function tcres_related_content_get( array $args = array() ): string {
 		$query->the_post();
 		$item_id = (int) get_the_ID();
 
-		$html .= '<div class="tcres-related-content-item">';
+		$html .= '<div class="item">';
 		if ( $image_size !== 'none' && has_post_thumbnail( $item_id ) ) :
-			$html .= '<div class="tcres-related-content-image">'
+			$html .= '<div class="image">'
 				. get_the_post_thumbnail( $item_id, $image_size )
 				. '</div>';
 		endif;
 
-		$html .= '<div class="tcres-related-content-content">';
+		$html .= '<div class="content">';
 
-		$html .= '<' . $title_tag . ' class="tcres-related-content-title">'
+		$html .= '<' . $title_tag . ' class="title">'
 			. '<a href="' . esc_url( get_permalink( $item_id ) ) . '">' . esc_html( get_the_title( $item_id ) ) . '</a>'
 			. '</' . $title_tag . '>';
 
@@ -607,12 +607,12 @@ function tcres_related_content_get( array $args = array() ): string {
 		if ( $show_excerpt ) :
 			$excerpt = get_the_excerpt( $item_id );
 			if ( is_string( $excerpt ) && $excerpt !== '' ) :
-				$html .= '<p class="tcres-related-content-excerpt">' . esc_html( $excerpt ) . '</p>';
+				$html .= '<p class="excerpt">' . esc_html( $excerpt ) . '</p>';
 			endif;
 		endif;
 
 		if ( $show_button ) :
-			$html .= '<a class="tcres-related-content-button" href="' . esc_url( get_permalink( $item_id ) ) . '">'
+			$html .= '<a class="button" href="' . esc_url( get_permalink( $item_id ) ) . '">'
 				. esc_html( $button_label )
 				. '</a>';
 		endif;

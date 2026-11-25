@@ -79,8 +79,8 @@ const parseTransitionTime = ( value ) => {
 
 
 const getModalTransitionMs = ( modal ) => {
-	const dialog = modal.querySelector( '.tcres-modal-dialog' )
-	const backdrop = modal.querySelector( '.tcres-modal-backdrop' )
+	const dialog = modal.querySelector( '.dialog' )
+	const backdrop = modal.querySelector( '.backdrop' )
 	const nodes = [ dialog, backdrop ].filter( Boolean )
 
 	if ( ! nodes.length ) return 300
@@ -96,8 +96,8 @@ const getModalTransitionMs = ( modal ) => {
 
 
 const waitForModalTransition = ( modal, callback ) => {
-	const dialog = modal.querySelector( '.tcres-modal-dialog' )
-	const backdrop = modal.querySelector( '.tcres-modal-backdrop' )
+	const dialog = modal.querySelector( '.dialog' )
+	const backdrop = modal.querySelector( '.backdrop' )
 	const targets = [ dialog, backdrop ].filter( Boolean )
 	let done = false
 
@@ -212,7 +212,7 @@ export const tcresShowModal = ( target ) => {
 	el.setAttribute( 'aria-hidden', 'false' )
 
 	const focusDialog = () => {
-		const dialog = el.querySelector( '.tcres-modal-dialog' )
+		const dialog = el.querySelector( '.dialog' )
 		if ( ! dialog ) return
 
 		if ( ! dialog.hasAttribute( 'tabindex' ) ) {

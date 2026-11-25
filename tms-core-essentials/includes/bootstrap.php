@@ -32,6 +32,7 @@ add_action( 'plugins_loaded', function (): void {
 	tcres_include_file( 'api/get-tax-field.php' );
 	tcres_include_file( 'api/update-post-meta.php' );
 	tcres_include_file( 'api/update-term-meta.php' );
+	tcres_include_file( 'api/query-listing.php' );
 
 
 	// Settings defaults helpers ========================================
@@ -120,5 +121,6 @@ add_action( 'plugins_loaded', function (): void {
 	// Integrations ========================================
 
 	tcres_include_file( 'integrations/contact-form-7.php' );
+	tcres_include_file( 'integrations/fluentform.php' );
 
 }, 20 );

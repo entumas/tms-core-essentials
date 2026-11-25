@@ -6,7 +6,7 @@
 .tcres-collapse {
 
 
-	&-title {
+	.title {
 		position: relative;
 		padding-right: 24px;
 
@@ -35,7 +35,7 @@
 	}
 
 
-	&-content {
+	.content {
 		overflow: hidden !important;
 		max-height: 0;
 		padding: 0;

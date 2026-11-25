@@ -139,7 +139,7 @@ function tcres_breadcrumb_home_item( array $config, bool $is_current ): ?array {
 		$label,
 		$is_current ? '' : home_url( '/' ),
 		$icon,
-		'tcres-breadcrumbs-home',
+		'home',
 		$sr_only
 	);
 }
@@ -496,7 +496,7 @@ function tcres_breadcrumb_render_html( array $items, array $config ): string {
 		$list_html .= '<li' . $li_attrs . '>' . $inner;
 		$list_html .= '<meta itemprop="position" content="' . esc_attr( (string) $position ) . '" />';
 		if ( ! $is_last ) :
-			$list_html .= '<span class="tcres-breadcrumbs-separator" aria-hidden="true">' . esc_html( $separator ) . '</span>';
+			$list_html .= '<span class="separator" aria-hidden="true">' . esc_html( $separator ) . '</span>';
 		endif;
 		$list_html .= '</li>';
 	endforeach;

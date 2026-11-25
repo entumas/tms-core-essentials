@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       TMS Core Essentials
  * Plugin URI:        https://github.com/entumas/tms-core-essentials
- * Description:       Core utilities and shared essentials for TMS WordPress projects.
- * Version:           1.0.0
+ * Description:       Core utilities and shared essentials forWordPress projects.
+ * Version:           1.1.0
  * Author:            Tumàs Muntané
  * Author URI:        https://tumasmuntane.com/
  * Text Domain:       tms-core-essentials

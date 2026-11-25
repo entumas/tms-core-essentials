@@ -14,7 +14,7 @@
 	align-items: center;
 
 
-	&-trigger {
+	.trigger {
 		box-sizing: border-box;
 		display: flex;
 		justify-content: center;
@@ -34,7 +34,7 @@
 	}
 
 
-	&-buttons {
+	.buttons {
 		display: flex;
 		flex-direction: column-reverse;
 		justify-content: space-between;
@@ -66,15 +66,15 @@
 			transform .3s ease-out;
 		cursor: pointer;
 
-		&.tcres-chat-button-whatsapp {
+		&.whatsapp {
 			background-color: $color-whatsapp;
 		}
 
-		&.tcres-chat-button-telegram {
+		&.telegram {
 			background-color: $color-telegram;
 		}
 
-		&.tcres-chat-button-messenger {
+		&.messenger {
 			background-color: $color-messenger;
 		}
 	}

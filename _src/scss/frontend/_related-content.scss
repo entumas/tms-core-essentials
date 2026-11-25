@@ -10,14 +10,14 @@
 	gap: 1em;
 
 
-	&-item {
+	.item {
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 0;
 	}
 
 
-	&-image {
+	.image {
 		overflow: hidden;
 
 
@@ -29,7 +29,7 @@
 	}
 
 
-	&-content {
+	.content {
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 auto;

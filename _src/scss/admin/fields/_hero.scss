@@ -45,7 +45,8 @@
 
 
 	&-title,
-	&-url-wrap {
+	&-url-wrap,
+	&-class {
 		flex: 1 1 0;
 
 
@@ -107,7 +108,8 @@
 
 
 		&-title,
-		&-url-wrap {
+		&-url-wrap,
+		&-class {
 			flex: 1 1 100%;
 			width: 100%;
 		}

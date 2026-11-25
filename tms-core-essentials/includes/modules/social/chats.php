@@ -143,7 +143,7 @@ function tcres_chats_get_active_buttons( array $group ): array {
  * Build one chat button markup
  */
 function tcres_chats_get_button_html( string $id, string $href, string $label, string $extra_class, string $title ): string {
-	$classes = trim( 'tcres-chat-button tcres-chat-button-' . $id . ' ' . $extra_class );
+	$classes = trim( 'tcres-chat-button ' . $id . ' ' . $extra_class );
 	$icon    = tcres_svg_icon_get(
 		array(
 			'icon' => $id,
@@ -212,12 +212,12 @@ function tcres_chats_get(): string {
 		: '';
 
 	$output  = '<div id="tcres-chat" class="tcres-chat">';
-	$output .= '<button type="button" class="tcres-chat-trigger"' . $title_attr
+	$output .= '<button type="button" class="trigger"' . $title_attr
 		. ' aria-expanded="false" aria-controls="tcres-chat-buttons"'
 		. ' aria-label="' . esc_attr( $title !== '' ? $title : __( 'Open chat options', 'tms-core-essentials' ) ) . '">'
 		. $trigger_icon
 		. '</button>';
-	$output .= '<div id="tcres-chat-buttons" class="tcres-chat-buttons">' . $buttons_html . '</div>';
+	$output .= '<div id="tcres-chat-buttons" class="buttons">' . $buttons_html . '</div>';
 	$output .= '</div>';
 
 	return $output;

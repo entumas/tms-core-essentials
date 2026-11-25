@@ -105,7 +105,21 @@ function tcres_format_editor_content( string $html ): string {
 	$html = trim( $html );
 	if ( $html === '' ) return '';
 
-	return wp_kses_post( apply_filters( 'the_content', $html ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WordPress core hook.
+	// Run autop here. Form markup is often printed after the_content has already
+	// passed wpautop, so a nested the_content call would leave newlines as-is.
+	$wpautop_priority = has_filter( 'the_content', 'wpautop' );
+	if ( false !== $wpautop_priority ) :
+		remove_filter( 'the_content', 'wpautop', (int) $wpautop_priority );
+	endif;
+
+	$html = wpautop( $html );
+	$html = apply_filters( 'the_content', $html ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WordPress core hook.
+
+	if ( false !== $wpautop_priority ) :
+		add_filter( 'the_content', 'wpautop', (int) $wpautop_priority );
+	endif;
+
+	return wp_kses_post( $html );
 }
 
 
@@ -149,6 +163,15 @@ function tcres_get_kses_allowed_html(): array {
 	$allowed['source'] = array(
 		'src'  => true,
 		'type' => true,
+	);
+
+	$allowed['details'] = array(
+		'class' => true,
+		'open'  => true,
+	);
+
+	$allowed['summary'] = array(
+		'class' => true,
 	);
 
 	/**

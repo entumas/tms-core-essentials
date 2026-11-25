@@ -65,7 +65,7 @@ function tcres_social_menu_get(): string {
 			: '<span class="screen-reader-text">' . esc_html( $title ) . '</span>';
 
 		$items_html .= sprintf(
-			'<li class="tcres-menu-item menu-item-%1$d"><a href="%2$s"%3$s>%4$s%5$s</a></li>',
+			'<li class="item menu-item-%1$d"><a href="%2$s"%3$s>%4$s%5$s</a></li>',
 			$id,
 			esc_url( $url ),
 			$attr_title !== '' ? ' title="' . esc_attr( $attr_title ) . '"' : '',
@@ -78,7 +78,7 @@ function tcres_social_menu_get(): string {
 
 	$nav_class = 'tcres-social-navigation';
 	if ( $show_name ) :
-		$nav_class .= ' tcres-social-navigation-with-names';
+		$nav_class .= ' is-with-names';
 	endif;
 
 	return sprintf(

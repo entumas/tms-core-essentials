@@ -69,14 +69,14 @@ function tcres_settings_sanitize( $value ): array {
 				continue;
 			endif;
 
-			$out['disable_gutenberg']['keep_block_editor_on_templates'][ $post_type ] = array_values(
-				array_filter(
-					array_map( 'sanitize_key', $submitted ),
-					static function ( string $slug ) use ( $allowed ): bool {
-						return $slug !== '' && in_array( $slug, $allowed, true );
-					}
-				)
-			);
+			$keep_templates = array();
+			foreach ( $submitted as $submitted_template ) :
+				if ( ! is_scalar( $submitted_template ) ) continue;
+				$slug = (string) $submitted_template;
+				if ( $slug === '' || ! in_array( $slug, $allowed, true ) ) continue;
+				$keep_templates[] = $slug;
+			endforeach;
+			$out['disable_gutenberg']['keep_block_editor_on_templates'][ $post_type ] = array_values( array_unique( $keep_templates ) );
 		endforeach;
 
 		$disable_features = isset( $value['disable_features'] ) && is_array( $value['disable_features'] )
@@ -591,7 +591,13 @@ function tcres_settings_sanitize( $value ): array {
 				tcres_settings_module_taxonomy_toggles_defaults( 'tax_' )
 			),
 			'hero' => array_merge(
-				array( 'enable' => false ),
+				array(
+					'enable'               => false,
+					'disable_pretitle'     => false,
+					'disable_subtitle'     => false,
+					'disable_description'  => false,
+					'disable_buttons'      => false,
+				),
 				tcres_settings_module_post_type_toggles_defaults(),
 				tcres_settings_module_taxonomy_toggles_defaults( 'tax_' )
 			),
@@ -644,14 +650,14 @@ function tcres_settings_sanitize( $value ): array {
 		$submitted_templates = isset( $share['show_on_templates'] ) && is_array( $share['show_on_templates'] )
 			? $share['show_on_templates']
 			: array();
-		$out['share_content']['show_on_templates'] = array_values(
-			array_filter(
-				array_map( 'sanitize_key', $submitted_templates ),
-				static function ( string $slug ) use ( $allowed_templates ): bool {
-					return $slug !== '' && in_array( $slug, $allowed_templates, true );
-				}
-			)
-		);
+		$show_on_templates = array();
+		foreach ( $submitted_templates as $submitted_template ) :
+			if ( ! is_scalar( $submitted_template ) ) continue;
+			$slug = (string) $submitted_template;
+			if ( $slug === '' || ! in_array( $slug, $allowed_templates, true ) ) continue;
+			$show_on_templates[] = $slug;
+		endforeach;
+		$out['share_content']['show_on_templates'] = array_values( array_unique( $show_on_templates ) );
 
 		$allowed_archive_post_types = function_exists( 'tcres_settings_social_share_content_get_archive_post_types' )
 			? tcres_settings_social_share_content_get_archive_post_types()
@@ -831,6 +837,9 @@ function tcres_settings_sanitize( $value ): array {
 		$subscribe = isset( $privacy['subscribe'] )
 			? wp_kses_post( (string) $privacy['subscribe'] )
 			: '';
+		$hiring = isset( $privacy['hiring'] )
+			? wp_kses_post( (string) $privacy['hiring'] )
+			: '';
 		$comments = isset( $privacy['comments'] )
 			? wp_kses_post( (string) $privacy['comments'] )
 			: '';
@@ -852,6 +861,7 @@ function tcres_settings_sanitize( $value ): array {
 						'trigger'   => $trigger,
 						'contact'   => $contact,
 						'subscribe' => $subscribe,
+						'hiring'    => $hiring,
 						'comments'  => $comments,
 						'register'  => $register,
 						'checkout'  => $checkout,
@@ -863,6 +873,7 @@ function tcres_settings_sanitize( $value ): array {
 				$out['privacy_notice']['trigger']   = $trigger;
 				$out['privacy_notice']['contact']   = $contact;
 				$out['privacy_notice']['subscribe'] = $subscribe;
+				$out['privacy_notice']['hiring']    = $hiring;
 				$out['privacy_notice']['comments']  = $comments;
 				$out['privacy_notice']['register']  = $register;
 				$out['privacy_notice']['checkout']  = $checkout;
@@ -879,6 +890,9 @@ function tcres_settings_sanitize( $value ): array {
 				$out['privacy_notice']['subscribe'] = isset( $old_privacy['subscribe'] )
 					? wp_kses_post( (string) $old_privacy['subscribe'] )
 					: '';
+				$out['privacy_notice']['hiring'] = isset( $old_privacy['hiring'] )
+					? wp_kses_post( (string) $old_privacy['hiring'] )
+					: '';
 				$out['privacy_notice']['comments'] = isset( $old_privacy['comments'] )
 					? wp_kses_post( (string) $old_privacy['comments'] )
 					: '';
@@ -893,6 +907,7 @@ function tcres_settings_sanitize( $value ): array {
 			$out['privacy_notice']['trigger']   = $trigger;
 			$out['privacy_notice']['contact']   = $contact;
 			$out['privacy_notice']['subscribe'] = $subscribe;
+			$out['privacy_notice']['hiring']    = $hiring;
 			$out['privacy_notice']['comments']  = $comments;
 			$out['privacy_notice']['register']  = $register;
 			$out['privacy_notice']['checkout']  = $checkout;
@@ -916,6 +931,54 @@ function tcres_settings_sanitize( $value ): array {
 		$out['privacy_notice']['wpforms_subscribe_ids'] = array_values(
 			array_filter(
 				array_map( 'absint', $wpforms_subscribe_ids ),
+				static function ( int $id ): bool {
+					return $id > 0;
+				}
+			)
+		);
+
+		$wpforms_hiring_ids = isset( $privacy['wpforms_hiring_ids'] ) && is_array( $privacy['wpforms_hiring_ids'] )
+			? $privacy['wpforms_hiring_ids']
+			: array();
+		$out['privacy_notice']['wpforms_hiring_ids'] = array_values(
+			array_filter(
+				array_map( 'absint', $wpforms_hiring_ids ),
+				static function ( int $id ): bool {
+					return $id > 0;
+				}
+			)
+		);
+
+		$fluentform_contact_ids = isset( $privacy['fluentform_contact_ids'] ) && is_array( $privacy['fluentform_contact_ids'] )
+			? $privacy['fluentform_contact_ids']
+			: array();
+		$out['privacy_notice']['fluentform_contact_ids'] = array_values(
+			array_filter(
+				array_map( 'absint', $fluentform_contact_ids ),
+				static function ( int $id ): bool {
+					return $id > 0;
+				}
+			)
+		);
+
+		$fluentform_subscribe_ids = isset( $privacy['fluentform_subscribe_ids'] ) && is_array( $privacy['fluentform_subscribe_ids'] )
+			? $privacy['fluentform_subscribe_ids']
+			: array();
+		$out['privacy_notice']['fluentform_subscribe_ids'] = array_values(
+			array_filter(
+				array_map( 'absint', $fluentform_subscribe_ids ),
+				static function ( int $id ): bool {
+					return $id > 0;
+				}
+			)
+		);
+
+		$fluentform_hiring_ids = isset( $privacy['fluentform_hiring_ids'] ) && is_array( $privacy['fluentform_hiring_ids'] )
+			? $privacy['fluentform_hiring_ids']
+			: array();
+		$out['privacy_notice']['fluentform_hiring_ids'] = array_values(
+			array_filter(
+				array_map( 'absint', $fluentform_hiring_ids ),
 				static function ( int $id ): bool {
 					return $id > 0;
 				}

@@ -11,6 +11,7 @@ import { tcresPrivacyConsentInit } 							from './modules/frontend/privacy/conse
 import { tcresShareContentInit } 							from './modules/frontend/share-content.js'
 import { tcresChatsInit } 									from './modules/frontend/chats.js'
 import { tcresScrollToTopInit } 							from './modules/frontend/scroll-to-top.js'
+import { tcresQueryListingInit } 							from './modules/frontend/query-listing.js'
 
 
 window.tcresCollapseInit = tcresCollapseInit
@@ -22,6 +23,7 @@ window.tcresPrivacyConsentInit = tcresPrivacyConsentInit
 window.tcresShareContentInit = tcresShareContentInit
 window.tcresChatsInit = tcresChatsInit
 window.tcresScrollToTopInit = tcresScrollToTopInit
+window.tcresQueryListingInit = tcresQueryListingInit
 
 
 ;( () => {
@@ -35,6 +37,7 @@ window.tcresScrollToTopInit = tcresScrollToTopInit
 		tcresShareContentInit()
 		tcresChatsInit()
 		tcresScrollToTopInit()
+		tcresQueryListingInit()
 
 		if (
 			document.querySelector( '.woocommerce-checkout' ) ||

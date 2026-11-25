@@ -7,7 +7,7 @@ export function tcresChatsInit() {
 	const chat = document.getElementById( 'tcres-chat' )
 	if ( ! chat ) return
 
-	const trigger = chat.querySelector( '.tcres-chat-trigger' )
+	const trigger = chat.querySelector( '.trigger' )
 	if ( ! trigger ) return
 
 	trigger.addEventListener( 'click', () => {

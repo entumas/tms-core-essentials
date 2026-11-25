@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return array<int, string>
  */
 function tcres_privacy_notice_keys(): array {
-	return array( 'contact', 'subscribe', 'comments', 'register', 'checkout' );
+	return array( 'contact', 'subscribe', 'hiring', 'comments', 'register', 'checkout' );
 }
 
 
@@ -26,7 +26,6 @@ function tcres_privacy_notice_default_trigger(): string {
 
 /**
  * Trigger HTML for the current language (settings override or default).
- * Inline content only — collapse title must not wrap the label in <p>.
  */
 function tcres_privacy_notice_get_trigger(): string {
 	$stored = tcres_option_get( 'privacy_notice', 'trigger' );
@@ -75,28 +74,16 @@ function tcres_privacy_notice_get( array $args = array() ): string {
 	$content = tcres_privacy_notice_get_content( $notice );
 	if ( $content === '' ) return '';
 
-	$trigger     = tcres_privacy_notice_get_trigger();
-	$collapse_id = tcres_unique_id( 'tcres-collapse-' );
+	$trigger = tcres_privacy_notice_get_trigger();
 
 	ob_start();
 	?>
-	<div class="tcres-privacy-notice tcres-collapse">
-		<div
-			class="tcres-privacy-notice-trigger tcres-collapse-title"
-			role="button"
-			tabindex="0"
-			aria-expanded="false"
-			data-tcres-collapse-trigger
-			data-tcres-collapse-id="<?php echo esc_attr( $collapse_id ); ?>">
+	<details class="tcres-privacy-notice">
+		<summary>
 			<?php tcres_echo_html( $trigger ); ?>
-		</div>
-		<div
-			class="tcres-privacy-notice-content tcres-collapse-content"
-			data-tcres-collapse-target
-			data-tcres-collapse-id="<?php echo esc_attr( $collapse_id ); ?>">
-			<?php tcres_echo_html( $content ); ?>
-		</div>
-	</div>
+		</summary>
+		<?php tcres_echo_html( $content ); ?>
+	</details>
 	<?php
 
 	return (string) ob_get_clean();
@@ -157,6 +144,15 @@ add_action(
 			: array();
 		if ( in_array( $form_id, $subscribe_ids, true ) ) :
 			tcres_privacy_notice_render( 'subscribe' );
+			return;
+		endif;
+
+		$hiring_ids = tcres_option_get( 'privacy_notice', 'wpforms_hiring_ids' );
+		$hiring_ids = is_array( $hiring_ids )
+			? array_map( 'absint', $hiring_ids )
+			: array();
+		if ( in_array( $form_id, $hiring_ids, true ) ) :
+			tcres_privacy_notice_render( 'hiring' );
 		endif;
 	},
 	10,

@@ -7,14 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
- * @return array<int, string>
- */
-function tcres_settings_privacy_notice_keys(): array {
-	return array( 'contact', 'subscribe', 'comments', 'register', 'checkout' );
-}
-
-
-/**
  * Contact Form 7 active?
  */
 function tcres_settings_privacy_is_cf7_active(): bool {
@@ -31,6 +23,71 @@ function tcres_settings_privacy_is_cf7_active(): bool {
 			&& function_exists( 'is_plugin_active_for_network' )
 			&& is_plugin_active_for_network( 'contact-form-7/wp-contact-form-7.php' )
 		);
+}
+
+
+/**
+ * Fluent Forms active?
+ */
+function tcres_settings_privacy_is_fluentform_active(): bool {
+	if ( ! function_exists( 'is_plugin_active' ) ) :
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	endif;
+
+	return defined( 'FLUENTFORM' )
+		|| defined( 'FLUENTFORM_VERSION' )
+		|| function_exists( 'wpFluent' )
+		|| is_plugin_active( 'fluentform/fluentform.php' )
+		|| (
+			is_multisite()
+			&& function_exists( 'is_plugin_active_for_network' )
+			&& is_plugin_active_for_network( 'fluentform/fluentform.php' )
+		);
+}
+
+
+/**
+ * @return array<int, array{id: int, title: string}>
+ */
+function tcres_settings_privacy_get_fluentform_forms(): array {
+	if ( ! function_exists( 'wpFluent' ) ) return array();
+
+	$rows = wpFluent()
+		->table( 'fluentform_forms' )
+		->select( array( 'id', 'title' ) )
+		->orderBy( 'title', 'ASC' )
+		->get();
+
+	if ( is_object( $rows ) && method_exists( $rows, 'toArray' ) ) :
+		$rows = $rows->toArray();
+	elseif ( $rows instanceof Traversable ) :
+		$rows = iterator_to_array( $rows );
+	endif;
+
+	if ( ! is_array( $rows ) ) return array();
+
+	$forms = array();
+	foreach ( $rows as $row ) :
+		$id    = 0;
+		$title = '';
+		if ( is_object( $row ) ) :
+			$id    = isset( $row->id ) ? absint( $row->id ) : 0;
+			$title = isset( $row->title ) ? (string) $row->title : '';
+		elseif ( is_array( $row ) ) :
+			$id    = isset( $row['id'] ) ? absint( $row['id'] ) : 0;
+			$title = isset( $row['title'] ) ? (string) $row['title'] : '';
+		else :
+			continue;
+		endif;
+		if ( $id <= 0 ) continue;
+
+		$forms[] = array(
+			'id'    => $id,
+			'title' => $title,
+		);
+	endforeach;
+
+	return $forms;
 }
 
 
@@ -57,6 +114,60 @@ function tcres_settings_privacy_get_wpforms_forms(): array {
 
 
 /**
+ * @param array<int, array{id: int, title: string}> $forms
+ * @param array<int, int>                           $selected_ids
+ */
+function tcres_settings_privacy_render_form_checkboxes(
+	string $name,
+	string $id_prefix,
+	array $forms,
+	array $selected_ids,
+	string $heading,
+	string $empty_message
+): void {
+	$options = array();
+	foreach ( $forms as $form ) :
+		if ( ! is_array( $form ) || ! isset( $form['id'] ) ) continue;
+		$form_id = absint( $form['id'] );
+		if ( $form_id <= 0 ) continue;
+		$title = isset( $form['title'] ) ? (string) $form['title'] : '';
+		$options[] = array(
+			'id'    => $form_id,
+			'title' => $title !== ''
+				? $title
+				: '#' . $form_id,
+		);
+	endforeach;
+
+	if ( empty( $options ) ) :
+		?>
+		<p class="description"><?php echo esc_html( $empty_message ); ?></p>
+		<?php
+		return;
+	endif;
+	?>
+	<h4><?php echo esc_html( $heading ); ?></h4>
+	<ul class="checks" id="<?php echo esc_attr( $id_prefix ); ?>">
+		<?php foreach ( $options as $option ) : ?>
+			<?php $input_id = $id_prefix . '-' . $option['id']; ?>
+			<li>
+				<label class="has-checkbox" for="<?php echo esc_attr( $input_id ); ?>">
+					<input
+						type="checkbox"
+						id="<?php echo esc_attr( $input_id ); ?>"
+						name="<?php echo esc_attr( $name ); ?>[]"
+						value="<?php echo esc_attr( (string) $option['id'] ); ?>"
+						<?php checked( in_array( $option['id'], $selected_ids, true ) ); ?> />
+					<?php echo esc_html( $option['title'] ); ?>
+				</label>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<?php
+}
+
+
+/**
  * @param array<int, WP_Post> $forms
  * @param array<int, int>     $selected_ids
  */
@@ -66,38 +177,26 @@ function tcres_settings_privacy_render_wpforms_checkboxes(
 	array $forms,
 	array $selected_ids
 ): void {
-	if ( empty( $forms ) ) :
-		?>
-		<p class="description"><?php esc_html_e( 'No WPForms forms were found.', 'tms-core-essentials' ); ?></p>
-		<?php
-		return;
-	endif;
-	?>
-	<h4><?php esc_html_e( 'WPForms forms', 'tms-core-essentials' ); ?></h4>
-	<ul class="checks" id="<?php echo esc_attr( $id_prefix ); ?>">
-		<?php foreach ( $forms as $form ) : ?>
-			<?php
-			if ( ! $form instanceof WP_Post ) continue;
-			$form_id  = (int) $form->ID;
-			$input_id = $id_prefix . '-' . $form_id;
-			$label    = $form->post_title !== ''
+	$items = array();
+	foreach ( $forms as $form ) :
+		if ( ! $form instanceof WP_Post ) continue;
+		$form_id = (int) $form->ID;
+		$items[] = array(
+			'id'    => $form_id,
+			'title' => $form->post_title !== ''
 				? $form->post_title
-				: '#' . $form_id;
-			?>
-			<li>
-				<label class="has-checkbox" for="<?php echo esc_attr( $input_id ); ?>">
-					<input
-						type="checkbox"
-						id="<?php echo esc_attr( $input_id ); ?>"
-						name="<?php echo esc_attr( $name ); ?>[]"
-						value="<?php echo esc_attr( (string) $form_id ); ?>"
-						<?php checked( in_array( $form_id, $selected_ids, true ) ); ?> />
-					<?php echo esc_html( $label ); ?>
-				</label>
-			</li>
-		<?php endforeach; ?>
-	</ul>
-	<?php
+				: '#' . $form_id,
+		);
+	endforeach;
+
+	tcres_settings_privacy_render_form_checkboxes(
+		$name,
+		$id_prefix,
+		$items,
+		$selected_ids,
+		__( 'WPForms forms', 'tms-core-essentials' ),
+		__( 'No WPForms forms were found.', 'tms-core-essentials' )
+	);
 }
 
 
@@ -109,6 +208,20 @@ function tcres_settings_privacy_render_cf7_shortcode_hint( string $notice ): voi
 	<p class="description">
 		<?php esc_html_e( 'Contact Form 7 shortcode:', 'tms-core-essentials' ); ?>
 		<code><?php echo esc_html( $shortcode ); ?></code>
+	</p>
+	<?php
+}
+
+
+function tcres_settings_privacy_render_fluentform_shortcode_hint( string $notice ): void {
+	if ( ! tcres_settings_privacy_is_fluentform_active() ) return;
+
+	$shortcode = '[tcres-privacy-notice notice="' . $notice . '"]';
+	?>
+	<p class="description">
+		<?php esc_html_e( 'Fluent Forms shortcode (Custom HTML field):', 'tms-core-essentials' ); ?>
+		<code><?php echo esc_html( $shortcode ); ?></code>
+		<?php esc_html_e( 'If the form is also selected above, the notice is shown twice.', 'tms-core-essentials' ); ?>
 	</p>
 	<?php
 }
@@ -159,7 +272,21 @@ function tcres_settings_privacy_render_privacy_notice_panel(): void {
 	$wpforms_subscribe_ids = isset( $group['wpforms_subscribe_ids'] ) && is_array( $group['wpforms_subscribe_ids'] )
 		? array_map( 'absint', $group['wpforms_subscribe_ids'] )
 		: array();
+	$wpforms_hiring_ids    = isset( $group['wpforms_hiring_ids'] ) && is_array( $group['wpforms_hiring_ids'] )
+		? array_map( 'absint', $group['wpforms_hiring_ids'] )
+		: array();
 	$has_wpforms           = ! empty( $wpforms_forms ) || post_type_exists( 'wpforms' );
+	$fluentform_forms         = tcres_settings_privacy_get_fluentform_forms();
+	$fluentform_contact_ids   = isset( $group['fluentform_contact_ids'] ) && is_array( $group['fluentform_contact_ids'] )
+		? array_map( 'absint', $group['fluentform_contact_ids'] )
+		: array();
+	$fluentform_subscribe_ids = isset( $group['fluentform_subscribe_ids'] ) && is_array( $group['fluentform_subscribe_ids'] )
+		? array_map( 'absint', $group['fluentform_subscribe_ids'] )
+		: array();
+	$fluentform_hiring_ids    = isset( $group['fluentform_hiring_ids'] ) && is_array( $group['fluentform_hiring_ids'] )
+		? array_map( 'absint', $group['fluentform_hiring_ids'] )
+		: array();
+	$has_fluentform           = ! empty( $fluentform_forms ) || tcres_settings_privacy_is_fluentform_active();
 	$trigger               = isset( $group['trigger'] )
 		? (string) $group['trigger']
 		: '';
@@ -228,6 +355,19 @@ function tcres_settings_privacy_render_privacy_notice_panel(): void {
 								);
 								?>
 							<?php endif; ?>
+							<?php if ( $has_fluentform ) : ?>
+								<?php
+								tcres_settings_privacy_render_form_checkboxes(
+									$option . '[privacy_notice][fluentform_contact_ids]',
+									'tcres-privacy-notice-fluentform-contact',
+									$fluentform_forms,
+									$fluentform_contact_ids,
+									__( 'Fluent Forms', 'tms-core-essentials' ),
+									__( 'No Fluent Forms forms were found.', 'tms-core-essentials' )
+								);
+								tcres_settings_privacy_render_fluentform_shortcode_hint( 'contact' );
+								?>
+							<?php endif; ?>
 						</div>
 
 						<hr>
@@ -253,6 +393,59 @@ function tcres_settings_privacy_render_privacy_notice_panel(): void {
 									$wpforms_forms,
 									$wpforms_subscribe_ids
 								);
+								?>
+							<?php endif; ?>
+							<?php if ( $has_fluentform ) : ?>
+								<?php
+								tcres_settings_privacy_render_form_checkboxes(
+									$option . '[privacy_notice][fluentform_subscribe_ids]',
+									'tcres-privacy-notice-fluentform-subscribe',
+									$fluentform_forms,
+									$fluentform_subscribe_ids,
+									__( 'Fluent Forms', 'tms-core-essentials' ),
+									__( 'No Fluent Forms forms were found.', 'tms-core-essentials' )
+								);
+								tcres_settings_privacy_render_fluentform_shortcode_hint( 'subscribe' );
+								?>
+							<?php endif; ?>
+						</div>
+
+						<hr>
+
+						<div>
+							<h3><?php esc_html_e( 'Hiring notice', 'tms-core-essentials' ); ?></h3>
+							<?php
+							tcres_settings_editor_render(
+								'tcres_privacy_notice_hiring',
+								$option . '[privacy_notice][hiring]',
+								isset( $group['hiring'] ) ? (string) $group['hiring'] : '',
+								array(
+									'toolbar' => 'basic',
+								)
+							);
+							tcres_settings_privacy_render_cf7_shortcode_hint( 'hiring' );
+							?>
+							<?php if ( $has_wpforms ) : ?>
+								<?php
+								tcres_settings_privacy_render_wpforms_checkboxes(
+									$option . '[privacy_notice][wpforms_hiring_ids]',
+									'tcres-privacy-notice-wpforms-hiring',
+									$wpforms_forms,
+									$wpforms_hiring_ids
+								);
+								?>
+							<?php endif; ?>
+							<?php if ( $has_fluentform ) : ?>
+								<?php
+								tcres_settings_privacy_render_form_checkboxes(
+									$option . '[privacy_notice][fluentform_hiring_ids]',
+									'tcres-privacy-notice-fluentform-hiring',
+									$fluentform_forms,
+									$fluentform_hiring_ids,
+									__( 'Fluent Forms', 'tms-core-essentials' ),
+									__( 'No Fluent Forms forms were found.', 'tms-core-essentials' )
+								);
+								tcres_settings_privacy_render_fluentform_shortcode_hint( 'hiring' );
 								?>
 							<?php endif; ?>
 						</div>

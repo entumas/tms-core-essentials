@@ -1,0 +1,32 @@
+// --------------------------------------------------
+//	Frontend: Privacy notice
+// --------------------------------------------------
+
+
+details {
+
+
+	summary {
+		cursor: pointer;
+	}
+
+
+	// Interactivity ========================================
+
+	interpolate-size: allow-keywords;
+
+	&::details-content {
+		overflow: clip;
+		height: 0;
+		opacity: 0;
+		transition:
+			height .3s ease-out,
+			opacity .3s ease-out,
+			content-visibility .3s ease-out allow-discrete;
+	}
+
+	&[open]::details-content {
+		height: auto;
+		opacity: 1;
+	}
+}

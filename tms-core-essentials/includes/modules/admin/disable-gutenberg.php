@@ -33,14 +33,15 @@ function tcres_disable_gutenberg_get_keep_block_editor_templates( string $post_t
 		? $group[ $post_type ]
 		: array();
 
-	return array_values(
-		array_filter(
-			array_map( 'sanitize_key', $selected ),
-			static function ( string $slug ): bool {
-				return $slug !== '';
-			}
-		)
-	);
+	$slugs = array();
+	foreach ( $selected as $slug ) :
+		if ( ! is_scalar( $slug ) ) continue;
+		$slug = (string) $slug;
+		if ( $slug === '' ) continue;
+		$slugs[] = $slug;
+	endforeach;
+
+	return array_values( array_unique( $slugs ) );
 }
 
 

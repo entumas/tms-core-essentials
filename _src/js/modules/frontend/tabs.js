@@ -29,7 +29,7 @@ const bindTabList = ( tabList ) => {
 		useTransition = wrap instanceof Element && wrap.matches( '[data-tcres-tab-panels]' )
 
 	if ( useTransition && wrap ) {
-		wrap.querySelectorAll( '.tcres-tab-panel' ).forEach( ( panel ) => {
+		wrap.querySelectorAll( '.panel' ).forEach( ( panel ) => {
 			panel.removeAttribute( 'hidden' )
 			panel.setAttribute( 'aria-hidden', 'true' )
 		} )

@@ -78,8 +78,13 @@ function tcres_hero_sanitize_html_value( string $value, string $meta_key ): stri
  * @return array<string, mixed>
  */
 function tcres_hero_tiny_mce_before_init( array $settings, string $editor_id ): array {
-	$subtitle_ids = array( 'tcres_hero_subtitle', 'tcres_hero_subtitle_term' );
-	if ( in_array( $editor_id, $subtitle_ids, true ) ) :
+	$compact_ids = array(
+		'tcres_hero_pretitle',
+		'tcres_hero_pretitle_term',
+		'tcres_hero_subtitle',
+		'tcres_hero_subtitle_term',
+	);
+	if ( in_array( $editor_id, $compact_ids, true ) ) :
 		$settings['wpautop']           = false;
 		$settings['forced_root_block'] = false;
 		$settings['force_br_newlines'] = true;
@@ -110,8 +115,13 @@ function tcres_hero_tiny_mce_before_init( array $settings, string $editor_id ): 
  * @return array<int, string>
  */
 function tcres_hero_teeny_buttons( array $buttons, string $editor_id ): array {
-	$subtitle_ids = array( 'tcres_hero_subtitle', 'tcres_hero_subtitle_term' );
-	if ( in_array( $editor_id, $subtitle_ids, true ) ) :
+	$compact_ids = array(
+		'tcres_hero_pretitle',
+		'tcres_hero_pretitle_term',
+		'tcres_hero_subtitle',
+		'tcres_hero_subtitle_term',
+	);
+	if ( in_array( $editor_id, $compact_ids, true ) ) :
 		return array( 'bold', 'italic', 'underline', 'strikethrough', 'link', 'unlink' );
 	endif;
 
@@ -128,6 +138,21 @@ function tcres_hero_teeny_buttons( array $buttons, string $editor_id ): array {
  * @param mixed $raw
  * @return array<int, array{title: string, url: string, target: string}>
  */
+function tcres_hero_sanitize_button_classes( string $value ): string {
+	$parts = preg_split( '/\s+/', trim( $value ), -1, PREG_SPLIT_NO_EMPTY );
+	if ( ! is_array( $parts ) ) return '';
+
+	$classes = array();
+	foreach ( $parts as $class ) :
+		$class = sanitize_html_class( (string) $class );
+		if ( $class === '' ) continue;
+		$classes[] = $class;
+	endforeach;
+
+	return implode( ' ', $classes );
+}
+
+
 function tcres_hero_sanitize_buttons( $raw ): array {
 	if ( ! is_array( $raw ) ) return array();
 
@@ -144,6 +169,9 @@ function tcres_hero_sanitize_buttons( $raw ): array {
 		$target = ! empty( $row['target'] )
 			? '_blank'
 			: '';
+		$class  = isset( $row['class'] )
+			? tcres_hero_sanitize_button_classes( sanitize_text_field( wp_unslash( (string) $row['class'] ) ) )
+			: '';
 
 		if ( $title === '' && $url === '' ) continue;
 
@@ -151,6 +179,7 @@ function tcres_hero_sanitize_buttons( $raw ): array {
 			'title'  => $title,
 			'url'    => $url,
 			'target' => $target,
+			'class'  => $class,
 		);
 	endforeach;
 
@@ -159,7 +188,7 @@ function tcres_hero_sanitize_buttons( $raw ): array {
 
 
 /**
- * @return array<int, array{title: string, url: string, target: string}>
+ * @return array<int, array{title: string, url: string, target: string, class: string}>
  */
 function tcres_hero_get_buttons( int $post_id = 0, int $term_id = 0 ): array {
 	$raw = null;
@@ -184,11 +213,15 @@ function tcres_hero_get_buttons( int $post_id = 0, int $term_id = 0 ): array {
 		$target = isset( $row['target'] )
 			? (string) $row['target']
 			: '';
+		$class  = isset( $row['class'] )
+			? tcres_hero_sanitize_button_classes( (string) $row['class'] )
+			: '';
 		if ( $title === '' && $url === '' ) continue;
 		$out[] = array(
 			'title'  => $title,
 			'url'    => $url,
 			'target' => $target === '_blank' ? '_blank' : '',
+			'class'  => $class,
 		);
 	endforeach;
 
@@ -247,7 +280,7 @@ function tcres_hero_save_buttons_term( int $term_id ): void {
 // Render ========================================
 
 /**
- * @param array<int, array{title: string, url: string, target: string}> $buttons
+ * @param array<int, array{title: string, url: string, target: string, class: string}> $buttons
  */
 function tcres_hero_render_buttons_ui( array $buttons ): void {
 	?>
@@ -261,6 +294,7 @@ function tcres_hero_render_buttons_ui( array $buttons ): void {
 						'title'  => '',
 						'url'    => '',
 						'target' => '',
+						'class'  => '',
 					),
 				);
 			endif;
@@ -283,6 +317,7 @@ function tcres_hero_render_buttons_ui( array $buttons ): void {
 					'title'  => '',
 					'url'    => '',
 					'target' => '',
+					'class'  => '',
 				)
 			);
 			?>
@@ -294,7 +329,7 @@ function tcres_hero_render_buttons_ui( array $buttons ): void {
 
 /**
  * @param int|string                                           $index
- * @param array{title?: string, url?: string, target?: string} $button
+ * @param array{title?: string, url?: string, target?: string, class?: string} $button
  */
 function tcres_hero_render_button_row( $index, array $button ): void {
 	$title  = isset( $button['title'] )
@@ -304,6 +339,9 @@ function tcres_hero_render_button_row( $index, array $button ): void {
 		? (string) $button['url']
 		: '';
 	$target = ! empty( $button['target'] );
+	$class  = isset( $button['class'] )
+		? (string) $button['class']
+		: '';
 	$base   = 'tcres_hero_buttons[' . $index . ']';
 	$url_id = 'tcres_hero_button_url_' . $index;
 	?>
@@ -332,6 +370,14 @@ function tcres_hero_render_button_row( $index, array $button ): void {
 					value="<?php echo esc_attr( $url ); ?>"
 					data-tcres-hero-button-url />
 			</label>
+			<label class="tcres-hero-button-class">
+				<span class="tcres-metabox-field-label"><?php esc_html_e( 'Custom classes', 'tms-core-essentials' ); ?></span>
+				<input type="text"
+					class="widefat"
+					name="<?php echo esc_attr( $base . '[class]' ); ?>"
+					value="<?php echo esc_attr( $class ); ?>"
+					data-tcres-hero-button-class />
+			</label>
 			<button type="button" class="button tcres-hero-button-select" data-tcres-hero-select-link>
 				<?php esc_html_e( 'Select', 'tms-core-essentials' ); ?>
 			</button>
@@ -349,12 +395,25 @@ function tcres_hero_render_button_row( $index, array $button ): void {
 }
 
 
-function tcres_hero_render_fields( string $subtitle, string $description, array $buttons, string $context = 'metabox' ): void {
+function tcres_hero_render_fields( string $pretitle, string $subtitle, string $description, array $buttons, string $context = 'metabox' ): void {
 	$suffix = $context === 'term'
 		? '_term'
 		: '';
 	?>
 	<div class="tcres-hero-fields">
+		<?php if ( empty( tcres_option_get( 'hero', 'disable_pretitle' ) ) ) : ?>
+		<div class="tcres-metabox-field tcres-wysiwyg-compact">
+			<label class="tcres-metabox-field-label" for="tcres_hero_pretitle<?php echo esc_attr( $suffix ); ?>">
+				<?php esc_html_e( 'Pretitle', 'tms-core-essentials' ); ?>
+			</label>
+			<textarea
+				class="tcres-hero-editor tcres-wysiwyg"
+				id="tcres_hero_pretitle<?php echo esc_attr( $suffix ); ?>"
+				name="tcres_hero_pretitle"
+				rows="2"><?php echo esc_textarea( $pretitle ); ?></textarea>
+		</div>
+		<?php endif; ?>
+		<?php if ( empty( tcres_option_get( 'hero', 'disable_subtitle' ) ) ) : ?>
 		<div class="tcres-metabox-field tcres-wysiwyg-compact">
 			<label class="tcres-metabox-field-label" for="tcres_hero_subtitle<?php echo esc_attr( $suffix ); ?>">
 				<?php esc_html_e( 'Subtitle', 'tms-core-essentials' ); ?>
@@ -365,6 +424,8 @@ function tcres_hero_render_fields( string $subtitle, string $description, array 
 				name="tcres_hero_subtitle"
 				rows="2"><?php echo esc_textarea( $subtitle ); ?></textarea>
 		</div>
+		<?php endif; ?>
+		<?php if ( empty( tcres_option_get( 'hero', 'disable_description' ) ) ) : ?>
 		<div class="tcres-metabox-field">
 			<label class="tcres-metabox-field-label" for="tcres_hero_description<?php echo esc_attr( $suffix ); ?>">
 				<?php esc_html_e( 'Description', 'tms-core-essentials' ); ?>
@@ -375,7 +436,10 @@ function tcres_hero_render_fields( string $subtitle, string $description, array 
 				name="tcres_hero_description"
 				rows="8"><?php echo esc_textarea( $description ); ?></textarea>
 		</div>
-		<?php tcres_hero_render_buttons_ui( $buttons ); ?>
+		<?php endif; ?>
+		<?php if ( empty( tcres_option_get( 'hero', 'disable_buttons' ) ) ) : ?>
+			<?php tcres_hero_render_buttons_ui( $buttons ); ?>
+		<?php endif; ?>
 	</div>
 	<?php
 }
@@ -384,6 +448,12 @@ function tcres_hero_render_fields( string $subtitle, string $description, array 
 function tcres_hero_render_meta_box( WP_Post $post ): void {
 	wp_nonce_field( '_tcres_hero_nonce', 'tcres_hero_nonce' );
 
+	$pretitle = tcres_field_get(
+		array(
+			'field'   => 'tcres_hero_pretitle',
+			'post_id' => (int) $post->ID,
+		)
+	);
 	$subtitle = tcres_field_get(
 		array(
 			'field'   => 'tcres_hero_subtitle',
@@ -398,7 +468,7 @@ function tcres_hero_render_meta_box( WP_Post $post ): void {
 	);
 	$buttons = tcres_hero_get_buttons( (int) $post->ID, 0 );
 
-	tcres_hero_render_fields( $subtitle, $description, $buttons, 'metabox' );
+	tcres_hero_render_fields( $pretitle, $subtitle, $description, $buttons, 'metabox' );
 }
 
 
@@ -424,13 +494,18 @@ function tcres_hero_register_meta_box(): void {
 
 
 function tcres_hero_save_post( int $post_id ): void {
-	tcres_post_meta_update(
-		$post_id,
-		array( 'tcres_hero_subtitle', 'tcres_hero_description' ),
-		'tcres_',
-		'html'
-	);
-	tcres_hero_save_buttons_post( $post_id );
+	$keys = array();
+	if ( empty( tcres_option_get( 'hero', 'disable_pretitle' ) ) ) $keys[] = 'tcres_hero_pretitle';
+	if ( empty( tcres_option_get( 'hero', 'disable_subtitle' ) ) ) $keys[] = 'tcres_hero_subtitle';
+	if ( empty( tcres_option_get( 'hero', 'disable_description' ) ) ) $keys[] = 'tcres_hero_description';
+
+	if ( ! empty( $keys ) ) :
+		tcres_post_meta_update( $post_id, $keys, 'tcres_', 'html' );
+	endif;
+
+	if ( empty( tcres_option_get( 'hero', 'disable_buttons' ) ) ) :
+		tcres_hero_save_buttons_post( $post_id );
+	endif;
 }
 
 
@@ -439,7 +514,7 @@ function tcres_hero_render_term_add_field(): void {
 	?>
 	<div class="form-field tcres-metabox tcres-hero-field">
 		<label class="tcres-metabox-field-label"><?php esc_html_e( 'Hero', 'tms-core-essentials' ); ?></label>
-		<?php tcres_hero_render_fields( '', '', array(), 'term' ); ?>
+		<?php tcres_hero_render_fields( '', '', '', array(), 'term' ); ?>
 	</div>
 	<?php
 }
@@ -449,11 +524,16 @@ function tcres_hero_render_term_add_field(): void {
  * @param WP_Term $term
  */
 function tcres_hero_render_term_edit_field( $term ): void {
+	$pretitle    = '';
 	$subtitle    = '';
 	$description = '';
 	$buttons     = array();
 
 	if ( $term instanceof WP_Term ) :
+		$raw_pretitle = get_term_meta( (int) $term->term_id, 'tcres_hero_pretitle', true );
+		$pretitle     = is_string( $raw_pretitle )
+			? $raw_pretitle
+			: '';
 		$raw_subtitle = get_term_meta( (int) $term->term_id, 'tcres_hero_subtitle', true );
 		$subtitle     = is_string( $raw_subtitle )
 			? $raw_subtitle
@@ -472,7 +552,7 @@ function tcres_hero_render_term_edit_field( $term ): void {
 			<label class="tcres-metabox-field-label"><?php esc_html_e( 'Hero', 'tms-core-essentials' ); ?></label>
 		</th>
 		<td>
-			<?php tcres_hero_render_fields( $subtitle, $description, $buttons, 'term' ); ?>
+			<?php tcres_hero_render_fields( $pretitle, $subtitle, $description, $buttons, 'term' ); ?>
 		</td>
 	</tr>
 	<?php
@@ -480,13 +560,18 @@ function tcres_hero_render_term_edit_field( $term ): void {
 
 
 function tcres_hero_save_term( int $term_id ): void {
-	tcres_term_meta_update(
-		$term_id,
-		array( 'tcres_hero_subtitle', 'tcres_hero_description' ),
-		'tcres_',
-		'html'
-	);
-	tcres_hero_save_buttons_term( $term_id );
+	$keys = array();
+	if ( empty( tcres_option_get( 'hero', 'disable_pretitle' ) ) ) $keys[] = 'tcres_hero_pretitle';
+	if ( empty( tcres_option_get( 'hero', 'disable_subtitle' ) ) ) $keys[] = 'tcres_hero_subtitle';
+	if ( empty( tcres_option_get( 'hero', 'disable_description' ) ) ) $keys[] = 'tcres_hero_description';
+
+	if ( ! empty( $keys ) ) :
+		tcres_term_meta_update( $term_id, $keys, 'tcres_', 'html' );
+	endif;
+
+	if ( empty( tcres_option_get( 'hero', 'disable_buttons' ) ) ) :
+		tcres_hero_save_buttons_term( $term_id );
+	endif;
 }
 
 
@@ -525,7 +610,7 @@ add_action( 'init', function (): void {
 /**
  * Build one hero button HTML
  *
- * @param array{title?: string, url?: string, target?: string} $button
+ * @param array{title?: string, url?: string, target?: string, class?: string} $button
  */
 function tcres_hero_render_button_html( array $button ): string {
 	$title  = isset( $button['title'] )
@@ -537,24 +622,23 @@ function tcres_hero_render_button_html( array $button ): string {
 	$target = isset( $button['target'] )
 		? (string) $button['target']
 		: '';
+	$class  = isset( $button['class'] )
+		? tcres_hero_sanitize_button_classes( (string) $button['class'] )
+		: '';
 
 	if ( $title === '' || $url === '' ) return '';
 
 	$icon   = '';
 	$attr_t = '';
 	$label  = esc_html( $title );
-	$title_attr = $title;
 
 	if ( stripos( $url, 'tel:' ) !== false ) :
-		$icon       = 'phone';
-		$title_attr = __( 'Call to', 'tms-core-essentials' ) . ' ' . str_replace( 'tel:', '', $url );
+		$icon = 'phone';
 	elseif ( stripos( $url, 'mailto:' ) !== false ) :
-		$icon       = 'mail';
-		$title_attr = __( 'Send mail to', 'tms-core-essentials' ) . ' ' . str_replace( 'mailto:', '', $url );
+		$icon = 'mail';
 	elseif ( strpos( $url, '://wa.me/' ) !== false ) :
-		$icon       = 'whatsapp';
-		$title_attr = __( 'Send WhatsApp message', 'tms-core-essentials' );
-		$attr_t     = ' target="_blank" rel="noopener noreferrer"';
+		$icon   = 'whatsapp';
+		$attr_t = ' target="_blank" rel="noopener noreferrer"';
 	elseif ( $target === '_blank' ) :
 		$attr_t = ' target="_blank" rel="noopener noreferrer"';
 	endif;
@@ -571,7 +655,12 @@ function tcres_hero_render_button_html( array $button ): string {
 		endif;
 	endif;
 
-	return '<a href="' . esc_url( $url ) . '" title="' . esc_attr( $title_attr ) . '"' . $attr_t . '>' . $label . '</a>';
+	$classes = 'button';
+	if ( $class !== '' ) :
+		$classes .= ' ' . $class;
+	endif;
+
+	return '<a class="' . esc_attr( $classes ) . '" href="' . esc_url( $url ) . '"' . $attr_t . '>' . $label . '</a>';
 }
 
 
@@ -582,6 +671,16 @@ function tcres_hero_render_button_html( array $button ): string {
  */
 function tcres_hero_get_allowed_tags(): array {
 	return array( 'header', 'section', 'div' );
+}
+
+
+/**
+ * Allowed tags for the Hero pretitle element
+ *
+ * @return array<int, string>
+ */
+function tcres_hero_get_allowed_pretitle_tags(): array {
+	return array( 'p', 'div', 'span' );
 }
 
 
@@ -702,13 +801,13 @@ function tcres_hero_render_background_html( int $attachment_id, $image_size, int
 				endif;
 			endif;
 
-			$video = '<video class="tcres-hero-background-video" autoplay muted loop playsinline' . $poster_attr . '>'
+			$video = '<video class="video" autoplay muted loop playsinline' . $poster_attr . '>'
 				. '<source src="' . esc_url( $url ) . '"' . ( $mime !== '' ? ' type="' . esc_attr( $mime ) . '"' : '' ) . ' />'
 				. '</video>';
 
-			return '<div class="tcres-hero-background" aria-hidden="true">'
+			return '<div class="background" aria-hidden="true">'
 				. $video
-				. '<div class="tcres-hero-background-overlay"></div>'
+				. '<div class="overlay"></div>'
 				. '</div>';
 		endif;
 	endif;
@@ -721,7 +820,7 @@ function tcres_hero_render_background_html( int $attachment_id, $image_size, int
 		$image_size,
 		false,
 		array(
-			'class'    => 'tcres-hero-background-image',
+			'class'    => 'image',
 			'alt'      => '',
 			'loading'  => 'lazy',
 			'decoding' => 'async',
@@ -729,9 +828,9 @@ function tcres_hero_render_background_html( int $attachment_id, $image_size, int
 	);
 	if ( ! is_string( $img ) || $img === '' ) return '';
 
-	return '<div class="tcres-hero-background" aria-hidden="true">'
+	return '<div class="background" aria-hidden="true">'
 		. $img
-		. '<div class="tcres-hero-background-overlay"></div>'
+		. '<div class="overlay"></div>'
 		. '</div>';
 }
 
@@ -748,6 +847,7 @@ function tcres_hero_render_background_html( int $attachment_id, $image_size, int
  * @param array{
  *   class?: string,
  *   tag?: string,
+ *   pretitle_tag?: string,
  *   subtitle_tag?: string,
  *   image_size?: string|array{0?: int, 1?: int},
  *   post_id?: int,
@@ -761,6 +861,7 @@ function tcres_hero_get( array $args = array() ): string {
 
 	$title          = '';
 	$background_html = '';
+	$pretitle       = '';
 	$subtitle       = '';
 	$description    = '';
 	$buttons        = array();
@@ -770,7 +871,11 @@ function tcres_hero_get( array $args = array() ): string {
 		$term = get_term( $term_id );
 		if ( ! ( $term instanceof WP_Term ) || is_wp_error( $term ) ) return '';
 
-		$title        = $term->name;
+		$title         = $term->name;
+		$raw_pretitle  = get_term_meta( $term_id, 'tcres_hero_pretitle', true );
+		$pretitle      = is_string( $raw_pretitle )
+			? $raw_pretitle
+			: '';
 		$raw_subtitle = get_term_meta( $term_id, 'tcres_hero_subtitle', true );
 		$subtitle     = is_string( $raw_subtitle )
 			? $raw_subtitle
@@ -796,6 +901,12 @@ function tcres_hero_get( array $args = array() ): string {
 			tcres_featured_video_id_get( $post_id, 0 )
 		);
 
+		$pretitle = tcres_field_get(
+			array(
+				'field'   => 'tcres_hero_pretitle',
+				'post_id' => $post_id,
+			)
+		);
 		$subtitle = tcres_field_get(
 			array(
 				'field'   => 'tcres_hero_subtitle',
@@ -818,6 +929,7 @@ function tcres_hero_get( array $args = array() ): string {
 		: '';
 	if ( $title === '' ) return '';
 
+	$pretitle = tcres_clean_wysiwyg_title( $pretitle );
 	$subtitle = tcres_clean_wysiwyg_title( $subtitle );
 
 	// Like the_content: keep HTML, and turn bare newlines into <p> when needed.
@@ -842,6 +954,13 @@ function tcres_hero_get( array $args = array() ): string {
 		$tag = 'header';
 	endif;
 
+	$pretitle_tag = isset( $args['pretitle_tag'] )
+		? strtolower( sanitize_key( (string) $args['pretitle_tag'] ) )
+		: 'p';
+	if ( ! in_array( $pretitle_tag, tcres_hero_get_allowed_pretitle_tags(), true ) ) :
+		$pretitle_tag = 'p';
+	endif;
+
 	$subtitle_tag = isset( $args['subtitle_tag'] )
 		? strtolower( sanitize_key( (string) $args['subtitle_tag'] ) )
 		: 'p';
@@ -850,6 +969,9 @@ function tcres_hero_get( array $args = array() ): string {
 	endif;
 
 	$class = 'tcres-hero';
+	if ( $background_html !== '' ) :
+		$class .= ' has-background';
+	endif;
 	if ( isset( $args['class'] ) ) :
 		$extra = trim( preg_replace( '/\s+/', ' ', (string) $args['class'] ) ?? '' );
 		if ( $extra !== '' ) :
@@ -859,16 +981,19 @@ function tcres_hero_get( array $args = array() ): string {
 
 	$html  = '<' . $tag . ' class="' . esc_attr( $class ) . '">';
 	$html .= $background_html;
-	$html .= '<div class="tcres-hero-inner">';
-	$html .= '<h1 class="tcres-hero-title">' . esc_html( $title ) . '</h1>';
+	$html .= '<div class="inner">';
+	if ( $pretitle !== '' ) :
+		$html .= '<' . $pretitle_tag . ' class="pretitle">' . $pretitle . '</' . $pretitle_tag . '>';
+	endif;
+	$html .= '<h1 class="title">' . esc_html( $title ) . '</h1>';
 	if ( $subtitle !== '' ) :
-		$html .= '<' . $subtitle_tag . ' class="tcres-hero-subtitle">' . $subtitle . '</' . $subtitle_tag . '>';
+		$html .= '<' . $subtitle_tag . ' class="subtitle">' . $subtitle . '</' . $subtitle_tag . '>';
 	endif;
 	if ( $description !== '' ) :
-		$html .= '<div class="tcres-hero-description">' . $description . '</div>';
+		$html .= '<div class="description">' . $description . '</div>';
 	endif;
 	if ( $buttons_html !== '' ) :
-		$html .= '<div class="tcres-hero-buttons">' . $buttons_html . '</div>';
+		$html .= '<div class="buttons">' . $buttons_html . '</div>';
 	endif;
 	$html .= '</div>';
 	$html .= '</' . $tag . '>';
@@ -883,6 +1008,7 @@ function tcres_hero_get( array $args = array() ): string {
  * @param array{
  *   class?: string,
  *   tag?: string,
+ *   pretitle_tag?: string,
  *   subtitle_tag?: string,
  *   image_size?: string|array{0?: int, 1?: int},
  *   post_id?: int,

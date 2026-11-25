@@ -12,7 +12,7 @@
 	inset: 0;
 
 
-	&-backdrop {
+	.backdrop {
 		position: absolute;
 		inset: 0;
 		background-color: tms-color-hex8('black', .75);
@@ -20,7 +20,7 @@
 	}
 
 
-	&-dialog {
+	.dialog {
 		display: flex;
 		flex-direction: column;
 		position: relative;
@@ -39,7 +39,7 @@
 	}
 
 
-	&-close {
+	.close {
 		flex-shrink: 0;
 		display: inline-flex;
 		justify-content: center;
@@ -55,9 +55,9 @@
 	}
 
 
-	&-dialog > &-close,
-	&-body &-close,
-	&-footer &-close {
+	.dialog > .close,
+	.body .close,
+	.footer .close {
 		position: absolute;
 		z-index: 2;
 		top: 12px;
@@ -65,7 +65,7 @@
 	}
 
 
-	&-header {
+	.header {
 		flex-shrink: 0;
 		display: flex;
 		justify-content: space-between;
@@ -74,19 +74,19 @@
 		padding: 16px;
 
 
-		.tcres-modal-title {
+		.title {
 			flex: 1;
 			min-width: 0;
 		}
 	}
 
 
-	&-title {
+	.title {
 		margin: 0;
 	}
 
 
-	&-footer {
+	.footer {
 		flex-shrink: 0;
 		display: flex;
 		justify-content: flex-end;
@@ -95,7 +95,7 @@
 	}
 
 
-	&-body {
+	.body {
 		flex: 1 1 auto;
 		min-height: 0;
 		overflow-x: hidden;
@@ -106,17 +106,17 @@
 
 	// Full screen
 
-	&.tcres-modal-full {
+	&.is-full-screen {
 		padding: 0;
 
 
-		.tcres-modal-backdrop {
+		.backdrop {
 			background-color: transparent;
 			backdrop-filter: none;
 		}
 
 
-		.tcres-modal-dialog {
+		.dialog {
 			width: 100%;
 			max-width: none;
 			height: 100%;
@@ -146,7 +146,7 @@ body.tcres-is-modal-open {
 	}
 
 
-	.tcres-modal-backdrop {
+	.backdrop {
 		opacity: 0;
 		transition: opacity .25s ease;
 
@@ -156,17 +156,17 @@ body.tcres-is-modal-open {
 	}
 
 
-	&.is-open .tcres-modal-backdrop {
+	&.is-open .backdrop {
 		opacity: 1;
 	}
 
 
-	&.is-leaving:not(.is-open) .tcres-modal-backdrop {
+	&.is-leaving:not(.is-open) .backdrop {
 		opacity: 0;
 	}
 
 
-	.tcres-modal-dialog {
+	.dialog {
 		transform: translate(0, 0);
 		transition:
 			transform .4s ease-out,
@@ -182,17 +182,17 @@ body.tcres-is-modal-open {
 
 	// Static fade (default)
 
-	&:not([class*='tcres-modal-from-']) {
+	&:not(.from-top, .from-right, .from-bottom, .from-left, .from-top-fade, .from-right-fade, .from-bottom-fade, .from-left-fade) {
 
-		.tcres-modal-dialog {
+		.dialog {
 			opacity: 0;
 		}
 
-		&.is-open .tcres-modal-dialog {
+		&.is-open .dialog {
 			opacity: 1;
 		}
 
-		&.is-leaving:not(.is-open) .tcres-modal-dialog {
+		&.is-leaving:not(.is-open) .dialog {
 			opacity: 0;
 		}
 	}
@@ -200,14 +200,14 @@ body.tcres-is-modal-open {
 
 	// Static, no panel fade
 
-	&-static:not([class*='tcres-modal-from-']) {
+	&.is-static:not(.from-top, .from-right, .from-bottom, .from-left, .from-top-fade, .from-right-fade, .from-bottom-fade, .from-left-fade) {
 
-		.tcres-modal-dialog {
+		.dialog {
 			opacity: 1;
 			transform: none;
 		}
 
-		&.is-leaving:not(.is-open) .tcres-modal-dialog {
+		&.is-leaving:not(.is-open) .dialog {
 			opacity: 1;
 		}
 	}
@@ -215,22 +215,22 @@ body.tcres-is-modal-open {
 
 	// Directional slide only (off-screen)
 
-	&-from-top .tcres-modal-dialog {
+	&.from-top .dialog {
 		opacity: 1;
 		transform: translateY(-100vh);
 	}
 
-	&-from-right .tcres-modal-dialog {
+	&.from-right .dialog {
 		opacity: 1;
 		transform: translateX(100vw);
 	}
 
-	&-from-bottom .tcres-modal-dialog {
+	&.from-bottom .dialog {
 		opacity: 1;
 		transform: translateY(100vh);
 	}
 
-	&-from-left .tcres-modal-dialog {
+	&.from-left .dialog {
 		opacity: 1;
 		transform: translateX(-100vw);
 	}
@@ -238,22 +238,22 @@ body.tcres-is-modal-open {
 
 	// Directional slide + fade (off-screen)
 
-	&-from-top-fade .tcres-modal-dialog {
+	&.from-top-fade .dialog {
 		opacity: 0;
 		transform: translateY(-100vh);
 	}
 
-	&-from-right-fade .tcres-modal-dialog {
+	&.from-right-fade .dialog {
 		opacity: 0;
 		transform: translateX(100vw);
 	}
 
-	&-from-bottom-fade .tcres-modal-dialog {
+	&.from-bottom-fade .dialog {
 		opacity: 0;
 		transform: translateY(100vh);
 	}
 
-	&-from-left-fade .tcres-modal-dialog {
+	&.from-left-fade .dialog {
 		opacity: 0;
 		transform: translateX(-100vw);
 	}
@@ -261,9 +261,9 @@ body.tcres-is-modal-open {
 
 	// Directional open / leaving end states
 
-	&[class*='tcres-modal-from-'] {
+	&:is(.from-top, .from-right, .from-bottom, .from-left, .from-top-fade, .from-right-fade, .from-bottom-fade, .from-left-fade) {
 
-		&.is-open .tcres-modal-dialog {
+		&.is-open .dialog {
 			opacity: 1;
 			transform: translate(0, 0);
 		}

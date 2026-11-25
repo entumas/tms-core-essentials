@@ -9,8 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Run do_shortcode limited to registered tags that start with tcres-.
+ * Shared with the Fluent Forms integration.
  */
-function tcres_cf7_do_tcres_shortcodes( string $content ): string {
+function tcres_do_tcres_shortcodes( string $content ): string {
 	if ( $content === '' || false === strpos( $content, '[tcres-' ) ) :
 		return $content;
 	endif;
@@ -38,6 +39,14 @@ function tcres_cf7_do_tcres_shortcodes( string $content ): string {
 	$shortcode_tags = $previous;
 
 	return $content;
+}
+
+
+/**
+ * @param string $content
+ */
+function tcres_cf7_do_tcres_shortcodes( string $content ): string {
+	return tcres_do_tcres_shortcodes( $content );
 }
 
 

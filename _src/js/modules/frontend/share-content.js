@@ -17,7 +17,7 @@ export const tcresShareContentInit = () => {
 			if ( ! url ) return
 
 			const doneLabel = el.getAttribute( 'data-tcres-share-copy-done' ) || 'Copied',
-				nameEl      = el.querySelector( '.tcres-share-content-button-name' ),
+				nameEl      = el.querySelector( '.name' ),
 				prevName    = nameEl ? nameEl.textContent : ''
 
 			try {
