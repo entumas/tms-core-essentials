@@ -74,6 +74,7 @@ function tcres_settings_disable_gutenberg_get_post_type_defaults(): array {
 		$defaults[ 'disable_' . $post_type ] = false;
 	endforeach;
 
+	$defaults['disable_widgets_block_editor']   = false;
 	$defaults['keep_block_editor_on_templates'] = tcres_settings_disable_gutenberg_keep_templates_defaults();
 
 	return $defaults;

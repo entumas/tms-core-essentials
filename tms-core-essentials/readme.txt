@@ -4,7 +4,7 @@ Tags: security, performance, privacy, administration, frontend functionalities
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,12 @@ To build from source: clone the repository, open the project root in Prepros, th
 
 
 == Changelog ==
+
+= 1.2.0 =
+* FIX: Hide login error messages: replace only login and password-recovery errors that reveal whether the account exists. Empty fields, expired reset links, mismatched passwords, and registration validation keep WordPress's own message.
+* FIX: Lost password: reuse the first allow_password_reset result in the same request, so a captcha that consumes its answer is not failed by WooCommerce's second check.
+* TWEAK: Disable post types, taxonomies, and comments: remove the matching classic widgets and blocks for latest posts, latest comments, categories, and the tag cloud.
+* NEW: Disable Gutenberg: option to use the classic widgets screen instead of the block widget editor.
 
 = 1.1.0 =
 * TWEAK: Swiper, GLightbox, and Choices register when enabled and print only when a script depends on their handle or enqueues it.

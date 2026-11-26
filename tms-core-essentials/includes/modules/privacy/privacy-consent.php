@@ -118,7 +118,7 @@ function tcres_privacy_consent_error_message(): string {
 
 
 /**
- * @param array{form?: string, id?: string} $args
+ * @param array{form?: string, id?: string, required?: bool} $args
  */
 function tcres_privacy_consent_get( array $args = array() ): string {
 	$form = isset( $args['form'] )
@@ -133,20 +133,28 @@ function tcres_privacy_consent_get( array $args = array() ): string {
 		$id = 'tcres-privacy-consent-' . $form;
 	endif;
 
-	$name  = tcres_privacy_consent_field_name();
-	$label = tcres_privacy_consent_get_label_html();
+	$name     = tcres_privacy_consent_field_name();
+	$label    = tcres_privacy_consent_get_label_html();
+	$required = ! array_key_exists( 'required', $args ) || ! empty( $args['required'] );
+	$class    = 'tcres-privacy-consent comment-form-privacy-consent';
+	// Checkout inline errors are appended to the closest .form-row.
+	if ( 'checkout' === $form ) :
+		$class .= ' form-row validate-required';
+	endif;
 
 	ob_start();
 	?>
-	<p class="tcres-privacy-consent comment-form-privacy-consent">
+	<p class="<?php echo esc_attr( $class ); ?>">
 		<input
 			type="checkbox"
 			id="<?php echo esc_attr( $id ); ?>"
 			name="<?php echo esc_attr( $name ); ?>"
 			value="1"
-			required
+			<?php if ( $required ) : ?>
+			required="required"
+			<?php endif; ?>
 			aria-required="true"
-			data-tcres-privacy-consent
+			data-tcres-privacy-consent="1"
 			data-tcres-privacy-consent-error="<?php echo esc_attr( tcres_privacy_consent_error_message() ); ?>" />
 		<label for="<?php echo esc_attr( $id ); ?>">
 			<?php tcres_echo_html( $label ); ?>
@@ -158,12 +166,43 @@ function tcres_privacy_consent_get( array $args = array() ): string {
 }
 
 
-function tcres_privacy_consent_render( string $form, string $id = '' ): void {
-	tcres_echo_html(
+/**
+ * Post kses drops input. Consent markup needs the checkbox and its attributes.
+ *
+ * @return array<string, array<string, bool>>
+ */
+function tcres_privacy_consent_allowed_html(): array {
+	$allowed = tcres_get_kses_allowed_html();
+
+	$allowed['input'] = array(
+		'type'                             => true,
+		'id'                               => true,
+		'name'                             => true,
+		'value'                            => true,
+		'required'                         => true,
+		'aria-required'                    => true,
+		'data-tcres-privacy-consent'       => true,
+		'data-tcres-privacy-consent-error' => true,
+	);
+
+	return $allowed;
+}
+
+
+function tcres_privacy_consent_kses( string $html ): string {
+	if ( $html === '' ) return '';
+
+	return wp_kses( $html, tcres_privacy_consent_allowed_html() );
+}
+
+
+function tcres_privacy_consent_render( string $form, string $id = '', bool $required = true ): void {
+	echo tcres_privacy_consent_kses(
 		tcres_privacy_consent_get(
 			array(
-				'form' => $form,
-				'id'   => $id,
+				'form'     => $form,
+				'id'       => $id,
+				'required' => $required,
 			)
 		)
 	);
@@ -197,7 +236,7 @@ add_filter(
 			)
 		);
 
-		return $consent . $submit_field;
+		return tcres_privacy_consent_kses( $consent ) . $submit_field;
 	},
 	20
 );
@@ -307,26 +346,36 @@ function tcres_privacy_consent_checkout_is_block(): bool {
 }
 
 
+/**
+ * Above the privacy notice on the same hook (notice @10).
+ */
 add_action(
 	'woocommerce_review_order_before_submit',
 	static function (): void {
 		if ( ! tcres_privacy_consent_is_enabled_for( 'checkout' ) ) return;
 		if ( tcres_privacy_consent_checkout_is_block() ) return;
-		tcres_privacy_consent_render( 'checkout', 'tcres-privacy-consent-checkout' );
+		tcres_privacy_consent_render( 'checkout', 'tcres-privacy-consent-checkout', false );
 	},
-	20
+	5
 );
 
 add_action(
-	'woocommerce_checkout_process',
-	static function (): void {
+	'woocommerce_after_checkout_validation',
+	static function ( $data, $errors ): void {
+		unset( $data );
 		if ( ! tcres_privacy_consent_is_enabled_for( 'checkout' ) ) return;
 		if ( tcres_privacy_consent_checkout_is_block() ) return;
+		if ( ! ( $errors instanceof WP_Error ) ) return;
+		if ( tcres_privacy_consent_request_is_accepted() ) return;
 
-		if ( ! tcres_privacy_consent_request_is_accepted() ) :
-			wc_add_notice( tcres_privacy_consent_error_message(), 'error' );
-		endif;
-	}
+		$errors->add(
+			'tcres_privacy_consent',
+			tcres_privacy_consent_error_message(),
+			array( 'id' => 'tcres-privacy-consent-checkout' )
+		);
+	},
+	10,
+	2
 );
 
 add_action(

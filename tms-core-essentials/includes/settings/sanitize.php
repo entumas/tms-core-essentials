@@ -54,6 +54,7 @@ function tcres_settings_sanitize( $value ): array {
 			$key = 'disable_' . $post_type;
 			$out['disable_gutenberg'][ $key ] = ! empty( $disable_gutenberg[ $key ] );
 		endforeach;
+		$out['disable_gutenberg']['disable_widgets_block_editor'] = ! empty( $disable_gutenberg['disable_widgets_block_editor'] );
 
 		$submitted_keep = isset( $disable_gutenberg['keep_block_editor_on_templates'] ) && is_array( $disable_gutenberg['keep_block_editor_on_templates'] )
 			? $disable_gutenberg['keep_block_editor_on_templates']

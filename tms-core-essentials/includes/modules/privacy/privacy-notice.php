@@ -215,7 +215,7 @@ function tcres_privacy_notice_checkout_is_block(): bool {
 
 
 /**
- * Classic shortcode checkout (order review / place order).
+ * Classic shortcode checkout. After the consent checkbox (priority 5).
  */
 add_action(
 	'woocommerce_review_order_before_submit',
@@ -223,7 +223,8 @@ add_action(
 		if ( ! tcres_privacy_notice_is_enabled() ) return;
 		if ( tcres_privacy_notice_checkout_is_block() ) return;
 		tcres_privacy_notice_render( 'checkout' );
-	}
+	},
+	10
 );
 
 

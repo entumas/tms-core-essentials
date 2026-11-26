@@ -17,7 +17,7 @@ function tcres_settings_security_render_security_panel(): void {
 			'id'          => 'tcres-security-hide-login-errors',
 			'key'         => 'hide_login_errors',
 			'title'       => __( 'Hide login error messages', 'tms-core-essentials' ),
-			'description' => __( 'Replaces detailed login errors with a generic message.', 'tms-core-essentials' ),
+			'description' => __( 'Replaces login and password recovery errors that reveal whether the account exists.', 'tms-core-essentials' ),
 		),
 		array(
 			'id'          => 'tcres-security-block-user-enumeration',

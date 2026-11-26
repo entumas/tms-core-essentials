@@ -85,6 +85,7 @@ add_action( 'plugins_loaded', function (): void {
 	tcres_include_file( 'modules/admin/svg-uploads.php' );
 
 	tcres_include_file( 'modules/login/login-customization.php' );
+	tcres_include_file( 'modules/login/password-reset.php' );
 	tcres_include_file( 'modules/login/logout-redirect.php' );
 
 	tcres_include_file( 'modules/fields/bodyclass.php' );

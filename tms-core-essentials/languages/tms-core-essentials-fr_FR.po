@@ -973,6 +973,10 @@ msgstr "Développeurs"
 msgid "Disable block editor for %s"
 msgstr "Désactiver l'éditeur de blocs pour %s"
 
+#: includes/settings/content/admin.php:148
+msgid "Disable block editor for widgets"
+msgstr "Désactiver l'éditeur de blocs pour les widgets"
+
 #: includes/settings/content/admin.php:389
 msgid "Disable comments"
 msgstr "Désactiver les commentaires"
@@ -3083,8 +3087,10 @@ msgid "Replace video"
 msgstr "Remplacer la vidéo"
 
 #: includes/settings/content/security.php:20
-msgid "Replaces detailed login errors with a generic message."
-msgstr "Remplace les erreurs de connexion détaillées par un message générique."
+msgid "Replaces login and password recovery errors that reveal whether the account exists."
+msgstr ""
+"Remplace les erreurs de connexion et de récupération de mot de passe qui "
+"révèlent si le compte existe."
 
 #: includes/settings/content/developers.php:820
 msgid "Required on the root element of the card."
@@ -4247,6 +4253,10 @@ msgstr "Nom d’utilisateur"
 #, php-format
 msgid "Uses the classic editor for the %s post type."
 msgstr "Utilise l’éditeur classique pour le type de publication %s."
+
+#: includes/settings/content/admin.php:149
+msgid "Uses the classic widgets screen."
+msgstr "Utilise l’écran classique des widgets."
 
 #: includes/settings/content/login.php:100
 msgid ""

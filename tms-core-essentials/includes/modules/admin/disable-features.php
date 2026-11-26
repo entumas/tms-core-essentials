@@ -296,3 +296,52 @@ add_action( 'template_redirect', function(): void {
 		endif;
 	endforeach;
 }, 1 );
+
+
+/**
+ * Classic widget class => core block, for blog features that are currently disabled.
+ *
+ * @return array<string, string>
+ */
+function tcres_disable_features_get_disabled_blog_widget_map(): array {
+	$map = array();
+
+	if ( in_array( 'post', tcres_disable_features_get_disabled_post_types(), true ) ) :
+		$map['WP_Widget_Recent_Posts'] = 'core/latest-posts';
+	endif;
+
+	if ( tcres_disable_features_comments_are_disabled() ) :
+		$map['WP_Widget_Recent_Comments'] = 'core/latest-comments';
+	endif;
+
+	$disabled_taxonomies = tcres_disable_features_get_disabled_taxonomies();
+
+	if ( in_array( 'category', $disabled_taxonomies, true ) ) :
+		$map['WP_Widget_Categories'] = 'core/categories';
+	endif;
+
+	if ( in_array( 'post_tag', $disabled_taxonomies, true ) ) :
+		$map['WP_Widget_Tag_Cloud'] = 'core/tag-cloud';
+	endif;
+
+	return $map;
+}
+
+
+function tcres_disable_features_unregister_blog_widgets(): void {
+	foreach ( array_keys( tcres_disable_features_get_disabled_blog_widget_map() ) as $widget_class ) :
+		unregister_widget( $widget_class );
+	endforeach;
+}
+add_action( 'widgets_init', 'tcres_disable_features_unregister_blog_widgets', 20 );
+
+
+function tcres_disable_features_unregister_blog_blocks(): void {
+	$registry = WP_Block_Type_Registry::get_instance();
+
+	foreach ( tcres_disable_features_get_disabled_blog_widget_map() as $block_name ) :
+		if ( ! $registry->is_registered( $block_name ) ) continue;
+		unregister_block_type( $block_name );
+	endforeach;
+}
+add_action( 'init', 'tcres_disable_features_unregister_blog_blocks', 20 );

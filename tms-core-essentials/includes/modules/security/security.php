@@ -18,15 +18,57 @@ function tcres_security_setting_is_enabled( string $key ): bool {
 }
 
 
-add_filter( 'login_errors', function( mixed $error ): string {
-	if ( ! tcres_security_setting_is_enabled( 'hide_login_errors' ) ) :
-		return is_string( $error )
-			? $error
-			: '';
+function tcres_security_login_failure_message(): string {
+	return __( 'Login failed. Check your credentials and try again.', 'tms-core-essentials' );
+}
+
+
+function tcres_security_replace_account_errors( WP_Error $errors, array $codes ): WP_Error {
+	$replaced = false;
+
+	foreach ( $codes as $code ) :
+		if ( ! in_array( $code, $errors->get_error_codes(), true ) ) continue;
+
+		$errors->remove( $code );
+		$replaced = true;
+	endforeach;
+
+	if ( ! $replaced ) return $errors;
+
+	$errors->add( 'tcres_login_failed', tcres_security_login_failure_message() );
+
+	return $errors;
+}
+
+
+add_filter( 'authenticate', function( mixed $user ): mixed {
+	if ( ! tcres_security_setting_is_enabled( 'hide_login_errors' ) ) return $user;
+	if ( ! $user instanceof WP_Error ) return $user;
+
+	return tcres_security_replace_account_errors(
+		$user,
+		array( 'invalid_username', 'invalid_email', 'incorrect_password' )
+	);
+}, 100 );
+
+
+add_filter( 'lostpassword_errors', function( mixed $errors, mixed $user_data ): mixed {
+	if ( ! tcres_security_setting_is_enabled( 'hide_login_errors' ) ) return $errors;
+	if ( ! $errors instanceof WP_Error ) return $errors;
+
+	$errors = tcres_security_replace_account_errors(
+		$errors,
+		array( 'invalidcombo', 'invalid_email' )
+	);
+
+	// retrieve_password() adds invalidcombo after this filter when the account
+	// does not exist and no errors remain (username without "@").
+	if ( ! $user_data instanceof WP_User && ! $errors->has_errors() ) :
+		$errors->add( 'tcres_login_failed', tcres_security_login_failure_message() );
 	endif;
 
-	return __( 'Login failed. Check your credentials and try again.', 'tms-core-essentials' );
-} );
+	return $errors;
+}, 10, 2 );
 
 
 function tcres_security_proxy_visit_detect_is_proxy(): bool {

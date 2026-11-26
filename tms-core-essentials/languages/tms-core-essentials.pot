@@ -814,6 +814,10 @@ msgstr ""
 msgid "Disable block editor for %s"
 msgstr ""
 
+#: includes/settings/content/admin.php:148
+msgid "Disable block editor for widgets"
+msgstr ""
+
 #: includes/settings/content/admin.php:389
 msgid "Disable comments"
 msgstr ""
@@ -2658,7 +2662,7 @@ msgid "Replace video"
 msgstr ""
 
 #: includes/settings/content/security.php:20
-msgid "Replaces detailed login errors with a generic message."
+msgid "Replaces login and password recovery errors that reveal whether the account exists."
 msgstr ""
 
 #: includes/settings/content/developers.php:820
@@ -3653,6 +3657,10 @@ msgstr ""
 #: includes/settings/content/admin.php:29
 #, php-format
 msgid "Uses the classic editor for the %s post type."
+msgstr ""
+
+#: includes/settings/content/admin.php:149
+msgid "Uses the classic widgets screen."
 msgstr ""
 
 #: includes/settings/content/login.php:100

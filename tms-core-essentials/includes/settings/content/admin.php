@@ -118,52 +118,59 @@ function tcres_settings_admin_render_disable_gutenberg_panel(): void {
 		: array();
 	$option            = TCRES_OPTION_NAME;
 	$items             = tcres_settings_disable_gutenberg_get_post_type_items();
-	$total             = count( $items );
-	$active_count      = tcres_settings_cards_count_active( $items, $disable_gutenberg );
+	$widgets_disabled  = ! empty( $disable_gutenberg['disable_widgets_block_editor'] );
+	$total             = count( $items ) + 1;
+	$active_count      = tcres_settings_cards_count_active( $items, $disable_gutenberg ) + ( $widgets_disabled ? 1 : 0 );
 	$inactive_count    = $total - $active_count;
 	$card_filter       = tcres_settings_get_current_card_filter( 'disable_gutenberg' );
 	?>
-		<h2><?php esc_html_e( 'Disable Gutenberg', 'tms-core-essentials' ); ?></h2>
-		<?php if ( $total > 0 ) : ?>
-			<?php
-			tcres_settings_cards_panel_render_start( 'disable_gutenberg' );
-			tcres_settings_cards_render_filter(
-				'admin',
-				'disable_gutenberg',
-				$card_filter,
-				$total,
-				$active_count,
-				$inactive_count
-			);
-			tcres_settings_cards_render_grid_start( __( 'Disable Gutenberg options', 'tms-core-essentials' ) );
-			foreach ( $items as $item ) :
-				$config_render = null;
-				if ( tcres_template_post_type_has_custom_templates( $item['post_type'] ) ) :
-					$config_render = static function () use ( $item, $disable_gutenberg, $option ): void {
-						tcres_settings_admin_render_disable_gutenberg_templates_config(
-							$item['post_type'],
-							$disable_gutenberg,
-							$option
-						);
-					};
-				endif;
-
-				tcres_settings_card_render_field(
-					$item['id'],
-					$option . '[disable_gutenberg][' . $item['key'] . ']',
-					! empty( $disable_gutenberg[ $item['key'] ] ),
-					$item['title'],
-					$item['description'],
-					$config_render
-				);
-			endforeach;
-			tcres_settings_cards_render_grid_end();
-			tcres_settings_cards_panel_render_end();
-			?>
-		<?php else : ?>
-			<p class="description"><?php esc_html_e( 'No eligible post types were found.', 'tms-core-essentials' ); ?></p>
-		<?php endif; ?>
+	<h2><?php esc_html_e( 'Disable Gutenberg', 'tms-core-essentials' ); ?></h2>
 	<?php
+	tcres_settings_cards_panel_render_start( 'disable_gutenberg' );
+	tcres_settings_cards_render_filter(
+		'admin',
+		'disable_gutenberg',
+		$card_filter,
+		$total,
+		$active_count,
+		$inactive_count
+	);
+	if ( empty( $items ) ) :
+		?>
+		<p class="description"><?php esc_html_e( 'No eligible post types were found.', 'tms-core-essentials' ); ?></p>
+		<?php
+	endif;
+	tcres_settings_cards_render_grid_start( __( 'Disable Gutenberg options', 'tms-core-essentials' ) );
+	tcres_settings_card_render_field(
+		'tcres-disable-gutenberg-widgets',
+		$option . '[disable_gutenberg][disable_widgets_block_editor]',
+		$widgets_disabled,
+		__( 'Disable block editor for widgets', 'tms-core-essentials' ),
+		__( 'Uses the classic widgets screen.', 'tms-core-essentials' )
+	);
+	foreach ( $items as $item ) :
+		$config_render = null;
+		if ( tcres_template_post_type_has_custom_templates( $item['post_type'] ) ) :
+			$config_render = static function () use ( $item, $disable_gutenberg, $option ): void {
+				tcres_settings_admin_render_disable_gutenberg_templates_config(
+					$item['post_type'],
+					$disable_gutenberg,
+					$option
+				);
+			};
+		endif;
+
+		tcres_settings_card_render_field(
+			$item['id'],
+			$option . '[disable_gutenberg][' . $item['key'] . ']',
+			! empty( $disable_gutenberg[ $item['key'] ] ),
+			$item['title'],
+			$item['description'],
+			$config_render
+		);
+	endforeach;
+	tcres_settings_cards_render_grid_end();
+	tcres_settings_cards_panel_render_end();
 }
 
 

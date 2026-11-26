@@ -75,3 +75,10 @@ add_filter( 'use_block_editor_for_post', function( $use_block_editor, $post ): b
 
 	return false;
 }, 10, 2 );
+
+
+add_filter( 'use_widgets_block_editor', function( $use_widgets_block_editor ): bool {
+	if ( tcres_disable_gutenberg_setting_is_enabled( 'disable_widgets_block_editor' ) ) return false;
+
+	return (bool) $use_widgets_block_editor;
+} );
